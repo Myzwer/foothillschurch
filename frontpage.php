@@ -23,10 +23,14 @@ get_header(); ?>
             <hr class="text-white pb-5">
             <h2 class="text-white text-3xl ">Title</h2>
             <h3 class="text-white text-2xl">Subtitle</h3>
+
+            <button class="white-gradient">
+                Save changes
+            </button>
         </div>
     </div>
 
-    <div class="bg-white pb-10">
+    <div class="bg-blue-gradient pb-10">
         <div class="m-4 md:m-10 lg:max-w-4xl lg:text-center lg:mx-auto pt-10">
             <div class="grid">
                 <div class=" grid-cols-12">
