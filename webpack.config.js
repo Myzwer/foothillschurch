@@ -127,7 +127,7 @@ module.exports = {
       // * YOU NEED TO CHANGE THIS. VVV
       // * Local is going to output a Site Domain that ends in .local
       // * That needs to be pasted here to get Browersync to work properly.
-      proxy: "https://prelaunch.local",
+      proxy: "foothillschurchcom.local",
       // * CHANGE ME ^^^
       // BrowserSync will automatically watch for changes to any files connected to our entry,
       // including both JS and Sass files. We can use this property to tell BrowserSync to watch
