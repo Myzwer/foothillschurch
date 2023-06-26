@@ -24,12 +24,12 @@
 // BUT, if for some reason you need to add another style or script, do that here.
 
 // JQUERY. If you don't need it delete it.
-function include_jQuery() {
+/* function include_jQuery() {
     if (!is_admin()) {
         wp_enqueue_script('jquery');
     }
 }
-add_action('init', 'include_jQuery');
+add_action('init', 'include_jQuery'); */
 
 
 // Javascript

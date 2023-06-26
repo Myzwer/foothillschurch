@@ -1,7 +1,6 @@
+import $ from 'jquery';
 import "../sass/frontend.scss";
 
-(function ($) {
-  // Begin jQuery
   $(function () {
     // DOM ready
     // If a link has a dropdown, add sub menu toggle.
@@ -24,4 +23,3 @@ import "../sass/frontend.scss";
       this.classList.toggle("active");
     });
   }); // end DOM ready
-})(jQuery); // end jQuery

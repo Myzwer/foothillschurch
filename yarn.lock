@@ -6513,6 +6513,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jquery@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "jquery@npm:3.7.0"
+  checksum: 907785e133afc427650a131af5fccef66a404885037513b3d4d7d63aee6409bcc32a39836868c60e59b05aa0fb8ace8961c18b2ee3ffdf6ffdb571d6d7cd88ff
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -9245,6 +9252,7 @@ __metadata:
     eslint-config-google: ^0.14.0
     eslint-config-prettier: ^8.3.0
     file-loader: ^6.2.0
+    jquery: ^3.7.0
     mini-css-extract-plugin: ^2.1.0
     postcss: latest
     postcss-loader: ^6.1.1
