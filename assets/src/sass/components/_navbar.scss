@@ -60,8 +60,11 @@ $button-hover-color: #eaeaea; // What hover color do you want the button to be?
 
 // Navigation
 nav {
-  float: right;
   position: absolute;
+  float: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ul {
     list-style: none;
     margin: 0;
@@ -138,6 +141,7 @@ nav {
     padding: $nav-height 0 15px;
     width: 100%;
     z-index: 10;
+    display: block;
     ul {
       display: none;
       li {
@@ -212,6 +216,7 @@ nav {
   }
 }
 
+
 .nav-list > li:last-of-type {
   align-self: center;
   background-color: $button-color;
@@ -247,7 +252,9 @@ nav {
     border-radius: 10px;
     margin-left: 6px;
     margin-right: 10px;
-    margin-top: 18px;
+    margin-top: 23px;
+    position: absolute;
+    right: 0;
   }
 
   .nav-list > .nav-list > li:last-of-type a {
