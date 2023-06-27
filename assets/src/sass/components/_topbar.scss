@@ -1,0 +1,41 @@
+/*
+ * Topbar SCSS
+ * ---------------------------
+ * This controls the top bar on the website that runs over the main navbar.
+ *
+ *
+ *
+ *
+*/
+
+// This class is passed into the <ul> by wordpress.
+.topbar {
+  padding: 10px;
+  text-align: center;
+
+  // Handles the styles of each link. They are set to inline block then given side padding to make them "centered."
+  li {
+    color: #234058;
+    display: inline-block;
+    font-family: "gotham", sans-serif;
+    font-weight: 800;
+    padding: 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .5s;
+  }
+}
+
+// When you hit desktop, this tosses the links to the right and adds more padding.
+@media screen and (min-width: 64em) {
+  .topbar {
+    text-align: right;
+
+    li {
+      display: inline;
+      font-size: 1.2em;
+      padding-right: 30px;
+      width: initial;
+    }
+  }
+}

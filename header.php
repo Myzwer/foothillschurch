@@ -30,10 +30,18 @@
 </head>
 
 <!--Open Body, Apply any Tailwind classes that are global here, Leave WP stuff alone. -->
-<body class="leading-normal tracking-normal"
-      style="font-family: 'Source Sans Pro', sans-serif;" <?php body_class(); ?>>
+<body class="leading-normal tracking-normal" <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<div class = "bg-white">
+    <?php
+    wp_nav_menu(array(
+        'theme_location' => 'top-bar',
+        // 'menu_class'     => 'pass-class', no additional classes needed,  but if they were they go here.
+        'items_wrap' => '<ul class = "topbar">%3$s</ul>'
+    ));
+    ?>
+</div>
 
 <!--Start Navbar-->
 <section class="navigation">
@@ -45,6 +53,8 @@
                      alt="Company Logo">
             </a>
         </div>
+
+
 
         <nav>
             <div class="nav-mobile">
