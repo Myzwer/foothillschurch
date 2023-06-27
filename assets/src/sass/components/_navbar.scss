@@ -14,12 +14,12 @@
 // Navbar quick settings
 $content-width: 2000px; // How wide or narrow do you want the bar to be?
 $breakpoint: 1001px; // When do you want to switch from mobile to desktop?
-$nav-height: 70px; // How tall do you want the navbar to be?
-$nav-background: #262626; // What background color do you want?
-$nav-font-color: #ffffff; // What primary font color?
-$link-hover-color: #2581dc; // What color when you hover?
-$button-color: #ff5555; // What background color do you want the button to be?
-$button-hover-color: #e03a3a; // What hover color do you want the button to be?
+$nav-height: 90px; // How tall do you want the navbar to be?
+$nav-background: #333333; // What background color do you want?
+$nav-font-color: #FAFAFA; // What primary font color?
+$link-hover-color: #7498BE; // What color when you hover?
+$button-color: #FAFAFA; // What background color do you want the button to be?
+$button-hover-color: #eaeaea; // What hover color do you want the button to be?
 
 // Outer navigation wrapper
 .navigation {
@@ -30,10 +30,7 @@ $button-hover-color: #e03a3a; // What hover color do you want the button to be?
 // Logo and branding
 .brand {
   float: left;
-  font-size: 1.4em;
-  font-weight: 400;
-  line-height: $nav-height;
-  padding-left: 20px;
+  padding-left: 10px;
   position: absolute;
   text-transform: uppercase;
   z-index: 15;
@@ -45,7 +42,7 @@ $button-hover-color: #e03a3a; // What hover color do you want the button to be?
 
   // If you change your navbar height, you may need to adjust this.
   img {
-    height: 65px;
+    height: 85px;
     padding-right: 15px;
     padding-top: 5px;
   }
@@ -228,13 +225,13 @@ nav {
 
 .nav-list > li:last-of-type a {
   background-color: rgba(0, 0, 0, 0);
-  color: #eeeeee;
+  color: #234058;
   font-weight: 600;
 }
 
 .nav-list > li:last-of-type:hover a {
   background-color: rgba(0, 0, 0, 0);
-  color: #eeeeee;
+  color: #234058;
 }
 
 .nav-list > li:last-of-type:hover {
