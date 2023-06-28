@@ -10,7 +10,7 @@
 
 // This class is passed into the <ul> by wordpress.
 .topbar {
-  max-width: 2290px;
+  max-width: 2000px;
   padding: 10px;
   text-align: center;
 
@@ -31,6 +31,7 @@
 @media screen and (min-width: 64em) {
   .topbar {
     text-align: right;
+    margin: 0 auto;
 
     li {
       display: inline;
