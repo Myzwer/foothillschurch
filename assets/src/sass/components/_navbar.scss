@@ -75,7 +75,6 @@ nav {
       text-transform: uppercase;
       a,
       a:visited {
-        background: $nav-background;
         color: $nav-font-color;
         display: block;
         line-height: $nav-height;
@@ -89,13 +88,23 @@ nav {
           content: " ▾";
           padding-left: 4px;
         }
-      } // Dropdown list
+      }
+
+
+      // Dropdown list
       ul li {
         min-width: 190px;
         a {
           line-height: 20px;
           padding: 15px;
         }
+      }
+
+      li:nth-child(even) {
+        background-color: #494949;
+      }
+      li:nth-child(odd) {
+        background-color: #404040;
       }
     }
   }
@@ -138,8 +147,9 @@ nav {
     padding-left: 10px;
   }
   nav {
+    background-color: $nav-background;
     display: block;
-    padding: $nav-height 0 15px;
+    padding: $nav-height 0 0px;
     width: 100%;
     z-index: 10;
     ul {
@@ -216,7 +226,7 @@ nav {
   }
 }
 
-
+// Takes last item in list and makes it a button that is right aligned.
 .nav-list > li:last-of-type {
   align-self: center;
   background-color: $button-color;
@@ -232,6 +242,14 @@ nav {
   background-color: rgba(0, 0, 0, 0);
   color: #234058;
   font-weight: 600;
+  padding: 8px 20px 15px;
+}
+
+// Icon Control
+.nav-list > li:last-of-type i {
+  font-size: 1.6em;
+  position: relative;
+  top: 3px;
 }
 
 .nav-list > li:last-of-type:hover a {
@@ -247,12 +265,14 @@ nav {
   transform: scale(1.025);
 }
 
+
+// When not in hamburger menu
 @media screen and (min-width: $breakpoint) {
   .nav-list > li:last-of-type {
-    border-radius: 10px;
+    border-radius: 20px;
     margin-left: 6px;
     margin-right: 10px;
-    margin-top: 23px;
+    margin-top: 18px;
     position: absolute;
     right: 0;
   }
@@ -265,9 +285,9 @@ nav {
     background-color: rgba(0, 0, 0, 0);
   }
 
-  nav ul li:last-of-type a,
-  nav ul li:last-of-type a:visited {
-    line-height: 10px;
-    padding: 15px;
+  .nav-list > li:last-of-type a,
+  .nav-list > li:last-of-type a:visited {
+    line-height: 8px;
+    padding: 8px 20px 15px;
   }
 }

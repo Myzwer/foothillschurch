@@ -30,8 +30,8 @@
 // When you hit desktop, this tosses the links to the right and adds more padding.
 @media screen and (min-width: 64em) {
   .topbar {
-    text-align: right;
     margin: 0 auto;
+    text-align: right;
 
     li {
       display: inline;
