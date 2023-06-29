@@ -11,7 +11,6 @@
 // This class is passed into the <ul> by wordpress.
 .topbar {
   max-width: 2000px;
-  padding: 10px;
   text-align: center;
 
   // Handles the styles of each link. They are set to inline block then given side padding to make them "centered."
@@ -20,10 +19,9 @@
     display: inline-block;
     font-family: "gotham", sans-serif;
     font-weight: 800;
-    padding: 0 5px;
+    padding: 10px 15px;
     text-align: center;
     text-transform: uppercase;
-    transition: .5s;
   }
 }
 
@@ -31,17 +29,25 @@
 @media screen and (min-width: 64em) {
   .topbar {
     margin: 0 auto;
+    padding: 10px;
     text-align: right;
 
     li {
       display: inline;
       font-size: 1.2em;
-      padding-right: 30px;
+      padding: 15px;
       width: initial;
     }
 
+    // Hover state on desktop
+    li:hover {
+      background-color: #234058;
+      color: #fafafa;
+    }
+
+    // Slight padding adjustment for the last one.
     li:last-of-type {
-      padding-right: 10px;
+      padding-right: 5px;
     }
   }
 }

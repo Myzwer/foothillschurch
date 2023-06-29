@@ -58,6 +58,10 @@ $button-hover-color: #eaeaea; // What hover color do you want the button to be?
   max-width: $content-width;
 }
 
+.active-dropdown {
+  background-color: $link-hover-color;
+}
+
 // Navigation
 nav {
   align-items: center;
@@ -74,7 +78,7 @@ nav {
       position: relative;
       text-transform: uppercase;
       a,
-      a:visited {
+      a:visited,{
         color: $nav-font-color;
         display: block;
         line-height: $nav-height;
@@ -84,6 +88,7 @@ nav {
           background: $link-hover-color;
           color: #eeeeee;
         }
+
         &:not(:only-child):after {
           content: " ▾";
           padding-left: 4px;
@@ -149,7 +154,7 @@ nav {
   nav {
     background-color: $nav-background;
     display: block;
-    padding: $nav-height 0 0px;
+    padding: $nav-height 0 0;
     width: 100%;
     z-index: 10;
     ul {
