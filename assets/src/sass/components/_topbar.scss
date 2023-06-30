@@ -34,7 +34,7 @@
 
     li {
       display: inline;
-      font-size: 1.2em;
+      font-size: 1em;
       padding: 15px;
       width: initial;
     }
@@ -43,11 +43,6 @@
     li:hover {
       background-color: #234058;
       color: #fafafa;
-    }
-
-    // Slight padding adjustment for the last one.
-    li:last-of-type {
-      padding-right: 5px;
     }
   }
 }
