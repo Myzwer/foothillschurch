@@ -19,9 +19,12 @@
     display: inline-block;
     font-family: "gotham", sans-serif;
     font-weight: 800;
-    padding: 10px 15px;
     text-align: center;
     text-transform: uppercase;
+  }
+
+  a {
+    padding: 10px 15px;
   }
 }
 
@@ -35,12 +38,15 @@
     li {
       display: inline;
       font-size: 1em;
-      padding: 15px;
       width: initial;
+
+      a {
+        padding: 15px;
+      }
     }
 
     // Hover state on desktop
-    li:hover {
+    a:hover {
       background-color: #234058;
       color: #fafafa;
     }
