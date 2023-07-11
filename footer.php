@@ -16,41 +16,38 @@
 
 <!--Start Footer-->
 <footer class="footer">
-    <div class="footer-left">
 
-        <!--Company Logo-->
-        <img src="https://images.squarespace-cdn.com/content/v1/575a6067b654f9b902f452f4/1552683653140-0UUVQSSUEWVC73AWAEQG/300Logo.png">
-        <div class="left-inner">
-            <!--Company Info-->
-            <h3>Fancy Company</h3>
-            <p class="phone-number">+1 234-567-8901</p>
-        </div>
-    </div>
-
-    <div class="footer-right">
-        <div class="right-inner">
-            <!--Wordpress Generated Link Lists-->
-            <?php wp_nav_menu( array( 'theme_location' => 'footer-column-1' ) ); ?>
-            <?php wp_nav_menu( array( 'theme_location' => 'footer-column-2' ) ); ?>
-        </div>
+    <!--Company Logo-->
+    <img src="<?php the_field('circle_outline_logo', 'options'); ?>" alt="Company Logo">
+    <!--Company Info-->
 
     </div>
-    <div class="footer-bottom">
-        <div class="bot-inner">
 
-            <!--Copyright Info-->
-            <p>Some Text</p>
-            <p>© <?php echo date("Y"); ?> Website Company Name</p>
+    <!--Wordpress Generated Link Lists-->
+    <?php wp_nav_menu(array('theme_location' => 'footer-column-1')); ?>
 
-            <!--Socials, icons from: https://fontawesome.com/ -->
-            <div class="footer-icons">
-            <a href="#"><i class="fa fa-facebook" aria-label="Facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter" aria-label="Twitter"></i></a>
-            <a href="#"><i class="fa fa-instagram" aria-label="Instagram"></i></a>
-            <a href="#"><i class="fa fa-linkedin" aria-label="Linkedin"></i></a>
-            <a href="#"><i class="fa fa-youtube" aria-label="Youtube"></i></a>
-        </div>
+    <div class="social-links">
+        <a href="<?php the_field('facebook', 'options'); ?>" target="_blank"><i class="fa-brands fa-facebook"></i></a>
     </div>
+
+    <div class="social-links">
+        <a href="<?php the_field('instagram', 'options'); ?>" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+
+    <div class="social-links">
+        <a href="<?php the_field('twitter', 'options'); ?>" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+    </div>
+
+    <div class="social-links">
+        <a href="mailto:<?php the_field('email', 'options'); ?>"><i class="fa-light fa-envelope"></i></a>
+    </div>
+
+    <!--Copyright Info-->
+    <div class="ftr-info">
+        <p class = "copyright">© <?php echo date("Y"); ?> Foothills Church</p>
+        <a href="/privacy-policy" class="privacy">Privacy Policy</a>
+    </div>
+
 </footer>
 <!--End Footer-->
 

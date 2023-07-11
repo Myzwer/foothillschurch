@@ -9,8 +9,8 @@
 */
 
 /* Color Settings */
-$background-color: #222222;
-$color: #ffffff;
+$background-color: #333333;
+$color: #FAFAFA;
 
 /*
  * General Settings
@@ -18,205 +18,63 @@ $color: #ffffff;
  * Remember, mobile first.
  *
  */
+
+// Brand, WP Generated menu + Socials
 .footer {
   background-color: $background-color;
   box-sizing: border-box;
-  padding: 20px;
-  text-align: left;
-  width: 100%;
-}
+  color: $color;
+  font-family: "gotham", sans-serif;
 
-.footer-left,
-.footer-right,
-.footer-bottom {
-  display: block;
-  margin-bottom: 20px;
   text-align: center;
-  vertical-align: top;
-}
-
-/*
- * Footer Left
- * --------------
- * Logo and Phone Number
- *
- */
-
-.footer-left {
   width: 100%;
 
-  .left-inner {
-    margin: 0 auto;
-    text-align: left;
-  }
-
-  // The Logo
   img {
     margin: 0 auto;
-    width: 50%;
-  }
-
-  // Company Name
-  h3 {
-    color: $color;
-    font-size: 2em;
-    margin-top: -10px;
+    padding-top: 20px;
     text-align: center;
+    width: 100px;
   }
 
-  .phone-number {
-    color: $color;
-    font-size: 0.8em;
-    margin: 0;
-    opacity: 0.6;
-    text-align: center;
-  }
-}
-
-/*
- * Footer Right
- * --------------
- * Links
- *
- */
-
-.footer-right {
-  width: 100%;
-
-  // Link List
   ul {
-    color: #ffffff;
-    opacity: 0.6;
-    padding-left: 10px;
-    text-align: left;
+    padding: 10px;
   }
 
   li {
-    padding-bottom: 5px;
-  }
-}
-
-/*
- * Footer Bottom
- * --------------
- * Social Links and Copyright
- *
- */
-
-.footer-bottom {
-  width: 100%;
-}
-
-.bot-inner {
-  color: #92999f;
-  font-size: 13px;
-  font-weight: normal;
-  line-height: 20px;
-  margin: 0;
-}
-
-// Details and Copyright
-.bot-inner span {
-  color: #ffffff;
-  display: block;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-// Socials
-.footer-icons {
-  margin-top: 25px;
-}
-
-.footer-icons a {
-  background-color: #33383b;
-  border-radius: 2px;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 20px;
-  height: 35px;
-  line-height: 35px;
-  margin-bottom: 5px;
-  margin-right: 3px;
-  text-align: center;
-  width: 35px;
-}
-
-/*
- * Tablet
- * --------------
- *
- *
- */
-
-@media screen and (min-width: 40em) {
-  .footer {
-    padding: 50px 50px 60px;
-  }
-
-  .footer-left {
     display: inline-block;
-    margin-bottom: 40px;
-    text-align: left;
-    width: 45%;
+    font-weight: 800;
+    padding: 10px 20px;
+    text-transform: uppercase;
   }
 
-  .footer-right {
-    display: inline-block;
-    margin-bottom: 40px;
-    text-align: left;
-    width: 50%;
-
-    // Wordpress adds a div so this just makes sure it gets set to inline block
-    div {
-      display: inline-block;
-    }
-
-    ul {
-      display: inline-block;
-      padding-left: 20px;
-      vertical-align: top;
-    }
+  .social-links {
+    align-items: center;
+    background-color: $color;
+    border-radius: 50%;
+    display: inline-flex;
+    height: 50px;
+    justify-content: center;
+    margin: 5px;
+    width: 50px;
   }
 
-  .right-inner {
-    margin-left: 10%;
-    margin-top: 25%;
-  }
-
-  .footer-bottom {
-    display: inline-block;
-    margin-bottom: 0;
-    text-align: center;
-    width: 100%;
-  }
-
-  .footer-bottom i {
-    margin-left: 0;
+  i {
+    color: $background-color;
+    font-size: 1.6em;
   }
 }
 
-/*
- * Desktop
- * --------------
- *
- *
- */
 
-@media screen and (min-width: 64em) {
-  .footer {
-    padding-top: 10px;
+// Text on bottom + PP Link
+.ftr-info {
+  padding-top: 10px;
+  padding-bottom: 20px;
 
-    img {
-      margin-top: 20px;
-      width: 30%;
-    }
+  .copyright {
+    font-size: .8em;
   }
 
-  .right-inner {
-    margin-left: 30%;
-    margin-top: 18%;
+  .privacy {
+    font-size: .8em;
   }
 }
