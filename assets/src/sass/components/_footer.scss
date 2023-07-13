@@ -2,30 +2,24 @@
  * Footer SCSS
  * ---------------------------
  * This is the scss file to control the styles of the footer.
- * Most of the "settings" are at the top, but dig around to change more specific things.
+ * Color changes are at the top.
  * The Color settings are at the top, but any other specific edits will need scss editing.
- * This does follow mobile first design, so to edit tablet +, make sure you edit past the media query.
+ * Since this looks pretty much identical on desktop and mobile, there's no media queries.
+ *
  *
 */
 
 /* Color Settings */
-$background-color: #333333;
-$color: #FAFAFA;
+$black: #333333;
+$white: #FAFAFA;
+$light-blue: #7498BE;
 
-/*
- * General Settings
- * --------------
- * Remember, mobile first.
- *
- */
-
-// Brand, WP Generated menu + Socials
+// Brand + WP Generated menu
 .footer {
-  background-color: $background-color;
+  background-color: $black;
   box-sizing: border-box;
-  color: $color;
+  color: $white;
   font-family: "gotham", sans-serif;
-
   text-align: center;
   width: 100%;
 
@@ -40,6 +34,7 @@ $color: #FAFAFA;
     padding: 10px;
   }
 
+  // The padding here effects spacing between items, this will need edited if you want to add more links.
   li {
     display: inline-block;
     font-weight: 800;
@@ -48,14 +43,16 @@ $color: #FAFAFA;
   }
 }
 
+// Social Icons
 .social-links {
   align-items: center;
-  background-color: $color;
+  background-color: $white;
   border-radius: 50%;
-  color: $background-color;
+  color: $black;
   display: inline-flex;
   height: 50px;
   justify-content: center;
+  transition: .1s;
   margin: 5px;
   width: 50px;
 
@@ -66,7 +63,6 @@ $color: #FAFAFA;
     justify-content: center;
     margin: 5px;
     width: 50px;
-
   }
 
   i {
@@ -75,8 +71,8 @@ $color: #FAFAFA;
 }
 
 .social-links:hover {
-  background-color: #7498BE;
-  color: $color;
+  background-color: $light-blue;
+  color: $white;
 }
 
 
@@ -93,3 +89,4 @@ $color: #FAFAFA;
     font-size: .8em;
   }
 }
+
