@@ -46,29 +46,44 @@ $color: #FAFAFA;
     padding: 10px 20px;
     text-transform: uppercase;
   }
+}
 
-  .social-links {
+.social-links {
+  align-items: center;
+  background-color: $color;
+  border-radius: 50%;
+  color: $background-color;
+  display: inline-flex;
+  height: 50px;
+  justify-content: center;
+  margin: 5px;
+  width: 50px;
+
+  a {
     align-items: center;
-    background-color: $color;
-    border-radius: 50%;
     display: inline-flex;
     height: 50px;
     justify-content: center;
     margin: 5px;
     width: 50px;
+
   }
 
   i {
-    color: $background-color;
     font-size: 1.6em;
   }
+}
+
+.social-links:hover {
+  background-color: #7498BE;
+  color: $color;
 }
 
 
 // Text on bottom + PP Link
 .ftr-info {
-  padding-top: 10px;
   padding-bottom: 20px;
+  padding-top: 10px;
 
   .copyright {
     font-size: .8em;
