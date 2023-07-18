@@ -21,10 +21,31 @@ $link-hover-color: #7498BE; // What color when you hover?
 $button-color: #FAFAFA; // What background color do you want the button to be?
 $button-hover-color: #eaeaea; // What hover color do you want the button to be?
 
-// Outer navigation wrapper
+
+
 .navigation {
   background: $nav-background;
   height: $nav-height;
+}
+
+// Container with no padding for navbar
+.nav-container {
+  margin: 0 auto;
+  max-width: $content-width;
+}
+
+.active-dropdown {
+  background-color: $link-hover-color;
+}
+
+// Binds to JS Toggle
+.nav-mobile {
+  background: $nav-background;
+  height: $nav-height;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $nav-height;
 }
 
 // Logo and branding
@@ -46,21 +67,21 @@ $button-hover-color: #eaeaea; // What hover color do you want the button to be?
     padding-right: 15px;
     padding-top: 10px;
   }
-
-  h1 {
-    display: none;
-  }
 }
 
-// Container with no padding for navbar
-.nav-container {
-  margin: 0 auto;
-  max-width: $content-width;
-}
+/*
+**********
+**********
+**********
+**********
+**********
+GOOD UP TO HERE
+**********
+**********
+**********
+**********
+*/
 
-.active-dropdown {
-  background-color: $link-hover-color;
-}
 
 // Navigation
 nav {
@@ -115,66 +136,35 @@ nav {
   }
 }
 
-// removes the position absolute from mobile.
-@media screen and (min-width: 1100px) {
-  nav {
-    position: relative;
-  }
-}
 
-// Dropdown list binds to JS toggle event
-.nav-dropdown {
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-  display: none;
-  position: absolute;
-  z-index: 1;
-}
-
-/* Mobile navigation */
-
-// Binds to JS Toggle
-.nav-mobile {
-  background: $nav-background;
-  display: none;
-  height: $nav-height;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: $nav-height;
-}
-@media only screen and (max-width: 1100px) {
-  // Hamburger nav visible on mobile only
-  .nav-mobile {
-    display: block;
-  }
-
-  .brand {
-    padding-left: 10px;
-  }
-  nav {
-    background-color: $nav-background;
-    display: block;
-    padding: $nav-height 0 0;
-    width: 100%;
-    z-index: 10;
-    ul {
-      display: none;
-      li {
-        float: none;
-        a {
-          line-height: 20px;
-          padding: 15px;
-        }
-        ul li a {
-          padding-left: 30px;
-        }
+nav {
+  background-color: $nav-background;
+  display: block;
+  padding: $nav-height 0 0;
+  width: 100%;
+  z-index: 10;
+  ul {
+    display: none;
+    li {
+      float: none;
+      a {
+        line-height: 20px;
+        padding: 15px;
+      }
+      ul li a {
+        padding-left: 30px;
       }
     }
   }
-  .nav-dropdown {
-    position: static;
-  }
 }
+
+.nav-dropdown {
+  position: static;
+}
+
+
+
+
 @media screen and (min-width: $breakpoint) {
   .nav-list {
     display: block !important;
@@ -231,7 +221,131 @@ nav {
   }
 }
 
-// Takes last item in list and makes it a button that is right aligned.
+
+
+/*
+**********
+**********
+**********
+**********
+**********
+
+
+DESKTOP STYLES
+
+
+
+**********
+**********
+**********
+**********
+*/
+
+@media screen and (min-width: $breakpoint) {
+  // Hamburger nav hidden on desktop
+  .nav-mobile {
+    display: none;
+  }
+
+
+  nav {
+    position: relative;
+  }
+
+  // Dropdown list binds to JS toggle event
+  .nav-dropdown {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+    position: absolute;
+    z-index: 1;
+  }
+
+
+  // Navigation
+  nav {
+    align-items: center;
+    display: flex;
+    float: none;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        float: left;
+        position: relative;
+        text-transform: uppercase;
+        a,
+        a:visited,{
+          color: $nav-font-color;
+          display: block;
+          line-height: $nav-height;
+          padding: 0 20px;
+          text-decoration: none;
+          &:hover {
+            background: $link-hover-color;
+            color: #eeeeee;
+          }
+
+          &:not(:only-child):after {
+            content: " ▾";
+            padding-left: 4px;
+          }
+        }
+
+
+        // Dropdown list
+        ul li {
+          min-width: 190px;
+          a {
+            line-height: 20px;
+            padding: 15px;
+          }
+        }
+
+        li:nth-child(even) {
+          background-color: #494949;
+        }
+        li:nth-child(odd) {
+          background-color: #404040;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Takes whatever the last item in the list is and makes it a button
 .nav-list > li:last-of-type {
   align-self: center;
   background-color: $button-color;
@@ -296,3 +410,4 @@ nav {
     padding: 8px 20px 15px;
   }
 }
+
