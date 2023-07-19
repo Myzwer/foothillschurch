@@ -11,8 +11,8 @@
 
 /* Color Settings */
 $black: #333333;
-$white: #FAFAFA;
-$light-blue: #7498BE;
+$white: #fafafa;
+$light-blue: #7498be;
 
 // Brand + WP Generated menu
 .footer {
@@ -52,8 +52,8 @@ $light-blue: #7498BE;
   display: inline-flex;
   height: 50px;
   justify-content: center;
-  transition: .1s;
   margin: 5px;
+  transition: 0.1s;
   width: 50px;
 
   a {
@@ -75,18 +75,16 @@ $light-blue: #7498BE;
   color: $white;
 }
 
-
 // Text on bottom + PP Link
 .ftr-info {
   padding-bottom: 20px;
   padding-top: 10px;
 
   .copyright {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 
   .privacy {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 }
-

@@ -7,9 +7,11 @@
 ![Tailwind 3.1.3](https://img.shields.io/badge/Tailwind-2.2.4-brightgreen)
 
 Bootcamp II is a wordpress theme (as well as an inside joke) designed to suit the needs of foothillschurch.com. It makes use of webpack, Babel, Sass, Tailwind, Browsersync, PostCSS, ESLint, Stylelint, Prettier and more. It is meant for that site, but if you can use it by all means go for it.
-***
+
+---
 
 ## Features and Benefits
+
 **General**
 
 - [**Webpack.**](https://classic.yarnpkg.com/en/package/webpack) Built on webpack, this template allows for a modern development workflow + a production ready build.
@@ -37,6 +39,7 @@ Bootcamp II is a wordpress theme (as well as an inside joke) designed to suit th
 - [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
 
 ## Install
+
 ```bash
 # 1-- Set up a local instance of Worpress in Local or something.
 # 2-- Clone this into your themes folder (as a new theme)

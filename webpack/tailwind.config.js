@@ -1,4 +1,4 @@
-const plugin = require('tailwindcss/plugin')
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   /*
@@ -38,7 +38,7 @@ module.exports = {
        * */
       white: {
         DEFAULT: "#FAFAFA",
-        faded: "#F5F5F5"
+        faded: "#F5F5F5",
       },
 
       black: {
@@ -63,12 +63,11 @@ module.exports = {
       gray: {
         DEFAULT: "#606B75",
       },
-
     },
   },
   plugins: [
-    plugin(function({ addUtilities, addComponents, e, config }) {
-      require('@tailwindcss/typography')
+    plugin(function ({ addUtilities, addComponents, e, config }) {
+      require("@tailwindcss/typography");
     }),
   ],
 };

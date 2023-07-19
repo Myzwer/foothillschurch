@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from "jquery";
 import "../sass/frontend.scss";
 
 $(function () {
@@ -6,7 +6,6 @@ $(function () {
 
   // If a link has a dropdown, add sub menu toggle.
   $("nav ul li a:not(:only-child)").click(function (e) {
-
     // Remove "active-dropdown" class from other anchor elements
     $("nav ul li a").not(this).removeClass("active-dropdown");
 
