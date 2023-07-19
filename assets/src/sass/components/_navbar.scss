@@ -4,7 +4,7 @@
  * This is the scss file to control the styles of the navbar.
  * A few stylelint rules had to be disabled as navbar's merit them
  * Most of the "settings" are at the top, but dig around to change more specific things.
- * Special thanks to https://codepen.io/taniarascia/pen/dYvvYv for the navbar
+ * This is mobile first, so if you're trying to make changes to desktop, scroll to the bottom.
  *
 */
 
@@ -16,36 +16,21 @@ $content-width: 2000px; // How wide or narrow do you want the bar to be?
 $breakpoint: 1101px; // When do you want to switch from mobile to desktop?
 $nav-height: 85px; // How tall do you want the navbar to be?
 $nav-background: #333333; // What background color do you want?
-$nav-font-color: #FAFAFA; // What primary font color?
-$link-hover-color: #7498BE; // What color when you hover?
-$button-color: #FAFAFA; // What background color do you want the button to be?
+$nav-font-color: #fafafa; // What primary font color?
+$link-hover-color: #7498be; // What color when you hover?
+$button-color: #fafafa; // What background color do you want the button to be?
 $button-hover-color: #eaeaea; // What hover color do you want the button to be?
 
-
-
+// Sets the initial height and color of the navbar
 .navigation {
   background: $nav-background;
   height: $nav-height;
 }
 
-// Container with no padding for navbar
+// This is the container that is one layer under the navbar.
 .nav-container {
   margin: 0 auto;
   max-width: $content-width;
-}
-
-.active-dropdown {
-  background-color: $link-hover-color;
-}
-
-// Binds to JS Toggle
-.nav-mobile {
-  background: $nav-background;
-  height: $nav-height;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: $nav-height;
 }
 
 // Logo and branding
@@ -69,41 +54,48 @@ $button-hover-color: #eaeaea; // What hover color do you want the button to be?
   }
 }
 
-/*
-**********
-**********
-**********
-**********
-**********
-GOOD UP TO HERE
-**********
-**********
-**********
-**********
-*/
+// JS handles this, but this is the class that controls what color the top level UL stays when clicked.
+.active-dropdown {
+  background-color: $link-hover-color;
+}
 
+.nav-dropdown {
+  position: static;
+}
 
-// Navigation
+// Binds to JS Toggle
+.nav-mobile {
+  background: $nav-background;
+  height: $nav-height;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $nav-height;
+}
+
+// Main Navigation Controls
 nav {
   align-items: center;
-  display: flex;
+  background-color: $nav-background;
+  display: block;
   float: none;
   justify-content: center;
+  padding: $nav-height 0 0;
   position: absolute;
+  width: 100%;
+  z-index: 10;
   ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    display: none;
     li {
-      float: left;
+      float: none;
       position: relative;
       text-transform: uppercase;
       a,
-      a:visited,{
+      a:visited {
         color: $nav-font-color;
         display: block;
-        line-height: $nav-height;
-        padding: 0 20px;
+        line-height: 20px;
+        padding: 15px;
         text-decoration: none;
         &:hover {
           background: $link-hover-color;
@@ -116,13 +108,12 @@ nav {
         }
       }
 
-
       // Dropdown list
       ul li {
         min-width: 190px;
         a {
           line-height: 20px;
-          padding: 15px;
+          padding-left: 30px; //changes how far indented the subnav links are
         }
       }
 
@@ -136,42 +127,7 @@ nav {
   }
 }
 
-
-nav {
-  background-color: $nav-background;
-  display: block;
-  padding: $nav-height 0 0;
-  width: 100%;
-  z-index: 10;
-  ul {
-    display: none;
-    li {
-      float: none;
-      a {
-        line-height: 20px;
-        padding: 15px;
-      }
-      ul li a {
-        padding-left: 30px;
-      }
-    }
-  }
-}
-
-.nav-dropdown {
-  position: static;
-}
-
-
-
-
-@media screen and (min-width: $breakpoint) {
-  .nav-list {
-    display: block !important;
-    z-index: 10;
-  }
-}
-
+// Hamburger Menu and animation
 #nav-toggle {
   cursor: pointer;
   left: 18px;
@@ -222,24 +178,7 @@ nav {
 }
 
 
-
-/*
-**********
-**********
-**********
-**********
-**********
-
-
-DESKTOP STYLES
-
-
-
-**********
-**********
-**********
-**********
-*/
+// DESKTOP STYLES
 
 @media screen and (min-width: $breakpoint) {
   // Hamburger nav hidden on desktop
@@ -247,6 +186,10 @@ DESKTOP STYLES
     display: none;
   }
 
+  .nav-list {
+    display: block !important;
+    z-index: 10;
+  }
 
   nav {
     position: relative;
@@ -260,34 +203,21 @@ DESKTOP STYLES
     z-index: 1;
   }
 
-
   // Navigation
   nav {
-    align-items: center;
     display: flex;
-    float: none;
-    justify-content: center;
-    position: relative;
     padding: 0;
+    position: relative;
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
       li {
         float: left;
-        position: relative;
-        text-transform: uppercase;
         a,
-        a:visited,{
-          color: $nav-font-color;
-          display: block;
+        a:visited {
           line-height: $nav-height;
           padding: 0 20px;
-          text-decoration: none;
-          &:hover {
-            background: $link-hover-color;
-            color: #eeeeee;
-          }
 
           &:not(:only-child):after {
             content: " ▾";
@@ -295,55 +225,16 @@ DESKTOP STYLES
           }
         }
 
-
         // Dropdown list
         ul li {
-          min-width: 190px;
           a {
-            line-height: 20px;
             padding: 15px;
           }
-        }
-
-        li:nth-child(even) {
-          background-color: #494949;
-        }
-        li:nth-child(odd) {
-          background-color: #404040;
         }
       }
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Takes whatever the last item in the list is and makes it a button
 .nav-list > li:last-of-type {
@@ -384,7 +275,6 @@ DESKTOP STYLES
   transform: scale(1.025);
 }
 
-
 // When not in hamburger menu
 @media screen and (min-width: $breakpoint) {
   .nav-list > li:last-of-type {
@@ -411,3 +301,5 @@ DESKTOP STYLES
   }
 }
 
+// Turn Stylelint settings back on
+/* stylelint-enable max-nesting-depth, selector-max-compound-selectors, selector-max-id, no-duplicate-selectors */
