@@ -13,19 +13,17 @@
 
 get_header(); ?>
 
-    <video class="header-video" src="https://foothillscollective.com/wp-content/uploads/2021/04/Res-Power-Background.mp4" autoplay loop playsinline muted></video>
+    <video class="header-video" src="<?php the_field("video_background");?>" autoplay loop playsinline muted></video>
 
     <div class="viewport-header">
         <div class="head-container">
             <div class="center add-padding">
-                <h1 class="text-white text-5xl pb-5">Header Title</h1>
+                <h2 class="text-white text-xl md:text-3xl lb-2 font-bold">Welcome to Foothills Church</h2>
             </div>
-            <hr class="text-white pb-5">
-            <h2 class="text-white text-3xl ">Title</h2>
-            <h3 class="text-white text-2xl">Subtitle</h3>
+            <h1 class="text-white text-3xl md:text-5xl uppercase font-bold">You Belong Here</h1>
 
-            <button class="white-gradient">
-                Save changes
+            <button class= "fab-main mt-3">
+                <i class="fa-solid fa-circle-arrow-right"></i> Find A Location
             </button>
         </div>
     </div>

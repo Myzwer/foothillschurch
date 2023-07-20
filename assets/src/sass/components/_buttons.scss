@@ -1,0 +1,26 @@
+/**
+ * Buttons
+ * =================================
+ * This controls all the buttons on the site. They get REALLY cumbersome in Tailwind.
+ *
+ * - Main Button
+ *
+ *
+ *
+ */
+
+$white: #fafafa;
+$white-hover: #eaeaea;
+$saltydog: #234058;
+
+.fab-main {
+  background-color: $white;
+  color: $saltydog;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 18px;
+}
+
+.fab-main:hover {
+  background-color: $white-hover;
+}
