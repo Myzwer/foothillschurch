@@ -10,8 +10,11 @@
  */
 
 $white: #fafafa;
+$black: #333333;
 $white-hover: #eaeaea;
 $saltydog: #234058;
+$lightblue-grad-1: #CCDAE5;
+$lightblue-grad-2: #DEE8EE;
 
 .fab-main {
   background-color: $white;
@@ -23,4 +26,23 @@ $saltydog: #234058;
 
 .fab-main:hover {
   background-color: $white-hover;
+}
+
+.elevated-blue {
+  background-color: $lightblue-grad-1;
+  background: linear-gradient( 90deg, $lightblue-grad-1 0%,$lightblue-grad-2 100%);
+  color: $saltydog;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+.ghost {
+  border: 2px solid $black;
+  color: $black;
+  font-weight: 800;
+  padding: 8px 18px;
+  border-radius: 18px;
 }
