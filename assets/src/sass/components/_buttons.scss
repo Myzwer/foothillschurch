@@ -30,7 +30,7 @@ $lightblue-grad-2: #DEE8EE;
 
 .elevated-blue {
   background-color: $lightblue-grad-1;
-  background: linear-gradient( 90deg, $lightblue-grad-1 0%,$lightblue-grad-2 100%);
+  background: linear-gradient(90deg, $lightblue-grad-1 0%, $lightblue-grad-2 100%);
   color: $saltydog;
   font-weight: 800;
   padding: 10px 20px;
@@ -38,11 +38,35 @@ $lightblue-grad-2: #DEE8EE;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-
 .ghost {
-  border: 2px solid $black;
+  border: 1px solid $black;
+  color: $black;
+  font-weight: 800;
+  padding: 4px 22px;
+  border-radius: 18px;
+}
+
+// This is used when a ghost button is with another button, it makes the sizes line up.
+.ghost-paired {
+  border: 1px solid $black;
   color: $black;
   font-weight: 800;
   padding: 8px 18px;
   border-radius: 18px;
+}
+
+// This is another use case button, but it goes in the "gallery" style boxes since mobile has to be itty bitty to fit.
+.gallery-ghost {
+  border: 1px solid $black;
+  color: $black;
+  font-weight: 800;
+  font-size: .8em;
+  padding: 4px 13px;
+  border-radius: 18px;
+}
+
+@media screen and (min-width: 64em) {
+  .gallery-ghost {
+    padding: 4px 22px;
+  }
 }
