@@ -63,10 +63,17 @@ $lightblue-grad-2: #DEE8EE;
   font-size: .8em;
   font-weight: 800;
   padding: 4px 13px;
+  transition: .3s;
+}
+
+.gallery-ghost:hover {
+  background-color: #234058;
+  color: #eeeeee;
 }
 
 @media screen and (min-width: 64em) {
   .gallery-ghost {
+    font-size: 1.1em;
     padding: 4px 22px;
   }
 }
