@@ -144,6 +144,7 @@ get_header(); ?>
                 </div>
 
                 <div class="col-span-12 md:col-span-8 pb-10 md:pb-0">
+                    <!-- Start Glider -->
                     <div class="glide relative">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
@@ -191,7 +192,7 @@ get_header(); ?>
                                 </li>
                             </ul>
                         </div>
-
+                        <!-- Start Arrows -->
                         <div class="glide__arrows" data-glide-el="controls">
                             <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
                                 <i class="fa-regular fa-angle-left"></i>
@@ -200,8 +201,9 @@ get_header(); ?>
                                 <i class="fa-regular fa-angle-right"></i>
                             </button>
                         </div>
+                        <!-- End Arrows -->
                     </div>
-
+                    <!-- End Glider -->
                 </div>
             </div>
         </div>

@@ -1,0 +1,82 @@
+/**
+ * Glide JS
+ * =================================
+ * This is where styles used to more or less override Glide JS are kept. Some tailwind is used aronud,
+ * but this is the primary place where card styles are kept.
+ *
+ *
+ *
+ *
+ */
+
+
+/*
+ * Frontpage Slider
+ * =================================
+ */
+
+// Set card height
+.slide-card {
+  height: 350px;
+}
+
+// Set opacity of all cards to be low
+.glide__slide {
+  opacity: .4;
+}
+
+// Set opacity of active card to full
+.glide__slide--active {
+  opacity: 1;
+}
+
+
+// Arrow Control
+
+// Set arrows to hidden on mobile
+.glide__arrow--left, .glide__arrow--right {
+  display: none;
+}
+
+// Set arrows to show up and style them on tablet +
+@media screen and (min-width: 64em) {
+  .glide__arrow--left, .glide__arrow--right {
+    align-items: center;
+    background-color: rgba(255, 255, 255, .7);
+    border-radius: 50%;
+    color: #333333;
+    display: inline-flex;
+    height: 50px;
+    justify-content: center;
+    margin: 5px;
+    transition: 0.1s;
+    width: 50px;
+    font-size: 1.5em;
+
+    i {
+      align-items: center;
+      display: inline-flex;
+      height: 50px;
+      justify-content: center;
+      margin: 5px;
+      width: 50px;
+      font-size: 1.6em;
+    }
+  }
+
+  .glide__arrow--left:hover, .glide__arrow--right:hover {
+    background-color: rgba(255, 255, 255, .9);
+  }
+
+  // Set positioning
+  .glide__arrow--left {
+    position: absolute;
+    top: 38%;
+  }
+
+  .glide__arrow--right {
+    position: absolute;
+    top: 38%;
+    right: 0;
+  }
+}

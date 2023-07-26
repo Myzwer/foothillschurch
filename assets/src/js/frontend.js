@@ -1,6 +1,6 @@
 import $ from "jquery";
 import "../sass/frontend.scss";
-import Glide from "@glidejs/glide";
+import "./glide-control";
 
 $(function () {
   // DOM ready
@@ -47,19 +47,3 @@ $(function () {
     this.classList.toggle("active");
   });
 });
-
-window.onload = function () {
-  // Define your options as an object
-  const glideOptions = {
-    type: "carousel",
-    gap: 30,
-    perView: 1,
-    peek: {
-      before: 50,
-      after: 50,
-    },
-  };
-
-  // Initialize Glide with both the selector and options
-  new Glide(".glide", glideOptions).mount();
-};
