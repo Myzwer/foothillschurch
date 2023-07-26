@@ -131,6 +131,82 @@ get_header(); ?>
         </div>
     </div>
 
+    <div class="bg-darkblue md:p-10">
+        <div class=" lg:max-w-5xl lg:mx-auto">
+            <div class="grid grid-cols-12 gap-4 md:gap-10">
+
+                <div class="col-span-12 md:col-span-4 relative p-5">
+                    <div class="content-middle-medium">
+                        <h1 class="text-white text-3xl md:text-5xl uppercase font-bold">What’s your next step at
+                            foothills
+                            church?</h1>
+                    </div>
+                </div>
+
+                <div class="col-span-12 md:col-span-8 pb-10 md:pb-0">
+                    <div class="glide relative">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                <li class="glide__slide">
+                                    <div class="slide-card bg-white p-4 md:p-10 rounded-xl shadow-xl">
+                                        <h3 class="text-xl md:text-3xl pb-3 font-bold capitalize">Take your First step
+                                            at basecamp</h3>
+                                        <p class="pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
+                                            saepe,
+                                            tempora. At ipsam, nisi? Aliquam cum doloribus impedit iste laudantium
+                                            repudiandae veritatis. Culpa debitis facere libero quam, recusandae sapiente
+                                            voluptas.</p>
+                                        <button class="ghost">
+                                            <i class="fa-solid fa-arrow-right"></i> Start Your Journey
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="glide__slide">
+                                    <div class="slide-card bg-white p-4 md:p-10 rounded-xl shadow-xl">
+                                        <h3 class="text-xl md:text-3xl pb-3 font-bold capitalize">Next: Join a Small
+                                            Group!</h3>
+                                        <p class="pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
+                                            saepe,
+                                            tempora. At ipsam, nisi? Aliquam cum doloribus impedit iste laudantium
+                                            repudiandae veritatis. Culpa debitis facere libero quam, recusandae sapiente
+                                            voluptas.
+                                            <button class="ghost">
+                                                <i class="fa-solid fa-arrow-right"></i> Start Your Journey
+                                            </button>
+                                    </div>
+                                </li>
+                                <li class="glide__slide">
+                                    <div class="slide-card bg-white p-4 md:p-10 rounded-xl shadow-xl">
+                                        <h3 class="text-xl md:text-3xl pb-3 font-bold capitalize">Camp II will be next
+                                            up after</h3>
+                                        <p class="pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
+                                            saepe,
+                                            tempora. At ipsam, nisi? Aliquam cum doloribus impedit iste laudantium
+                                            repudiandae veritatis. Culpa debitis facere libero quam, recusandae sapiente
+                                            voluptas.</p>
+                                        <button class="ghost">
+                                            <i class="fa-solid fa-arrow-right"></i> Start Your Journey
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="glide__arrows" data-glide-el="controls">
+                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                                <i class="fa-regular fa-angle-left"></i>
+                            </button>
+                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                                <i class="fa-regular fa-angle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <?php
 get_footer();
