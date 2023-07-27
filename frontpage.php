@@ -209,6 +209,70 @@ get_header(); ?>
         </div>
     </div>
 
+    <!-- Start Junk Drawer -->
+    <div class="bg-white-gradient md:py-10">
+        <div class=" lg:max-w-5xl lg:mx-auto">
+            <div class="grid grid-cols-12 gap-4 md:gap-10">
+
+                <div class="col-span-12 md:col-span-4 p-5">
+                    <h4 class="text-2xl pb-2 font-bold capitalize">Our Mission</h4>
+                    <hr class="h-1 rounded-xl bg-black">
+                    <p class="py-3">Jesus told us what to do, and it has never changed. He told us to "make disciples of
+                        Jesus Christ (Matthew 28:19). His mission, or what many refer to as the "great commission," is
+                        true for every church, whether they accomplish it or not.</p>
+                    <button class="ghost">
+                        Continue Reading
+                    </button>
+                </div>
+
+                <div class="col-span-12 md:col-span-4 p-5">
+                    <h4 class="text-2xl pb-2 font-bold capitalize">Our Vision</h4>
+                    <hr class="h-1 rounded-xl bg-black">
+                    <p class="py-3">Foothills Church exists to develop mature disciples of Christ in relational
+                        environments.</p>
+                    <button class="ghost">
+                        Continue Reading
+                    </button>
+                </div>
+
+                <div class="col-span-12 md:col-span-4 p-5">
+                    <h4 class="text-2xl pb-2 font-bold capitalize">Our Pastor</h4>
+                    <hr class="h-1 rounded-xl bg-black">
+                    <p class="py-3">Dr. Trenton J. Stewart is the lead pastor of Foothills Church, a multi-site church
+                        in the Maryville and Knoxville communities of East Tennessee. Pastor Trent and his wife Micah,
+                        planted FC in 2009 with the support of Grace Baptist Church in Knoxville.</p>
+                    <button class="ghost">
+                        Continue Reading
+                    </button>
+                </div>
+
+                <div class="col-span-12 md:col-span-4 p-5">
+                    <h4 class="text-2xl pb-2 font-bold capitalize">Maryville Location</h4>
+                    <hr class="h-1 rounded-xl bg-black">
+                    <p class="py-3">Join us this Sunday at our Maryville location for one of our worship experiences at
+                        9 AM & 11 AM. We know going to a church or going to a new church can be intimidating, but we
+                        promise to do whatever it takes to help you and your family feel like they belong here at
+                        FC.</p>
+                    <button class="ghost">
+                        Plan Your Visit
+                    </button>
+                </div>
+
+                <div class="col-span-12 md:col-span-4 p-5">
+                    <h4 class="text-2xl pb-2 font-bold capitalize">Knoxville Location</h4>
+                    <hr class="h-1 rounded-xl bg-black">
+                    <p class="py-3">Join us this Sunday at our Knoxville location for our worship experience at 11 AM.
+                        We know going to a church or going to a new church can be intimidating, but we promise to do
+                        whatever it takes to help you and your family feel like they belong here at FC.</p>
+                    <button class="ghost">
+                        Plan Your Visit
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
 <?php
 get_footer();
