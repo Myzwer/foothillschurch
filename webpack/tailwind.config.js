@@ -8,7 +8,12 @@ module.exports = {
    *
    * More information: https://tailwindcss.com/blog/tailwindcss-v3
    */
-  content: ["*.php", "./assets/src/js/*.js"],
+  content: [
+    "*.php",
+    "./components/cards/*.php",
+    "./components/headers/*.php",
+    "./assets/src/js/*.js",
+  ],
   theme: {
     colors: {
       screens: {
