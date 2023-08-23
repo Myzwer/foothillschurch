@@ -85,7 +85,6 @@ function register_col_1()
 add_action('init', 'register_col_1');
 
 
-
 //*****************************************************
 //***************** W P P O S T S *********************
 //*****************************************************
@@ -95,6 +94,7 @@ function tn_custom_excerpt_length($length)
 {
     return 20;
 }
+
 add_filter('excerpt_length', 'tn_custom_excerpt_length', 999);
 
 
@@ -175,4 +175,127 @@ function wpbeginner_numeric_posts_nav()
     echo '</ul></div>' . "\n";
 
 }
+
 // End Pagination code
+
+//*****************************************************
+//**************** CUSTOM TAXONOMIES ******************
+//*****************************************************
+
+/**
+ * Register a custom post type called "Event".
+ *
+ * @see get_post_type_labels() for label keys.
+ */
+function event_init()
+{
+    $labels = array(
+        'name' => __('Events'),
+        'singular_name' => __('Event'),
+        'menu_name' => __('Events'),
+        'name_admin_bar' => __('Event'),
+        'add_new' => __('Add New'),
+        'add_new_item' => __('Add New Event'),
+        'new_item' => __('New Event'),
+        'edit_item' => __('Edit Event'),
+        'view_item' => __('View Event'),
+        'all_items' => __('All Events'),
+        'search_items' => __('Search Events'),
+        'parent_item_colon' => __('Parent Events:'),
+        'not_found' => __('No Events found.'),
+        'not_found_in_trash' => __('No Events found in Trash.'),
+        'archives' => __('Event archives'),
+        'insert_into_item' => __('Insert into Event'),
+        'uploaded_to_this_item' => __('Uploaded to this Event'),
+        'filter_items_list' => __('Filter Event list'),
+        'items_list_navigation' => __('Event list navigation'),
+        'items_list' => __('Event list'),
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'Event'),
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
+        'menu_position' => null,
+        'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields'),
+        'menu_icon' => 'dashicons-calendar',
+        'taxonomies' => array('event_name', 'event_location', 'event_type')
+    );
+
+    register_post_type('Event', $args);
+
+
+}
+
+// This is the taxonomy for the Sermon Videos / Other Video Categories.
+register_taxonomy('event_name', 'event',
+    array(
+        'labels' => array(
+            'name' => __('Event Name'),
+            'singular_name' => __('Event Name'),
+            'add_new_item' => __('Add New Event Name'),
+            'edit_item' => __('Edit Event Name'),
+            'new_item_name' => __('New Event Name'),
+            'view' => __('View Event Names'),
+            'view_item' => __('View Event Names'),
+            'search_items' => __('Search Event Names'),
+            'not_found' => __('No Event Names found'),
+            'not_found_in_trash' => __('No Event Names found in Trash'),
+            'parent_item' => __('Parent Event Names'),
+        ),
+        'hierarchical' => true,
+        'rewrite' => array('slug' => 'event_names')
+    )
+);
+
+// This is the taxonomy for the Sermon Videos / Other Video Categories.
+register_taxonomy('event_location', 'event',
+    array(
+        'labels' => array(
+            'name' => __('Event Location'),
+            'singular_name' => __('Event Location'),
+            'add_new_item' => __('Add New Event Location'),
+            'edit_item' => __('Edit Event Location'),
+            'new_item_name' => __('New Event Location'),
+            'view' => __('View Event Locations'),
+            'view_item' => __('View Event Locations'),
+            'search_items' => __('Search Event Locations'),
+            'not_found' => __('No Event Locations found'),
+            'not_found_in_trash' => __('No Event Locations found in Trash'),
+            'parent_item' => __('Parent Event Locations'),
+        ),
+        'hierarchical' => true,
+        'rewrite' => array('slug' => 'event_locations')
+    )
+);
+
+// This is the taxonomy for the Sermon Videos / Other Video Categories.
+register_taxonomy('event_type', 'event',
+    array(
+        'labels' => array(
+            'name' => __('Event Types'),
+            'singular_name' => __('Event Type'),
+            'add_new_item' => __('Add New Event Type'),
+            'edit_item' => __('Edit Event Type'),
+            'new_item_name' => __('New Event Type'),
+            'view' => __('View Event Types'),
+            'view_item' => __('View Event Types'),
+            'search_items' => __('Search Event Types'),
+            'not_found' => __('No Event Types found'),
+            'not_found_in_trash' => __('No Event Types found in Trash'),
+            'parent_item' => __('Parent Event Types'),
+        ),
+        'hierarchical' => true,
+        'rewrite' => array('slug' => 'event_types')
+    )
+);
+
+add_action('init', 'event_init');
+
