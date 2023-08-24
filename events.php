@@ -19,16 +19,16 @@ get_header(); ?>
 
     <!-- Start Body Section -->
     <div class="bg-blue-gradient pb-5">
-    <div class="md:w-9/12 mx-auto grid grid-cols-12 p-5 gap-4 md:gap-10">
-        <div class="col-span-12 md:col-span-4">
+    <div class="xl:w-9/12 mx-auto grid grid-cols-12 p-5 gap-4 gap-4 xl:gap-10">
+        <div class="col-span-12 xl:col-span-4 xl:col-span-4 mx-5">
             <div class="bg-white">
                 <h3>Filter Events</h3>
             </div>
         </div>
 
 
-        <div class="col-span-12 md:col-span-8">
-            <div class="grid grid-cols-12 gap-4 md:gap-10">
+        <div class="col-span-12 xl:col-span-8">
+            <div class="grid grid-cols-12 gap-4 md:gap-4">
 
                 <?php
                 // WP_Query arguments

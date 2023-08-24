@@ -1,7 +1,7 @@
-<div class="bg-white col-span-12 md:col-span-6 mx-5 mb-8 bg-gray-light shadow-xl rounded-xl">
+<div class="bg-white col-span-12 lg:col-span-6 mx-5 mb-8 bg-gray-light shadow-xl rounded-xl relative flex flex-col">
     <img class="rounded-t-lg" src="<?php the_field('branding', get_the_ID()); ?>"
          alt="Event Brand">
-    <div class="p-5">
+    <div class="p-5 flex-grow">
         <h2 class="text-xl md:text-2xl font-bold capitalize"><?php the_field('event_name', get_the_ID()); ?></h2>
         <h3 class="text-lg"><?php the_field('event_date', get_the_ID()); ?></h3>
         <h3 class="text-lg pb-3"><?php the_field('event_start_time', get_the_ID()); ?></h3>
@@ -18,6 +18,7 @@
         </p>
     </div>
 
+
     <div class="grid grid-cols-12 rounded-b-xl">
         <div class="col-span-6 text-center bg-saltydog rounded-bl-xl">
             <a class="block text-lg uppercase py-3 text-white font-bold" target="_blank"
@@ -30,4 +31,6 @@
         </div>
     </div>
 </div>
+
+
 
