@@ -21,8 +21,11 @@ get_header(); ?>
     <div class="bg-blue-gradient pb-5">
     <div class="xl:w-9/12 mx-auto grid grid-cols-12 p-5 gap-4 gap-4 xl:gap-10">
         <div class="col-span-12 xl:col-span-4 xl:col-span-4 mx-5">
-            <div class="bg-white">
-                <h3>Filter Events</h3>
+            <div class="bg-white p-5 rounded-xl shadow-xl">
+                <h3 class="capitalize font-bold text-3xl pb-3">Filter Events</h3>
+                <?php
+                echo do_shortcode('[fe_widget]');
+                ?>
             </div>
         </div>
 
@@ -60,7 +63,6 @@ get_header(); ?>
             </div>
         </div>
     </div>
-
 
 
 <?php get_footer();

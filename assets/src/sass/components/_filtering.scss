@@ -1,0 +1,21 @@
+/**
+ * Filtering
+ * =================================
+ * This overwrites the styles that Filter Everything does (or doesn't) provide.
+ *
+ *
+ *
+ *
+ */
+
+.widget-title {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.wpc-filter-content select {
+  background-color: #E0E0E0;
+  border-radius: 3px;
+  padding: 5px 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
