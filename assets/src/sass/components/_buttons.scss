@@ -77,3 +77,13 @@ $lightblue-grad-2: #DEE8EE;
     padding: 4px 22px;
   }
 }
+
+// This is the button used on the single event pages so they stand out a little more
+.elevated-salty {
+  background-color: $saltydog;
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  color: $white;
+  font-weight: 800;
+  padding: 10px 30px;
+}
