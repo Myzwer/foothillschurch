@@ -65,9 +65,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    plugin(function ({ addUtilities, addComponents, e, config }) {
-      require("@tailwindcss/typography");
-    }),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
