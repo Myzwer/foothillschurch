@@ -168,6 +168,12 @@ if (have_rows('build_page')) :
                 echo "</div>";
                 break;
 
+            case 'video':
+                echo "<div class='col-span-12'>";
+                get_template_part('components/layouts/video');
+                echo "</div>";
+                break;
+
 
             // FIXME: Only for building/debugging, shouldn't be left in for production
             default:
