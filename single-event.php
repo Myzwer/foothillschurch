@@ -174,6 +174,12 @@ if (have_rows('build_page')) :
                 echo "</div>";
                 break;
 
+            case 'button_group':
+                echo "<div class='col-span-12'>";
+                get_template_part('components/layouts/button-group');
+                echo "</div>";
+                break;
+
 
             // FIXME: Only for building/debugging, shouldn't be left in for production
             default:
