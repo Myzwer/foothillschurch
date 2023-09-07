@@ -11,15 +11,15 @@
 ?>
 
 <!-- Start an outer grid. This can be nested inside of a different grid ,but it'll look jank. -->
-<h3 class="text-2xl font-bold mb-5"><?php the_field("section_title"); ?></h3>
+<h3 class="text-2xl font-bold mb-5"><?php the_sub_field("section_title"); ?></h3>
 <div class="grid grid-cols-12 gap-4 lg:gap-10">
     <div class="col-span-12">
         <?php
         // Get Repeater
-        if (have_rows('button')):
+        if (have_rows('button_group')):
 
             // Loop through the repeater.
-            while (have_rows('button')) : the_row();
+            while (have_rows('button_group')) : the_row();
                 $text = get_sub_field('button_text');
                 $link = get_sub_field('button_link');
                 ?>
