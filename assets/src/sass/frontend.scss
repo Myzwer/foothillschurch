@@ -22,6 +22,7 @@
 @use 'components/forms';
 @use 'components/glidejs';
 @use 'components/filtering';
+@use 'components/video';
 
 // This section adds tailwind, but @tailwind isn't recognized so we have to suppress stylelint.
 /* stylelint-disable */
