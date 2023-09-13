@@ -61,9 +61,11 @@ get_header(); ?>
                     </a>
                 </button>
 
-                <!-- I NEED AN ACF FIELD TO BE ASSIGNED TO MEEEEEEE -->
                 <button class="ghost-paired mt-3">
-                    View on YouTube
+                    <!-- acf field, get the post ID of last post, "false false" strips formatting and provides raw URL -->
+                    <a href="<?php the_field('youtube_link', $post['ID'], false, false); ?>" target="_blank">
+                        View on YouTube
+                    </a>
                 </button>
             </div>
         <?php endforeach;
