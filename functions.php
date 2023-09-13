@@ -179,9 +179,10 @@ function wpbeginner_numeric_posts_nav()
 // End Pagination code
 
 //*****************************************************
-//**************** CUSTOM TAXONOMIES ******************
+//**************** CUSTOM POST TYPES ******************
 //*****************************************************
 
+//**************** Events ******************
 /**
  * Register a custom post type called "Event".
  *
@@ -219,12 +220,12 @@ function event_init()
         'show_ui' => true,
         'show_in_menu' => true,
         'query_var' => true,
-        'rewrite' => array('slug' => 'Event'),
+        'rewrite' => array('slug' => 'event'),
         'capability_type' => 'post',
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => null,
-        'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields'),
+        'supports' => array('title', 'editor', 'author', 'excerpt', 'thumbnail', 'custom-fields'),
         'menu_icon' => 'dashicons-calendar',
         'taxonomies' => array('event_name', 'event_location', 'event_type')
     );
@@ -299,3 +300,118 @@ register_taxonomy('event_type', 'event',
 
 add_action('init', 'event_init');
 
+//**************** Messages ******************
+/**
+ * Register a custom post type called "Message".
+ *
+ * @see get_post_type_labels() for label keys.
+ */
+function custom_message_post_type()
+{
+    $labels = array(
+        'name' => __('Messages'),
+        'singular_name' => __('Message'),
+        'menu_name' => __('Messages'),
+        'add_new' => __('Add New Message'),
+        'add_new_item' => __('Add New Message'),
+        'new_item' => __('New Message'),
+        'edit_item' => __('Edit Message'),
+        'view_item' => __('View Message'),
+        'all_items' => __('All Messages'),
+        'search_items' => __('Search Messages'),
+        'not_found' => __('No Messages found.'),
+        'not_found_in_trash' => __('No Messages found in Trash.'),
+        'archives' => __('Message archives'),
+        'insert_into_item' => __('Insert into Message'),
+        'uploaded_to_this_item' => __('Uploaded to this Message'),
+        'filter_items_list' => __('Filter Message list'),
+        'items_list_navigation' => __('Message list navigation'),
+        'items_list' => __('Message list'),
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'message'),
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
+        'menu_position' => 20, // Example value, adjust as needed
+        'supports' => array('title', 'author', 'thumbnail'), // Removed 'custom-fields'
+        'menu_icon' => 'dashicons-microphone',
+        'taxonomies' => array('series', 'speaker', 'topic')
+    );
+
+    register_post_type('message', $args);
+}
+
+// This is the taxonomy for the sermon series
+register_taxonomy('series', 'message',
+    array(
+        'labels' => array(
+            'name' => __('Series Name'),
+            'singular_name' => __('Series Name'),
+            'add_new_item' => __('Add New Series'),
+            'edit_item' => __('Edit Series'),
+            'new_item_name' => __('New Series'),
+            'view' => __('View Series'),
+            'view_item' => __('View Series'),
+            'search_items' => __('Search Series'),
+            'not_found' => __('No Series found'),
+            'not_found_in_trash' => __('No Series found in Trash'),
+            'parent_item' => __('Parent Series'),
+        ),
+        'hierarchical' => true,
+        'rewrite' => array('slug' => 'series')
+    )
+);
+
+// This is the taxonomy for the speaker
+register_taxonomy('speaker', 'message',
+    array(
+        'labels' => array(
+            'name' => __('Speaker Name'),
+            'singular_name' => __('Speaker Name'),
+            'add_new_item' => __('Add New Speaker'),
+            'edit_item' => __('Edit Speaker'),
+            'new_item_name' => __('New Speaker'),
+            'view' => __('View Speakers'),
+            'view_item' => __('View Speaker'),
+            'search_items' => __('Search Speakers'),
+            'not_found' => __('No Speakers found'),
+            'not_found_in_trash' => __('No Speakers found in Trash'),
+            'parent_item' => __('Parent Speaker'),
+        ),
+        'hierarchical' => true,
+        'rewrite' => array('slug' => 'speaker')
+    )
+);
+
+// This is the taxonomy for the categories
+register_taxonomy('topic', 'message',
+    array(
+        'labels' => array(
+            'name' => __('Topic'),
+            'singular_name' => __('Topic'),
+            'add_new_item' => __('Add New Topic'),
+            'edit_item' => __('Edit Topic'),
+            'new_item_name' => __('New Topic'),
+            'view' => __('View Topics'),
+            'view_item' => __('View Topic'),
+            'search_items' => __('Search Topics'),
+            'not_found' => __('No Topics found'),
+            'not_found_in_trash' => __('No Topics found in Trash'),
+            'parent_item' => __('Parent Topic'),
+        ),
+        'hierarchical' => true,
+        'rewrite' => array('slug' => 'topic')
+    )
+);
+
+add_action('init', 'custom_message_post_type');
+
+flush_rewrite_rules(false);
