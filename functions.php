@@ -341,7 +341,7 @@ function custom_message_post_type()
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => 20, // Example value, adjust as needed
-        'supports' => array('title', 'author', 'thumbnail'), // Removed 'custom-fields'
+        'supports' => array('title', 'author', 'thumbnail', 'custom-fields'),
         'menu_icon' => 'dashicons-microphone',
         'taxonomies' => array('series', 'speaker', 'topic')
     );
