@@ -31,39 +31,41 @@ get_header(); ?>
 
         <div class="col-span-12 xl:col-span-8">
             <div id="primary" class="grid grid-cols-12 gap-4 md:gap-4">
-
                 <?php
-                // WP_Query arguments
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $args = array(
-                    'post_type' => array('message'),
-                    'post_status' => array('publish'),
-                    'nopaging' => false,
-                    'order' => 'DESC',
-                    'orderby' => 'date',
-                    'paged' => (get_query_var('paged')) ? get_query_var('paged') : 1,
-                    'posts_per_page' => 6,
+                    'post_type' => 'message',
+                    'posts_per_page' => 10,
+                    'paged' => $paged
                 );
-
-                // The Query
-                $events = new WP_Query($args);
-
-                // The Loop
-                if ($events->have_posts()) {
-                    while ($events->have_posts()) {
-                        $events->the_post();
-                        get_template_part('components/cards/message-card');
-                    }
-                } else { ?>
-                    <h3 class="text-center font-bold">There are no upcoming events.</h3>
-                    <?php
-                }
-
-                // Pagination function
-
-
-                // Restore original Post Data
-                wp_reset_postdata();
+                $loop = new WP_Query($args);
+                while ($loop->have_posts()) : $loop->the_post();
+                    get_template_part('components/cards/message-card');
+                endwhile;
                 ?>
+
+                <div class="col-span-12 p-5 mb-8 pagination text-center">
+                    <?php
+                    $big = 999999999;
+                    echo paginate_links(array(
+                        'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+                        'total' => $loop->max_num_pages,
+                        'current' => max(1, get_query_var('paged')),
+                        'format' => '?paged=%#%',
+                        'show_all' => false,
+                        'type' => 'list',
+                        'end_size' => 2,
+                        'mid_size' => 1,
+                        'prev_next' => true,
+                        'prev_text' => sprintf('<i></i> %1$s', __('Newer Messages', 'text-domain')),
+                        'next_text' => sprintf('%1$s <i></i>', __('Older Messages', 'text-domain')),
+                        'add_args' => false,
+                        'add_fragment' => '',
+                    ));
+                    ?>
+                </div>
+                <?php wp_reset_postdata(); ?>
+
             </div>
         </div>
     </div>
