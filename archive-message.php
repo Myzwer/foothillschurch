@@ -23,6 +23,8 @@ get_header(); ?>
             <div class="bg-white p-5 rounded-xl shadow-xl">
                 <h3 class="capitalize font-bold text-3xl pb-3">Filter Messages</h3>
                 <?php
+                // Filter Everything plugin shortcode
+                // Configured in WP Admin - Location as well. Use plugin settings to adjust.
                 echo do_shortcode('[fe_widget]');
                 ?>
             </div>
@@ -32,42 +34,51 @@ get_header(); ?>
         <div class="col-span-12 xl:col-span-8">
             <div id="primary" class="grid grid-cols-12 gap-4 md:gap-4">
                 <?php
+                // Get the current page number for pagination
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+                // Define query arguments for retrieving custom post type 'message'
                 $args = array(
                     'post_type' => 'message',
-                    'posts_per_page' => 10,
-                    'paged' => $paged
+                    'posts_per_page' => 10, // Display 10 messages per page
+                    'paged' => $paged // Set the current page for pagination
                 );
+
+                // Create a new WP_Query object with the defined arguments
                 $loop = new WP_Query($args);
+
+                // Loop through the retrieved messages
                 while ($loop->have_posts()) : $loop->the_post();
+                    // Include template partial to display the message card
                     get_template_part('components/cards/message-card');
                 endwhile;
                 ?>
 
                 <div class="col-span-12 p-5 mb-8 pagination text-center">
                     <?php
+                    // Define pagination parameters and display pagination links
                     $big = 999999999;
                     echo paginate_links(array(
                         'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
-                        'total' => $loop->max_num_pages,
-                        'current' => max(1, get_query_var('paged')),
-                        'format' => '?paged=%#%',
+                        'total' => $loop->max_num_pages, // Total number of pages
+                        'current' => max(1, get_query_var('paged')), // Current page
+                        'format' => '?paged=%#%', // Page URL format
                         'show_all' => false,
                         'type' => 'list',
-                        'end_size' => 2,
-                        'mid_size' => 1,
-                        'prev_next' => true,
-                        'prev_text' => sprintf('<i></i> %1$s', __('Newer Messages', 'text-domain')),
-                        'next_text' => sprintf('%1$s <i></i>', __('Older Messages', 'text-domain')),
+                        'end_size' => 2, // Number of pages to display at the beginning and end
+                        'mid_size' => 1, // Number of pages to display on either side of the current page
+                        'prev_next' => true, // Display "Previous" and "Next" links
+                        'prev_text' => sprintf('<i></i> %1$s', __('Newer Messages', 'text-domain')), // Text for the "Previous" link
+                        'next_text' => sprintf('%1$s <i></i>', __('Older Messages', 'text-domain')), // Text for the "Next" link
                         'add_args' => false,
                         'add_fragment' => '',
                     ));
                     ?>
                 </div>
-                <?php wp_reset_postdata(); ?>
-
+                <?php wp_reset_postdata(); // Reset post data after the loop ?>
             </div>
         </div>
+
     </div>
 
 
