@@ -148,7 +148,7 @@ get_header(); ?>
             ?>
 
             <div class="col-span-12 text-center my-5">
-                <a href="#">
+                <a href="<?php the_field("archive_link"); ?>">
                     <button class="fab-main mt-3">
                         <i class="fa-solid fa-circle-arrow-right"></i> See All Messages
                     </button>
@@ -214,7 +214,7 @@ get_header(); ?>
             ?>
 
             <div class="col-span-12 text-center my-5">
-                <a href="#">
+                <a href="<?php the_field("archive_link"); ?>">
                     <button class="ghost mt-3">
                         See All Messages
                     </button>
