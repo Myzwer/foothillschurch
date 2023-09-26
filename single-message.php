@@ -82,9 +82,9 @@ get_header(); ?>
     </div>
 
     <div class="bg-white-gradient">
-        <div class="md:w-8/12 mx-auto grid grid-cols-12 p-10 relative">
-            <div class="col-span-12 text-center">
-                <h3 class="text-2xl md:text-3xl mb-3 font-bold">Prefer to Read The Message?</h3>
+        <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 py-10 relative">
+            <div class="col-span-12 md:text-center">
+                <h3 class="text-xl md:text-3xl mb-3 font-bold">Prefer to Read The Message?</h3>
                 <p>All of our sermons are transcribed into blog format for you to read!</p>
                 <p>Blog format is typically available the following Wednesday.</p>
                 <div class="col-span-12 text-center">
