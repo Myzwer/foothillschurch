@@ -56,18 +56,21 @@ get_header(); ?>
 
 
                 <div class="col-span-12 text-center my-8">
-                    <button class="elevated-blue mt-3 mr-3">
-                        <a href="<?php echo get_permalink($post['ID']) ?>">
-                            <i class="fa-solid fa-arrow-right"></i> Watch Now
-                        </a>
-                    </button>
 
-                    <button class="ghost-paired mt-3">
-                        <!-- acf field, get the post ID of last post, "false false" strips formatting and provides raw URL -->
-                        <a href="<?php the_field('youtube_link', $post['ID'], false, false); ?>" target="_blank">
+                    <a href="<?php echo get_permalink($post['ID']) ?>">
+                        <button class="elevated-blue mt-3 mr-3">
+                            <i class="fa-solid fa-arrow-right"></i> Watch Now
+                        </button>
+                    </a>
+
+                    <a href="<?php the_field('youtube_link', $post['ID'], false, false); ?>" target="_blank">
+                        <button class="ghost-paired mt-3">
+                            <!-- acf field, get the post ID of last post, "false false" strips formatting and provides raw URL -->
+
                             View on YouTube
-                        </a>
-                    </button>
+                        </button>
+                    </a>
+
                 </div>
             <?php endforeach;
             wp_reset_query(); ?>
