@@ -1,4 +1,4 @@
-<div class="bg-white col-span-12 lg:col-span-6 mx-5 mb-8 bg-gray-light shadow-xl rounded-xl relative flex flex-col">
+<div class="bg-white col-span-12 <?php echo $args['column_span_class']; ?> mx-5 mb-8 bg-gray-light shadow-xl rounded-xl relative flex flex-col">
     <img class="rounded-t-lg" src="<?php the_field('branding', get_the_ID()); ?>"
          alt="Event Brand">
     <div class="p-5 flex-grow">

@@ -51,7 +51,10 @@ get_header(); ?>
                 if ($events->have_posts()) {
                     while ($events->have_posts()) {
                         $events->the_post();
-                        get_template_part('components/cards/event-card');
+                        $size_select = array(
+                            'column_span_class' => 'lg:col-span-6'
+                        );
+                        get_template_part('components/cards/event-card', null, $size_select);
                     }
                 } else { ?>
                     <h3 class="text-center font-bold">There are no upcoming events.</h3>
