@@ -415,3 +415,22 @@ register_taxonomy('topic', 'message',
 add_action('init', 'custom_message_post_type');
 
 flush_rewrite_rules(false);
+
+
+//*****************************************************
+//******************** SHORTCODES *********************
+//*****************************************************
+
+// Usage:
+// [ghost_button text="Learn More" url="https://example.com"]
+function custom_button_shortcode($atts, $content = null)
+{
+    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
+    $button_url = isset($atts['url']) ? $atts['url'] : '#';
+    return '<a href="' . esc_url($button_url) . '"><button class="ghost mt-3">' . esc_html($button_text) . '</button></a>';
+}
+
+add_shortcode('ghost_button', 'custom_button_shortcode');
+
+add_filter('widget_text', 'do_shortcode');
+add_filter('the_content', 'do_shortcode');
