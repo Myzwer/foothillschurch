@@ -12,7 +12,7 @@
 
 <div class="xl:w-8/12 max-w-screen-2xl mx-auto pt-5 xl:p-5">
     <div class="grid grid-cols-12 gap-4 md:gap-4">
-        <div class="col-span-12 py-5">
+        <div class="col-span-12 py-5 text-center mx-auto">
             <img class="rounded-xl shadow-xl" src="<?php the_field("info_image"); ?>">
         </div>
 

@@ -151,8 +151,16 @@ get_header(); ?>
         </div>
     </div>
 
-    <div class="bg-white-gradient">
+    <div class="bg-white-gradient pb-10 px-5">
         <?php get_template_part('components/layouts/img-info-block-col'); ?>
+    </div>
+
+    <div class="bg-blue-gradient">
+        <div class="xl:w-8/12 max-w-screen-2xl mx-auto xl:p-5">
+            <div class="py-10 px-5">
+                <?php get_template_part('components/layouts/faq'); ?>
+            </div>
+        </div>
     </div>
 
 
