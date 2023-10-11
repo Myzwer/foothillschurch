@@ -2,7 +2,7 @@
 /**
  * Template Name: Location (Single)
  *
- * The Frontpage of the Bootcamp II Theme
+ * NOTE: You MUST name location_title the same as your taxonomy term for the location or filtering won't work.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -22,7 +22,9 @@ get_header(); ?>
             <div class="center add-padding">
                 <h2 class="text-white text-xl md:text-3xl lb-2 font-bold"><?php the_field("top_line"); ?></h2>
             </div>
-            <h1 class="text-white text-3xl md:text-5xl uppercase font-bold"><?php the_field("location_title"); ?></h1>
+            <h1 class="text-white text-3xl md:text-5xl uppercase font-bold">
+                <?php the_field("location_title"); //see note in doc block ?>
+            </h1>
         </div>
     </div>
 
@@ -95,7 +97,58 @@ get_header(); ?>
         </div>
     </div>
 
+    <!-- Start Body Section -->
     <div class="bg-blue-gradient">
+        <div class="xl:w-9/12 max-w-screen-2xl mx-auto pt-5 xl:p-5">
+            <div class="grid grid-cols-12 gap-4 md:gap-4">
+                <div class="col-span-12">
+                    <h2 class="text-2xl py-2 font-bold capitalize text-center">Upcoming Events
+                        in <?php the_field("location_title"); ?></h2>
+                </div>
+
+                <?php
+                $location = get_field("location_title");
+                // WP_Query arguments
+                $args = array(
+                    'post_type' => array('event'),
+                    'post_status' => array('publish'),
+                    'nopaging' => false,
+                    'order' => 'DESC',
+                    'orderby' => 'date',
+                    'posts_per_page' => 3, // Use 'posts_per_page' instead of 'numberposts'
+                    'paged' => (get_query_var('paged')) ? get_query_var('paged') : 1,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'event_location',
+                            'field' => 'slug', // You can use 'slug' or 'term_id' based on your needs
+                            'terms' => $location, // Use the term ID of the current term
+                        ),
+                    ),
+                );
+
+                // The Query
+                $events = new WP_Query($args);
+
+                // The Loop
+                if ($events->have_posts()) {
+                    while ($events->have_posts()) {
+                        $events->the_post();
+                        $size_select = array(
+                            'column_span_class' => 'lg:col-span-4'
+                        );
+                        get_template_part('components/cards/event-card', null, $size_select);
+                    }
+                } else { ?>
+                    <div class="col-span-12">
+                        <h3 class="text-center font-bold">This location has no upcoming events.</h3>
+                    </div>
+                    <?php
+                }
+                // Restore original Post Data
+                wp_reset_postdata();
+                ?>
+            </div>
+        </div>
     </div>
 
 
