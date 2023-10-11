@@ -3,10 +3,11 @@
  * FAQ Template Partial
  *
  * REQUIRED ACF FIELDS:
- *  - Question (text)
- *  - Answer (textarea)
- *  - Button Text (text)
- *  - Button Link (link)
+ *  - faq (repeater)
+ *     - Question (text)
+ *     - Answer (textarea)
+ *     - Button Text (text)
+ *     - Button Link (link)
  */
 ?>
 
