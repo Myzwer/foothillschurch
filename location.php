@@ -102,7 +102,7 @@ get_header(); ?>
         <div class="xl:w-9/12 max-w-screen-2xl mx-auto pt-5 xl:p-5">
             <div class="grid grid-cols-12 gap-4 md:gap-4">
                 <div class="col-span-12">
-                    <h2 class="text-2xl py-2 font-bold capitalize text-center">Upcoming Events
+                    <h2 class="text-2xl py-4 font-bold capitalize text-center">Upcoming Events
                         in <?php the_field("location_title"); ?></h2>
                 </div>
 
@@ -149,6 +149,10 @@ get_header(); ?>
                 ?>
             </div>
         </div>
+    </div>
+
+    <div class="bg-white-gradient">
+        <?php get_template_part('components/layouts/img-info-block-col'); ?>
     </div>
 
 
