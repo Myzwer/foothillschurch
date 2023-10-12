@@ -18,43 +18,96 @@ get_header(); ?>
     <div class="viewport-header">
         <div class="head-container">
             <div class="center add-padding">
-                <h2 class="text-white text-xl md:text-3xl lb-2 font-bold">Welcome to Foothills Church</h2>
+                <h2 class="text-white text-xl md:text-3xl lb-2 font-bold"><?php the_field("header_subtitle"); ?></h2>
             </div>
-            <h1 class="text-white text-3xl md:text-5xl uppercase font-bold">You Belong Here</h1>
+            <h1 class="text-white text-3xl md:text-5xl uppercase font-bold"><?php the_field("header_main_title"); ?></h1>
 
-            <button class="fab-main mt-3">
-                <i class="fa-solid fa-circle-arrow-right"></i> Find A Location
-            </button>
+            <?php if (have_rows('primary_cta')): ?>
+                <?php while (have_rows('primary_cta')): the_row(); ?>
+                    <a href="<?php the_sub_field("button_link"); ?>">
+                        <button class="fab-main mt-3">
+                            <i class="fa-solid fa-circle-arrow-right"></i> <?php the_sub_field("button_text"); ?>
+                        </button>
+                    </a>
+                <?php endwhile;
+            endif; ?>
         </div>
     </div>
 
-    <div class="bg-white-gradient pb-10">
-        <div class="lg:max-w-5xl lg:text-center lg:mx-auto p-5 pt-10">
-            <div class="grid grid-cols-12 gap-4 md:gap-10">
-                <div class="col-span-12 md:col-span-6">
-                    <img class="rounded-xl shadow-xl" src="<?php the_field("thumbnail"); ?>" alt="">
+    <!-- START Recent Sermon -->
+    <div class="bg-white-gradient">
+        <div class="lg:max-w-5xl mx-auto grid grid-cols-12 p-5 py-10 gap-4 md:gap-10">
+            <!-- Start the actual card -->
+            <?php
+            // Drop into PHP to call the latest post title and link
+            $recent_posts = wp_get_recent_posts(array(
+                'post_type' => 'message',
+                'numberposts' => 1,
+                'post_status' => 'publish',
+            ));
+
+            foreach ($recent_posts as $post) : ?>
+                <div class="col-span-12 md:col-span-6 text-center relative">
+                    <a href="<?php echo get_permalink($post['ID']) ?>">
+                        <img class="rounded-xl shadow-xl"
+                             src="<?php echo get_the_post_thumbnail_url($post['ID'], 'post-thumbnail'); ?>" alt="">
+                    </a>
                 </div>
 
-                <div class="col-span-12 md:col-span-6 relative">
-                    <div class="content-middle-medium">
-                        <div class="text-left mb-1">
-                            <h4 class="uppercase font-semibold">Latest Sermon</h4>
-                            <h2 class=" text-xl md:text-3xl lb-2 font-bold capitalize">Get To The Secret
-                                Place</h2>
-                            <p>Join us as we close out our series "Just One Bite" where Pastor Landon talks about how to
-                                avoid temptation and not become the next generation's old heroes.</p>
-                            <button class="elevated-blue mt-3 mr-3">
-                                <i class="fa-solid fa-arrow-right"></i> Watch Now
-                            </button>
-                            <button class="ghost-paired mt-3">
-                                Read the Blog
-                            </button>
-                        </div>
+                <div class="col-span-12 md:col-span-6 my-8">
+                    <h3 class="text-md uppercase">Latest Message</h3>
+                    <h2 class="text-3xl font-bold capitalize"><?php echo get_the_title($post['ID']) ?></h2>
+                    <div class="block">
+                        <?php
+                        function display_taxonomy_terms($post_id, $taxonomy, $label)
+                        {
+                            // Retrieve the terms associated with the post for the specified taxonomy
+                            $terms = get_the_terms($post_id, $taxonomy);
+
+                            if ($terms && !is_wp_error($terms)) {
+                                echo '<div class = ""> <h3 class="text-xl capitalize font-bold inline">' . esc_html($label) . '</h3>';
+                                // Loop through the terms and display them
+                                foreach ($terms as $term) {
+                                    echo '<h3 class="text-xl capitalize inline">' . esc_html($term->name) . '</h3></div>';
+                                }
+                            }
+                        }
+
+                        // Get the ID of the most recent message post from the $recent_posts array
+                        $latest_message_id = $recent_posts[0]['ID'];
+
+                        // Display Speaker
+                        $taxonomy_speaker = 'speaker';
+                        $label_speaker = 'Speaker: ';
+                        display_taxonomy_terms($latest_message_id, $taxonomy_speaker, $label_speaker);
+
+                        // Display Series
+                        $taxonomy_series = 'series';
+                        $label_series = 'Series: ';
+                        display_taxonomy_terms($latest_message_id, $taxonomy_series, $label_series);
+                        ?>
                     </div>
+
+                    <a href="<?php echo get_permalink($post['ID']) ?>">
+                        <button class="elevated-blue mt-3 mr-3">
+                            <i class="fa-solid fa-arrow-right"></i> Watch Now
+                        </button>
+                    </a>
+
+                    <a href="<?php the_field('youtube_link', $post['ID'], false, false); ?>" target="_blank">
+                        <button class="ghost-paired mt-3">
+                            <!-- ACF field, get the post ID of the last post, "false false" strips formatting and provides a raw URL -->
+                            View on YouTube
+                        </button>
+                    </a>
                 </div>
-            </div>
+            <?php endforeach;
+            wp_reset_query(); ?>
+            <!-- End Featured Sermon -->
         </div>
     </div>
+    <!-- END Recent Sermon -->
+
 
     <div class="bg-blue-gradient pb-10">
         <div class=" lg:max-w-5xl lg:text-center lg:mx-auto p-5 pt-10">
