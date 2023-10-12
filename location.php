@@ -82,16 +82,6 @@ get_header(); ?>
                         <?php
                         endwhile;
                     endif; ?>
-
-                    <?php if (have_rows('prayer_button')): ?>
-                        <?php while (have_rows('prayer_button')): the_row(); ?>
-                            <a href="<?php the_sub_field("button_link"); ?>">
-                                <button class="ghost mt-3">
-                                    <?php the_sub_field("button_text"); ?>
-                                </button>
-                            </a>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>
