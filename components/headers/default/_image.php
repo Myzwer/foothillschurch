@@ -1,13 +1,12 @@
 <?php
 /*
- * UPDATE THISSSSSSSSS
- *
  * REQUIRED ACF FIELDS:
  * small_subtitle (Text field)
  * main_title (text field)
  * primary_cta (group)
  *  - button_text (text field)
  *  - button_link (link field)
+ * side_photo (image)
  *
  * */
 ?>
