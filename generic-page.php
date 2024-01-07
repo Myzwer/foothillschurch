@@ -25,21 +25,15 @@ if (have_rows('header_select')) :
 
         switch (get_row_layout()) {
             case 'simple_header':
-                echo "<div class='col-span-12'>";
                 get_template_part('components/headers/generic-page/simple-header-build');
-                echo "</div>";
                 break;
 
             case 'button_header':
-                echo "<div class='col-span-12'>";
                 get_template_part('components/headers/generic-page/button-header-build');
-                echo "</div>";
                 break;
 
             case 'image_header':
-                echo "<div class='col-span-12'>";
                 get_template_part('components/headers/generic-page/image-header-build');
-                echo "</div>";
                 break;
 
 
@@ -48,8 +42,6 @@ if (have_rows('header_select')) :
                 echo "Unhandled content block: " . get_row_layout();
                 break;
         }
-        echo "</div>";
-        echo "</div>";
         $counter++;
 
         // End loop.

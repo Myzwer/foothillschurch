@@ -2,6 +2,7 @@
  * Backgrounds
  * =================================
  * - Photo Header
+ *    - Page Builder Image Header
  * - Video Header
  *
  *
@@ -25,6 +26,22 @@
 
 .full-background-xl {
   height: 100vh;
+}
+
+// This is for the generic page build template - the image header.
+.generic-image-header {
+  height: 20vh;
+}
+
+.generic-image-content-header {
+  height: 20vh;
+}
+
+// Only the content needs adjusted on tablet+, the image will just follow along to match height.
+@media screen and (min-width: 64em) {
+  .generic-image-content-header {
+    height: 40vh;
+  }
 }
 
 //*********************************************
