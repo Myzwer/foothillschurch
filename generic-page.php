@@ -21,18 +21,24 @@ if (have_rows('header_select')) :
     $counter = 0;
 
     // Loop through rows.
-    while (have_rows('build_page')) : the_row();
+    while (have_rows('header_select')) : the_row();
 
         switch (get_row_layout()) {
-            case 'generic_block':
+            case 'simple_header':
                 echo "<div class='col-span-12'>";
-                get_template_part('components/headers/simple-header');
+                get_template_part('components/headers/generic-page/simple-header-build');
                 echo "</div>";
                 break;
 
-            case 'faq':
+            case 'button_header':
                 echo "<div class='col-span-12'>";
-                get_template_part('components/headers/image-header');
+                get_template_part('components/headers/generic-page/button-header-build');
+                echo "</div>";
+                break;
+
+            case 'image_header':
+                echo "<div class='col-span-12'>";
+                get_template_part('components/headers/generic-page/image-header-build');
                 echo "</div>";
                 break;
 
