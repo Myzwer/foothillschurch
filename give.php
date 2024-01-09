@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Give Page
+ * Template Name: Custom - Give
  *
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/

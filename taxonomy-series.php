@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Series Single
+ * Template Name: Post Type - Series (Single)
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -81,7 +81,7 @@ get_header(); ?>
                         </a>
                     </div>
                 <?php } ?>
-                
+
                 <?php
             } else {
                 echo 'there are no posts.'; // no posts found

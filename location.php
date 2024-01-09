@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Location (Single)
+ * Template Name: Template - Location (Single)
  *
  * NOTE: You MUST name location_title the same as your taxonomy term for the location or filtering won't work.
  *

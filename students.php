@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Students Page
+ * Template Name: Custom - Students
  *
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/

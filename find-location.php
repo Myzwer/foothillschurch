@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Find A Location
+ * Template Name: Template - Find A Location
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Events Main
+ * Template Name: Post Type - Events
  *
  * The Frontpage of the Bootcamp II Theme
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Messages Main
+ * Template Name: Post Type - Messages
  *
  * The Frontpage of the Bootcamp II Theme
  *

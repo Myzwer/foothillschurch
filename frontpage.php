@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Front Page
+ * Template Name: Custom - Front Page
  *
  * The Frontpage of the Bootcamp II Theme
  *

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Messages Single
+ * Template Name: Post Type - Messages (Single)
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

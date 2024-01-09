@@ -9,6 +9,19 @@
  * @since 1.0.0
  */
 
+/*
+ * Table Of Contents:
+ *
+ * ACF - Options Page
+ * Quick Functions
+ * CSS / JS Load In
+ * Menus
+ * WP Posts
+ * Custom Post Types
+ * Shortcodes
+ *
+ * */
+
 //*****************************************************
 //*********************** ACF *************************
 //*****************************************************
@@ -19,6 +32,18 @@
 if (function_exists('acf_add_options_page')) {
     acf_add_options_page();
 }
+
+//*****************************************************
+//***************** Quick Functions *******************
+//*****************************************************
+
+function alphabetize_page_templates($templates)
+{
+    asort($templates);
+    return $templates;
+}
+
+add_filter('theme_page_templates', 'alphabetize_page_templates');
 
 //*****************************************************
 //***************** CSS / JS Load-in ******************

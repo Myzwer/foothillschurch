@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Form Submit Template
+ * Template Name: Template - Form Success
  *
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/

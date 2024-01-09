@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Linktree Page
+ * Template Name: Custom - Linktree
  *
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/

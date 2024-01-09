@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: 404 Error
+ * Template Name: Custom - 404 Error
  *
  *
  * @link https://codex.wordpress.org/Template_Hierarchy

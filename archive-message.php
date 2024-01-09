@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Messages Archive
+ * Template Name: Post Type - Messages (Archive)
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

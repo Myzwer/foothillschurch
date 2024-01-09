@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: App Page
+ * Template Name: Custom - App Page
  *
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
