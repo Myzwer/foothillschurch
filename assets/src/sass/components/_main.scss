@@ -9,3 +9,18 @@ body {
 .helvetica {
   font-family: "Helvetica LT Std", sans-serif;
 }
+
+.prose ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose li {
+  margin: .1em 0;
+}
+
+.prose li::before {
+  content: "•";
+  color: #000000;
+  padding-right: 10px;
+}

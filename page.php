@@ -15,9 +15,6 @@ get_header(); ?>
 // Check value exists.
 if (have_rows('header_select')) :
 
-    // used for alternating colors
-    $counter = 0;
-
     // Loop through rows.
     while (have_rows('header_select')) : the_row();
 
@@ -40,17 +37,47 @@ if (have_rows('header_select')) :
                 echo "Unhandled content block: " . get_row_layout();
                 break;
         }
+
+    endwhile;
+endif;
+?>
+
+
+<?php
+// Check value exists.
+if (have_rows('body_sections')) :
+
+    // used for alternating colors
+    $counter = 0;
+
+    // Loop through rows.
+    while (have_rows('body_sections')) : the_row();
+
+        if (0 === $counter % 2) {
+            $bg = 'bg-white-gradient';
+        } else {
+            $bg = 'bg-blue-gradient';
+        }
+
+        echo "<div class='$bg'>";
+        switch (get_row_layout()) {
+            case 'text_block':
+                get_template_part('components/blocks/text');
+                break;
+
+
+            // FIXME: Only for building/debugging, shouldn't be left in for production
+            default:
+                echo "Unhandled content block: " . get_row_layout();
+                break;
+        }
+        echo "</div>";
         $counter++;
 
         // End loop.
     endwhile;
-
-// No value.
-else :
-// Do something...
 endif;
 ?>
-    </div>
 
 <?php get_footer();
 
