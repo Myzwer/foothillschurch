@@ -65,6 +65,10 @@ if (have_rows('body_sections')) :
                 get_template_part('components/blocks/text');
                 break;
 
+            case 'image_banner_text':
+                get_template_part('components/blocks/image-text');
+                break;
+
 
             // FIXME: Only for building/debugging, shouldn't be left in for production
             default:
