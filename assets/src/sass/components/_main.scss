@@ -19,8 +19,8 @@ body {
   margin: .1em 0;
 }
 
-.prose li::before {
-  content: "•";
+.prose li:before {
   color: #000000;
+  content: "•";
   padding-right: 10px;
 }
