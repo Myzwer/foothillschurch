@@ -81,6 +81,10 @@ if (have_rows('body_sections')) :
                 get_template_part('components/blocks/process');
                 break;
 
+            case 'information_section_block':
+                get_template_part('components/blocks/information-section');
+                break;
+
 
             // FIXME: Only for building/debugging, shouldn't be left in for production
             default:
