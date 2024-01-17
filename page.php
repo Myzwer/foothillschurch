@@ -85,6 +85,10 @@ if (have_rows('body_sections')) :
                 get_template_part('components/blocks/information-section');
                 break;
 
+            case 'event_type_block':
+                get_template_part('components/blocks/event-type');
+                break;
+
 
             // FIXME: Only for building/debugging, shouldn't be left in for production
             default:
