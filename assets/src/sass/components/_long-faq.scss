@@ -1,0 +1,64 @@
+/**
+ * Long Form FAQ
+ * =================================
+ * - The site uses long form FAQ with hidden / click to open content. This is the style sheet for those.
+ *
+ *
+ *
+ *
+ */
+
+.faq-content {
+  margin: 0 auto;
+}
+
+.faq-question {
+  border-bottom: 3px solid #333333;
+  padding: 10px 0;
+}
+
+.panel-title {
+  cursor: pointer;
+  display: block;
+  font-size: 1.3em;
+  font-weight: 800;
+  margin: 0;
+  padding: 10px 10px 0 28px;
+  position: relative;
+  width: 100%;
+}
+
+.panel-content {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 14px;
+  position: relative;
+  transition: .4s ease;
+  z-index: 1;
+}
+
+.panel:checked ~ .panel-content {
+  height: auto;
+  opacity: 1;
+  padding: 14px;
+}
+
+.plus {
+  font-size: 2.5em;
+  font-weight: 600;
+  line-height: 100%;
+  margin-top: 6px;
+  position: absolute;
+  transition: .2s ease;
+  user-select: none;
+  z-index: 5;
+}
+
+.panel:checked ~ .plus {
+  transform: rotate(45deg);
+}
+
+.panel {
+  display: none;
+}

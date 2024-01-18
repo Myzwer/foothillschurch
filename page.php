@@ -93,6 +93,10 @@ if (have_rows('body_sections')) :
                 get_template_part('components/blocks/faq-short');
                 break;
 
+            case 'long_faq_block':
+                get_template_part('components/blocks/faq-long');
+                break;
+
 
             // FIXME: Only for building/debugging, shouldn't be left in for production
             default:
