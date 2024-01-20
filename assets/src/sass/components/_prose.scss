@@ -28,3 +28,13 @@
 .subtitle {
   margin-top: -1em !important;
 }
+
+// This overrides some of the prose styles for the "announcement block" which forces color and centering, taking control from the user.
+.announcement-block {
+  color: #ffffff !important;
+  text-align: center;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+  }
+}

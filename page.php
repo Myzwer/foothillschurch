@@ -105,6 +105,10 @@ if (have_rows('body_sections')) :
                 get_template_part('components/blocks/gallery');
                 break;
 
+            case 'announcement_block':
+                get_template_part('components/blocks/announcement');
+                break;
+
 
             // FIXME: Only for building/debugging, shouldn't be left in for production
             default:
