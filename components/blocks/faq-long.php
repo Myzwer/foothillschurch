@@ -17,7 +17,7 @@
  */
 ?>
 
-<div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 pt-10">
+<div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 py-10">
     <div class="grid grid-cols-12 gap-4 md:gap-4">
         <div class="col-span-12 prose">
             <img class="rounded-xl shadow-xl" src="<?php the_sub_field("header_image"); ?>">
@@ -52,7 +52,6 @@
 
             </div>
         </div>
-
 
     </div>
 </div>
