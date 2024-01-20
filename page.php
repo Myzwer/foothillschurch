@@ -97,6 +97,10 @@ if (have_rows('body_sections')) :
                 get_template_part('components/blocks/faq-long');
                 break;
 
+            case 'image_card_block':
+                get_template_part('components/blocks/card');
+                break;
+
 
             // FIXME: Only for building/debugging, shouldn't be left in for production
             default:
