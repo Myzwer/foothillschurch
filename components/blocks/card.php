@@ -30,7 +30,8 @@
 
         <?php
         if (have_rows('card')):
-            while (have_rows('card')) : the_row(); ?>
+            while (have_rows('card')) :
+                the_row(); ?>
                 <div class="bg-white col-span-12 md:col-span-4 mx-5 mb-8 bg-gray-light shadow-xl rounded-xl relative flex flex-col">
                     <?php if (get_sub_field('card_image')): ?>
                         <img class="rounded-t-lg" src="<?php the_sub_field('card_image'); ?>" alt="Image Cards">
@@ -41,39 +42,42 @@
 
 
                     <?php
+                    // Retrieve values from ACF fields for primary and secondary call-to-action (CTA)
                     $primary_cta = get_sub_field('primary_cta');
-                    $second_cta = get_sub_field('secondary_cta');
-                    $rounded_status = 'rounded-bl-xl'; // if there's only one CTA, the rounding needs switched to be full
+                    $secondary_cta = get_sub_field('secondary_cta');
 
-                    if ($second_cta['button_link'] & $second_cta['button_link']) {
-                        $primary_status = 'col-span-6';
-                        $secondary_status = 'col-span-6';
-                    } else if ($primary_cta['button_link']) {
-                        $primary_status = 'col-span-12';
-                        $secondary_status = 'hidden';
-                        $rounded_status = 'rounded-b-xl';
-                    } else {
-                        $primary_status = 'hidden';
-                        $secondary_status = 'hidden';
-                    } ?>
+                    // Determine the CSS classes for the primary CTA based on the existence of 'button_link' in the secondary CTA
+                    $primary_classes = $secondary_cta['button_link'] ? 'col-span-6 rounded-bl-xl' : 'col-span-12 rounded-b-xl';
+                    ?>
                     <div class="grid grid-cols-12 rounded-b-xl">
-                        <div class="<?php echo $primary_status . ' ' . $rounded_status; ?> text-center bg-saltydog">
-                            <?php if (have_rows('primary_cta')): ?>
-                                <?php while (have_rows('primary_cta')): the_row(); ?>
-                                    <a class="block text-lg uppercase py-3 text-white font-bold" target="_blank"
-                                       href="<?php the_sub_field('button_link'); ?>"><?php the_sub_field('button_text'); ?></a>
-                                <?php endwhile; ?>
-                            <?php endif; ?>
-                        </div>
 
-                        <div class="<?php echo $secondary_status; ?> text-center bg-lightblue rounded-br-xl">
-                            <?php if (have_rows('secondary_cta')): ?>
-                                <?php while (have_rows('secondary_cta')): the_row(); ?>
-                                    <a class="block text-lg uppercase py-3 text-black font-bold" target="_blank"
-                                       href="<?php the_sub_field('button_link'); ?>"><?php the_sub_field('button_text'); ?></a>
-                                <?php endwhile; ?>
-                            <?php endif; ?>
-                        </div>
+                        <?php
+                        // If button link exists, show this class. If it doesn't, hide it.
+                        if ($primary_cta['button_link']): ?>
+                            <div class="<?php echo $primary_classes ?> text-center bg-saltydog">
+                                <a
+                                        class="block text-lg uppercase py-3 text-white font-bold"
+                                        target="_blank"
+                                        href="<?php echo $primary_cta['button_link']; ?>"
+                                >
+                                    <?php echo $primary_cta['button_text']; ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php
+                        // If button link exists, show this class. If it doesn't, hide it.
+                        if ($secondary_cta['button_link']): ?>
+                            <div class="col-span-6 text-center bg-lightblue rounded-br-xl">
+                                <a
+                                        class="block text-lg uppercase py-3 text-black font-bold"
+                                        target="_blank"
+                                        href="<?php echo $secondary_cta['button_link']; ?>"
+                                >
+                                    <?php echo $secondary_cta['button_text']; ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
