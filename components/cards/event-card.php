@@ -19,14 +19,26 @@
     </div>
 
 
-    <div class="grid grid-cols-12 rounded-b-xl">
-        <div class="col-span-6 text-center bg-saltydog rounded-bl-xl">
-            <a class="block text-lg uppercase py-3 text-white font-bold" target="_blank"
-               href="<?php the_field('registration_link', get_the_ID()); ?>">Register</a>
-        </div>
+    <?php
+    // Retrieve values from ACF fields for primary call-to-action (CTA)
+    $primary_cta = get_field('registration_link', get_the_ID());
 
-        <div class="col-span-6 text-center bg-lightblue rounded-br-xl">
-            <a class="block text-lg uppercase py-3 text-black font-bold"
+    // Set $single_cta based on the existence of $primary_cta
+    $single_cta = ($primary_cta) ? 'col-span-6 rounded-br-xl bg-lightblue text-black' : 'col-span-12 rounded-b-xl bg-saltydog text-white';
+    ?>
+
+    <div class="grid grid-cols-12 rounded-b-xl">
+        <!-- Display primary call-to-action if $primary_cta exists -->
+        <?php if ($primary_cta): ?>
+            <div class="col-span-6 text-center bg-saltydog rounded-bl-xl">
+                <a class="block text-lg uppercase py-3 text-white font-bold" target="_blank"
+                   href="<?php the_field('registration_link', get_the_ID()); ?>">Register</a>
+            </div>
+        <?php endif; ?>
+
+        <!-- Display secondary call-to-action, which always exists. Promoted to primary I suppose :) -->
+        <div class="<?php echo $single_cta ?> text-center rounded-br-xl">
+            <a class="block text-lg uppercase py-3 font-bold"
                href="<?php the_permalink(); ?>">Learn More</a>
         </div>
     </div>
