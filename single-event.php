@@ -111,10 +111,19 @@ get_header(); ?>
                     <!-- end location section -->
 
                     <!-- start register section -->
+
                     <div class="col-span-12 bg-white rounded-md shadow-xl p-5">
-                        <button class="elevated-salty">
-                            <i class="fa-solid fa-circle-arrow-right"></i> Register
-                        </button>
+                        <?php
+                        if (get_field('registration_link')) :
+                            ?>
+                            <a href="<?php the_field('registration_link') ?>">
+                                <button class="elevated-salty">
+                                    <i class="fa-solid fa-circle-arrow-right"></i> Register
+                                </button>
+                            </a>
+                        <?php else : ?>
+                            <h2 class="text-md uppercase font-bold pb-2">There is no registration for this event.</h2>
+                        <?php endif; ?>
                     </div>
                     <!-- end register section -->
 
