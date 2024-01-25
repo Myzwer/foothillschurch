@@ -1,5 +1,7 @@
 <?php
 /**
+ * Nav Walker
+ *
  * The custom Navwalker for the theme.
  * This pairs with the header.php file to generate the right code to make the navwalker work.
  * You can read more about this in the Header section of the readme.
@@ -7,11 +9,11 @@
  * The Walker class was implemented in WordPress 2.1 to provide developers with a means to traverse
  * tree-like data structures for the purpose of rendering HTML.
  *
- * @link https://developer.wordpress.org/reference/classes/walker/
  *
  * @package WordPress
  * @subpackage Bootcamp_2
- * @since 1.0.0
+ * @author Josh Forrester <josh@onefortyfivedesign.com>
+ * @version 1.0.0
  */
 
 class PreLaunch_Walker extends Walker_Nav_Menu
