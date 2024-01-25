@@ -15,8 +15,20 @@ get_header(); ?>
 <?php get_template_part('components/headers/simple-header'); ?>
     <!-- End Header -->
 
-
     <div class="bg-white-gradient">
+        <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 gap-4">
+            <div class="col-span-12 text-left mt-10 prose">
+                <img class="rounded-xl shadow-xl" src="<?php the_field('banner_image'); ?>" alt="Contact Image Banner">
+            </div>
+
+            <div class="col-span-12 text-left mt-10 prose">
+                <?php the_field('contact_content'); ?>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bg-blue-gradient">
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 gap-4">
 
             <?php
