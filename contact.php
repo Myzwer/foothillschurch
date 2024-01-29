@@ -21,7 +21,7 @@ get_header(); ?>
                 <img class="rounded-xl shadow-xl" src="<?php the_field('banner_image'); ?>" alt="Contact Image Banner">
             </div>
 
-            <div class="col-span-12 text-left mt-10 prose">
+            <div class="col-span-12 text-left my-10 prose">
                 <?php the_field('contact_content'); ?>
             </div>
         </div>
