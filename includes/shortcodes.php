@@ -12,52 +12,98 @@
  * @version 1.0.0
  */
 
-//******************** BUTTONS *********************
+//******************** FAB (Floating Action) *********************
 
 /*
- * FAB MAIN BUTTON
+ * FAB MAIN BUTTON - SALTY
  * Defaults to "#" if no value is given
- * Usage:  [main_button text="Learn More" url="https://example.com"]
+ * Usage: [fab_salty text="Learn More" url="https://example.com"]
 */
 
-function fab_main_button_shortcode($atts, $content = null)
+function fab_salty_shortcode($atts, $content = null)
 {
     $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
     $button_url = isset($atts['url']) ? $atts['url'] : '#';
-    return '<a href="' . esc_url($button_url) . '"><button class="fab-main mt-3">' . esc_html($button_text) . '</button></a>';
+    return '<a href="' . esc_url($button_url) . '"><button class="fab-main mt-3"><i class="fa-solid fa-circle-arrow-right"></i> ' . esc_html($button_text) . '</button></a>';
 }
 
-add_shortcode('main_button', 'fab_main_button_shortcode');
+add_shortcode('fab_salty', 'fab_salty_shortcode');
 
 /*
- * BLUE BUTTON
+ * FAB MAIN BUTTON - WHITE
  * Defaults to "#" if no value is given
- * Usage:  [blue_button text="Learn More" url="https://example.com"]
+ * Usage:  [fab_white text="Learn More" url="https://example.com"]
 */
 
-function blue_button_shortcode($atts, $content = null)
+function fab_white_shortcode($atts, $content = null)
+{
+    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
+    $button_url = isset($atts['url']) ? $atts['url'] : '#';
+    return '<a href="' . esc_url($button_url) . '"><button class="fab-main-white mt-3"><i class="fa-solid fa-circle-arrow-right"></i> ' . esc_html($button_text) . '</button></a>';
+}
+
+add_shortcode('fab_white', 'fab_white_shortcode');
+
+/*
+ * ELEVATED BLUE BUTTON
+ * Defaults to "#" if no value is given
+ * Usage:  [elevated_blue text="Learn More" url="https://example.com"]
+*/
+
+function elevated_blue_shortcode($atts, $content = null)
 {
     $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
     $button_url = isset($atts['url']) ? $atts['url'] : '#';
     return '<a href="' . esc_url($button_url) . '"><button class="elevated-blue mt-3"><i class="fa-sharp fa-solid fa-arrow-right"></i> ' . esc_html($button_text) . '</button></a>';
 }
 
-add_shortcode('blue_button', 'blue_button_shortcode');
+add_shortcode('elevated_blue', 'elevated_blue_shortcode');
+
 
 /*
- * GHOST BUTTON
+ * ELEVATED WHITE BUTTON
  * Defaults to "#" if no value is given
- * Usage:  [ghost_button text="Learn More" url="https://example.com"]
+ * Usage:  [elevated_white text="Learn More" url="https://example.com"]
 */
 
-function custom_button_shortcode($atts, $content = null)
+function elevated_white_shortcode($atts, $content = null)
 {
     $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
     $button_url = isset($atts['url']) ? $atts['url'] : '#';
-    return '<a href="' . esc_url($button_url) . '"><button class="ghost mt-3">' . esc_html($button_text) . '</button></a>';
+    return '<a href="' . esc_url($button_url) . '"><button class="elevated-white mt-3"><i class="fa-sharp fa-solid fa-arrow-right"></i> ' . esc_html($button_text) . '</button></a>';
 }
 
-add_shortcode('ghost_button', 'custom_button_shortcode');
+add_shortcode('elevated_white', 'elevated_white_shortcode');
+
+/*
+ * GHOST BLACK BUTTON
+ * Defaults to "#" if no value is given
+ * Usage:  [ghost_black text="Learn More" url="https://example.com"]
+*/
+
+function ghost_black_shortcode($atts, $content = null)
+{
+    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
+    $button_url = isset($atts['url']) ? $atts['url'] : '#';
+    return '<a href="' . esc_url($button_url) . '"><button class="ghost-black mt-3">' . esc_html($button_text) . '</button></a>';
+}
+
+add_shortcode('ghost_black', 'ghost_black_shortcode');
+
+/*
+ * GHOST WHITE BUTTON
+ * Defaults to "#" if no value is given
+ * Usage:  [ghost_white text="Learn More" url="https://example.com"]
+*/
+
+function ghost_white_shortcode($atts, $content = null)
+{
+    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
+    $button_url = isset($atts['url']) ? $atts['url'] : '#';
+    return '<a href="' . esc_url($button_url) . '"><button class="ghost-white mt-3">' . esc_html($button_text) . '</button></a>';
+}
+
+add_shortcode('ghost_white', 'ghost_white_shortcode');
 
 
 //******************** SOCIALS *********************
