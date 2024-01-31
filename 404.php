@@ -2,13 +2,14 @@
 /**
  * Template Name: Custom - 404 Error
  *
+ * This page displays anytime a user gets a 404 error.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
+ * Usage: WP will use this automatically if a user gets a 404. Can be edited from the ACF "Options" tab
  *
  * @package WordPress
  * @subpackage Bootcamp_2
- * @since 1.0.0
+ * @author Josh Forrester <josh@onefortyfivedesign.com>
+ * @version 1.0.0
  */
 
 get_header(); ?>
