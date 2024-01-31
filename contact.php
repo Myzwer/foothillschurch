@@ -2,12 +2,14 @@
 /**
  * Template Name: Custom - Contact
  *
+ * This page is used as the default contact page for the site.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * Usage: Use in WP-Admin, select "Custom - Contact" from page template.
  *
  * @package WordPress
  * @subpackage Bootcamp_2
- * @since 1.0.0
+ * @author Josh Forrester <josh@onefortyfivedesign.com>
+ * @version 1.0.0
  */
 
 get_header(); ?>
