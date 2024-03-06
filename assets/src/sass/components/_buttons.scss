@@ -138,3 +138,36 @@ $lightblue-grad-hover: #bcd1da;
   font-weight: 800;
   padding: 10px 30px;
 }
+
+// Linktree Page
+.elevated-white-lt {
+  align-items: center;
+  background: $white-grad-1 linear-gradient(90deg, $white-grad-1 0%, $white-grad-2 100%);
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  color: $saltydog;
+  font-size: 1.3em;
+  font-weight: 800;
+  padding: 15px;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.elevated-white-lt:hover {
+  background: $white-hover;
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
+.lt-image {
+  background: $white-grad-1 linear-gradient(90deg, $white-grad-1 0%, $white-grad-2 100%);
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
+.lt-image:hover {
+  background: $white-hover;
+  border-radius: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
