@@ -32,6 +32,14 @@
   height: 100vh;
 }
 
+// Increases the background size to more or less take up full height, but lets content flow free on tablet or mobile
+// Used on the app page where content it too tall on mobile, but too short on desktop
+@media screen and (min-width: 64em) {
+  .full-background-desktop {
+    height: 80vh;
+  }
+}
+
 // This is for the generic page build template - the image header.
 .generic-image-header {
   height: 20vh;
