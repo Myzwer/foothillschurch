@@ -110,7 +110,11 @@ if ( have_rows( 'body_sections' ) ) :
 				break;
 
 			case 'app_block':
-				get_template_part( 'components/blocks/app-promo.php' );
+				get_template_part( 'components/blocks/app-promo' );
+				break;
+
+			case 'mockup_promo':
+				get_template_part( 'components/blocks/mockup' );
 				break;
 
 
