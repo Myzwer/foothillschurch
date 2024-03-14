@@ -45,13 +45,13 @@
   height: 20vh;
 }
 
-.generic-image-content-header {
+.image-header-image-side {
   height: 20vh;
 }
 
 // Only the content needs adjusted on tablet+, the image will just follow along to match height.
 @media screen and (min-width: 64em) {
-  .generic-image-content-header {
+  .image-header-content-side, .image-header-image-side {
     height: 40vh;
   }
 }
