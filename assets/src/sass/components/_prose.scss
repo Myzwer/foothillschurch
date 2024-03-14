@@ -8,6 +8,22 @@
  *
  */
 
+.prose {
+  h1 {
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin-bottom: 0;
+    text-transform: capitalize;
+  }
+
+  button {
+    margin-top: 0;
+  }
+}
+
 // This styles the UL / LI to have actual colored disks
 .prose ul {
   list-style: none;
