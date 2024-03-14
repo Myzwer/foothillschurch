@@ -31,13 +31,9 @@ $order = ( $side == 'left' ) ? '' : 'md:order-2';
 
     <div class="col-span-12 lg:col-span-7 relative">
         <div class="content-middle-medium">
-            <h1 class="uppercase text-3xl md:text-4xl font-bold">
-				<?php the_sub_field( 'title' ); ?>
-            </h1>
-            <div class="prose">
+            <div class="prose text-pretty">
 				<?php the_sub_field( 'content' ); ?>
             </div>
-
         </div>
     </div>
 </div>

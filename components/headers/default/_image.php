@@ -18,7 +18,7 @@
             <div class="bg-no-repeat bg-scroll bg-cover relative image-header-content-side"
                  style="background:
                          url('<?php echo get_template_directory_uri(); ?>/assets/src/img/topography.png') center center;">
-                <div class="content-middle-medium text-center px-5">
+                <div class="content-middle-medium text-center px-5 text-pretty">
                     <div class="center add-padding">
                         <h2 class="text-saltydog text-xl lg:text-2xl lb-2 font-bold"><?php the_sub_field( "small_subtitle" ); ?></h2>
                     </div>
