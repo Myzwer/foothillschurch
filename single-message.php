@@ -16,7 +16,7 @@ get_header(); ?>
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 pb-10 relative">
             <div class="col-span-12 pt-10">
                 <div class="video-container">
-                    <?php the_field("youtube_link"); ?>
+					<?php the_field( "youtube_link" ); ?>
                 </div>
             </div>
 
@@ -25,48 +25,47 @@ get_header(); ?>
                 <h3 class="font-bold capitalize text-3xl pt-3"><?php the_title(); ?></h3>
 
                 <!-- Function to display terms -->
-                <?php
-                function display_taxonomy_terms($taxonomy_name, $label)
-                {
-                    // Get the terms associated with the current post for the specified taxonomy
-                    $terms = get_the_terms(get_the_ID(), $taxonomy_name);
+				<?php
+				function display_taxonomy_terms( $taxonomy_name, $label ) {
+					// Get the terms associated with the current post for the specified taxonomy
+					$terms = get_the_terms( get_the_ID(), $taxonomy_name );
 
-                    // Check if there are terms and ensure no WP_Error occurred
-                    if ($terms && !is_wp_error($terms)) {
+					// Check if there are terms and ensure no WP_Error occurred
+					if ( $terms && ! is_wp_error( $terms ) ) {
 
-                        // Initialize an array to store the term links
-                        $term_links = array();
+						// Initialize an array to store the term links
+						$term_links = array();
 
-                        // Loop through each term
-                        foreach ($terms as $term) {
+						// Loop through each term
+						foreach ( $terms as $term ) {
 
-                            // Create a link to the term archive page
-                            $term_links[] = '<a href="' . get_term_link($term, $taxonomy_name) . '">' . esc_html($term->name) . '</a>';
-                        }
+							// Create a link to the term archive page
+							$term_links[] = '<a href="' . get_term_link( $term, $taxonomy_name ) . '">' . esc_html( $term->name ) . '</a>';
+						}
 
-                        // Output a paragraph with the term label and links, separated by commas
-                        echo '<p class="capitalize text-lg"><span class="font-bold">' . esc_html($label) . ':</span> ' . implode(', ', $term_links) . '</p>';
-                    }
-                }
+						// Output a paragraph with the term label and links, separated by commas
+						echo '<p class="capitalize text-lg"><span class="font-bold">' . esc_html( $label ) . ':</span> ' . implode( ', ', $term_links ) . '</p>';
+					}
+				}
 
 
-                // Display Speaker
-                display_taxonomy_terms('speaker', 'Speaker');
+				// Display Speaker
+				display_taxonomy_terms( 'speaker', 'Speaker' );
 
-                // Display Date
-                echo '<p class="capitalize text-lg"><span class="font-bold">Date:</span> ' . get_the_date() . '</p>';
+				// Display Date
+				echo '<p class="capitalize text-lg"><span class="font-bold">Date:</span> ' . get_the_date() . '</p>';
 
-                // Display Series
-                display_taxonomy_terms('series', 'Series');
+				// Display Series
+				display_taxonomy_terms( 'series', 'Series' );
 
-                // Display Topic
-                display_taxonomy_terms('topic', 'Topics');
+				// Display Topic
+				display_taxonomy_terms( 'topic', 'Topics' );
 
-                if (get_field('subsplash_link')): ?>
+				if ( get_field( 'subsplash_link' ) ): ?>
                     <p class="capitalize text-lg"><span class="font-bold">Notes:</span> <a
-                                href="<?php the_field("subsplash_link") ?>">View On Subsplash <i
+                                href="<?php the_field( "subsplash_link" ) ?>">View On Subsplash <i
                                     class="fa-regular fa-arrow-up-right-from-square"></i></a></p>
-                <?php endif; ?>
+				<?php endif; ?>
             </div>
 
         </div>
@@ -79,16 +78,16 @@ get_header(); ?>
                 <p>All of our sermons are transcribed into blog format for you to read!</p>
                 <p>Blog format is typically available the following Wednesday.</p>
                 <div class="col-span-12 text-center">
-                    <?php if (get_field('blog_link')): ?>
+					<?php if ( get_field( 'blog_link' ) ): ?>
                         <button class="elevated-blue mt-3 mr-8">
-                            <a href="<?php the_field("blog_link"); ?>">
+                            <a href="<?php the_field( "blog_link" ); ?>">
                                 <i class="fa-solid fa-arrow-right"></i> Read Now
                             </a>
                         </button>
-                    <?php endif; ?>
+					<?php endif; ?>
 
                     <button class="ghost-paired mt-3">
-                        <a href="<?php the_field('blog_page', 'options'); ?>">
+                        <a href="<?php the_field( 'blog_page', 'options' ); ?>">
                             View All Blogs
                         </a>
                     </button>
@@ -102,7 +101,7 @@ get_header(); ?>
     <!-- START POPULAR MESSAGES -->
     <div class="bg-blue-gradient">
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 gap-4">
-            <?php get_template_part('components/layouts/popular-messages'); ?>
+			<?php get_template_part( 'components/layouts/popular-messages' ); ?>
         </div>
     </div>
     <!-- END POPULAR MESSAGES -->
@@ -113,27 +112,27 @@ get_header(); ?>
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 gap-4">
 
             <div class="col-span-12 md:col-span-6 text-left mt-10">
-                <img src="<?php the_field('app_promo', 'options'); ?>" alt="">
+                <img src="<?php the_field( 'app_promo', 'options' ); ?>" alt="">
             </div>
 
             <div class="col-span-12 md:col-span-6 text-left mt-10 relative">
                 <div class="content-middle-medium">
-                    <h3 class="text-2xl md:text-3xl mb-3 font-bold capitalize">Download our App!</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores fuga perspiciatis quas
-                        reprehenderit ullam vero vitae voluptatum? A dolores error, facilis harum quis reprehenderit,
-                        sapiente tempore vel velit vero voluptas!</p>
+                    <h3 class="text-2xl md:text-3xl mb-3 font-bold capitalize"><?php the_field( 'messages_app_title', 'options' ); ?></h3>
+                    <p><?php the_field( 'messages_app_description', 'options' ); ?></p>
 
-                    <a href="https://apps.apple.com/us/app/foothills-church/id520919170" target="_blank">
-                        <button class="ghost mt-3 mr-8">
-                            Download IOS
-                        </button>
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.subsplash.thechurchapp.foothillschurch&pli=1"
-                       target="_blank">
-                        <button class="ghost mt-3">
-                            Download Android
-                        </button>
-                    </a>
+                    <div class="pt-5">
+                        <a class="pr-2" href="<?php the_field( "app_store_link", 'options' ); ?>" target="_blank">
+                            <button class="ghost-black">
+                                <i class="fa-brands fa-apple"></i> App Store
+                            </button>
+                        </a>
+
+                        <a href="<?php the_field( "play_store_link", 'options' ); ?>" target="_blank">
+                            <button class="ghost-black">
+                                <i class="fa-brands fa-google-play"></i> Play Store
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
             <!-- END POPULAR MESSAGES -->
