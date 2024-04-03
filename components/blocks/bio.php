@@ -17,13 +17,13 @@
 ?>
 
 <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
-    <div class="grid grid-cols-12 gap-4 md:gap-4">
-        <div class="col-span-12 md:col-span-6 lg:col-span-4 py-5 text-center mx-auto flex items-center justify-center">
-            <img class="rounded-xl shadow-xl" src="<?php the_sub_field("square_side_image"); ?>">
+    <div class="grid grid-cols-12 gap-4 md:gap-6">
+        <div class="col-span-12 md:col-span-6 lg:col-span-3 py-5 text-center mx-auto flex items-center justify-center">
+            <img class="rounded-xl shadow-xl" src="<?php the_sub_field( "square_side_image" ); ?>">
         </div>
 
-        <div class="col-span-12 md:col-span-6 lg:col-span-8 py-5 prose max-w-none">
-            <?php the_sub_field("text_editor"); ?>
+        <div class="col-span-12 md:col-span-6 lg:col-span-9 py-5 prose max-w-none">
+			<?php the_sub_field( "text_editor" ); ?>
         </div>
     </div>
 </div>
