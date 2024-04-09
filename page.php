@@ -60,6 +60,7 @@ if ( have_rows( 'body_sections' ) ) :
 		}
 
 		echo "<div class='$bg'>";
+		ob_start();  // Start output buffering
 		switch ( get_row_layout() ) {
 			case 'text_block':
 				get_template_part( 'components/blocks/text' );
@@ -117,14 +118,21 @@ if ( have_rows( 'body_sections' ) ) :
 				get_template_part( 'components/blocks/mockup' );
 				break;
 
-
 			// FIXME: Only for building/debugging, shouldn't be left in for production
 			default:
 				echo "Unhandled content block: " . get_row_layout();
 				break;
 		}
+		$output = ob_get_contents();  // Fetch the content from the buffer
+		ob_end_clean();  // End output buffering, discarding buffer contents
+
+		// Only increment the counter if the buffer had content
+		if ( strlen( $output ) > 1 ) {
+			$counter ++;
+		}
+
+		echo $output;  // Echo the content after the counter has been handled
 		echo "</div>";
-		$counter ++;
 
 		// End loop.
 	endwhile;
