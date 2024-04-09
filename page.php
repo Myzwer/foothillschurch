@@ -32,9 +32,8 @@ if ( have_rows( 'header_select' ) ) :
 				break;
 
 
-			// FIXME: Only for building/debugging, shouldn't be left in for production
 			default:
-				echo "Unhandled content block: " . get_row_layout();
+				error_log( "Unhandled content block: " . get_row_layout() );
 				break;
 		}
 
