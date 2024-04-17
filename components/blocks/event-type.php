@@ -19,7 +19,27 @@
 ?>
 
 <?php
-$type = get_sub_field( "event_type" );
+$type     = get_sub_field( "event_type" );
+$location = get_sub_field( "event_location" );
+
+$tax_query = array( 'relation' => 'AND' );
+
+if ( ! empty( $type ) ) {
+	$tax_query[] = array(
+		'taxonomy' => 'event_type',
+		'field'    => 'slug',
+		'terms'    => $type
+	);
+}
+
+if ( ! empty( $location ) ) {
+	$tax_query[] = array(
+		'taxonomy' => 'event_location',
+		'field'    => 'slug',
+		'terms'    => $location
+	);
+}
+
 // WP_Query arguments
 $args = array(
 	'post_type'      => array( 'event' ),
@@ -27,23 +47,16 @@ $args = array(
 	'nopaging'       => false,
 	'order'          => 'DESC',
 	'orderby'        => 'date',
-	'posts_per_page' => 3, // Use 'posts_per_page' instead of 'numberposts'
+	'posts_per_page' => 3,
 	'paged'          => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
-	'tax_query'      => array(
-		array(
-			'taxonomy' => 'event_type',
-			'field'    => 'slug', // You can use 'slug' or 'term_id' based on your needs
-			'terms'    => $type, // Use the term ID of the current term
-		),
-	),
+	'tax_query'      => $tax_query,
 );
 
-// The Query
 $events = new WP_Query( $args );
 
-// Check if there's going to be any events returning at all
+// Rest of your code
+
 if ( $events->have_posts() ) : ?>
-    ?>
     <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
         <div class="grid grid-cols-12 gap-4 md:gap-4">
             <div class="col-span-12 py-5 prose max-w-none">
