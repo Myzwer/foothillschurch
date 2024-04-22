@@ -25,8 +25,10 @@
 @use 'components/video';
 @use 'components/prose';
 @use 'components/long-faq';
+@use 'components/instagram';
 
-// This section adds tailwind, but @tailwind isn't recognized so we have to suppress stylelint.
+/* This section adds tailwind, but @tailwind isn't recognized so we have to suppress stylelint. */
+
 /* stylelint-disable */
 @tailwind base;
 @tailwind components;

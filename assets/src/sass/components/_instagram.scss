@@ -1,0 +1,23 @@
+/**
+ * Instagram
+ * =================================
+ * Edits the CSS that the Instagram plugin adds. Its used in the ./components/blocks/instagram file.
+ *
+ *
+ *
+ *
+ *
+ */
+
+// This cleans up the white box on the instagram component and makes it sized to match the images.
+.instagram {
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+  margin-bottom: 36px;
+  margin-right: 6px;
+  margin-top: 12px;
+}
+
+// This pulls up the margin up on the top (or top 2 on mobile) rows so you don't see a gap on any device size.
+.insta-margin-fix {
+  margin-bottom: -24px
+}
