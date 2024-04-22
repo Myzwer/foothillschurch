@@ -22,7 +22,7 @@
              rgba(245, 235, 232, 0.45)
              ), url('<?php the_field( 'topography', 'option' ) ?>') center center;">
 
-    <div class=" lg:max-w-5xl lg:text-center lg:mx-auto p-5 pt-10">
+    <div class=" lg:max-w-6xl lg:text-center lg:mx-auto p-5 pt-10">
         <div class="grid grid-cols-12 gap-1">
             <div class="col-span-12 py-5 prose max-w-none">
 				<?php the_sub_field( "header_content" ); ?>
@@ -35,7 +35,7 @@
             <div class="col-span-6 md:col-span-4 bg-white relative instagram">
 				<?php if ( have_rows( 'cta_box' ) ): ?>
 					<?php while ( have_rows( 'cta_box' ) ): the_row(); ?>
-                        <div class="absolute bottom-2 p-2">
+                        <div class="absolute bottom-2 px-5 pb-3">
                             <h2 class="text-xl md:text-3xl font-bold uppercase text-left md:pb-2"><?php the_sub_field( "title" ); ?></h2>
                             <div class="text-left">
                                 <a href="<?php the_sub_field( "button_link" ); ?>" class="text-left">
