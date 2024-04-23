@@ -46,7 +46,13 @@ get_header(); ?>
 
 <?php
 if ( have_rows( 'announcement_banner' ) ):
-	while ( have_rows( 'announcement_banner' ) ): the_row(); ?>
+	while ( have_rows( 'announcement_banner' ) ): the_row();
+		// Check if announcement_content has a value, if not skip this iteration
+		if ( ! get_sub_field( 'announcement_content' ) ) {
+			continue;
+		}
+		?>
+    
         <div class="bg-salty-gradient">
             <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
                 <div class="grid grid-cols-12 gap-4 md:gap-4">
