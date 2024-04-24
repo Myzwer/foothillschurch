@@ -14,6 +14,7 @@
 
 get_header(); ?>
 
+    <!-- Start Header -->
     <video class="header-video"
            src="<?php the_field( "background_video" ); ?>" autoplay loop
            playsinline muted></video>
@@ -23,16 +24,23 @@ get_header(); ?>
             <div class="center add-padding">
 
 				<?php
+				// Get the header_style radio button's value
 				$header_choice = get_field( 'header_style' );
 
-				if ( $header_choice == "Logo" ): ?>
+				/*
+				 * Depending on what the value is, run different HTML.
+				 * NOTE both use "location_title," its just sized differently between the two.
+				 * Using this method its impossible for both conditions to render, regardless whether content editors
+				 * have values in both logo and text.
+				 * */
+				if ( $header_choice == "logo" ): ?>
                     <img class="w-3/4 md:w-1/2 mx-auto" src="<?php the_field( 'brand' ); ?>" alt="Branding">
                     <h1 class="text-white text-3xl  uppercase font-bold">
 						<?php the_field( "location_title" ); ?>
                     </h1>
 				<?php endif; ?>
 
-				<?php if ( $header_choice == "Text" ): ?>
+				<?php if ( $header_choice == "text" ): ?>
                     <div class="center add-padding">
                         <h2 class="text-white text-xl md:text-3xl lb-2 font-bold"><?php the_field( "top_line" ); ?></h2>
                         <h1 class="text-white text-5xl  uppercase font-bold">
@@ -43,16 +51,25 @@ get_header(); ?>
             </div>
         </div>
     </div>
+    <!-- End  Header -->
 
+
+    <!-- Start Announcement Banner -->
 <?php
+// Check if there exist row(s) in the 'announcement_banner' field
 if ( have_rows( 'announcement_banner' ) ):
-	while ( have_rows( 'announcement_banner' ) ): the_row();
-		// Check if announcement_content has a value, if not skip this iteration
+	// If row(s) exist, loop through each row
+	while ( have_rows( 'announcement_banner' ) ):
+		// Set the current row for the loop
+		the_row();
+
+		// Check if the sub field 'announcement_content' in the current row has content
+		// If it does not have content (empty), skip this iteration of the loop
 		if ( ! get_sub_field( 'announcement_content' ) ) {
+			// Skip this iteration of the loop
 			continue;
 		}
 		?>
-    
         <div class="bg-salty-gradient">
             <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
                 <div class="grid grid-cols-12 gap-4 md:gap-4">
@@ -62,8 +79,8 @@ if ( have_rows( 'announcement_banner' ) ):
                 </div>
             </div>
         </div>
-
 	<?php
+
 	endwhile;
 endif;
 ?>
@@ -136,10 +153,13 @@ if ( have_rows( 'other_sections' ) ) :
 				break;
 		}
 
+		// Output buffering is here to make sure that if for whatever reason, a section doesn't render any content
+		// it gets skipped in the color. (so a white bg doesn't end up next to a white bg because blue didn't show.
+
 		$output = ob_get_contents();  // Save content of the current loop iteration to $output variable
 		ob_end_clean();  // Dump the content like a bad habit because output has already been saved to variable.
 
-		// Check if the output saved to variable is longer than 1 character (whitespace might return, so 0 ensures nothing does)
+		// Check if the output saved to variable is longer than 1 character (whitespace might return, so 1 ensures nothing does)
 		if ( strlen( $output ) > 1 ) {
 			// Increment counter only if $output had content
 			$counter ++;
