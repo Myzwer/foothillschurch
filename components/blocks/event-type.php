@@ -21,6 +21,9 @@
 <?php
 $type     = get_sub_field( "event_type" );
 $location = get_sub_field( "event_location" );
+$name     = get_sub_field( "event_name" );
+$count    = ( get_sub_field( "num_events" ) == null ) ? 3 : get_sub_field( "num_events" );
+
 
 $tax_query = array( 'relation' => 'AND' );
 
@@ -40,6 +43,14 @@ if ( ! empty( $location ) ) {
 	);
 }
 
+if ( ! empty( $name ) ) {
+	$tax_query[] = array(
+		'taxonomy' => 'event_name',
+		'field'    => 'slug',
+		'terms'    => $name
+	);
+}
+
 // WP_Query arguments
 $args = array(
 	'post_type'      => array( 'event' ),
@@ -47,14 +58,14 @@ $args = array(
 	'nopaging'       => false,
 	'order'          => 'DESC',
 	'orderby'        => 'date',
-	'posts_per_page' => 3,
+	'posts_per_page' => $count,
 	'paged'          => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
 	'tax_query'      => $tax_query,
 );
 
 $events = new WP_Query( $args );
 
-// Rest of your code
+// Rest of the code
 
 if ( $events->have_posts() ) : ?>
     <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
