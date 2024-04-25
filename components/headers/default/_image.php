@@ -28,8 +28,20 @@
 					<?php if ( have_rows( 'primary_cta' ) ): ?>
 						<?php while ( have_rows( 'primary_cta' ) ): the_row(); ?>
 
-							<?php if ( get_sub_field( 'button_link' ) ): ?>
-                                <a class="block" href="<?php the_sub_field( "button_link" ); ?>">
+
+							<?php
+							// check to make sure that there's a link, if not, hide the whole button.
+							if ( get_sub_field( 'button_link' ) ): ?>
+                                <a
+                                        class="block"
+                                        href="<?php the_sub_field( "button_link" ); ?>"
+									<?php
+									// Determine whether to open the link as a pop-up in church center or not.
+									if ( get_sub_field( "open_in_cc" ) == "yes" ) {
+										echo "data-open-in-church-center-modal='true'";
+									}
+									?>
+                                >
                                     <button class="fab-main mt-3">
                                         <i class="fa-solid fa-circle-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
                                     </button>
