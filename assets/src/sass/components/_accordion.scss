@@ -1,0 +1,57 @@
+/**
+ * Accordion
+ * =================================
+ * - This is the full build out accordion for resources, not the long FAQ accordion
+ *
+ *
+ *
+ *
+ */
+
+.resource {
+  ul,
+  li {
+    list-style: none;
+  }
+
+  .resource-inner {
+    margin: 30px auto;
+    overflow: auto;
+    width: 90%;
+  }
+
+  .resource-tab {
+    li {
+      padding: 20px;
+    }
+
+    .tab-title {
+      background: #ccdbe5;
+
+      cursor: pointer;
+      font-size: 120%;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .tab-content {
+      background: #fff;
+      display: none;
+    }
+  }
+
+  .rotate {
+    transform: rotate(90deg);
+  }
+
+  .fa {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 800px) {
+  .resource .resource-inner {
+    width: 90%;
+  }
+}
+
