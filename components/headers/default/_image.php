@@ -30,18 +30,28 @@
 
 
 							<?php
-							// check to make sure that there's a link, if not, hide the whole button.
-							if ( get_sub_field( 'button_link' ) ): ?>
-                                <a
-                                        class="block"
-                                        href="<?php the_sub_field( "button_link" ); ?>"
-									<?php
-									// Determine whether to open the link as a pop-up in church center or not.
-									if ( get_sub_field( "open_in_cc" ) == "yes" ) {
-										echo "data-open-in-church-center-modal='true'";
-									}
-									?>
-                                >
+							// This line uses the ternary operator to choose between two possible URLs.
+							// It checks if 'button_link' subfield exists. If it does, $link is assigned the value of 'button_link'.
+							// If 'button_link' does not exist (is null or false), then $link is assigned the value of 'button_link_file'.
+							// If both exist, link gets priority
+							// if neither exist, it would return null and get hung up on the if statement below.
+							$link = get_sub_field( 'button_link' ) ? get_sub_field( 'button_link' ) : get_sub_field( 'button_link_file' );
+
+							// Get tab status
+							$tab = get_sub_field( 'new_tab' );
+
+							if ( $tab == "yes" ) {
+								$tab = 'target="_blank"';
+							} elseif ( $tab == "cc" ) {
+								$tab = "data-open-in-church-center-modal='true'";
+							} else {
+								$tab = null;
+							}
+
+
+							// Hide button if link is returning null
+							if ( $link ): ?>
+                                <a href="<?php echo $link ?>" <?php echo $tab ?>>
                                     <button class="fab-main mt-3">
                                         <i class="fa-solid fa-circle-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
                                     </button>
