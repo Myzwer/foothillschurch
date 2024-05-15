@@ -14,34 +14,33 @@
     list-style: none;
   }
 
-
-  .resource-tab {
-    li {
-      padding: 20px;
-    }
-
-    .tab-title {
-      background: #ccdbe5;
-      border-bottom: 1px solid #333333;
-      cursor: pointer;
-      font-size: 120%;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-
-    .tab-content {
-      background: #fff;
-      display: none;
-    }
-  }
-
   .rotate {
     transform: rotate(90deg);
   }
 
   .fa {
     padding: 5px;
+  }
+}
+
+.resource-tab {
+  li {
+    padding: 20px;
+  }
+
+  .tab-title {
+    background: #ccdbe5;
+    border-bottom: 1px solid #333333;
+    cursor: pointer;
+    font-size: 120%;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+
+  .tab-content {
+    background: #ffffff;
+    display: none;
   }
 }
 
