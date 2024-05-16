@@ -40,6 +40,7 @@ $button-hover-color: #eaeaea; // What hover color do you want the button to be?
   position: absolute;
   text-transform: uppercase;
   z-index: 15;
+
   a,
   a:visited {
     color: $nav-font-color;
@@ -84,12 +85,15 @@ nav {
   position: absolute;
   width: 100%;
   z-index: 10;
+
   ul {
     display: none;
+
     li {
       float: none;
       position: relative;
       text-transform: uppercase;
+
       a,
       a:visited {
         color: $nav-font-color;
@@ -97,6 +101,7 @@ nav {
         line-height: 20px;
         padding: 15px;
         text-decoration: none;
+
         &:hover {
           background: $link-hover-color;
           color: #eeeeee;
@@ -110,7 +115,8 @@ nav {
 
       // Dropdown list
       ul li {
-        min-width: 190px;
+        min-width: 220px;
+
         a {
           line-height: 20px;
           padding-left: 30px; //changes how far indented the subnav links are
@@ -120,6 +126,7 @@ nav {
       li:nth-child(even) {
         background-color: #494949;
       }
+
       li:nth-child(odd) {
         background-color: #404040;
       }
@@ -157,18 +164,23 @@ nav {
   span:before {
     top: -10px;
   }
+
   span:after {
     bottom: -10px;
   }
+
   &.active span {
     background-color: transparent;
+
     &:before,
     &:after {
       top: 0;
     }
+
     &:before {
       transform: rotate(45deg);
     }
+
     &:after {
       margin: 0;
       transform: rotate(-45deg);
@@ -208,12 +220,15 @@ nav {
     display: flex;
     padding: 0;
     position: relative;
+
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
+
       li {
         float: left;
+
         a,
         a:visited {
           line-height: $nav-height;
