@@ -33,7 +33,6 @@ if ( have_rows( 'header_select' ) ) :
 				get_template_part( 'components/headers/default/_image' );
 				break;
 
-
 			default:
 				error_log( "Unhandled content block: " . get_row_layout() );
 				break;
