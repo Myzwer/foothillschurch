@@ -1,14 +1,14 @@
 /**
  * Accordion
  * =================================
- * - This is the full build out accordion for resources, not the long FAQ accordion
+ * - This is the full build out accordion for resources and outreach, not the FAQ section
  *
  *
  *
  *
  */
 
-.resource {
+.resource, .outreach {
   ul,
   li {
     list-style: none;
@@ -47,6 +47,35 @@
 @media (max-width: 800px) {
   .resource .resource-inner {
     width: 90%;
+  }
+}
+
+
+.outreach-tab {
+  li {
+    padding: 20px;
+  }
+
+  .tab-title {
+    background: #ccdbe5;
+    border-bottom: 1px solid #333333;
+    cursor: pointer;
+    font-size: 120%;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+
+  .tab-content {
+    background: #ffffff;
+    display: none;
+  }
+
+  .outreach-details li {
+    list-style-position: inside;
+    padding: 0;
+    padding-left: 1em;
+    text-indent: -1em;
   }
 }
 
