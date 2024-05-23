@@ -87,7 +87,7 @@ endif;
 
 
                                             <li class="tab-content">
-                                                <div class="prose outreach-details">
+                                                <div class="prose  max-w-none outreach-details">
 													<?php the_sub_field( 'partner_details' ); ?>
                                                 </div>
                                             </li>
