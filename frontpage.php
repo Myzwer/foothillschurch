@@ -17,20 +17,46 @@ get_header(); ?>
     <video class="header-video" src="<?php the_field( "video_background" ); ?>" autoplay loop playsinline muted></video>
     <div class="viewport-header">
         <div class="head-container">
-            <div class="center add-padding">
-                <h2 class="text-white text-xl md:text-3xl lb-2 font-bold"><?php the_field( "header_subtitle" ); ?></h2>
-            </div>
-            <h1 class="text-white text-3xl md:text-5xl uppercase font-bold"><?php the_field( "header_main_title" ); ?></h1>
+			<?php
+			// select which text to use for the banner
+			if ( check_live_status() ) {
+				$top_line              = get_field( "live_top_line_text" );
+				$main_line             = get_field( "live_main_text" );
+				$primary_button_text   = get_field( "button_text_live" );
+				$primary_button_link   = get_field( "live_button_link" );
+				$secondExists          = true; //confirm we need the second button
+				$secondary_button_text = get_field( "normal_button_text" );
+				$secondary_button_link = get_field( "normal_button_link" );
+			} else {
+				$top_line            = get_field( "header_subtitle" );
+				$main_line           = get_field( "header_main_title" );
+				$primary_button_text = get_field( "normal_button_text" );
+				$primary_button_link = get_field( "normal_button_link" );
+				$secondExists        = false; //confirm we don't need the second button
+			}
+			?>
 
-			<?php if ( have_rows( 'primary_cta' ) ): ?>
-				<?php while ( have_rows( 'primary_cta' ) ): the_row(); ?>
-                    <a href="<?php the_sub_field( "button_link" ); ?>">
-                        <button class="fab-main mt-3">
-                            <i class="fa-solid fa-circle-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                        </button>
-                    </a>
-				<?php endwhile;
-			endif; ?>
+            <div class="center add-padding">
+                <h2 class="text-white text-xl md:text-3xl lb-2 font-bold"><?php echo $top_line; ?></h2>
+            </div>
+            <h1 class="text-white text-3xl md:text-5xl uppercase font-bold"><?php echo $main_line; ?></h1>
+
+
+            <a href="<?php echo $primary_button_link; ?>">
+                <button class="fab-main mt-3">
+                    <i class="fa-solid fa-circle-arrow-right"></i> <?php echo $primary_button_text; ?>
+                </button>
+            </a>
+
+			<?php
+			if ( $secondExists ) { ?>
+                <a href="<?php echo $secondary_button_link; ?>">
+                    <button class="ghost-white mt-3">
+						<?php echo $secondary_button_text; ?>
+                    </button>
+                </a>
+			<?php } ?>
+
         </div>
     </div>
     <!-- END Header -->
