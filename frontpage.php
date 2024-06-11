@@ -61,6 +61,20 @@ get_header(); ?>
     </div>
     <!-- END Header -->
 
+    <!-- Show announcement banner if there's content -->
+<?php
+if ( get_field( "announcement_block" ) ) { ?>
+    <div class="bg-salty-gradient">
+        <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
+            <div class="grid grid-cols-12 gap-4 md:gap-4">
+                <div class="col-span-12 py-5 prose max-w-none announcement-block">
+					<?php the_field( "announcement_block" ); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
     <!-- START Recent Sermon -->
     <div class="bg-white-gradient">
         <div class="lg:max-w-5xl mx-auto grid grid-cols-12 p-5 py-10 gap-4 md:gap-10">
