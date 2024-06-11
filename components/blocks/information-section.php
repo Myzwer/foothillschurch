@@ -34,21 +34,10 @@
 			while ( have_rows( 'information_section' ) ) : the_row(); ?>
 
                 <div class="col-span-12 md:col-span-6 py-5">
-                    <h2 class="capitalize font-bold text-xl pb-5"><?php the_sub_field( 'header_title' ); ?></h2>
                     <hr class="border-t border-2 border-black">
-                    <p class="pt-5"><?php the_sub_field( 'content' ); ?></p>
-
-					<?php if ( have_rows( 'primary_cta' ) ): ?>
-						<?php while ( have_rows( 'primary_cta' ) ): the_row(); ?>
-                            <a href="<?php the_sub_field( "button_link" ); ?>">
-                                <button class="ghost-black mt-3 capitalize">
-									<?php the_sub_field( "button_text" ); ?>
-                                </button>
-                            </a>
-
-						<?php endwhile; ?>
-					<?php endif; ?>
-
+                    <div class="pt-3 prose">
+						<?php the_sub_field( 'section_content' ); ?>
+                    </div>
                 </div>
 
 			<?php
