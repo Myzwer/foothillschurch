@@ -21,37 +21,37 @@
 <footer class="footer">
 
     <!-- Foothills Church Logo -->
-    <img src="<?php the_field('circle_outline_logo', 'options'); ?>" alt="Foothills Church Logo">
+    <img src="<?php the_field( 'circle_outline_logo', 'options' ); ?>" alt="Foothills Church Logo">
 
     <!-- WordPress Generated Link Lists -->
     <!-- Use WP Admin to update these, max 3 without editing SCSS -->
-    <?php wp_nav_menu(array('theme_location' => 'footer-column-1')); ?>
+	<?php wp_nav_menu( array( 'theme_location' => 'footer-column-1' ) ); ?>
 
 
     <!-- Adds a social link to Facebook using the URL from the options ACF tab in WP Admin -->
     <div class="social-links">
-        <a href="<?php the_field('facebook', 'options'); ?>" target="_blank">
+        <a href="<?php the_field( 'facebook', 'options' ); ?>" target="_blank">
             <i class="fa-brands fa-facebook"></i>
         </a>
     </div>
 
     <!-- Adds a social link to Instagram using the URL from the options ACF tab in WP Admin -->
     <div class="social-links">
-        <a href="<?php the_field('instagram', 'options'); ?>" target="_blank">
+        <a href="<?php the_field( 'instagram', 'options' ); ?>" target="_blank">
             <i class="fa-brands fa-instagram"></i>
         </a>
     </div>
 
     <!-- Adds a social link to twitter using the URL from the options ACF tab in WP Admin -->
     <div class="social-links">
-        <a href="<?php the_field('twitter', 'options'); ?>" target="_blank">
-            <i class="fa-brands fa-twitter"></i>
+        <a href="<?php the_field( 'twitter', 'options' ); ?>" target="_blank">
+            <i class="fa-brands fa-x-twitter"></i>
         </a>
     </div>
 
     <!-- Adds a mailto using the address from the options ACF tab in WP Admin -->
     <div class="social-links">
-        <a href="mailto:<?php the_field('email', 'options'); ?>">
+        <a href="mailto:<?php the_field( 'email', 'options' ); ?>">
             <i class="fa-light fa-envelope"></i>
         </a>
     </div>
@@ -61,11 +61,11 @@
         <p class="copyright">
             <i class="fa-regular fa-copyright"></i>
             <!-- Add the current year dynamically + Church name -->
-            <?php echo date("Y"); ?> Foothills Church
+			<?php echo date( "Y" ); ?> Foothills Church
         </p>
 
         <!-- Add a link to the privacy policy page, comes from the options page in WP Admin -->
-        <a href="<?php the_field('privacy_policy', 'options'); ?>" class="privacy">Privacy Policy</a>
+        <a href="<?php the_field( 'privacy_policy', 'options' ); ?>" class="privacy">Privacy Policy</a>
 
     </div>
 
