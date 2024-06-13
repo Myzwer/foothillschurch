@@ -12,173 +12,68 @@
  * @version 1.0.0
  */
 
-//******************** FAB (Floating Action) *********************
+// Function to generate a button shortcode with specified class name and icon
+function generate_button_shortcode( $class_name, $icon_html = '' ) {
+	// Return a function that generates the shortcode output
+	return function ( $atts, $content = null ) use ( $class_name, $icon_html ) {
+		// Get the button text and URL from the shortcode attributes
+		$button_text = isset( $atts['text'] ) ? $atts['text'] : null;
+		$button_url  = isset( $atts['url'] ) ? $atts['url'] : null;
 
-/*
- * FAB MAIN BUTTON - SALTY
- * Defaults to "#" if no value is given
- * If "cc='y'" is added to the shortcode it will open the church center modal.
- * Usage: [fab_salty text="Learn More" url="https://example.com" cc="Y"]
-*/
+		// Determine if button details are complete or hidden
+		$all_details = ( ! empty( $button_text ) && ! empty( $button_url ) ) ? '' : 'hidden';
 
-function fab_salty_shortcode($atts, $content = null)
-{
-    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
-    $button_url = isset($atts['url']) ? $atts['url'] : '#';
-    $open_in_cc_modal = isset($atts['cc']) && strtolower($atts['cc']) === 'y' ? ' data-open-in-church-center-modal="true"' : '';
-    return '<a href="' . esc_url($button_url) . '"' . $open_in_cc_modal . '><button class="fab-main mt-3"><i class="fa-solid fa-circle-arrow-right"></i> ' . esc_html($button_text) . '</button></a>';
+		// Set how new tab behavior is handled based on the 'tab' attribute
+		if ( isset( $atts['tab'] ) ) {
+			$tabOption = strtolower( $atts['tab'] );
+			if ( $tabOption === 'y' ) {
+				$open_in_tab_modal = " target='_blank'";
+			} elseif ( $tabOption === 'cc' ) {
+				$open_in_tab_modal = ' data-open-in-church-center-modal="true"';
+			} else {
+				$open_in_tab_modal = '';
+			}
+		} else {
+			$open_in_tab_modal = '';
+		}
+
+		// Return the HTML for the button
+		return '<a href="' . esc_url( $button_url ) . '"' . $open_in_tab_modal . '><button class="' . esc_attr( $class_name ) . ' mt-3 ' . esc_attr( $all_details ) . '">' . $icon_html . esc_html( $button_text ) . '</button></a>';
+	};
 }
 
-add_shortcode('fab_salty', 'fab_salty_shortcode');
+// Define shortcodes with appropriate classes and icons
+add_shortcode( 'fab_salty', generate_button_shortcode( 'fab-main', '<i class="fa-solid fa-circle-arrow-right"></i> ' ) );
+add_shortcode( 'fab_white', generate_button_shortcode( 'fab-main-white', '<i class="fa-solid fa-circle-arrow-right"></i> ' ) );
+add_shortcode( 'elevated_blue', generate_button_shortcode( 'elevated-blue', '<i class="fa-sharp fa-solid fa-arrow-right"></i> ' ) );
+add_shortcode( 'elevated_white', generate_button_shortcode( 'elevated-white', '<i class="fa-sharp fa-solid fa-arrow-right"></i> ' ) );
+add_shortcode( 'ghost_black', generate_button_shortcode( 'ghost-black' ) );
+add_shortcode( 'ghost_white', generate_button_shortcode( 'ghost-white' ) );
 
-/*
- * FAB MAIN BUTTON - WHITE
- * Defaults to "#" if no value is given
- * If "cc='y'" is added to the shortcode it will open the church center modal.
- * Usage:  [fab_white text="Learn More" url="https://example.com" cc="Y"]
-*/
-
-function fab_white_shortcode($atts, $content = null)
-{
-    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
-    $button_url = isset($atts['url']) ? $atts['url'] : '#';
-    $open_in_cc_modal = isset($atts['cc']) && strtolower($atts['cc']) === 'y' ? ' data-open-in-church-center-modal="true"' : '';
-    return '<a href="' . esc_url($button_url) . '"' . $open_in_cc_modal . '><button class="fab-main-white mt-3"><i class="fa-solid fa-circle-arrow-right"></i> ' . esc_html($button_text) . '</button></a>';
-}
-
-add_shortcode('fab_white', 'fab_white_shortcode');
-
-/*
- * ELEVATED BLUE BUTTON
- * Defaults to "#" if no value is given
- * If "cc='y'" is added to the shortcode it will open the church center modal.
- * Usage:  [elevated_blue text="Learn More" url="https://example.com" cc="Y"]
-*/
-
-function elevated_blue_shortcode($atts, $content = null)
-{
-    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
-    $button_url = isset($atts['url']) ? $atts['url'] : '#';
-    $open_in_cc_modal = isset($atts['cc']) && strtolower($atts['cc']) === 'y' ? ' data-open-in-church-center-modal="true"' : '';
-    return '<a href="' . esc_url($button_url) . '"' . $open_in_cc_modal . '><button class="elevated-blue mt-3"><i class="fa-sharp fa-solid fa-arrow-right"></i> ' . esc_html($button_text) . '</button></a>';
-}
-
-add_shortcode('elevated_blue', 'elevated_blue_shortcode');
-
-
-/*
- * ELEVATED WHITE BUTTON
- * Defaults to "#" if no value is given
- * If "cc='y'" is added to the shortcode it will open the church center modal.
- * Usage:  [elevated_white text="Learn More" url="https://example.com" cc="Y"]
-*/
-
-function elevated_white_shortcode($atts, $content = null)
-{
-    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
-    $button_url = isset($atts['url']) ? $atts['url'] : '#';
-    $open_in_cc_modal = isset($atts['cc']) && strtolower($atts['cc']) === 'y' ? ' data-open-in-church-center-modal="true"' : '';
-    return '<a href="' . esc_url($button_url) . '"' . $open_in_cc_modal . '><button class="elevated-white mt-3"><i class="fa-sharp fa-solid fa-arrow-right"></i> ' . esc_html($button_text) . '</button></a>';
-}
-
-add_shortcode('elevated_white', 'elevated_white_shortcode');
-
-/*
- * GHOST BLACK BUTTON
- * Defaults to "#" if no value is given
- * If "cc='y'" is added to the shortcode it will open the church center modal.
- * Usage:  [ghost_black text="Learn More" url="https://example.com" cc="Y"]
-*/
-
-function ghost_black_shortcode($atts, $content = null)
-{
-    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
-    $button_url = isset($atts['url']) ? $atts['url'] : '#';
-    $open_in_cc_modal = isset($atts['cc']) && strtolower($atts['cc']) === 'y' ? ' data-open-in-church-center-modal="true"' : '';
-    return '<a href="' . esc_url($button_url) . '"' . $open_in_cc_modal . '><button class="ghost-black mt-3">' . esc_html($button_text) . '</button></a>';
-}
-
-add_shortcode('ghost_black', 'ghost_black_shortcode');
-
-/*
- * GHOST WHITE BUTTON
- * Defaults to "#" if no value is given
- * If "cc='y'" is added to the shortcode it will open the church center modal.
- * Usage:  [ghost_white text="Learn More" url="https://example.com" cc="Y"]
-*/
-
-function ghost_white_shortcode($atts, $content = null)
-{
-    $button_text = isset($atts['text']) ? $atts['text'] : 'Learn More';
-    $button_url = isset($atts['url']) ? $atts['url'] : '#';
-    $open_in_cc_modal = isset($atts['cc']) && strtolower($atts['cc']) === 'y' ? ' data-open-in-church-center-modal="true"' : '';
-    return '<a href="' . esc_url($button_url) . '"' . $open_in_cc_modal . '><button class="ghost-white mt-3">' . esc_html($button_text) . '</button></a>';
-}
-
-add_shortcode('ghost_white', 'ghost_white_shortcode');
-
+// Shortcode Usage
+// [ghost_black text="BUTTONTEXT" url="BUTTONLINK" tab="Y/N/CC"]
 
 //******************** SOCIALS *********************
-/*
- * FACEBOOK ICON
- * Defaults to the FC Facebook if no url is given
- * You can feed it any size between 1 and 10. Defaults to 2.
- * Usage:  [facebook url = "https://example.com" size = "1-10"]
-*/
-function facebook_shortcode($atts, $content = null)
-{
-    $button_size = isset($atts['size']) ? $atts['size'] : 2;
-    $button_url = isset($atts['url']) ? $atts['url'] : 'https://www.facebook.com/foothillschurchTN';
-    return '<a href="' . esc_url($button_url) . '"><i class="text-' . esc_html($button_size) . 'xl pr-1 fa-brands fa-facebook"></i></a>';
+// Function to generate a social icon shortcode with specified default URL and icon class
+function generate_social_shortcode( $default_url, $icon_class ) {
+	// Return a function that generates the shortcode output
+	return function ( $atts, $content = null ) use ( $default_url, $icon_class ) {
+		// Get the icon size and URL from the shortcode attributes
+		$button_size = isset( $atts['size'] ) ? $atts['size'] : 2;
+		$button_url  = isset( $atts['url'] ) ? $atts['url'] : $default_url;
+
+		// Return the HTML for the social icon
+		return '<a href="' . esc_url( $button_url ) . '"><i class="text-' . esc_html( $button_size ) . 'xl pr-1 ' . esc_attr( $icon_class ) . '"></i></a>';
+	};
 }
 
-add_shortcode('facebook', 'facebook_shortcode');
+// Define shortcodes with appropriate default URLs and icon classes
+add_shortcode( 'facebook', generate_social_shortcode( 'https://www.facebook.com/foothillschurchTN', 'fa-brands fa-facebook' ) );
+add_shortcode( 'instagram', generate_social_shortcode( 'https://www.instagram.com/foothillschurchtn/', 'fa-brands fa-instagram' ) );
+add_shortcode( 'x', generate_social_shortcode( 'https://twitter.com/foothillschurch', 'fa-brands fa-x-twitter' ) );
+add_shortcode( 'website', generate_social_shortcode( 'https://foothillschurch.com/', 'fa-solid fa-link-simple' ) );
 
-/*
- * INSTAGRAM ICON
- * Defaults to the FC Instagram if no url is given
- * You can feed it any size between 1 and 10. Defaults to 2.
- * Usage:  [instagram url = "https://example.com" size = "1-10"]
-*/
-function instagram_shortcode($atts, $content = null)
-{
-    $button_size = isset($atts['size']) ? $atts['size'] : 2;
-    $button_url = isset($atts['url']) ? $atts['url'] : 'https://www.instagram.com/foothillschurchtn/';
-    return '<a href="' . esc_url($button_url) . '"><i class="text-' . esc_html($button_size) . 'xl pr-1 fa-brands fa-instagram"></i></a>';
-}
-
-add_shortcode('instagram', 'instagram_shortcode');
-
-/*
- * X ICON
- * Defaults to the FC X account if no url is given
- * You can feed it any size between 1 and 10. Defaults to 2.
- * Usage:  [x url = "https://example.com" size = "1-10"]
-*/
-function x_shortcode($atts, $content = null)
-{
-    $button_size = isset($atts['size']) ? $atts['size'] : 2;
-    $button_url = isset($atts['url']) ? $atts['url'] : 'https://twitter.com/foothillschurch';
-    return '<a href="' . esc_url($button_url) . '"><i class="text-' . esc_html($button_size) . 'xl pr-1 fa-brands fa-x-twitter"></i></a>';
-}
-
-add_shortcode('x', 'x_shortcode');
-
-/*
- * WEBSITE ICON
- * Defaults to the fc site if no url is given
- * You can feed it any size between 1 and 10. Defaults to 2.
- * Usage:  [website url = "https://example.com" size = "1-10"]
-*/
-function website_shortcode($atts, $content = null)
-{
-    $button_size = isset($atts['size']) ? $atts['size'] : 2;
-    $button_url = isset($atts['url']) ? $atts['url'] : 'https://foothillschurch.com/';
-    return '<a href="' . esc_url($button_url) . '"><i class="text-' . esc_html($button_size) . 'xl pr-1 fa-solid fa-link-simple"></i></a>';
-}
-
-add_shortcode('website', 'website_shortcode');
 
 // Allows WP to inject shortcodes via a wysiwyg editor
-add_filter('widget_text', 'do_shortcode');
-add_filter('the_content', 'do_shortcode');
+add_filter( 'widget_text', 'do_shortcode' );
+add_filter( 'the_content', 'do_shortcode' );
