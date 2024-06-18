@@ -19,8 +19,8 @@ get_header(); ?>
         <div class="xl:w-9/12 max-w-screen-2xl mx-auto grid grid-cols-12 p-5 pt-10 gap-4">
             <!-- start branding section -->
             <div class="col-span-12 lg:col-span-7">
-                <img class="rounded-lg shadow-xl" src="<?php the_field('branding'); ?>"
-                     alt="<?php the_field('event_name'); ?> Brand">
+                <img class="rounded-lg shadow-xl" src="<?php the_field( 'branding' ); ?>"
+                     alt="<?php the_field( 'event_name' ); ?> Brand">
             </div>
             <!-- end branding section -->
 
@@ -31,7 +31,7 @@ get_header(); ?>
                     <!-- start date section -->
                     <div class="col-span-12 bg-white rounded-md shadow-xl p-5">
                         <p><i class="fa-regular fa-calendar-days"></i> Date</p>
-                        <h2 class="text-lg font-bold uppercase"><?php the_field('event_date'); ?></h2>
+                        <h2 class="text-lg font-bold uppercase"><?php the_field( 'event_date' ); ?></h2>
                     </div>
                     <!-- end date section -->
 
@@ -39,35 +39,35 @@ get_header(); ?>
                     <div class="col-span-12 bg-white rounded-md shadow-xl p-5">
                         <p><i class="fa-regular fa-clock"></i> Time</p>
                         <h2 class="text-lg font-bold uppercase">
-                            <?php
-                            // These two if statements check to see if the ACF field is empty, and either returns its value
-                            // Or it returns "TBD"
+							<?php
+							// These two if statements check to see if the ACF field is empty, and either returns its value
+							// Or it returns "TBD"
 
-                            // Get the selected value from the ACF field
-                            $start_time = get_field('event_start_time');
+							// Get the selected value from the ACF field
+							$start_time = get_field( 'event_start_time' );
 
-                            // Check the value returned from ACF
-                            if ($start_time != null) {
-                                the_field('event_start_time');
-                            } else {
-                                echo "TBD";
-                            }
-                            ?>
+							// Check the value returned from ACF
+							if ( $start_time != null ) {
+								the_field( 'event_start_time' );
+							} else {
+								echo "TBD";
+							}
+							?>
                             -
-                            <?php
-                            // These two if statements check to see if the ACF field is empty, and either returns its value
-                            // Or it returns "TBD"
+							<?php
+							// These two if statements check to see if the ACF field is empty, and either returns its value
+							// Or it returns "TBD"
 
-                            // Get the selected value from the ACF field
-                            $end_time = get_field('event_end_time');
+							// Get the selected value from the ACF field
+							$end_time = get_field( 'event_end_time' );
 
-                            // Check the value returned from ACF
-                            if ($end_time != null) {
-                                the_field('event_end_time');
-                            } else {
-                                echo "TBD";
-                            }
-                            ?>
+							// Check the value returned from ACF
+							if ( $end_time != null ) {
+								the_field( 'event_end_time' );
+							} else {
+								echo "TBD";
+							}
+							?>
                         </h2>
                     </div>
                     <!-- end time section -->
@@ -76,34 +76,34 @@ get_header(); ?>
                     <div class="col-span-12 bg-white rounded-md shadow-xl p-5">
                         <p><i class="fa-regular fa-location-dot"></i> Location</p>
                         <h2 class="text-lg font-bold uppercase">
-                            <?php
-                            // Get the selected value from the ACF field
-                            $selected_location = get_field('event_location');
+							<?php
+							// Get the selected value from the ACF field
+							$selected_location = get_field( 'event_location' );
 
-                            // Check the value returned from ACF
-                            if ($selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8') {
-                                echo 'Maryville Location';
-                            } elseif ($selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7') {
-                                echo 'Knoxville Location';
-                            } else {
-                                the_field('event_location_name');
-                            }
-                            ?>
+							// Check the value returned from ACF
+							if ( $selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8' ) {
+								echo 'Maryville Location';
+							} elseif ( $selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7' ) {
+								echo 'Knoxville Location';
+							} else {
+								the_field( 'event_location_name' );
+							}
+							?>
                         </h2>
                         <h2 class="text-md uppercase pb-2">
-                            <?php
-                            the_field('room_location');
-                            ?>
+							<?php
+							the_field( 'room_location' );
+							?>
                         </h2>
                         <div class="inline-block ghost">
                             <a href="<?php
-                            // Check the value returned from ACF for the link
-                            if ($selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8' || $selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7') {
-                                the_field('event_location');
-                            } else {
-                                the_field('event_location_link');
-                            }
-                            ?>" target="_blank">
+							// Check the value returned from ACF for the link
+							if ( $selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8' || $selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7' ) {
+								the_field( 'event_location' );
+							} else {
+								the_field( 'event_location_link' );
+							}
+							?>" target="_blank">
                                 <i class="fa-regular fa-arrow-up-right-from-square"></i> Directions
                             </a>
                         </div>
@@ -113,17 +113,17 @@ get_header(); ?>
                     <!-- start register section -->
 
                     <div class="col-span-12 bg-white rounded-md shadow-xl p-5">
-                        <?php
-                        if (get_field('registration_link')) :
-                            ?>
-                            <a href="<?php the_field('registration_link') ?>">
+						<?php
+						if ( get_field( 'registration_link' ) ) :
+							?>
+                            <a href="<?php the_field( 'registration_link' ) ?>">
                                 <button class="elevated-salty">
                                     <i class="fa-solid fa-circle-arrow-right"></i> Register
                                 </button>
                             </a>
-                        <?php else : ?>
+						<?php else : ?>
                             <h2 class="text-md uppercase font-bold pb-2">There is no registration for this event.</h2>
-                        <?php endif; ?>
+						<?php endif; ?>
                     </div>
                     <!-- end register section -->
 
@@ -132,11 +132,13 @@ get_header(); ?>
             <!-- end event information outer -->
 
             <!-- start main details / paragraph -->
-            <div class="col-span-12">
-                <h2 class="font-bold capitalize text-3xl py-5">
-                    <?php the_field('section_title'); ?>
-                </h2>
-                <div class="prose"><?php the_field('main_details'); ?></div>
+            <div class="col-span-12 pb-10">
+                <div class="prose">
+                    <h2 class="font-bold capitalize text-3xl py-5">
+						<?php the_field( 'section_title' ); ?>
+                    </h2>
+					<?php the_field( 'main_details' ); ?>
+                </div>
             </div>
             <!-- end main details / paragraph -->
 
@@ -148,59 +150,59 @@ get_header(); ?>
 
 <?php
 // Check value exists.
-if (have_rows('build_page')) :
+if ( have_rows( 'build_page' ) ) :
 
-    // used for alternating colors
-    $counter = 0;
+	// used for alternating colors
+	$counter = 0;
 
-    // Loop through rows.
-    while (have_rows('build_page')) : the_row();
+	// Loop through rows.
+	while ( have_rows( 'build_page' ) ) : the_row();
 
-        if (0 === $counter % 2) {
-            $class = 'white';
-        } else {
-            $class = 'blue-gradient';
-        }
+		if ( 0 === $counter % 2 ) {
+			$class = 'white';
+		} else {
+			$class = 'blue-gradient';
+		}
 
-        echo "<div class='bg-$class'>";
-        echo "<div class='xl:w-9/12 max-w-screen-2xl mx-auto grid grid-cols-12 p-5 py-10 gap-4'>";
-        switch (get_row_layout()) {
-            case 'generic_block':
-                echo "<div class='col-span-12'>";
-                get_template_part('components/layouts/wysiwyg');
-                echo "</div>";
-                break;
+		echo "<div class='bg-$class'>";
+		echo "<div class='xl:w-9/12 max-w-screen-2xl mx-auto grid grid-cols-12 p-5 py-10 gap-4'>";
+		switch ( get_row_layout() ) {
+			case 'generic_block':
+				echo "<div class='col-span-12'>";
+				get_template_part( 'components/layouts/wysiwyg' );
+				echo "</div>";
+				break;
 
-            case 'faq':
-                echo "<div class='col-span-12'>";
-                get_template_part('components/layouts/faq');
-                echo "</div>";
-                break;
+			case 'faq':
+				echo "<div class='col-span-12'>";
+				get_template_part( 'components/layouts/faq' );
+				echo "</div>";
+				break;
 
-            case 'video':
-                echo "<div class='col-span-12'>";
-                get_template_part('components/layouts/video');
-                echo "</div>";
-                break;
+			case 'video':
+				echo "<div class='col-span-12'>";
+				get_template_part( 'components/layouts/video' );
+				echo "</div>";
+				break;
 
-            case 'button_group':
-                echo "<div class='col-span-12'>";
-                get_template_part('components/layouts/button-group');
-                echo "</div>";
-                break;
+			case 'button_group':
+				echo "<div class='col-span-12'>";
+				get_template_part( 'components/layouts/button-group' );
+				echo "</div>";
+				break;
 
 
-            // FIXME: Only for building/debugging, shouldn't be left in for production
-            default:
-                echo "Unhandled content block: " . get_row_layout();
-                break;
-        }
-        echo "</div>";
-        echo "</div>";
-        $counter++;
+			// FIXME: Only for building/debugging, shouldn't be left in for production
+			default:
+				echo "Unhandled content block: " . get_row_layout();
+				break;
+		}
+		echo "</div>";
+		echo "</div>";
+		$counter ++;
 
-        // End loop.
-    endwhile;
+		// End loop.
+	endwhile;
 
 // No value.
 else :
