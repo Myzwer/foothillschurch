@@ -203,12 +203,6 @@ if ( have_rows( 'build_page' ) ) :
 
 		// End loop.
 	endwhile;
-
-// No value.
-else :
-// Do something...
 endif;
 ?>
-    </div>
-
 <?php get_footer();
