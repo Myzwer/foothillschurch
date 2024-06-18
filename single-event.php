@@ -192,9 +192,8 @@ if ( have_rows( 'build_page' ) ) :
 				break;
 
 
-			// FIXME: Only for building/debugging, shouldn't be left in for production
 			default:
-				echo "Unhandled content block: " . get_row_layout();
+				error_log( "Unhandled content block: " . get_row_layout() );
 				break;
 		}
 		echo "</div>";
