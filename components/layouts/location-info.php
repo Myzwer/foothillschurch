@@ -38,22 +38,23 @@
 			endif; ?>
         </div>
 
-
-        <div class="col-span-12 md:col-span-6">
-            <hr class="h-1 rounded-xl bg-black">
-            <h2 class="text-2xl py-2 font-bold capitalize"><?php the_field( "pastor_title" ); ?></h2>
-            <div class="grid grid-cols-12 gap-4 md:gap-10">
-                <div class="col-span-12 md:col-span-4">
-                    <img class="rounded-xl shadow-xl" src="<?php the_field( "headshot" ); ?>" alt="">
+        <!-- Require a headshot in order to show this section -->
+		<?php if ( get_field( "headshot" ) ) { ?>
+            <div class="col-span-12 md:col-span-6">
+                <hr class="h-1 rounded-xl bg-black">
+                <h2 class="text-2xl py-2 font-bold capitalize"><?php the_field( "pastor_title" ); ?></h2>
+                <div class="grid grid-cols-12 gap-4 md:gap-10">
+                    <div class="col-span-12 md:col-span-4">
+                        <img class="rounded-xl shadow-xl" src="<?php the_field( "headshot" ); ?>" alt="">
+                    </div>
+                    <div class="col-span-12 md:col-span-8">
+                        <h3 class="capitalize text-xl font-bold"><?php the_field( "pastor_name" ); ?></h3>
+                        <div class="prose"><?php the_field( "pastor_bio" ); ?></div>
+                    </div>
                 </div>
-                <div class="col-span-12 md:col-span-8">
-                    <h3 class="capitalize text-xl font-bold"><?php the_field( "pastor_name" ); ?></h3>
-                    <div class="prose"><?php the_field( "pastor_bio" ); ?></div>
-                </div>
-
-
             </div>
-        </div>
+
+		<?php } ?>
 
         <div class="col-span-12 md:col-span-6">
             <hr class="h-1 rounded-xl bg-black">
