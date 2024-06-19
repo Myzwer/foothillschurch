@@ -39,8 +39,9 @@ get_header(); ?>
 					'post_type'   => array( 'event' ),
 					'post_status' => array( 'publish' ),
 					'nopaging'    => false,
-					'order'       => 'DESC',
-					'orderby'     => 'date',
+					'meta_key'    => 'removal_date',
+					'orderby'     => 'meta_value_num',
+					'order'       => 'ASC',
 					'paged'       => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
 				);
 
