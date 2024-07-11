@@ -25,12 +25,14 @@
   }
 }
 
-// Set opacity of all cards to be low
+// Set values for all cards
 .glide__slide {
+  background-color: #ffffff;
+  border-radius: 20px;
   opacity: .4;
 }
 
-// Set opacity of active card to full
+// Set values of active card
 .glide__slide--active {
   opacity: 1;
 }
@@ -84,16 +86,6 @@
     right: 0;
     top: 38%;
   }
-}
-
-// all cards
-.glide__slide {
-  background-color: #ffffff;
-  border-radius: 20px;
-}
-
-.glide__slide--active {
-  // how to change the active card
 }
 
 /* stylelint-enable selector-class-pattern */
