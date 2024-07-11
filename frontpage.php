@@ -149,7 +149,7 @@ if ( get_field( "announcement_block" ) ) { ?>
     <!-- END Recent Sermon -->
 
     <!-- START Resource Giveaway -->
-    <div class="bg-blue-gradient pb-10">
+    <div class="bg-blue-gradient py-10">
         <div class=" lg:max-w-5xl lg:text-center lg:mx-auto p-5 pt-10">
             <div class="grid grid-cols-12 gap-4 md:gap-10">
 
@@ -168,7 +168,7 @@ if ( get_field( "announcement_block" ) ) { ?>
 							$formid = get_field( "form_id" );
 							echo do_shortcode( "[gravityform id='$formid']" );
 							?>
-                            <p class="opacity-60 text-xs">This site is protected by reCAPTCHA and the Google
+                            <p class="opacity-60 text-xs pt-3">This site is protected by reCAPTCHA and the Google
                                 <a class="underline" href="https://policies.google.com/privacy">Privacy Policy</a> and
                                 <a class="underline" href="https://policies.google.com/terms">Terms of Service</a>
                                 apply.</p>
