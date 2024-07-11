@@ -1,9 +1,12 @@
 <?php
 /*
   * Set up the pagination for all the posts, can be linked from anywhere
-  * Note it will only work within WP default posts, not custom posts types.
   *
   *
+  * Navigation text in pagination.php can be customized.
+  * Before calling this template, set the 'more_text' variable like so:
+  * set_query_var('more_text', 'Your Custom Text');
+  * If 'more_text' is not set, defaults to 'Post'.
 */
 ?>
 
@@ -19,15 +22,15 @@
 				if ( $next != get_permalink() ) { ?>
                     <a href="<?php echo $next; ?>"
                        class="fab-main">
-                        Next Post
+                        Next <?php echo get_query_var( 'more_text', 'Post' ); ?>
                     </a>
 				<?php } ?>
             </div>
 
             <div class="col-span-12 md:col-span-4 mb-10">
-                <a href="/posts"
+                <a href="/<?php echo get_query_var( 'link', 'posts' ); ?>"
                    class="fab-main">
-                    All Posts
+                    All <?php echo get_query_var( 'more_text', 'Post' ) . 's'; ?>
                 </a>
             </div>
 
@@ -37,7 +40,7 @@
 				if ( $prev != get_permalink() ) { ?>
                     <a href="<?php echo $prev; ?>"
                        class="fab-main">
-                        Previous Post
+                        Previous <?php echo get_query_var( 'more_text', 'Post' ); ?>
                     </a>
 				<?php } ?>
             </div>

@@ -1,4 +1,4 @@
-<div class="bg-white col-span-12 me:col-span-6 lg:col-span-4 mx-5 mb-8 bg-gray-light shadow-xl rounded-xl relative flex flex-col">
+<div class="bg-white col-span-12 lg:col-span-6 mx-5 mb-8 bg-gray-light shadow-xl rounded-xl relative flex flex-col">
     <img class="rounded-t-lg" src="<?php echo get_the_post_thumbnail_url(); ?>"
          alt="Message Thumbnail">
     <div class="p-5 flex-grow">
@@ -9,14 +9,9 @@
 
 
     <div class="grid grid-cols-12 rounded-b-xl">
-        <div class="col-span-6 text-center bg-saltydog rounded-bl-xl">
+        <div class="col-span-12 text-center bg-saltydog rounded-b-xl">
             <a class="block text-lg uppercase py-3 text-white font-bold"
                href="<?php the_permalink(); ?>">Read Now</a>
-        </div>
-
-        <div class="col-span-6 text-center bg-lightblue rounded-br-xl">
-            <a class="block text-lg uppercase py-3 text-black font-bold"
-               href="#">Watch Now</a>
         </div>
     </div>
 </div>
