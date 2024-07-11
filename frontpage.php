@@ -251,7 +251,7 @@ if ( get_field( "announcement_block" ) ) { ?>
 								if ( have_rows( 'slider_content' ) ):
 									while ( have_rows( 'slider_content' ) ) : the_row(); ?>
                                         <li class="glide__slide">
-                                            <div class="slide-card bg-white p-4 md:p-10 rounded-xl shadow-xl">
+                                            <div class="slide-card  p-4 md:p-10 rounded-xl shadow-xl">
                                                 <h3 class="text-xl md:text-3xl pb-3 font-bold capitalize"><?php the_sub_field( "step_title" ); ?></h3>
                                                 <p class="pb-3"><?php the_sub_field( "step_content" ); ?></p>
                                                 <a href="<?php the_sub_field( "button_link" ); ?>">

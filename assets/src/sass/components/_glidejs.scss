@@ -19,8 +19,10 @@
 /* stylelint-disable selector-class-pattern */
 
 // Set card height
-.slide-card {
-  height: 350px;
+@media screen and (min-width: 64em) {
+  .slide-card {
+    height: 350px;
+  }
 }
 
 // Set opacity of all cards to be low
@@ -82,6 +84,16 @@
     right: 0;
     top: 38%;
   }
+}
+
+// all cards
+.glide__slide {
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+
+.glide__slide--active {
+  // how to change the active card
 }
 
 /* stylelint-enable selector-class-pattern */
