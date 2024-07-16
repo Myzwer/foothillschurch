@@ -236,13 +236,13 @@ if ( get_field( "announcement_block" ) ) { ?>
         <div class=" lg:max-w-5xl lg:mx-auto">
             <div class="grid grid-cols-12 gap-4 md:gap-10">
 
-                <div class="col-span-12 md:col-span-4 relative p-5">
+                <div class="col-span-12 md:col-span-4 relative pt-10 px-5">
                     <div class="content-middle-medium">
                         <h1 class="text-white text-3xl md:text-5xl uppercase font-bold"><?php the_field( "giant_title" ); ?></h1>
                     </div>
                 </div>
 
-                <div class="col-span-12 md:col-span-8 pb-10 md:pb-0">
+                <div class="col-span-12 md:col-start-6 md:col-span-7 pb-10 md:pb-0">
                     <!-- Start Glider -->
                     <div class="glide relative">
                         <div class="glide__track" data-glide-el="track">
@@ -251,8 +251,8 @@ if ( get_field( "announcement_block" ) ) { ?>
 								if ( have_rows( 'slider_content' ) ):
 									while ( have_rows( 'slider_content' ) ) : the_row(); ?>
                                         <li class="glide__slide">
-                                            <div class="slide-card  p-4 md:p-10 rounded-xl shadow-xl">
-                                                <h3 class="text-xl md:text-3xl pb-3 font-bold capitalize"><?php the_sub_field( "step_title" ); ?></h3>
+                                            <div class="slide-card p-6 md:p-10 rounded-xl shadow-xl">
+                                                <h3 class="text-2xl md:text-3xl pb-3 font-bold capitalize"><?php the_sub_field( "step_title" ); ?></h3>
                                                 <p class="pb-3"><?php the_sub_field( "step_content" ); ?></p>
                                                 <a href="<?php the_sub_field( "button_link" ); ?>">
                                                     <button class="ghost-black">
@@ -262,9 +262,13 @@ if ( get_field( "announcement_block" ) ) { ?>
                                             </div>
                                         </li>
 									<?php endwhile;
-								endif; ?>
+								endif;
+								?>
 
                             </ul>
+
+                        </div>
+                        <div class="glide__bullets" data-glide-el="controls[nav]">
                         </div>
                         <!-- Start Arrows -->
                         <div class="glide__arrows" data-glide-el="controls">

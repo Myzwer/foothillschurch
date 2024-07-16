@@ -19,22 +19,22 @@
 /* stylelint-disable selector-class-pattern */
 
 // Set card height
+.glide__track {
+  //margin: 0 30px;
+}
+
+.slide-card {
+  height: 450px;
+  margin: 30px;
+  background-color: #eeeeee;
+  border-radius: 20px;
+}
+
 @media screen and (min-width: 64em) {
   .slide-card {
     height: 350px;
+    margin: 0;
   }
-}
-
-// Set values for all cards
-.glide__slide {
-  background-color: #ffffff;
-  border-radius: 20px;
-  opacity: .4;
-}
-
-// Set values of active card
-.glide__slide--active {
-  opacity: 1;
 }
 
 
@@ -79,12 +79,44 @@
   .glide__arrow--left {
     position: absolute;
     top: 38%;
+    left: -60px;
   }
 
   .glide__arrow--right {
     position: absolute;
-    right: 0;
+    right: -60px;
     top: 38%;
+  }
+}
+
+
+// Bullet Styling
+.glide__bullets {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.glide__bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: .3;
+}
+
+.glide__bullet--active {
+  opacity: 1;
+}
+
+@media screen and (min-width: 64em) {
+  .glide__bullets {
+    bottom: 20px;
   }
 }
 
