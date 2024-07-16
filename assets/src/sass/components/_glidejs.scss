@@ -24,10 +24,10 @@
 }
 
 .slide-card {
-  height: 450px;
-  margin: 30px;
   background-color: #eeeeee;
   border-radius: 20px;
+  height: 450px;
+  margin: 30px;
 }
 
 @media screen and (min-width: 64em) {
@@ -77,9 +77,9 @@
 
   // Set positioning
   .glide__arrow--left {
+    left: -60px;
     position: absolute;
     top: 38%;
-    left: -60px;
   }
 
   .glide__arrow--right {
@@ -92,22 +92,22 @@
 
 // Bullet Styling
 .glide__bullets {
-  position: absolute;
   bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
-  justify-content: center;
   gap: 10px;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
 }
 
 .glide__bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #000;
+  background-color: #000000;
   border-radius: 50%;
   cursor: pointer;
+  height: 12px;
   opacity: .3;
+  width: 12px;
 }
 
 .glide__bullet--active {
