@@ -14,6 +14,8 @@ window.onload = function () {
         type: "carousel",
         gap: 30,
         perView: 1,
+        autoplay: 3000,
+        hoverpause: true,
     };
 
     // Get the main glide container element, slide elements and container elements
