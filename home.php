@@ -118,7 +118,7 @@ get_header(); ?>
 
             <?php endwhile; ?>
         </div>
-        <?php wpbeginner_numeric_posts_nav(); ?>
+        <?php custom_pagination(); ?>
 
     </div>
 

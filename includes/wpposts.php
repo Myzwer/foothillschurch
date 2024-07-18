@@ -48,7 +48,7 @@ add_theme_support('post-thumbnails');
  *
  * @return void
  */
-function wpbeginner_numeric_posts_nav()
+function custom_pagination()
 {
 
     if (is_singular())
