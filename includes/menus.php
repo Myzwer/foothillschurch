@@ -23,27 +23,14 @@ require_once("nav_walker.php");
  *
 */
 
-//*********** Main Navbar ***********
-function main_navigation()
+function register_nav_menus()
 {
-    register_nav_menu('main-navigation', ('Main Navigation'));
+	// Main Navbar
+	register_nav_menu('main-navigation', ('Main Navigation'));
+	// Header Top Bar
+	register_nav_menu('top-bar', ('Top Bar'));
+	// Footer
+	register_nav_menu('footer-column-1', ('Footer Column 1'));
 }
 
-add_action('init', 'main_navigation');
-
-
-//*********** Header Top Bar ***********
-function top_bar()
-{
-    register_nav_menu('top-bar', ('Top Bar'));
-}
-
-add_action('init', 'top_bar');
-
-//*********** Footer ***********
-function register_col_1()
-{
-    register_nav_menu('footer-column-1', ('Footer Column 1'));
-}
-
-add_action('init', 'register_col_1');
+add_action('init', 'register_nav_menus');
