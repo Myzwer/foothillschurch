@@ -23,7 +23,7 @@ require_once("nav_walker.php");
  *
 */
 
-function register_nav_menus()
+function register_bootcamp_nav_menus()
 {
 	// Main Navbar
 	register_nav_menu('main-navigation', ('Main Navigation'));
@@ -33,4 +33,4 @@ function register_nav_menus()
 	register_nav_menu('footer-column-1', ('Footer Column 1'));
 }
 
-add_action('init', 'register_nav_menus');
+add_action('init', 'register_bootcamp_nav_menus');
