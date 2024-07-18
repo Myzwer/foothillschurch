@@ -1,8 +1,10 @@
 <?php
 /**
- * Quick Functions
+ * Utils
  *
- * This file contains a quick function to alphabetize page templates in a WordPress theme.
+ * This file contains 2 functions:
+ * The first alphabetizes my templates for content editors on the backend
+ * The second controls when the frontpage shows we are live.
  *
  * Usage: Include this file in functions.php to apply the alphabetization filter to page templates.
  *
@@ -21,7 +23,18 @@ function alphabetize_page_templates( $templates ) {
 add_filter( 'theme_page_templates', 'alphabetize_page_templates' );
 
 
-// Homepage live change
+/**
+ * Check live status based on configured live times. (Used on the frontpage)
+ *
+ * This function checks if the current day and time falls within any configured
+ * live broadcasting intervals stored in the 'times_live' Advanced Custom Fields
+ * repeater field. Times are evaluated based on the America/New_York timezone.
+ *
+ * @return bool Returns true if the current time is within any live interval,
+ * otherwise returns false.
+ *
+ * @throws Exception If there is an error in date/time parsing or comparison.
+ */
 function check_live_status() {
 	// Get the current day and time
 	$currentDayOfWeek = strtolower( ( new DateTime( 'now', new DateTimeZone( 'America/New_York' ) ) )->format( 'l' ) );

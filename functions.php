@@ -24,7 +24,7 @@ require_once get_template_directory() . '/includes/enqueue.php';
 require_once get_template_directory() . '/includes/acf.php';
 
 // Include Quick Functions
-require_once get_template_directory() . '/includes/quick_functions.php';
+require_once get_template_directory() . '/includes/utils.php';
 
 // Include WP Menus (Header and Footer)
 require_once get_template_directory() . '/includes/menus.php';
