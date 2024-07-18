@@ -63,7 +63,7 @@ function event_init() {
 		'taxonomies'         => array( 'event_name', 'event_location', 'event_type' )
 	);
 
-	register_post_type( 'Event', $args );
+	register_post_type( 'event', $args );
 
 
 }
@@ -219,7 +219,7 @@ register_taxonomy( 'speaker', 'message',
 			'parent_item'        => __( 'Parent Speaker' ),
 		),
 		'hierarchical' => true,
-		'rewrite'      => array( 'slug' => 'speaker' )
+		'rewrite'      => array( 'slug' => 'speakers' )
 	)
 );
 
@@ -240,7 +240,7 @@ register_taxonomy( 'topic', 'message',
 			'parent_item'        => __( 'Parent Topic' ),
 		),
 		'hierarchical' => true,
-		'rewrite'      => array( 'slug' => 'topic' )
+		'rewrite'      => array( 'slug' => 'topics' )
 	)
 );
 
@@ -334,7 +334,7 @@ register_taxonomy( 'speaker', 'transcript',
 			'parent_item'        => __( 'Parent Speaker' ),
 		),
 		'hierarchical' => true,
-		'rewrite'      => array( 'slug' => 'speaker' ),
+		'rewrite'      => array( 'slug' => 'speakers' ),
 		'show_in_rest' => true,
 	)
 );
@@ -356,7 +356,7 @@ register_taxonomy( 'topic', 'transcript',
 			'parent_item'        => __( 'Parent Topic' ),
 		),
 		'hierarchical' => true,
-		'rewrite'      => array( 'slug' => 'topic' ),
+		'rewrite'      => array( 'slug' => 'topics' ),
 		'show_in_rest' => true,
 	)
 );
