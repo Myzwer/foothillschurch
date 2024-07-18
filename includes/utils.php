@@ -67,7 +67,7 @@ function check_live_status() {
 				$endTime = $dateTimeEnd->format('H:i');
 
 				// Check if the current day and time fall into one of the intervals
-				if ($dayOfWeek == $currentDayOfWeek && $currentTime > $startTime && $currentTime < $endTime) {
+				if ($dayOfWeek == $currentDayOfWeek && $currentTime >= $startTime && $currentTime < $endTime) {
 					$isLive = true;
 					break; // Exit the loop as we already know we're live
 				}
