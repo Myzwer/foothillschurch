@@ -35,7 +35,7 @@ get_header(); ?>
             <div id="primary" class="grid grid-cols-12 gap-4 md:gap-4">
 				<?php
 				// Get the current page number for pagination
-				$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+				$paged = absint( $wp_query->get( 'paged',  1 ) );
 
 				// Define query arguments for retrieving custom post type 'message'
 				$args = array(

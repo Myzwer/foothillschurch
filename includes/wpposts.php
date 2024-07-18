@@ -15,7 +15,12 @@
  */
 
 
-// Limits how long the excerpt can be.
+/**
+ * Changes the length of the excerpt.
+ *
+ * @param int $length The original length of the excerpt.
+ * @return int The new length of the excerpt.
+ */
 function tn_custom_excerpt_length($length)
 {
     return 20;
@@ -29,7 +34,20 @@ add_filter('excerpt_length', 'tn_custom_excerpt_length', 999);
 */
 add_theme_support('post-thumbnails');
 
-// Pagination
+/**
+ * Displays the pagination navigation for the posts list.
+ *
+ * This function creates a numeric pagination, which includes links to previous and next pages,
+ * links to the first and last pages, and links to 2 pages before and after the current page.
+ * It provides ellipses for gaps in the page sequence.
+ *
+ * Note: Pagination will not be displayed if there's only one page.
+ * Also, it's intended to work on archive-like pages. For single posts/pages, it does nothing.
+ *
+ * @global WP_Query $wp_query The main query object, used to determine the number of pages and the current page.
+ *
+ * @return void
+ */
 function wpbeginner_numeric_posts_nav()
 {
 
@@ -42,7 +60,7 @@ function wpbeginner_numeric_posts_nav()
     if ($wp_query->max_num_pages <= 1)
         return;
 
-    $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
+	$paged = absint( $wp_query->get( 'paged',  1 ) );
     $max = intval($wp_query->max_num_pages);
 
     /** Add current page to the array */
@@ -63,8 +81,9 @@ function wpbeginner_numeric_posts_nav()
     echo '<div class="pagination"><ul>' . "\n";
 
     /** Previous Post Link */
-    if (get_previous_posts_link())
-        printf('<li>%s</li>' . "\n", get_previous_posts_link());
+	$prev_posts_link = get_previous_posts_link();
+	if ($prev_posts_link)
+		printf('<li>%s</li>' . "\n", $prev_posts_link);
 
     /** Link to first page, plus ellipses if necessary */
     if (!in_array(1, $links)) {
@@ -93,8 +112,9 @@ function wpbeginner_numeric_posts_nav()
     }
 
     /** Next Post Link */
-    if (get_next_posts_link())
-        printf('<li>%s</li>' . "\n", get_next_posts_link());
+	$next_posts_link = get_next_posts_link();
+    if ($next_posts_link)
+        printf('<li>%s</li>' . "\n", $next_posts_link);
 
     echo '</ul></div>' . "\n";
 
