@@ -6,6 +6,8 @@ import "./accordion";
 $(document).ready(function () {
   // If a link has a dropdown, add sub menu toggle.
   $("nav ul li a:not(:only-child)").on("click", function (e) {
+    e.preventDefault(); // Prevent the default action of the event
+
     // Remove "active-dropdown" class from other anchor elements
     $("nav ul li a").not(this).removeClass("active-dropdown");
 
@@ -36,13 +38,9 @@ $(document).ready(function () {
     $("nav ul li a:not(:only-child)").removeClass("active-dropdown");
   });
 
-  // Toggle open and close nav styles on click
+  // Toggle open and close nav styles and hamburger to X toggle on click
   $("#nav-toggle").on("click", function () {
     $("nav ul").slideToggle();
-  });
-
-  // Hamburger to X toggle
-  $("#nav-toggle").on("click", function () {
     this.classList.toggle("active");
   });
 });
