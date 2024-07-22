@@ -54,7 +54,6 @@ endif;
 
 
         <!-- Start giant ass repeater bank -->
-
         <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5 ">
             <div class="grid grid-cols-12 gap-4 md:gap-4">
 
@@ -71,28 +70,25 @@ endif;
                         <div class="col-span-12 <?php echo $mobile ?> py-5 max-w-none">
                             <div class="outreach pb-10">
                                 <div class="bg-saltydog py-5 text-center text-white text-2xl">
-                                    <h3 class="uppercase font-bold"><?php the_sub_field( 'category_title' ); ?></h3>
+                                    <h3 class="uppercase font-bold"><?php the_sub_field('category_title'); ?></h3>
                                 </div>
 
 								<?php
 								// Start the block / topic header
-								if ( have_rows( 'outreach_partner' ) ):
-									while ( have_rows( 'outreach_partner' ) ) : the_row();
+								if (have_rows('outreach_partner')):
+									while (have_rows('outreach_partner')): the_row();
 										?>
 
                                         <ul class="outreach-tab">
-                                            <li class="tab-title"><i class="fa fa-chevron-right" aria-hidden="true"></i>
-												<?php the_sub_field( 'partner_title' ); ?>
+                                            <li class="tab-title">
+                                                <i class="fa fa-chevron-right tab-icon" aria-hidden="true"></i>
+												<?php the_sub_field('partner_title'); ?>
                                             </li>
-
-
                                             <li class="tab-content">
-                                                <div class="prose  max-w-none outreach-details">
-													<?php the_sub_field( 'partner_details' ); ?>
+                                                <div class="prose max-w-none outreach-details">
+													<?php the_sub_field('partner_details'); ?>
                                                 </div>
                                             </li>
-
-
                                         </ul>
 									<?php
 									endwhile;
@@ -101,6 +97,7 @@ endif;
 
                             </div>
                         </div>
+
 					<?php
 					endwhile;
 				endif;
