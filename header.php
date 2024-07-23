@@ -92,7 +92,7 @@
             <!-- -->
             <?php
             wp_nav_menu(array(
-                'theme_location' => 'header-menu',
+                'theme_location' => 'main-navigation',
                 'menu_class' => 'primary-menu', // pass whatever classes to be added to top level here
                 'walker' => new PreLaunch_Walker(), // Uses a custom navwalker
                 'items_wrap' => '<ul class="nav-list">%3$s</ul>' // '%3$s' is a WP thing, it adds the content.
