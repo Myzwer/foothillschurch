@@ -50,7 +50,7 @@ function generate_button_shortcode( $class_name, $icon_html = '' ) {
 		}
 
 		// Return the HTML for the button
-		return '<a href="' . esc_url( $button_url ) . '"' . $open_in_tab_modal . ' class="' . esc_attr( $class_name ) . ' mt-3 ' . esc_attr( $all_details ) . '">' . $icon_html . esc_html( $button_text ) . '</a>';
+		return '<span class = "not-prose"><a href="' . esc_url( $button_url ) . '"' . $open_in_tab_modal . ' class="' . esc_attr( $class_name ) . ' mt-3 ' . esc_attr( $all_details ) . '">' . $icon_html . esc_html( $button_text ) . '</a></span>';
 	};
 }
 
