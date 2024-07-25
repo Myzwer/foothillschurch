@@ -41,6 +41,10 @@ $light-blue: #7498be;
     padding: 10px 20px;
     text-transform: uppercase;
   }
+
+  a:hover {
+    color: $light-blue;
+  }
 }
 
 // Social Icons
@@ -86,5 +90,9 @@ $light-blue: #7498be;
 
   .privacy {
     font-size: 0.8em;
+  }
+
+  a:hover {
+    color: $light-blue;
   }
 }

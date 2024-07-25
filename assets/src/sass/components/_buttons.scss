@@ -2,7 +2,6 @@
  * Buttons
  * =================================
  * This controls all the buttons on the site. They get REALLY cumbersome in Tailwind.
- *
  * - Main Button
  *
  *
@@ -14,14 +13,14 @@ $black: #333333;
 $white: #fafafa;
 $white-grad-1: rgb(250, 250, 250);
 $white-grad-2: rgb(235, 235, 235);
-$white-hover: #ffffff;
+$white-hover: #7498be;
 
 $saltydog: #234058;
-$saltydog-hover: #152c3d;
+$saltydog-hover: #7498be;
 
 $lightblue-grad-1: rgb(204, 219, 229);
 $lightblue-grad-2: rgb(222, 232, 238);
-$lightblue-grad-hover: #bcd1da;
+$lightblue-grad-hover: #7498be;
 
 .fab-main {
   background-color: $saltydog;
@@ -46,11 +45,16 @@ $lightblue-grad-hover: #bcd1da;
 }
 
 .fab-main-white:hover {
-  background-color: $white-hover;
+  background-color: #7498be;
+  color: $white;
 }
 
 .elevated-blue {
-  background: linear-gradient(90deg, $lightblue-grad-1 0%, $lightblue-grad-2 100%);
+  background: linear-gradient(
+    90deg,
+    $lightblue-grad-1 0%,
+    $lightblue-grad-2 100%
+  );
   background-color: $lightblue-grad-1;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
@@ -63,6 +67,7 @@ $lightblue-grad-hover: #bcd1da;
   background: $lightblue-grad-hover;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  color: $white;
 }
 
 .elevated-white {
@@ -79,22 +84,33 @@ $lightblue-grad-hover: #bcd1da;
   background: $white-hover;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  color: $white;
 }
 
 .ghost-black {
-  border: 1px solid $black;
+  box-shadow: 0 0 0 1px $black;
   border-radius: 18px;
   color: $black;
   font-weight: 800;
-  padding: 4px 22px;
+  padding: 10px 22px;
+  transition: 100ms;
+}
+
+.ghost-black:hover {
+  box-shadow: 0 0 0 4px $black;
 }
 
 .ghost-white {
-  border: 1px solid $white;
+  box-shadow: 0 0 0 1px $white;
   border-radius: 18px;
   color: $white;
   font-weight: 800;
-  padding: 4px 22px;
+  padding: 10px 22px;
+  transition: 100ms;
+}
+
+.ghost-white:hover {
+  box-shadow: 0 0 0 4px $white;
 }
 
 // This is used when a ghost button is with another button, it makes the sizes line up.
@@ -111,10 +127,10 @@ $lightblue-grad-hover: #bcd1da;
   border: 1px solid $black;
   border-radius: 18px;
   color: $black;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 800;
   padding: 4px 13px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .gallery-ghost:hover {
@@ -142,7 +158,8 @@ $lightblue-grad-hover: #bcd1da;
 // Linktree Page
 .elevated-white-lt {
   align-items: center;
-  background: $white-grad-1 linear-gradient(90deg, $white-grad-1 0%, $white-grad-2 100%);
+  background: $white-grad-1
+    linear-gradient(90deg, $white-grad-1 0%, $white-grad-2 100%);
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   color: $saltydog;
@@ -157,10 +174,12 @@ $lightblue-grad-hover: #bcd1da;
   background: $white-hover;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  color: $white;
 }
 
 .lt-image {
-  background: $white-grad-1 linear-gradient(90deg, $white-grad-1 0%, $white-grad-2 100%);
+  background: $white-grad-1
+    linear-gradient(90deg, $white-grad-1 0%, $white-grad-2 100%);
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 }
@@ -169,10 +188,10 @@ $lightblue-grad-hover: #bcd1da;
   background: $white-hover;
   border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  color: $white;
 }
 
 .lt-image-top {
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
 }
-

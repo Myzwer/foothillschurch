@@ -99,7 +99,7 @@ $socials = ( get_field( 'socials' ) == 'no' ) ? 'hidden' : 'block';
                                            href="<?php the_sub_field( 'button_link' ); ?>">
                                             <img class="lt-image-top" src="<?php the_sub_field( 'link_image' ); ?>"
                                                  alt="Graphic">
-                                            <h3 class="capitalize font-bold text-xl text-black py-3 text-center">
+                                            <h3 class="capitalize font-bold text-xl py-3 text-center">
 												<?php the_sub_field( 'button_text' ); ?>
                                             </h3>
                                         </a>

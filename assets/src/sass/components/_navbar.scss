@@ -19,7 +19,7 @@ $nav-background: #333333; // What background color do you want?
 $nav-font-color: #fafafa; // What primary font color?
 $link-hover-color: #7498be; // What color when you hover?
 $button-color: #fafafa; // What background color do you want the button to be?
-$button-hover-color: #eaeaea; // What hover color do you want the button to be?
+$button-hover-color: #7498be; // What hover color do you want the button to be?
 
 // Sets the initial height and color of the navbar
 .navigation {
@@ -279,7 +279,7 @@ nav {
 
 .nav-list > li:last-of-type:hover a {
   background-color: rgba(0, 0, 0, 0);
-  color: #234058;
+  color: #fafafa;
 }
 
 .nav-list > li:last-of-type:hover {
