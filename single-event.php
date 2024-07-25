@@ -116,11 +116,10 @@ get_header(); ?>
 						<?php
 						if ( get_field( 'registration_link' ) ) :
 							?>
-                            <a href="<?php the_field( 'registration_link' ) ?>">
-                                <button class="elevated-salty">
-                                    <i class="fa-solid fa-circle-arrow-right"></i> Register
-                                </button>
+                            <a href="<?php the_field( 'registration_link' ); ?>" class="elevated-salty">
+                                <i class="fa-solid fa-circle-arrow-right"></i> Register
                             </a>
+
 						<?php else : ?>
                             <h2 class="text-md uppercase font-bold pb-2">There is no registration for this event.</h2>
 						<?php endif; ?>

@@ -47,7 +47,7 @@ get_header(); ?>
 						echo '<p class="capitalize text-lg"><span class="font-bold">' . esc_html( $label ) . ':</span> ' . implode( ', ', $term_names ) . '</p>';
 					}
 				}
-                
+
 				// Display Speaker
 				display_taxonomy_terms( 'speaker', 'Speaker' );
 
@@ -76,20 +76,16 @@ get_header(); ?>
                 <h3 class="text-xl md:text-3xl mb-3 font-bold">Prefer to Read The Message?</h3>
                 <p>All of our sermons are transcribed into blog format for you to read!</p>
                 <p>Blog format is typically available the following Wednesday.</p>
-                <div class="col-span-12 text-center">
+                <div class="col-span-12 text-center mt-5">
 					<?php if ( get_field( 'blog_link' ) ): ?>
-                        <button class="elevated-blue mt-3 mr-8">
-                            <a href="<?php the_field( "blog_link" ); ?>">
-                                <i class="fa-solid fa-arrow-right"></i> Read Now
-                            </a>
-                        </button>
+                        <a href="<?php the_field( 'blog_link' ); ?>" class="elevated-blue mr-3">
+                            <i class="fa-solid fa-arrow-right"></i> Read Now
+                        </a>
 					<?php endif; ?>
 
-                    <button class="ghost-paired mt-3">
-                        <a href="<?php the_field( 'transcripts', 'options' ); ?>">
-                            View All Transcripts
-                        </a>
-                    </button>
+                    <a href="<?php the_field( 'transcripts', 'options' ); ?>" class="ghost-paired">
+                        View All Transcripts
+                    </a>
                 </div>
             </div>
         </div>

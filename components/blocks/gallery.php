@@ -51,10 +51,8 @@
 						<?php while ( have_rows( 'cta_box' ) ): the_row(); ?>
                             <h2 class=" text-xl md:text-3xl font-bold uppercase text-left md:pb-2"><?php the_sub_field( "title" ); ?></h2>
                             <div class="text-left">
-                                <a href="<?php the_sub_field( "button_link" ); ?>" class="text-left">
-                                    <button class="gallery-ghost text-left">
-                                        <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                                    </button>
+                                <a href="<?php the_sub_field( 'button_link' ); ?>" class="gallery-ghost text-left">
+                                    <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( 'button_text' ); ?>
                                 </a>
                             </div>
 						<?php endwhile;

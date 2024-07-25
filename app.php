@@ -30,18 +30,17 @@ get_header(); ?>
                         </h1>
                         <p class=""><?php the_field( 'details' ); ?></p>
                         <div class="pt-5">
-                            <a class="pr-2" href="<?php the_field( "app_store_link", 'options' ); ?>" target="_blank">
-                                <button class="ghost-black">
-                                    <i class="fa-brands fa-apple"></i> App Store
-                                </button>
+                            <a class="ghost-black mr-2" href="<?php the_field( 'app_store_link', 'options' ); ?>"
+                               target="_blank">
+                                <i class="fa-brands fa-apple"></i> App Store
                             </a>
 
-                            <a href="<?php the_field( "play_store_link", 'options' ); ?>" target="_blank">
-                                <button class="ghost-black">
-                                    <i class="fa-brands fa-google-play"></i> Play Store
-                                </button>
+                            <a class="ghost-black" href="<?php the_field( 'play_store_link', 'options' ); ?>"
+                               target="_blank">
+                                <i class="fa-brands fa-google-play"></i> Play Store
                             </a>
                         </div>
+
                     </div>
                 </div>
             </div>

@@ -42,20 +42,19 @@ get_header(); ?>
             <h1 class="text-white text-3xl md:text-5xl uppercase font-bold"><?php echo $main_line; ?></h1>
 
 
-            <a href="<?php echo $primary_button_link; ?>">
-                <button class="fab-main mt-3">
+            <div class="mt-3">
+                <a href="<?php echo $primary_button_link; ?>" class="fab-main">
                     <i class="fa-solid fa-circle-arrow-right"></i> <?php echo $primary_button_text; ?>
-                </button>
-            </a>
-
-			<?php
-			if ( $secondExists ) { ?>
-                <a href="<?php echo $secondary_button_link; ?>">
-                    <button class="ghost-white mt-3">
-						<?php echo $secondary_button_text; ?>
-                    </button>
                 </a>
-			<?php } ?>
+
+
+				<?php
+				if ( $secondExists ) { ?>
+                    <a href="<?php echo $secondary_button_link; ?>" class="ghost-white mt-3">
+						<?php echo $secondary_button_text; ?>
+                    </a>
+				<?php } ?>
+            </div>
 
         </div>
     </div>
@@ -128,18 +127,19 @@ if ( get_field( "announcement_block" ) ) { ?>
 						?>
                     </div>
 
-                    <a href="<?php echo get_permalink( $post['ID'] ) ?>">
-                        <button class="elevated-blue mt-3 mr-3">
+                    <div class="mt-5">
+                        <a href="<?php echo get_permalink( $post['ID'] ); ?>" class="elevated-blue mr-3">
                             <i class="fa-solid fa-arrow-right"></i> Watch Now
-                        </button>
-                    </a>
+                        </a>
 
-                    <a href="<?php the_field( 'youtube_link', $post['ID'], false, false ); ?>" target="_blank">
-                        <button class="ghost-paired mt-3">
+
+                        <a href="<?php the_field( 'youtube_link', $post['ID'], false, false ); ?>" target="_blank"
+                           class="ghost-paired mt-3">
                             <!-- ACF field, get the post ID of the last post, "false false" strips formatting and provides a raw URL -->
                             View on YouTube
-                        </button>
-                    </a>
+                        </a>
+                    </div>
+
                 </div>
 			<?php endforeach;
 			wp_reset_query(); ?>
@@ -212,10 +212,8 @@ if ( get_field( "announcement_block" ) ) { ?>
                             <h2 class=" text-xl md:text-3xl font-bold uppercase text-left md:pb-2"><?php the_field( "gallery_card_title" ); ?></h2>
 							<?php if ( have_rows( 'gallery_cta' ) ): ?>
 								<?php while ( have_rows( 'gallery_cta' ) ): the_row(); ?>
-                                    <a href="<?php the_sub_field( "button_link" ); ?>">
-                                        <button class="gallery-ghost">
-                                            <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                                        </button>
+                                    <a href="<?php the_sub_field( 'button_link' ); ?>" class="gallery-ghost">
+                                        <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( 'button_text' ); ?>
                                     </a>
 								<?php endwhile;
 							endif; ?>
@@ -254,10 +252,8 @@ if ( get_field( "announcement_block" ) ) { ?>
                                             <div class="slide-card p-6 md:p-10 rounded-xl shadow-xl">
                                                 <h3 class="text-2xl md:text-3xl pb-3 font-bold capitalize"><?php the_sub_field( "step_title" ); ?></h3>
                                                 <p class="pb-3"><?php the_sub_field( "step_content" ); ?></p>
-                                                <a href="<?php the_sub_field( "button_link" ); ?>">
-                                                    <button class="ghost-black">
-                                                        <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                                                    </button>
+                                                <a href="<?php the_sub_field( 'button_link' ); ?>" class="ghost-black">
+                                                    <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( 'button_text' ); ?>
                                                 </a>
                                             </div>
                                         </li>

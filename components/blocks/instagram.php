@@ -62,10 +62,8 @@ if ( $account === 'foothills' ) {
                         <div class="absolute bottom-2 px-5 pb-3">
                             <h2 class="text-xl md:text-3xl font-bold uppercase text-left md:pb-2"><?php the_sub_field( "title" ); ?></h2>
                             <div class="text-left">
-                                <a href="<?php echo $link; ?>" class="text-left" target="_blank">
-                                    <button class="gallery-ghost text-left">
-                                        <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                                    </button>
+                                <a href="<?php echo $link; ?>" class="gallery-ghost text-left" target="_blank">
+                                    <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
                                 </a>
                             </div>
                         </div>

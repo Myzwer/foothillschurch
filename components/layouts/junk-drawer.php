@@ -24,10 +24,8 @@
 				// Hide the button if link is not provided.
 				if ( get_sub_field( 'button_link' ) ):
 					?>
-                    <a href="<?php the_sub_field( "button_link" ); ?>">
-                        <button class="ghost-black">
-							<?php the_sub_field( "button_text" ); ?>
-                        </button>
+                    <a href="<?php the_sub_field( "button_link" ); ?>" class="ghost-black">
+						<?php the_sub_field( "button_text" ); ?>
                     </a>
 				<?php endif; ?>
             </div>

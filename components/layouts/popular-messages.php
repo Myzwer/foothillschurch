@@ -69,9 +69,9 @@ endif;
 ?>
 
 <div class="col-span-12 text-center my-5">
-    <a href="<?php the_field( "archive_link" ); ?>">
-        <button class="ghost-black mt-3">
+    <div class="mt-3">
+        <a href="<?php the_field( "archive_link" ); ?>" class="ghost-black mt-3">
             See All Messages
-        </button>
-    </a>
+        </a>
+    </div>
 </div>

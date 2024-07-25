@@ -60,22 +60,23 @@ endif;
 							while ( have_rows( 'link' ) ) : the_row(); ?>
 
 
-								<?php if ( get_sub_field( 'hide_button' ) == 'no' & get_sub_field( 'prioritize' ) == 'no' ) { ?>
+								<?php if ( get_sub_field( 'hide_button' ) == 'no' && get_sub_field( 'prioritize' ) == 'no' ) { ?>
                                     <div class="col-span-12">
-                                        <a class="block w-full" href="<?php the_sub_field( 'button_link' ); ?>">
-                                            <button class="elevated-white-lt mt-3 relative">
-                                                <div class="absolute left-5">
-													<?php the_sub_field( 'icon' ); ?>
-                                                </div>
+                                        <a class="elevated-white-lt mt-3 relative block w-full button-link"
+                                           href="<?php the_sub_field( 'button_link' ); ?>">
+                                            <div class="absolute left-5">
+												<?php the_sub_field( 'icon' ); ?>
+                                            </div>
+                                            <div class="text-center">
 												<?php the_sub_field( 'button_text' ); ?>
-                                            </button>
+                                            </div>
                                         </a>
                                     </div>
 								<?php } ?>
 
-								<?php if ( get_sub_field( 'hide_button' ) == 'no' & get_sub_field( 'prioritize' ) == 'yes' ) { ?>
+								<?php if ( get_sub_field( 'hide_button' ) == 'no' && get_sub_field( 'prioritize' ) == 'yes' ) { ?>
                                     <div class="col-span-12 relative mt-5">
-                                        <a class="block w-full lt-image"
+                                        <a class="lt-image block w-full button-link"
                                            href="<?php the_sub_field( 'button_link' ); ?>">
                                             <img class="lt-image-top" src="<?php the_sub_field( 'link_image' ); ?>"
                                                  alt="Graphic">
@@ -85,6 +86,7 @@ endif;
                                         </a>
                                     </div>
 								<?php } ?>
+
 
 							<?php
 							endwhile;

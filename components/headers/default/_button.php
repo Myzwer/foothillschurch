@@ -47,11 +47,12 @@
 
 					// Hide button if link is returning null
 					if ( $link ): ?>
-                        <a href="<?php echo $link ?>" <?php echo $tab ?>>
-                            <button class="fab-main-white mt-3">
+                        <div class="mt-3">
+                            <a href="<?php echo $link ?>" <?php echo $tab ?> class="fab-main-white">
                                 <i class="fa-solid fa-circle-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                            </button>
-                        </a>
+                            </a>
+                        </div>
+
 					<?php endif; ?>
 
 				<?php endwhile;
