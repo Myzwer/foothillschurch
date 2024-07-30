@@ -99,16 +99,30 @@ if ( get_field( "announcement_block" ) ) { ?>
                     <h2 class="text-3xl font-bold capitalize"><?php echo get_the_title( $post['ID'] ) ?></h2>
                     <div class="block">
 						<?php
-						function display_taxonomy_terms( $post_id, $taxonomy, $label ) {
+						function display_taxonomy_terms( $post_id, $taxonomy, $label, $new_line = false ) {
 							// Retrieve the terms associated with the post for the specified taxonomy
 							$terms = get_the_terms( $post_id, $taxonomy );
 
 							if ( $terms && ! is_wp_error( $terms ) ) {
-								echo '<div class = ""> <h3 class="text-xl capitalize font-bold inline">' . esc_html( $label ) . '</h3>';
-								// Loop through the terms and display them
+								echo '<div class="">';
+								echo '<h3 class="text-xl capitalize font-bold inline">' . esc_html( $label ) . '</h3>';
+
+								// Create an array to hold term names
+								$term_names = [];
+
+								// Loop through the terms and add them to the array
 								foreach ( $terms as $term ) {
-									echo '<h3 class="text-xl capitalize inline">' . esc_html( $term->name ) . '</h3></div>';
+									$term_names[] = esc_html( $term->name );
 								}
+
+								// Display the terms separated by a comma and a space
+								echo '<h3 class="text-xl capitalize inline">' . implode( ', ', $term_names ) . '</h3>';
+
+								if ( $new_line ) {
+									echo '<br>';
+								}
+
+								echo '</div>';
 							}
 						}
 
@@ -118,28 +132,28 @@ if ( get_field( "announcement_block" ) ) { ?>
 						// Display Speaker
 						$taxonomy_speaker = 'speaker';
 						$label_speaker    = 'Speaker: ';
-						display_taxonomy_terms( $latest_message_id, $taxonomy_speaker, $label_speaker );
+						display_taxonomy_terms( $latest_message_id, $taxonomy_speaker, $label_speaker, true );
 
 						// Display Series
 						$taxonomy_series = 'series';
 						$label_series    = 'Series: ';
 						display_taxonomy_terms( $latest_message_id, $taxonomy_series, $label_series );
 						?>
+
+
+                        <div class="mt-5">
+                            <a href="<?php echo get_permalink( $post['ID'] ); ?>" class="elevated-blue mr-3">
+                                <i class="fa-solid fa-arrow-right"></i> Watch Now
+                            </a>
+
+
+                            <a href="<?php the_field( 'youtube_link', $post['ID'], false, false ); ?>" target="_blank"
+                               class="ghost-paired mt-3">
+                                <!-- ACF field, get the post ID of the last post, "false false" strips formatting and provides a raw URL -->
+                                View on YouTube
+                            </a>
+                        </div>
                     </div>
-
-                    <div class="mt-5">
-                        <a href="<?php echo get_permalink( $post['ID'] ); ?>" class="elevated-blue mr-3">
-                            <i class="fa-solid fa-arrow-right"></i> Watch Now
-                        </a>
-
-
-                        <a href="<?php the_field( 'youtube_link', $post['ID'], false, false ); ?>" target="_blank"
-                           class="ghost-paired mt-3">
-                            <!-- ACF field, get the post ID of the last post, "false false" strips formatting and provides a raw URL -->
-                            View on YouTube
-                        </a>
-                    </div>
-
                 </div>
 			<?php endforeach;
 			wp_reset_query(); ?>

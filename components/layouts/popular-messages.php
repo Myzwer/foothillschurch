@@ -36,20 +36,29 @@ if ( have_rows( 'popular_messages', 84 ) ):
                     <a href="<?php the_permalink(); ?>">
                         <h3 class="font-bold capitalize text-xl pt-3"><?php the_title(); ?></h3>
 
-                        <p class=" capitalize text-lg">
+                        <p class="capitalize text-lg">
 							<?php
 							// DISPLAY SERIES NAME
 							$taxonomy = 'series';
 							// Get the terms associated with the current post
 							$terms = get_the_terms( get_the_ID(), $taxonomy );
 							if ( $terms && ! is_wp_error( $terms ) ) {
-								// Loop through the terms and display them
+								// Create an array to hold term names
+								$term_names = [];
+
+								// Loop through the terms and add them to the array
 								foreach ( $terms as $term ) {
-									echo 'Series: <a href="' . get_term_link( $term, $taxonomy ) . '">' . esc_html( $term->name ) . '</a>';
+									$term_names[] = esc_html( $term->name );
+								}
+
+								// Display the terms separated by a comma and a space
+								if ( ! empty( $term_names ) ) {
+									echo 'Series: ' . implode( ', ', $term_names );
 								}
 							}
 							?>
                         </p>
+
                         <p class=" capitalize text-sm"><?php the_date(); ?></p>
                     </a>
 				<?php endforeach; ?>

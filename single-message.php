@@ -62,7 +62,7 @@ get_header(); ?>
 
 				if ( get_field( 'subsplash_link' ) ): ?>
                     <p class="capitalize text-lg"><span class="font-bold">Notes:</span> <a
-                                href="<?php the_field( "subsplash_link" ) ?>">View On Subsplash <i
+                                href="<?php the_field( "subsplash_link" ) ?>" target="_blank">View On Subsplash <i
                                     class="fa-regular fa-arrow-up-right-from-square"></i></a></p>
 				<?php endif; ?>
             </div>
