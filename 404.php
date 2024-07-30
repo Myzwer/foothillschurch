@@ -24,7 +24,7 @@ get_header(); ?>
                      alt="404 Tomb Picture">
                 <h1 class="uppercase text-3xl md:text-6xl font-bold"><?php the_field( 'title', 'options' ); ?></h1>
                 <h3 class="uppercase text-2xl font-bold pt-3"><?php the_field( 'subtitle', 'options' ); ?></h3>
-                <p class="text-xl font-bold pt-5"><?php the_field( 'explination', 'options' ); ?></p>
+                <p class="text-xl font-bold pt-5"><?php the_field( 'explanation', 'options' ); ?></p>
                 <div class="mt-5">
                     <a class="fab-main" href="<?php the_field( 'button_link', 'options' ); ?>">
                         <i class="fa-solid fa-circle-arrow-right"></i> <?php the_field( 'button_text', 'options' ); ?>
