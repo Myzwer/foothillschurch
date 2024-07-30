@@ -88,12 +88,12 @@ $lightblue-grad-hover: #7498be;
 }
 
 .ghost-black {
-  box-shadow: 0 0 0 1px $black;
   border-radius: 18px;
+  box-shadow: 0 0 0 1px $black;
   color: $black;
   font-weight: 800;
   padding: 10px 22px;
-  transition: 100ms;
+  transition: 0.1s;
 }
 
 .ghost-black:hover {
@@ -101,12 +101,12 @@ $lightblue-grad-hover: #7498be;
 }
 
 .ghost-white {
-  box-shadow: 0 0 0 1px $white;
   border-radius: 18px;
+  box-shadow: 0 0 0 1px $white;
   color: $white;
   font-weight: 800;
   padding: 10px 22px;
-  transition: 100ms;
+  transition: 0.1s;
 }
 
 .ghost-white:hover {
