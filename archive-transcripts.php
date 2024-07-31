@@ -35,7 +35,7 @@ get_header(); ?>
             <div id="primary" class="grid grid-cols-12 gap-4 md:gap-4">
 				<?php
 				// Get the current page number for pagination
-				$paged = absint( $wp_query->get( 'paged',  1 ) );
+				$paged = absint( $wp_query->get( 'paged', 1 ) );
 
 				// Define query arguments for retrieving custom post type 'message'
 				$args = array(
@@ -54,34 +54,47 @@ get_header(); ?>
 				endwhile;
 				?>
 
-                <div class="col-span-12 p-5 mb-8 pagination text-center">
+                <div class="col-span-12 p-5 mb-8 text-center">
 					<?php
-					// Define pagination parameters and display pagination links
-					$big = 999999999;
-					echo paginate_links( array(
-						'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
-						'total'        => $loop->max_num_pages,
-						// Total number of pages
-						'current'      => max( 1, get_query_var( 'paged' ) ),
-						// Current page
-						'format'       => '?paged=%#%',
-						// Page URL format
-						'show_all'     => false,
-						'type'         => 'list',
-						'end_size'     => 2,
-						// Number of pages to display at the beginning and end
-						'mid_size'     => 1,
-						// Number of pages to display on either side of the current page
-						'prev_next'    => true,
-						// Display "Previous" and "Next" links
-						'prev_text'    => sprintf( '<i></i> %1$s', __( 'Newer Transcripts', 'text-domain' ) ),
-						// Text for the "Previous" link
-						'next_text'    => sprintf( '%1$s <i></i>', __( 'Older Transcripts', 'text-domain' ) ),
-						// Text for the "Next" link
-						'add_args'     => false,
-						'add_fragment' => '',
-					) );
+					// Get the current page and total number of pages
+					$paged       = max( 1, get_query_var( 'paged' ) );
+					$total_pages = $loop->max_num_pages;
+					$rounded     = '';
+
+					if ( $paged == 1 ) {
+						$rounded = 'pag-mid-left';
+					} elseif ( $paged == $total_pages ) {
+						$rounded = 'pag-mid-right';
+					}
+
+					echo '<div class="pagination">';
+
+					// Display link to the first page if not on the first page
+					if ( $paged > 1 ) {
+						echo '<a href="' . esc_url( get_pagenum_link( 1 ) ) . '" class = "pag-left"><i class="fa-solid fa-angles-left"></i></a>';
+					}
+
+					// Display link to the previous page if not on the first page
+					if ( $paged > 1 ) {
+						echo '<a href="' . esc_url( get_pagenum_link( $paged - 1 ) ) . '"><i class="fa-solid fa-angle-left"></i></a>';
+					}
+
+					// Display the current page number and total number of pages
+					echo '<span class="' . $rounded . '">' . sprintf( __( '%1$s of %2$s', 'text-domain' ), $paged, $total_pages ) . '</span>';
+
+					// Display link to the next page if not on the last page
+					if ( $paged < $total_pages ) {
+						echo '<a href="' . esc_url( get_pagenum_link( $paged + 1 ) ) . '"><i class="fa-solid fa-angle-right"></i></a>';
+					}
+
+					// Display link to the last page if not on the last page
+					if ( $paged < $total_pages ) {
+						echo '<a href="' . esc_url( get_pagenum_link( $total_pages ) ) . '" class = "pag-right"><i class="fa-solid fa-angles-right"></i></a>';
+					}
+
+					echo '</div>';
 					?>
+
                 </div>
 				<?php wp_reset_postdata(); // Reset post data after the loop ?>
             </div>

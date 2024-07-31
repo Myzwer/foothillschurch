@@ -11,29 +11,47 @@
 
 /* stylelint-disable selector-no-qualifying-type */
 .pagination {
-  ul {
-    margin-top: 40px;
+  border-radius: 10px;
+  color: #FAFAFA;
+  display: inline-block;
+  font-size: 1.3em;
+
+  span {
+    background-color: #243058;
+    padding: 10px 15px;
   }
 
-  li {
-    display: inline;
+  a {
+    background-color: #243058;
+    padding: 10px 15px;
   }
 
-  li a,
-  li a:hover,
-  li.active a,
-  li.disabled {
-    background-color: #234058;
-    border-radius: 10px;
-    color: #dddddd;
-    cursor: pointer;
-    padding: 0.75em;
-    text-decoration: none;
+  a:hover {
+    background-color: #7498BE;
   }
 
-  li a:hover,
-  li.active a {
-    background-color: #000000;
+  .pag-left {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+
+  .pag-right {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  // these classes are toggled on and off in PHP
+  // They control roundedness on the middle block.
+  .pag-mid-left {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding-left: 30px;
+  }
+
+  .pag-mid-right {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-right: 30px;
   }
 }
 
