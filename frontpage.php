@@ -244,6 +244,7 @@ if ( get_field( "announcement_block" ) ) { ?>
     <!-- END Gallery / Events -->
 
     <!-- START Next Step Slider -->
+<?php if ( have_rows( 'slider_content' ) ): ?>
     <div class="bg-darkblue md:p-10">
         <div class=" lg:max-w-5xl lg:mx-auto">
             <div class="grid grid-cols-12 gap-4 md:gap-10">
@@ -296,6 +297,7 @@ if ( get_field( "announcement_block" ) ) { ?>
             </div>
         </div>
     </div>
+<?php endif; ?>
     <!-- END Next Step Slider -->
 
     <!-- START Junk Drawer -->
