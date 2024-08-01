@@ -99,7 +99,7 @@ if ( get_field( "announcement_block" ) ) { ?>
                     <h2 class="text-3xl font-bold capitalize"><?php echo get_the_title( $post['ID'] ) ?></h2>
                     <div class="block">
 						<?php
-						function display_taxonomy_terms( $post_id, $taxonomy, $label, $new_line = false ) {
+						function display_taxonomy_terms( $post_id, $taxonomy, $label, $new_line = false ): void {
 							// Retrieve the terms associated with the post for the specified taxonomy
 							$terms = get_the_terms( $post_id, $taxonomy );
 
@@ -127,7 +127,7 @@ if ( get_field( "announcement_block" ) ) { ?>
 						}
 
 						// Get the ID of the most recent message post from the $recent_posts array
-						$latest_message_id = $recent_posts[0]['ID'];
+						$latest_message_id = $post['ID'];
 
 						// Display Speaker
 						$taxonomy_speaker = 'speaker';
