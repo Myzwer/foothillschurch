@@ -28,9 +28,6 @@ get_header(); ?>
 						// Check value exists.
 						if ( have_rows( 'call_to_action' ) ) :
 
-							// used for alternating colors
-							$counter = 0;
-
 							// Loop through rows.
 							while ( have_rows( 'call_to_action' ) ) : the_row();
 								switch ( get_row_layout() ) {
@@ -65,9 +62,8 @@ get_header(); ?>
 										<?php
 										break;
 
-									// FIXME: Only for building/debugging, shouldn't be left in for production
 									default:
-										echo "Unhandled content block: " . get_row_layout();
+										error_log( "Unhandled content block: " . get_row_layout() );
 										break;
 								}
 
