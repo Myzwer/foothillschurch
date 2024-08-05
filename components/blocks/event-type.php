@@ -22,7 +22,7 @@
 $type     = get_sub_field( "event_type" );
 $location = get_sub_field( "event_location" );
 $name     = get_sub_field( "event_name" );
-$count    = ( get_sub_field( "num_events" ) == null ) ? 3 : get_sub_field( "num_events" );
+$count    = get_sub_field( "num_events" ) ?? 3;
 
 
 $tax_query = array( 'relation' => 'AND' );
@@ -59,7 +59,7 @@ $args = array(
 	'order'          => 'DESC',
 	'orderby'        => 'date',
 	'posts_per_page' => $count,
-	'paged'          => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
+	'paged'          => get_query_var( 'paged' ) ?? 1,
 	'tax_query'      => $tax_query,
 );
 

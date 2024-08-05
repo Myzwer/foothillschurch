@@ -100,7 +100,7 @@ get_header(); ?>
 				'offset'         => 1,
 				'order'          => 'DESC',
 				'orderby'        => 'date',
-				'paged'          => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
+				'paged'          => get_query_var( 'paged' ) ?? 1,
 			);
 
 			// The Query

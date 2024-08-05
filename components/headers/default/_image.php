@@ -30,24 +30,20 @@
 
 
 							<?php
-							// This line uses the ternary operator to choose between two possible URLs.
-							// It checks if 'button_link' subfield exists. If it does, $link is assigned the value of 'button_link'.
-							// If 'button_link' does not exist (is null or false), then $link is assigned the value of 'button_link_file'.
-							// If both exist, link gets priority
-							// if neither exist, it would return null and get hung up on the if statement below.
-							$link = get_sub_field( 'button_link' ) ? get_sub_field( 'button_link' ) : get_sub_field( 'button_link_file' );
+							// Retrieve the value of the 'button_link' sub-field, or if it's null, retrieve the value of 'button_link_file'.
+							// The null coalescing operator (??) is used to check if 'button_link' has a value; if not, it falls back to 'button_link_file'.
+							$link  = get_sub_field( 'button_link' ) ?? get_sub_field( 'button_link_file' );
+							$tab   = get_sub_field( 'new_tab' );
+							$attrs = null;
 
-							// Get tab status
-							$tab = get_sub_field( 'new_tab' );
-
+							// Check the value of the 'new_tab' field to determine the appropriate HTML attributes to add to the link.
 							if ( $tab == "yes" ) {
-								$tab = 'target="_blank"';
+								// If 'new_tab' is set to "yes", set the $attrs variable to open the link in a new browser tab.
+								$attrs = 'target="_blank"';
 							} elseif ( $tab == "cc" ) {
-								$tab = "data-open-in-church-center-modal='true'";
-							} else {
-								$tab = null;
+								// If 'new_tab' is set to "cc", set the $attrs variable to open the link in a Church Center modal.
+								$attrs = "data-open-in-church-center-modal='true'";
 							}
-
 
 							// Hide button if link is returning null
 							if ( $link ): ?>

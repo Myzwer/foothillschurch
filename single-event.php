@@ -39,35 +39,13 @@ get_header(); ?>
                     <div class="col-span-12 bg-white rounded-md shadow-xl p-5">
                         <p><i class="fa-regular fa-clock"></i> Time</p>
                         <h2 class="text-lg font-bold uppercase">
+
 							<?php
-							// These two if statements check to see if the ACF field is empty, and either returns its value
-							// Or it returns "TBD"
-
-							// Get the selected value from the ACF field
-							$start_time = get_field( 'event_start_time' );
-
-							// Check the value returned from ACF
-							if ( $start_time != null ) {
-								the_field( 'event_start_time' );
-							} else {
-								echo "TBD";
-							}
+							// get start and end time, unless value isn't provided, in which case display TBD.
+							echo get_field( 'event_start_time' ) ?? "TBD"; ?>
+                            - <?php echo get_field( 'event_end_time' ) ?? "TBD";
 							?>
-                            -
-							<?php
-							// These two if statements check to see if the ACF field is empty, and either returns its value
-							// Or it returns "TBD"
 
-							// Get the selected value from the ACF field
-							$end_time = get_field( 'event_end_time' );
-
-							// Check the value returned from ACF
-							if ( $end_time != null ) {
-								the_field( 'event_end_time' );
-							} else {
-								echo "TBD";
-							}
-							?>
                         </h2>
                     </div>
                     <!-- end time section -->
