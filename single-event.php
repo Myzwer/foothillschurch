@@ -42,8 +42,8 @@ get_header(); ?>
 
 							<?php
 							// get start and end time, unless value isn't provided, in which case display TBD.
-							echo get_field( 'event_start_time' ) ?? "TBD"; ?>
-                            - <?php echo get_field( 'event_end_time' ) ?? "TBD";
+							echo get_field( 'event_start_time' ) ?: "TBD"; ?>
+                            - <?php echo get_field( 'event_end_time' ) ?: "TBD";
 							?>
 
                         </h2>

@@ -96,7 +96,7 @@ endif;
 													while ( have_rows( 'resource_item' ) ) : the_row();
 
 														// Either display the words users provide or "View on Amazon" if its left blank.
-														$link_text = get_sub_field( 'link_text' ) ?? "View on Amazon";
+														$link_text = get_sub_field( 'link_text' ) ?: "View on Amazon";
 
 														?>
                                                         <div class="py-4">

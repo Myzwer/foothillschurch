@@ -16,13 +16,13 @@ get_header(); ?>
 
 <?php
 // Get the logo from acf or fall back to default logo if left blank / null
-$logo = get_field( 'logo' ) ?? get_template_directory_uri() . '/assets/src/img/circle-brand.png';
+$logo = get_field( 'logo' ) ?: get_template_directory_uri() . '/assets/src/img/circle-brand.png';
 
 // Get the title from acf or fall back to default title if left blank / null
-$title = get_field( 'title' ) ?? 'Foothills Church';
+$title = get_field( 'title' ) ?: 'Foothills Church';
 
 // Get the subtitle from acf or fall back to default subtitle if left blank / null
-$subtitle = get_field( 'subtitle' ) ?? 'You Belong here ❤️';
+$subtitle = get_field( 'subtitle' ) ?: 'You Belong here ❤️';
 
 // Get the socials radio button results. Show or hide the section with CSS based on the answer.
 $socials = ( get_field( 'socials' ) === 'no' ) ? 'hidden' : 'block';

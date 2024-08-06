@@ -31,8 +31,8 @@
 
 							<?php
 							// Retrieve the value of the 'button_link' sub-field, or if it's null, retrieve the value of 'button_link_file'.
-							// The null coalescing operator (??) is used to check if 'button_link' has a value; if not, it falls back to 'button_link_file'.
-							$link  = get_sub_field( 'button_link' ) ?? get_sub_field( 'button_link_file' );
+							// Check if 'button_link' has a value; if not, it falls back to 'button_link_file'.
+							$link  = get_sub_field( 'button_link' ) ?: get_sub_field( 'button_link_file' );
 							$tab   = get_sub_field( 'new_tab' );
 							$attrs = null;
 
@@ -48,7 +48,7 @@
 							// Hide button if link is returning null
 							if ( $link ): ?>
                                 <div class="mt-3">
-                                    <a href="<?php echo $link ?>" <?php echo $tab ?> class="fab-main-white">
+                                    <a href="<?php echo $link ?>" <?php echo $attrs ?> class="fab-main-white">
                                         <i class="fa-solid fa-circle-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
                                     </a>
                                 </div>

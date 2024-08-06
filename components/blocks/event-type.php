@@ -22,7 +22,7 @@
 $type     = get_sub_field( "event_type" );
 $location = get_sub_field( "event_location" );
 $name     = get_sub_field( "event_name" );
-$count    = get_sub_field( "num_events" ) ?? 3;
+$count    = get_sub_field( "num_events" ) ?: 3;
 
 
 $tax_query = array( 'relation' => 'AND' );
