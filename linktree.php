@@ -24,8 +24,6 @@ $title = get_field( 'title' ) ?: 'Foothills Church';
 // Get the subtitle from acf or fall back to default subtitle if left blank / null
 $subtitle = get_field( 'subtitle' ) ?: 'You Belong here ❤️';
 
-// Get the socials radio button results. Show or hide the section with CSS based on the answer.
-$socials = ( get_field( 'socials' ) === 'no' ) ? 'hidden' : 'block';
 ?>
 
     <div class="bg-blue-gradient relative">
@@ -43,23 +41,25 @@ $socials = ( get_field( 'socials' ) === 'no' ) ? 'hidden' : 'block';
                     <h1 class="text-3xl font-bold"><?php echo $title ?></h1>
                     <h3 class="text-md uppercase"><?php echo $subtitle ?></h3>
 
-                    <div class="pt-2 <?php echo $socials ?>">
-                        <a href="https://www.facebook.com/foothillschurchTN/">
-                            <i class="text-2xl pr-1 fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="https://instagram.com/foothillschurchtn">
-                            <i class="text-2xl pr-1 fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="https://x.com/foothillschurch">
-                            <i class="text-2xl pr-1 fa-brands fa-x"></i>
-                        </a>
-                        <a href="https://www.youtube.com/c/FoothillsChurchTN">
-                            <i class="text-2xl pr-1 fa-brands fa-youtube"></i>
-                        </a>
-                        <a href="https://open.spotify.com/user/foothillschurch?si=1b5df347a9f842be">
-                            <i class="text-2xl pr-1 fa-brands fa-spotify"></i>
-                        </a>
-                    </div>
+					<?php if ( get_field( 'socials' ) !== 'no' ): ?>
+                        <div class="pt-2">
+                            <a href="<?php the_field( 'facebook', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="<?php the_field( 'instagram', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="<?php the_field( 'twitter', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-x"></i>
+                            </a>
+                            <a href="<?php the_field( 'youtube', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-youtube"></i>
+                            </a>
+                            <a href="<?php the_field( 'spotify', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-spotify"></i>
+                            </a>
+                        </div>
+					<?php endif; ?>
 
                 </div>
             </div>
