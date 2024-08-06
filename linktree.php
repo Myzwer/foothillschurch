@@ -75,11 +75,16 @@ $subtitle = get_field( 'subtitle' ) ?: 'You Belong here ❤️';
                         </div>
 
 						<?php
-						if ( have_rows( 'link' ) ):
-							while ( have_rows( 'link' ) ) : the_row(); ?>
+						if ( have_rows( 'link' ) ) :
+							while ( have_rows( 'link' ) ) : the_row();
 
+								// Check if the button should be hidden
+								if ( get_sub_field( 'hide_button' ) == 'yes' ) {
+									continue;
+								}
 
-								<?php if ( get_sub_field( 'hide_button' ) == 'no' && get_sub_field( 'prioritize' ) == 'no' ) { ?>
+								// Handle non-prioritized buttons
+								if ( get_sub_field( 'prioritize' ) == 'no' ) { ?>
                                     <div class="col-span-12">
                                         <a class="elevated-white-lt mt-3 relative block w-full button-link"
                                            href="<?php the_sub_field( 'button_link' ); ?>">
@@ -91,9 +96,10 @@ $subtitle = get_field( 'subtitle' ) ?: 'You Belong here ❤️';
                                             </div>
                                         </a>
                                     </div>
-								<?php } ?>
+								<?php }
 
-								<?php if ( get_sub_field( 'hide_button' ) == 'no' && get_sub_field( 'prioritize' ) == 'yes' ) { ?>
+								// Handle prioritized buttons
+								if ( get_sub_field( 'prioritize' ) == 'yes' ) { ?>
                                     <div class="col-span-12 relative mt-5">
                                         <a class="block w-full lt-image"
                                            href="<?php the_sub_field( 'button_link' ); ?>">
@@ -104,12 +110,12 @@ $subtitle = get_field( 'subtitle' ) ?: 'You Belong here ❤️';
                                             </h3>
                                         </a>
                                     </div>
-								<?php } ?>
+								<?php }
 
-							<?php
 							endwhile;
 						endif;
 						?>
+
 
                     </div>
 				<?php
