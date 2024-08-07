@@ -68,26 +68,28 @@ $events = new WP_Query( $args );
 // Rest of the code
 
 if ( $events->have_posts() ) : ?>
-    <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
-        <div class="grid grid-cols-12 gap-4 md:gap-4">
-            <div class="col-span-12 py-5 prose max-w-none">
-				<?php the_sub_field( "header_content" ); ?>
-            </div>
+    <div class='bg-alternating-gradient'>
+        <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
+            <div class="grid grid-cols-12 gap-4 md:gap-4">
+                <div class="col-span-12 py-5 prose max-w-none">
+					<?php the_sub_field( "header_content" ); ?>
+                </div>
 
-			<?php
-			// The Loop
-			if ( $events->have_posts() ) {
-				while ( $events->have_posts() ) {
-					$events->the_post();
-					$size_select = array(
-						'column_span_class' => 'lg:col-span-4'
-					);
-					get_template_part( 'components/cards/event-card', null, $size_select );
+				<?php
+				// The Loop
+				if ( $events->have_posts() ) {
+					while ( $events->have_posts() ) {
+						$events->the_post();
+						$size_select = array(
+							'column_span_class' => 'lg:col-span-4'
+						);
+						get_template_part( 'components/cards/event-card', null, $size_select );
+					}
 				}
-			}
-			// Restore original Post Data
-			wp_reset_postdata();
-			?>
+				// Restore original Post Data
+				wp_reset_postdata();
+				?>
+            </div>
         </div>
     </div>
 <?php endif; ?>

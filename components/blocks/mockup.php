@@ -21,18 +21,19 @@ $side  = get_sub_field( 'side_selection' );
 $order = ( $side == 'left' ) ? '' : 'md:order-2';
 ?>
 
+<div class='bg-alternating-gradient'>
+    <div class="lg:max-w-6xl mx-auto grid grid-cols-12 p-5 py-10 gap-4">
 
-<div class="lg:max-w-6xl mx-auto grid grid-cols-12 p-5 py-10 gap-4">
+        <div class="col-span-12 lg:col-span-5 <?php echo $order; ?>">
+            <img class="block mx-auto  md:w-fit pt-5" src="<?php the_sub_field( 'mockup_image' ); ?>"
+                 alt="Mockup">
+        </div>
 
-    <div class="col-span-12 lg:col-span-5 <?php echo $order; ?>">
-        <img class="block mx-auto  md:w-fit pt-5" src="<?php the_sub_field( 'mockup_image' ); ?>"
-             alt="Mockup">
-    </div>
-
-    <div class="col-span-12 lg:col-span-7 relative">
-        <div class="content-middle-medium">
-            <div class="prose text-pretty">
-				<?php the_sub_field( 'content' ); ?>
+        <div class="col-span-12 lg:col-span-7 relative">
+            <div class="content-middle-medium">
+                <div class="prose text-pretty">
+					<?php the_sub_field( 'content' ); ?>
+                </div>
             </div>
         </div>
     </div>

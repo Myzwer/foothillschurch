@@ -92,36 +92,17 @@ endif;
 
 
     <!--
-	*
-	*
-	*
-	*
 	* FLEX CONTENT
 	* Load the rest of the content in via flex content so its more customizable.
-	*
-	*
-	*
-	*
 	-->
 <?php
 // Check value exists.
 if ( have_rows( 'other_sections' ) ) :
 
-	// used for alternating background colors
-	$counter = 0;
 
 	// Loop through rows.
 	while ( have_rows( 'other_sections' ) ) : the_row();
 
-		if ( 0 === $counter % 2 ) {
-			$bg = 'bg-blue-gradient';
-		} else {
-			$bg = 'bg-white-gradient';
-		}
-
-		echo "<div class='$bg'>";
-
-		ob_start();  // Start Output Buffering at beginning of loop. This is used to ensure background colors display properly.
 
 		switch ( get_row_layout() ) {
 			case 'text_block':
@@ -153,20 +134,6 @@ if ( have_rows( 'other_sections' ) ) :
 				break;
 		}
 
-		// Output buffering is here to make sure that if for whatever reason, a section doesn't render any content
-		// it gets skipped in the color. (so a white bg doesn't end up next to a white bg because blue didn't show.
-
-		$output = ob_get_contents();  // Save content of the current loop iteration to $output variable
-		ob_end_clean();  // Dump the content like a bad habit because output has already been saved to variable.
-
-		// Check if the output saved to variable is longer than 1 character (whitespace might return, so 1 ensures nothing does)
-		if ( strlen( $output ) > 1 ) {
-			// Increment counter only if $output had content
-			$counter ++;
-		}
-
-		echo $output;  // Show output saved into variable.
-		echo "</div>";
 
 		// End loop.
 	endwhile;

@@ -46,21 +46,13 @@ endif;
 // Check value exists.
 if ( have_rows( 'body_sections' ) ) :
 
-	// used for alternating background colors
-	$counter = 0;
 
 	// Loop through rows.
 	while ( have_rows( 'body_sections' ) ) : the_row();
 
-		if ( 0 === $counter % 2 ) {
-			$bg = 'bg-white-gradient';
-		} else {
-			$bg = 'bg-blue-gradient';
-		}
 
-		echo "<div class='$bg'>";
+		echo "";
 
-		ob_start();  // Start Output Buffering at beginning of loop. This is used to ensure background colors display properly.
 
 		switch ( get_row_layout() ) {
 			case 'text_block':
@@ -124,17 +116,7 @@ if ( have_rows( 'body_sections' ) ) :
 				break;
 		}
 
-		$output = ob_get_contents();  // Save content of the current loop iteration to $output variable
-		ob_end_clean();  // Dump the content like a bad habit because output has already been saved to variable.
-
-		// Check if the output saved to variable is longer than 1 character (whitespace might return, so 0 ensures nothing does)
-		if ( strlen( $output ) > 1 ) {
-			// Increment counter only if $output had content
-			$counter ++;
-		}
-
-		echo $output;  // Show output saved into variable.
-		echo "</div>";
+		echo "";
 
 		// End loop.
 	endwhile;
