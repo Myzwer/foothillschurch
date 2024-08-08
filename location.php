@@ -103,6 +103,7 @@ if ( have_rows( 'other_sections' ) ) :
 	// Loop through rows.
 	while ( have_rows( 'other_sections' ) ) : the_row();
 
+		echo "<div class='bg-alternating-gradient'>";
 
 		switch ( get_row_layout() ) {
 			case 'text_block':
@@ -134,6 +135,7 @@ if ( have_rows( 'other_sections' ) ) :
 				break;
 		}
 
+		echo "</div>";
 
 		// End loop.
 	endwhile;

@@ -51,7 +51,7 @@ if ( have_rows( 'body_sections' ) ) :
 	while ( have_rows( 'body_sections' ) ) : the_row();
 
 
-		echo "";
+		echo "<div class='bg-alternating-gradient'>";
 
 
 		switch ( get_row_layout() ) {
@@ -116,7 +116,7 @@ if ( have_rows( 'body_sections' ) ) :
 				break;
 		}
 
-		echo "";
+		echo "</div>";
 
 		// End loop.
 	endwhile;
