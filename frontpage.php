@@ -13,7 +13,7 @@
 
 get_header(); ?>
 
-    <!-- START Header -->
+<?php // START Header ?>
     <video class="header-video" src="<?php the_field( "video_background" ); ?>" autoplay loop playsinline muted></video>
     <div class="viewport-header">
         <div class="head-container">
@@ -58,10 +58,11 @@ get_header(); ?>
 
         </div>
     </div>
-    <!-- END Header -->
+<?php // END Header ?>
 
-    <!-- Show announcement banner if there's content -->
+
 <?php
+// Show announcement banner if there's content
 if ( get_field( "announcement_block" ) ) { ?>
     <div class="bg-salty-gradient">
         <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
@@ -74,11 +75,12 @@ if ( get_field( "announcement_block" ) ) { ?>
     </div>
 <?php } ?>
 
-    <!-- START Recent Sermon -->
+
+<?php // START Recent Sermon ?>
     <div class="bg-white-gradient">
         <div class="lg:max-w-5xl mx-auto grid grid-cols-12 p-5 py-10 gap-4 md:gap-10">
-            <!-- Start the actual card -->
 			<?php
+			// Start the actual card
 			// Drop into PHP to call the latest post title and link
 			$recent_posts = wp_get_recent_posts( array(
 				'post_type'   => 'message',
@@ -146,10 +148,9 @@ if ( get_field( "announcement_block" ) ) { ?>
                                 <i class="fa-solid fa-arrow-right"></i> Watch Now
                             </a>
 
-
+							<?php // ACF field, get the post ID of the last post, "false false" strips formatting and provides a raw URL ?>
                             <a href="<?php the_field( 'youtube_link', $post['ID'], false, false ); ?>" target="_blank"
                                class="ghost-paired mt-3">
-                                <!-- ACF field, get the post ID of the last post, "false false" strips formatting and provides a raw URL -->
                                 View on YouTube
                             </a>
                         </div>
@@ -157,12 +158,11 @@ if ( get_field( "announcement_block" ) ) { ?>
                 </div>
 			<?php endforeach;
 			wp_reset_query(); ?>
-            <!-- End Featured Sermon -->
         </div>
     </div>
-    <!-- END Recent Sermon -->
+<?php // END Recent Sermon ?>
 
-    <!-- START Resource Giveaway -->
+<?php // START Resource Giveaway  ?>
     <div class="bg-blue-gradient py-10">
         <div class=" lg:max-w-5xl lg:text-center lg:mx-auto p-5 pt-10">
             <div class="grid grid-cols-12 gap-4 md:gap-10">
@@ -193,9 +193,10 @@ if ( get_field( "announcement_block" ) ) { ?>
             </div>
         </div>
     </div>
-    <!-- END Resource Giveaway -->
+<?php // END Resource Giveaway ?>
 
-    <!-- START Gallery / Events -->
+
+<?php // START Gallery / Events  ?>
     <div class="bg-white-gradient">
         <div class="bg-no-repeat bg-scroll bg-cover relative pb-8"
              style="background: linear-gradient(
@@ -241,10 +242,12 @@ if ( get_field( "announcement_block" ) ) { ?>
             </div>
         </div>
     </div>
-    <!-- END Gallery / Events -->
+<?php // END Gallery / Events ?>
 
-    <!-- START Next Step Slider -->
-<?php if ( have_rows( 'slider_content' ) ): ?>
+
+<?php
+// START Next Step Slider
+if ( have_rows( 'slider_content' ) ): ?>
     <div class="bg-darkblue md:p-10">
         <div class=" lg:max-w-5xl lg:mx-auto">
             <div class="grid grid-cols-12 gap-4 md:gap-10">
@@ -256,7 +259,7 @@ if ( get_field( "announcement_block" ) ) { ?>
                 </div>
 
                 <div class="col-span-12 md:col-start-6 md:col-span-7 pb-10 md:pb-0">
-                    <!-- Start Glider -->
+					<?php // Start Glider ?>
                     <div class="glide relative">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
@@ -281,7 +284,7 @@ if ( get_field( "announcement_block" ) ) { ?>
                         </div>
                         <div class="glide__bullets" data-glide-el="controls[nav]">
                         </div>
-                        <!-- Start Arrows -->
+						<?php // Start Arrows ?>
                         <div class="glide__arrows" data-glide-el="controls">
                             <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
                                 <i class="fa-regular fa-angle-left"></i>
@@ -290,23 +293,23 @@ if ( get_field( "announcement_block" ) ) { ?>
                                 <i class="fa-regular fa-angle-right"></i>
                             </button>
                         </div>
-                        <!-- End Arrows -->
+						<?php // End Arrows ?>
                     </div>
-                    <!-- End Glider -->
+					<?php // End Glider ?>
                 </div>
             </div>
         </div>
     </div>
-<?php endif; ?>
-    <!-- END Next Step Slider -->
+<?php endif;
+// END Next Step Slider
+?>
 
-    <!-- START Junk Drawer -->
+
     <div class="bg-white-gradient md:py-10">
         <div class=" lg:max-w-5xl lg:mx-auto">
 			<?php get_template_part( 'components/layouts/junk-drawer' ); ?>
         </div>
     </div>
-    <!-- END Recent Sermon -->
 
 
 <?php

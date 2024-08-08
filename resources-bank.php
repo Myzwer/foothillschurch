@@ -33,7 +33,7 @@ if ( have_rows( 'header_select' ) ) :
 			case 'image_header':
 				get_template_part( 'components/headers/default/_image' );
 				break;
-                
+
 			default:
 				error_log( "Unhandled content block: " . get_row_layout() );
 				break;
@@ -58,7 +58,7 @@ endif;
     </div>
 
 
-    <!-- Start giant ass repeater bank -->
+    <!-- Start the giant repeater bank -->
     <div class="bg-white-gradient">
         <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
             <div class="grid grid-cols-12 gap-4 md:gap-4">
