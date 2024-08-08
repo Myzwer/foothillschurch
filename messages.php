@@ -2,7 +2,7 @@
 /**
  * Template Name: Post Type - Messages
  *
- * The Frontpage of the Bootcamp II Theme
+ * This page is the main "home" of messages, has the most recent message, and links to the archive of all prev messages.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
