@@ -5,10 +5,10 @@
 <?php
 
 // Check rows exists.
-if ( have_rows( 'popular_messages', 84 ) ):
+if ( have_rows( 'popular_messages', 'options' ) ):
 
 	// Loop through rows.
-	while ( have_rows( 'popular_messages', 84 ) ) : the_row();
+	while ( have_rows( 'popular_messages', 'options' ) ) : the_row();
 		?>
         <div class="col-span-12 lg:col-span-4">
 
