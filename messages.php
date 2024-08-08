@@ -83,6 +83,25 @@ get_header(); ?>
     </div>
 
 
+<?php
+// WP_Query arguments
+$args = array(
+	'post_type'      => array( 'message' ),
+	'post_status'    => array( 'publish' ),
+	'posts_per_page' => 8,
+	'nopaging'       => false,
+	'offset'         => 1,
+	'order'          => 'DESC',
+	'orderby'        => 'date',
+	'paged'          => get_query_var( 'paged' ) ?? 1,
+);
+
+// The Query
+$recents = new WP_Query( $args );
+
+// Check if there are any posts
+if ( $recents->have_posts() ) { ?>
+
     <div class="bg-white-gradient">
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 gap-4">
             <!-- "Recent Message" text -->
@@ -91,52 +110,26 @@ get_header(); ?>
             </div>
 
 			<?php
-			// WP_Query arguments
-			$args = array(
-				'post_type'      => array( 'message' ),
-				'post_status'    => array( 'publish' ),
-				'posts_per_page' => 8,
-				'nopaging'       => false,
-				'offset'         => 1,
-				'order'          => 'DESC',
-				'orderby'        => 'date',
-				'paged'          => get_query_var( 'paged' ) ?? 1,
-			);
-
-			// The Query
-			$recents = new WP_Query( $args );
-
 			// The Loop
-			if ( $recents->have_posts() ) {
-				while ( $recents->have_posts() ) {
-					$recents->the_post();
+			while ( $recents->have_posts() ) {
+				$recents->the_post(); ?>
 
-					?>
-
-                    <div class="col-span-6 lg:col-span-3 shadow-lg rounded-lg bg-blue-gradient height-lock-message">
-                        <a href="<?php the_permalink(); ?>">
-                            <div class="grid grid-cols-12">
-                                <div class="col-span-12">
-                                    <img class="rounded-t-xl" src="<?php the_post_thumbnail_url() ?>"
-                                         alt="Sermon Thumbnail">
-                                </div>
-                                <div class="col-span-12 p-3">
-                                    <h3 class="text-md font-bold"><?php echo get_the_title(); ?></h3>
-                                    <p class="text-sm"><?php echo get_the_date(); ?></p>
-                                </div>
+                <div class="col-span-6 lg:col-span-3 shadow-lg rounded-lg bg-blue-gradient height-lock-message">
+                    <a href="<?php the_permalink(); ?>">
+                        <div class="grid grid-cols-12">
+                            <div class="col-span-12">
+                                <img class="rounded-t-xl" src="<?php the_post_thumbnail_url(); ?>"
+                                     alt="Sermon Thumbnail">
                             </div>
-                        </a>
-                    </div>
-				<?php } ?>
+                            <div class="col-span-12 p-3">
+                                <h3 class="text-md font-bold"><?php echo get_the_title(); ?></h3>
+                                <p class="text-sm"><?php echo get_the_date(); ?></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-
-				<?php
-			} else {
-				echo 'there are no posts.'; // no posts found
-			}
-			// Restore original Post Data
-			wp_reset_postdata();
-			?>
+			<?php } ?>
 
             <div class="col-span-12 text-center my-5">
                 <a class="ghost-black mt-3 button-link" href="<?php the_field( "archive_link" ); ?>">
@@ -146,6 +139,11 @@ get_header(); ?>
 
         </div>
     </div>
+
+<?php }
+// Restore original Post Data
+wp_reset_postdata();
+?>
 
 
 <?php get_footer();
