@@ -46,21 +46,20 @@ get_header(); ?>
 					// Check if there are terms and ensure no WP_Error occurred
 					if ( $terms && ! is_wp_error( $terms ) ) {
 
-						// Initialize an array to store the term links
-						$term_links = array();
+						// Initialize an array to store the term names
+						$term_names = array();
 
 						// Loop through each term
 						foreach ( $terms as $term ) {
 
-							// Create a link to the term archive page
-							$term_links[] = '<a href="' . get_term_link( $term, $taxonomy_name ) . '">' . esc_html( $term->name ) . '</a>';
+							// Add the term name to the array
+							$term_names[] = esc_html( $term->name );
 						}
 
-						// Output a paragraph with the term label and links, separated by commas
-						echo '<p class="capitalize text-lg"><span class="font-bold">' . esc_html( $label ) . ':</span> ' . implode( ', ', $term_links ) . '</p>';
+						// Output a paragraph with the term label and names, separated by commas
+						echo '<p class="capitalize text-lg"><span class="font-bold">' . esc_html( $label ) . ':</span> ' . implode( ', ', $term_names ) . '</p>';
 					}
 				}
-
 
 				// Display Speaker
 				display_taxonomy_terms( 'speaker', 'Speaker' );
@@ -74,6 +73,7 @@ get_header(); ?>
 				// Display Topic
 				display_taxonomy_terms( 'topic', 'Topics' );
 				?>
+
             </div>
 
             <div class="col-span-12 md:col-span-8 py-5 prose max-w-none">
