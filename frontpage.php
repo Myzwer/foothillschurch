@@ -177,15 +177,18 @@ if ( get_field( "announcement_block" ) ) { ?>
                         <div class="text-left mb-1">
                             <h2 class=" text-xl md:text-3xl lb-2 font-bold capitalize"><?php the_field( "resource_title" ); ?></h2>
                             <div class="pb-10 md:pb-3 prose"><?php the_field( "resource_paragraph" ); ?></div>
-							<?php
-							// Gravity Forms Shortcode
-							$formid = get_field( "form_id" );
-							echo do_shortcode( "[gravityform id='$formid']" );
-							?>
-                            <p class="opacity-60 text-xs pt-3">This site is protected by reCAPTCHA and the Google
-                                <a class="underline" href="https://policies.google.com/privacy">Privacy Policy</a> and
-                                <a class="underline" href="https://policies.google.com/terms">Terms of Service</a>
-                                apply.</p>
+                            <div class="resource-giveaway">
+								<?php
+								// Gravity Forms Shortcode
+								$formid = get_field( "form_id" );
+								echo do_shortcode( "[gravityform id='$formid']" );
+								?>
+                                <p class="opacity-60 text-xs pt-3">This site is protected by reCAPTCHA and the Google
+                                    <a class="underline" href="https://policies.google.com/privacy">Privacy Policy</a>
+                                    and
+                                    <a class="underline" href="https://policies.google.com/terms">Terms of Service</a>
+                                    apply.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
