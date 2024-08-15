@@ -74,8 +74,8 @@ get_header(); ?>
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 py-10 relative">
             <div class="col-span-12 md:text-center">
                 <h3 class="text-xl md:text-3xl mb-3 font-bold">Prefer to Read The Message?</h3>
-                <p>All of our sermons are transcribed into blog format for you to read!</p>
-                <p>Blog format is typically available the following Wednesday.</p>
+                <p>All of our messages are transcribed into blog format for you to read!</p>
+                <p>Blog format is typically available by the following Tuesday.</p>
                 <div class="col-span-12 text-center mt-5">
 					<?php if ( get_field( 'blog_link' ) ): ?>
                         <a href="<?php the_field( 'blog_link' ); ?>" class="elevated-blue mr-3">
