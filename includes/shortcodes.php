@@ -75,7 +75,7 @@ function generate_social_shortcode( $default_url, $icon_class ) {
 		$button_url  = isset( $atts['url'] ) ? $atts['url'] : $default_url;
 
 		// Return the HTML for the social icon
-		return '<a href="' . esc_url( $button_url ) . '"><i class="text-' . esc_html( $button_size ) . 'xl pr-1 ' . esc_attr( $icon_class ) . '"></i></a>';
+		return '<a href="' . esc_url( $button_url ) . '"><i class="text-' . esc_html( $button_size ) . 'xl mr-2 ' . esc_attr( $icon_class ) . '"></i></a>';
 	};
 }
 
