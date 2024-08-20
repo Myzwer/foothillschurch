@@ -21,7 +21,7 @@ get_header(); ?>
             <div class="grid grid-cols-12 text-black">
                 <div class="col-span-12 md:col-span-6 text-center relative">
                     <div class="content-middle-medium py-20">
-                        <div class="prose max-w-none">
+                        <div class="prose text-left lg:text-center px-5 lg:mx-auto mb-10">
 							<?php the_field( 'content' ); ?>
                         </div>
 						<?php
@@ -39,8 +39,7 @@ get_header(); ?>
                                                 <i class="fa-regular fa-arrow-down-to-line"></i> <?php the_sub_field( "button_text" ); ?>
                                             </a>
                                         </div>
-										<?php
-										break;
+										<?php break;
 
 									case 'primary_cta':
 										?>
@@ -59,8 +58,7 @@ get_header(); ?>
 												<?php the_sub_field( "button_text" ); ?>
                                             </a>
                                         </div>
-										<?php
-										break;
+										<?php break;
 
 									default:
 										error_log( "Unhandled content block: " . get_row_layout() );
