@@ -35,7 +35,7 @@ get_header(); ?>
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 gap-4">
 			<?php while ( have_rows( 'detail_section' ) ) : the_row(); ?>
                 <div class="col-span-12 md:col-span-4 text-left mt-10">
-                    <h3 class="text-2xl md:text-3xl mb-3 font-bold text-center"><?php the_sub_field( 'title' ); ?></h3>
+                    <h3 class="text-2xl md:text-3xl mb-3 font-bold text-left"><?php the_sub_field( 'title' ); ?></h3>
                     <div class="prose">
 						<?php the_sub_field( 'content' ); ?>
                     </div>
