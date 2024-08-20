@@ -19,9 +19,11 @@
 
 <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
     <div class="grid grid-cols-12 gap-4 md:gap-4">
-        <div class="col-span-12 pt-10 text-center mx-auto">
-            <img class="rounded-xl shadow-xl" src="<?php the_sub_field( "header_image" ); ?>" alt="Banner Image">
-        </div>
+		<?php if ( get_sub_field( "header_image" ) ) : ?>
+            <div class="col-span-12 pt-10 text-center mx-auto">
+                <img class="rounded-xl shadow-xl" src="<?php the_sub_field( "header_image" ); ?>" alt="Banner Image">
+            </div>
+		<?php endif; ?>
 
         <div class="col-span-12 py-5 prose max-w-none">
 			<?php the_sub_field( "header_content" ); ?>
