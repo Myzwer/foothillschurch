@@ -46,6 +46,7 @@ endif;
 // Check value exists.
 if ( have_rows( 'body_sections' ) ) :
 
+	echo "<div class='alt-bg-wrap'>"; // Wrap the entire section
 
 	// Loop through rows.
 	while ( have_rows( 'body_sections' ) ) : the_row();
@@ -120,6 +121,9 @@ if ( have_rows( 'body_sections' ) ) :
 
 		// End loop.
 	endwhile;
+
+	echo "</div>";
+
 endif;
 ?>
 

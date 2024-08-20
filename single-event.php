@@ -1,17 +1,17 @@
 <?php
-/**
- * Template Name: Post Type - Events (Single)
- *
- * The Frontpage of the Bootcamp II Theme
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- * @subpackage Bootcamp_2
- * @since 1.0.0
- */
+	/**
+	 * Template Name: Post Type - Events (Single)
+	 *
+	 * The Frontpage of the Bootcamp II Theme
+	 *
+	 * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+	 *
+	 * @package WordPress
+	 * @subpackage Bootcamp_2
+	 * @since 1.0.0
+	 */
 
-get_header(); ?>
+	get_header(); ?>
 
     <!-- start outer color -->
     <div class="bg-blue-gradient">
@@ -41,8 +41,8 @@ get_header(); ?>
                         <h2 class="text-lg font-bold uppercase">
 
 							<?php
-							// get start and end time, unless value isn't provided, in which case display TBD.
-							echo get_field( 'event_start_time' ) ?: "TBD"; ?>
+								// get start and end time, unless value isn't provided, in which case display TBD.
+								echo get_field( 'event_start_time' ) ?: "TBD"; ?>
                             - <?php echo get_field( 'event_end_time' ) ?: "TBD";
 							?>
 
@@ -55,32 +55,32 @@ get_header(); ?>
                         <p><i class="fa-regular fa-location-dot"></i> Location</p>
                         <h2 class="text-lg font-bold uppercase">
 							<?php
-							// Get the selected value from the ACF field
-							$selected_location = get_field( 'event_location' );
+								// Get the selected value from the ACF field
+								$selected_location = get_field( 'event_location' );
 
-							// Check the value returned from ACF
-							if ( $selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8' ) {
-								echo 'Maryville Location';
-							} elseif ( $selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7' ) {
-								echo 'Knoxville Location';
-							} else {
-								the_field( 'event_location_name' );
-							}
+								// Check the value returned from ACF
+								if ( $selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8' ) {
+									echo 'Maryville Location';
+								} elseif ( $selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7' ) {
+									echo 'Knoxville Location';
+								} else {
+									the_field( 'event_location_name' );
+								}
 							?>
                         </h2>
                         <h2 class="text-md uppercase pb-2">
 							<?php
-							the_field( 'room_location' );
+								the_field( 'room_location' );
 							?>
                         </h2>
                         <div class="inline-block ghost">
                             <a href="<?php
-							// Check the value returned from ACF for the link
-							if ( $selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8' || $selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7' ) {
-								the_field( 'event_location' );
-							} else {
-								the_field( 'event_location_link' );
-							}
+								// Check the value returned from ACF for the link
+								if ( $selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8' || $selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7' ) {
+									the_field( 'event_location' );
+								} else {
+									the_field( 'event_location_link' );
+								}
 							?>" target="_blank">
                                 <i class="fa-regular fa-arrow-up-right-from-square"></i> Directions
                             </a>
@@ -92,15 +92,16 @@ get_header(); ?>
 
                     <div class="col-span-12 bg-white rounded-md shadow-xl p-5">
 						<?php
-						if ( get_field( 'registration_link' ) ) :
-							?>
-                            <a href="<?php the_field( 'registration_link' ); ?>" class="elevated-salty">
-                                <i class="fa-solid fa-circle-arrow-right"></i> Register
-                            </a>
+							if ( get_field( 'registration_link' ) ) :
+								?>
+                                <a href="<?php the_field( 'registration_link' ); ?>" class="elevated-salty">
+                                    <i class="fa-solid fa-circle-arrow-right"></i> Register
+                                </a>
 
-						<?php else : ?>
-                            <h2 class="text-md uppercase font-bold pb-2">There is no registration for this event.</h2>
-						<?php endif; ?>
+							<?php else : ?>
+                                <h2 class="text-md uppercase font-bold pb-2">There is no registration for this
+                                    event.</h2>
+							<?php endif; ?>
                     </div>
                     <!-- end register section -->
 
@@ -127,58 +128,52 @@ get_header(); ?>
 
 <?php
 // Check value exists.
-if ( have_rows( 'build_page' ) ) :
+	if ( have_rows( 'build_page' ) ) :
 
-	// used for alternating colors
-	$counter = 0;
+		echo "<div class='alt-bg-wrap'>";
+		// Loop through rows.
+		while ( have_rows( 'build_page' ) ) : the_row();
 
-	// Loop through rows.
-	while ( have_rows( 'build_page' ) ) : the_row();
+			echo "<div class='bg-alternating-gradient'>";
+			echo "<div class='xl:w-9/12 max-w-screen-2xl mx-auto grid grid-cols-12 p-5 py-10 gap-4'>";
+			switch ( get_row_layout() ) {
+				case 'generic_block':
+					echo "<div class='col-span-12'>";
+					get_template_part( 'components/layouts/wysiwyg' );
+					echo "</div>";
+					break;
 
-		if ( 0 === $counter % 2 ) {
-			$class = 'white';
-		} else {
-			$class = 'blue-gradient';
-		}
+				case 'faq':
+					echo "<div class='col-span-12'>";
+					get_template_part( 'components/layouts/faq' );
+					echo "</div>";
+					break;
 
-		echo "<div class='bg-$class'>";
-		echo "<div class='xl:w-9/12 max-w-screen-2xl mx-auto grid grid-cols-12 p-5 py-10 gap-4'>";
-		switch ( get_row_layout() ) {
-			case 'generic_block':
-				echo "<div class='col-span-12'>";
-				get_template_part( 'components/layouts/wysiwyg' );
-				echo "</div>";
-				break;
+				case 'video':
+					echo "<div class='col-span-12'>";
+					get_template_part( 'components/layouts/video' );
+					echo "</div>";
+					break;
 
-			case 'faq':
-				echo "<div class='col-span-12'>";
-				get_template_part( 'components/layouts/faq' );
-				echo "</div>";
-				break;
-
-			case 'video':
-				echo "<div class='col-span-12'>";
-				get_template_part( 'components/layouts/video' );
-				echo "</div>";
-				break;
-
-			case 'button_group':
-				echo "<div class='col-span-12'>";
-				get_template_part( 'components/layouts/button-group' );
-				echo "</div>";
-				break;
+				case 'button_group':
+					echo "<div class='col-span-12'>";
+					get_template_part( 'components/layouts/button-group' );
+					echo "</div>";
+					break;
 
 
-			default:
-				error_log( "Unhandled content block: " . get_row_layout() );
-				break;
-		}
+				default:
+					error_log( "Unhandled content block: " . get_row_layout() );
+					break;
+			}
+			echo "</div>";
+			echo "</div>";
+
+			// End loop.
+		endwhile;
+
 		echo "</div>";
-		echo "</div>";
-		$counter ++;
 
-		// End loop.
-	endwhile;
-endif;
+	endif;
 ?>
 <?php get_footer();

@@ -99,6 +99,7 @@ endif;
 // Check value exists.
 if ( have_rows( 'other_sections' ) ) :
 
+	echo "<div class='alt-bg-wrap'>"; // Wrap the entire section
 
 	// Loop through rows.
 	while ( have_rows( 'other_sections' ) ) : the_row();
@@ -139,6 +140,9 @@ if ( have_rows( 'other_sections' ) ) :
 
 		// End loop.
 	endwhile;
+
+	echo "</div>";
+    
 endif;
 ?>
 
