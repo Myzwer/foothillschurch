@@ -14,7 +14,7 @@
 get_header(); ?>
 
     <!-- Simple Header-->
-    <?php get_template_part( 'components/headers/simple-header' ); ?>
+<?php get_template_part( 'components/headers/simple-header' ); ?>
     <!-- End Header -->
 
     <!-- Start Body Section -->
@@ -26,6 +26,11 @@ get_header(); ?>
 					<?php
 					echo do_shortcode( '[fe_widget]' );
 					?>
+                    <div class="mt-3">
+                        <a href="/events" class="text-sm hover:underline">
+                            Reset Filters
+                        </a>
+                    </div>
                 </div>
             </div>
 
