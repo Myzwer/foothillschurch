@@ -86,7 +86,7 @@ endif;
 ?>
 
     <!-- Location Information. This is the contact info, location pastor, and schedule. -->
-    <div class="bg-white-gradient pb-10">
+    <div class="bg-blue-gradient pb-10">
 		<?php get_template_part( 'components/layouts/location-info' ); ?>
     </div>
 
@@ -142,7 +142,7 @@ if ( have_rows( 'other_sections' ) ) :
 	endwhile;
 
 	echo "</div>";
-    
+
 endif;
 ?>
 
