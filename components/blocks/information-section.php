@@ -33,10 +33,25 @@
     <div class="grid grid-cols-12 gap-4 md:gap-10">
 
 		<?php
+		// Initialize a counter
+		$row_count = 0;
+
+		// Check if there are rows in the repeater field and count them
+		if ( have_rows( 'information_section' ) ) {
+			while ( have_rows( 'information_section' ) ) {
+				the_row();
+				$row_count ++;
+			}
+		}
+
+		// Echo the row count
+		$breakpoint = ( $row_count > 1 ) ? 'md:col-span-6' : '';
+
+		// Reset the rows so the actual content loop works again
 		if ( have_rows( 'information_section' ) ):
 			while ( have_rows( 'information_section' ) ) : the_row(); ?>
 
-                <div class="col-span-12 md:col-span-6 py-5">
+                <div class="col-span-12 <?php echo $breakpoint ?> py-5">
                     <hr class="border-t border-2 border-black">
                     <div class="pt-3 prose">
 						<?php the_sub_field( 'section_content' ); ?>
@@ -45,7 +60,9 @@
 
 			<?php
 			endwhile;
-		endif; ?>
+		endif;
+		?>
+
     </div>
 </div>
 
