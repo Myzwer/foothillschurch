@@ -132,7 +132,7 @@ if ( $recents->have_posts() ) { ?>
 			<?php } ?>
 
             <div class="col-span-12 text-center my-5">
-                <a class="ghost-black mt-3 button-link" href="<?php the_field( "archive_link" ); ?>">
+                <a class="ghost-black mt-3 button-link" href="/all-messages">
                     See All Messages
                 </a>
             </div>
