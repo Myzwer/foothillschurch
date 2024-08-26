@@ -53,7 +53,7 @@
 
                 <div class="col-span-12 <?php echo $breakpoint ?> py-5">
                     <hr class="border-t border-2 border-black">
-                    <div class="pt-3 prose">
+                    <div class="pt-3 prose max-w-none">
 						<?php the_sub_field( 'section_content' ); ?>
                     </div>
                 </div>
