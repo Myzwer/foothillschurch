@@ -62,31 +62,34 @@ endif;
 				if ( have_rows( 'outreach_category' ) ):
 					while ( have_rows( 'outreach_category' ) ) : the_row();
 
-						// Count how many rows there are, if its more than 1, set it up to use columns.
-						$count  = count( get_field( 'outreach_category' ) );
-						$mobile = ( $count > 1 ) ? "md:col-span-6" : '';
+						$count      = 1; // we know it's at least 1 since we're in the loop already
+						$categories = get_field( 'outreach_category' );
+						if ( is_array( $categories ) ) {
+							$count = count( $categories );
+						}
+						$mobile = $count > 1 ? "md:col-span-6" : '';
 						?>
 
                         <div class="col-span-12 <?php echo $mobile ?> py-5 max-w-none">
                             <div class="outreach pb-10">
                                 <div class="bg-saltydog py-5 text-center text-white text-2xl">
-                                    <h3 class="uppercase font-bold"><?php the_sub_field('category_title'); ?></h3>
+                                    <h3 class="uppercase font-bold"><?php the_sub_field( 'category_title' ); ?></h3>
                                 </div>
 
 								<?php
 								// Start the block / topic header
-								if (have_rows('outreach_partner')):
-									while (have_rows('outreach_partner')): the_row();
+								if ( have_rows( 'outreach_partner' ) ):
+									while ( have_rows( 'outreach_partner' ) ): the_row();
 										?>
 
                                         <ul class="outreach-tab">
                                             <li class="tab-title">
                                                 <i class="fa fa-chevron-right tab-icon" aria-hidden="true"></i>
-												<?php the_sub_field('partner_title'); ?>
+												<?php the_sub_field( 'partner_title' ); ?>
                                             </li>
                                             <li class="tab-content">
                                                 <div class="prose max-w-none outreach-details">
-													<?php the_sub_field('partner_details'); ?>
+													<?php the_sub_field( 'partner_details' ); ?>
                                                 </div>
                                             </li>
                                         </ul>
