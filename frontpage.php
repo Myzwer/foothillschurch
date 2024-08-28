@@ -175,7 +175,7 @@ if ( get_field( "announcement_block" ) ) { ?>
                 <div class="col-span-12 md:col-span-6 md:order-1 relative">
                     <div class="content-middle-medium">
                         <div class="text-left mb-1">
-                            <h2 class=" text-xl md:text-3xl lb-2 font-bold capitalize"><?php the_field( "resource_title" ); ?></h2>
+                            <h2 class=" text-3xl lb-2 font-bold capitalize"><?php the_field( "resource_title" ); ?></h2>
                             <div class="pb-10 md:pb-3 prose"><?php the_field( "resource_paragraph" ); ?></div>
                             <div class="resource-giveaway">
 								<?php
