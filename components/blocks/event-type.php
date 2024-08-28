@@ -76,12 +76,13 @@ if ( $events->have_posts() ) : ?>
 
 			<?php
 			// The Loop
+			$size_select = array(
+				'column_span_class' => 'lg:col-span-4'
+			);
 
+			// Start Loop
 			while ( $events->have_posts() ) {
 				$events->the_post();
-				$size_select = array(
-					'column_span_class' => 'lg:col-span-4'
-				);
 				get_template_part( 'components/cards/event-card', null, $size_select );
 
 			}
