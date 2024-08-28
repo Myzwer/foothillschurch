@@ -112,6 +112,10 @@ if ( have_rows( 'body_sections' ) ) :
 				get_template_part( 'components/blocks/mockup' );
 				break;
 
+			case 'video_embed':
+				get_template_part( 'components/blocks/video' );
+				break;
+
 			default:
 				error_log( "Unhandled content block: " . get_row_layout() );
 				break;
