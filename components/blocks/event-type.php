@@ -76,14 +76,14 @@ if ( $events->have_posts() ) : ?>
 
 			<?php
 			// The Loop
-			if ( $events->have_posts() ) {
-				while ( $events->have_posts() ) {
-					$events->the_post();
-					$size_select = array(
-						'column_span_class' => 'lg:col-span-4'
-					);
-					get_template_part( 'components/cards/event-card', null, $size_select );
-				}
+
+			while ( $events->have_posts() ) {
+				$events->the_post();
+				$size_select = array(
+					'column_span_class' => 'lg:col-span-4'
+				);
+				get_template_part( 'components/cards/event-card', null, $size_select );
+
 			}
 			// Restore original Post Data
 			wp_reset_postdata();
