@@ -75,12 +75,12 @@ endif;
 								<?php if ( have_rows( 'resource_group' ) ): ?>
 									<?php while ( have_rows( 'resource_group' ) ) : the_row(); ?>
 
-                                        <ul class="resource-tab">
-                                            <li class="tab-title">
-                                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                                        <details class="outreach-tab">
+                                            <summary class="tab-title">
 												<?php the_sub_field( 'group_title' ); ?>
-                                            </li>
-                                            <li class="tab-content">
+                                            </summary>
+                                            <div class="tab-details">
 												<?php if ( have_rows( 'resource_item' ) ): ?>
 													<?php while ( have_rows( 'resource_item' ) ) : the_row(); ?>
                                                         <div class="py-4">
@@ -96,8 +96,9 @@ endif;
                                                         </div>
 													<?php endwhile; ?>
 												<?php endif; ?>
-                                            </li>
-                                        </ul>
+                                            </div>
+                                        </details>
+
 
 									<?php endwhile; ?>
 								<?php endif; ?>

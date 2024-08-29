@@ -53,7 +53,7 @@ endif;
         </div>
 
 
-        <!-- Start giant ass repeater bank -->
+        <!-- Start repeater bank -->
         <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5 ">
             <div class="grid grid-cols-12 gap-4 md:gap-4">
 
@@ -76,30 +76,22 @@ endif;
                                     <h3 class="uppercase font-bold"><?php the_sub_field( 'category_title' ); ?></h3>
                                 </div>
 
-								<?php
-								// Start the block / topic header
-								if ( have_rows( 'outreach_partner' ) ):
-									while ( have_rows( 'outreach_partner' ) ): the_row();
-										?>
-
-                                        <ul class="outreach-tab">
-                                            <li class="tab-title">
-                                                <i class="fa fa-chevron-right tab-icon" aria-hidden="true"></i>
+								<?php if ( have_rows( 'outreach_partner' ) ): ?>
+									<?php while ( have_rows( 'outreach_partner' ) ): the_row(); ?>
+                                        <details class="outreach-tab">
+                                            <summary class="tab-title">
 												<?php the_sub_field( 'partner_title' ); ?>
-                                            </li>
-                                            <li class="tab-content">
-                                                <div class="prose max-w-none outreach-details">
-													<?php the_sub_field( 'partner_details' ); ?>
-                                                </div>
-                                            </li>
-                                        </ul>
-									<?php
-									endwhile;
-								endif;
-								?>
+                                            </summary>
+                                            <div class="prose max-w-none tab-details">
+												<?php the_sub_field( 'partner_details' ); ?>
+                                            </div>
+                                        </details>
+									<?php endwhile; ?>
+								<?php endif; ?>
 
                             </div>
                         </div>
+
 
 					<?php
 					endwhile;
@@ -108,6 +100,7 @@ endif;
             </div>
         </div>
     </div>
+
     <!-- End Repeater Bank -->
 <?php get_footer();
 
