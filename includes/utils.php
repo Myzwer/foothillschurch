@@ -37,37 +37,37 @@ add_filter( 'theme_page_templates', 'alphabetize_page_templates' );
  */
 function check_live_status() {
 	// Initialize DateTimeZone object once
-	$timezone = new DateTimeZone('America/New_York');
+	$timezone = new DateTimeZone( 'America/New_York' );
 
 	try {
 		// Get the current day and time
-		$now = new DateTime('now', $timezone);
-		$currentDayOfWeek = strtolower($now->format('l'));
-		$currentTime = $now->format('H:i');
+		$now              = new DateTime( 'now', $timezone );
+		$currentDayOfWeek = strtolower( $now->format( 'l' ) );
+		$currentTime      = $now->format( 'H:i' );
 
 		// Flag to check if we're live or not
 		$isLive = false;
 
 		// Check if there are 'times_live' ACF repeater rows
-		if (have_rows('times_live')) :
+		if ( have_rows( 'times_live' ) ) :
 			// While the repeater has rows
-			while (have_rows('times_live')) : the_row();
+			while ( have_rows( 'times_live' ) ) : the_row();
 
 				// Get the start and end times for the day
-				$dayOfWeek = get_sub_field('day');
-				$startTime = get_sub_field('start_time');
-				$endTime = get_sub_field('end_time');
+				$dayOfWeek = get_sub_field( 'day' );
+				$startTime = get_sub_field( 'start_time' );
+				$endTime   = get_sub_field( 'end_time' );
 
 				// Create DateTime objects from the start and end times
-				$dateTimeStart = DateTime::createFromFormat('H:i:s', $startTime, $timezone);
-				$dateTimeEnd = DateTime::createFromFormat('H:i:s', $endTime, $timezone);
+				$dateTimeStart = DateTime::createFromFormat( 'H:i:s', $startTime, $timezone );
+				$dateTimeEnd   = DateTime::createFromFormat( 'H:i:s', $endTime, $timezone );
 
 				// Format the time without seconds for comparison
-				$startTime = $dateTimeStart->format('H:i');
-				$endTime = $dateTimeEnd->format('H:i');
+				$startTime = $dateTimeStart->format( 'H:i' );
+				$endTime   = $dateTimeEnd->format( 'H:i' );
 
 				// Check if the current day and time fall into one of the intervals
-				if ($dayOfWeek == $currentDayOfWeek && $currentTime >= $startTime && $currentTime < $endTime) {
+				if ( $dayOfWeek == $currentDayOfWeek && $currentTime >= $startTime && $currentTime < $endTime ) {
 					$isLive = true;
 					break; // Exit the loop as we already know we're live
 				}
@@ -77,8 +77,43 @@ function check_live_status() {
 
 		return $isLive;
 
-	} catch (Exception $e) {
+	} catch ( Exception $e ) {
 		// Handle any exceptions thrown during date/time parsing or comparison
-		throw new Exception('Error occurred while checking live status: ' . $e->getMessage());
+		throw new Exception( 'Error occurred while checking live status: ' . $e->getMessage() );
+	}
+}
+
+
+if ( ! function_exists( 'bootcamp_display_message_terms' ) ) {
+	function bootcamp_display_message_terms( $post_id, $taxonomy, $label, $wrapper_tag = 'p', $class = '', $inline = false, $new_line = false ): void {
+		// Retrieve the terms associated with the post for the specified taxonomy
+		$terms = get_the_terms( $post_id, $taxonomy );
+
+		if ( $terms && ! is_wp_error( $terms ) ) {
+			// Start the wrapper tag
+			echo '<' . esc_attr( $wrapper_tag ) . ' class="' . esc_attr( $class ) . '">';
+
+			// Display the label
+			echo '<span class="font-bold">' . esc_html( $label ) . '</span>';
+
+			// Create an array to hold term names
+			$term_names = [];
+
+			// Loop through the terms and add them to the array
+			foreach ( $terms as $term ) {
+				$term_names[] = esc_html( $term->name );
+			}
+
+			// Display the terms separated by a comma and a space
+			echo implode( ', ', $term_names );
+
+			// Optionally break into a new line
+			if ( $new_line ) {
+				echo '<br>';
+			}
+
+			// Close the wrapper tag
+			echo '</' . esc_attr( $wrapper_tag ) . '>';
+		}
 	}
 }

@@ -96,66 +96,32 @@ if ( get_field( "announcement_block" ) ) { ?>
                     </a>
                 </div>
 
+				<?php $latest_message_id = $post['ID']; ?>
+
                 <div class="col-span-12 md:col-span-6 my-8">
                     <h3 class="text-md uppercase">Latest Message</h3>
-                    <h2 class="text-3xl font-bold capitalize"><?php echo get_the_title( $post['ID'] ) ?></h2>
+                    <h2 class="text-3xl font-bold capitalize"><?php echo get_the_title( $latest_message_id ); ?></h2>
+
                     <div class="block">
-						<?php
-						function display_taxonomy_terms( $post_id, $taxonomy, $label, $new_line = false ): void {
-							// Retrieve the terms associated with the post for the specified taxonomy
-							$terms = get_the_terms( $post_id, $taxonomy );
+                        <!-- Display Speaker -->
+						<?php bootcamp_display_message_terms( $latest_message_id, 'speaker', 'Speaker: ', 'div', 'capitalize text-xl', true ); ?>
 
-							if ( $terms && ! is_wp_error( $terms ) ) {
-								echo '<div class="">';
-								echo '<h3 class="text-xl capitalize font-bold inline">' . esc_html( $label ) . '</h3>';
+                        <!-- Display Series -->
+						<?php bootcamp_display_message_terms( $latest_message_id, 'series', 'Series: ', 'div', 'capitalize text-xl', true ); ?>
+                    </div>
 
-								// Create an array to hold term names
-								$term_names = [];
+                    <div class="mt-5">
+                        <a href="<?php echo get_permalink( $latest_message_id ); ?>" class="elevated-blue mr-3">
+                            <i class="fa-solid fa-arrow-right"></i> Watch Now
+                        </a>
 
-								// Loop through the terms and add them to the array
-								foreach ( $terms as $term ) {
-									$term_names[] = esc_html( $term->name );
-								}
-
-								// Display the terms separated by a comma and a space
-								echo '<h3 class="text-xl capitalize inline">' . implode( ', ', $term_names ) . '</h3>';
-
-								if ( $new_line ) {
-									echo '<br>';
-								}
-
-								echo '</div>';
-							}
-						}
-
-						// Get the ID of the most recent message post from the $recent_posts array
-						$latest_message_id = $post['ID'];
-
-						// Display Speaker
-						$taxonomy_speaker = 'speaker';
-						$label_speaker    = 'Speaker: ';
-						display_taxonomy_terms( $latest_message_id, $taxonomy_speaker, $label_speaker, true );
-
-						// Display Series
-						$taxonomy_series = 'series';
-						$label_series    = 'Series: ';
-						display_taxonomy_terms( $latest_message_id, $taxonomy_series, $label_series );
-						?>
-
-
-                        <div class="mt-5">
-                            <a href="<?php echo get_permalink( $post['ID'] ); ?>" class="elevated-blue mr-3">
-                                <i class="fa-solid fa-arrow-right"></i> Watch Now
-                            </a>
-
-							<?php // ACF field, get the post ID of the last post, "false false" strips formatting and provides a raw URL ?>
-                            <a href="<?php the_field( 'youtube_link', $post['ID'], false, false ); ?>" target="_blank"
-                               class="ghost-paired mt-3">
-                                View on YouTube
-                            </a>
-                        </div>
+                        <a href="<?php the_field( 'youtube_link', $latest_message_id, false, false ); ?>"
+                           target="_blank" class="ghost-paired mt-3">
+                            View on YouTube
+                        </a>
                     </div>
                 </div>
+
 			<?php endforeach;
 			wp_reset_query(); ?>
         </div>
