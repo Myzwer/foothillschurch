@@ -11,20 +11,43 @@
 .resource,
 .outreach {
   summary {
-    padding: 20px;
     background: #ccdbe5;
     border-bottom: 1px solid #333333;
     cursor: pointer;
     font-size: 120%;
     font-weight: bold;
-    text-transform: uppercase;
+    padding: 20px;
     position: relative;
+    text-transform: uppercase;
   }
 
   .tab-details {
     background: #ffffff;
-    padding: 20px;
-    margin-top: 10px;
     display: none; /* Hidden by default */
+    margin-top: 10px;
+    padding: 20px;
+  }
+}
+
+.faq-content {
+  summary {
+    background-color: #7498be;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    color: #eeeeee;
+    cursor: pointer;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 10px;
+    position: relative;
+    text-transform: capitalize;
+  }
+
+  .tab-details {
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: none; /* Hidden by default */
+    padding: 20px;
   }
 }
