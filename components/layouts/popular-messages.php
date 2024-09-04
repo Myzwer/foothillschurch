@@ -24,7 +24,7 @@ if ( have_rows( 'popular_messages', 'options' ) ):
                     <div class="relative">
                         <a href="<?php the_permalink(); ?>">
                             <img class="rounded-xl shadow-xl" src="<?php the_post_thumbnail_url(); ?>"
-                                 alt="Sermon Thumbnail">
+                                 alt="Message Thumbnail">
 
                             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                                 <div class="bg-black/[.5] rounded-full py-5 px-7">

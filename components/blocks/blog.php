@@ -20,7 +20,12 @@
 <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
     <div class="grid grid-cols-12 gap-4 md:gap-4">
         <div class="col-span-12 prose">
-            <img class="rounded-xl shadow-xl" src="<?php the_sub_field( "header_image" ); ?>">
+			<?php
+			$headerImage = get_sub_field( "header_image" );
+			if ( ! empty( $headerImage ) ): ?>
+                <img class="rounded-xl shadow-xl" src="<?php echo esc_url( $headerImage['url'] ); ?>"
+                     alt="<?php echo esc_attr( $headerImage['alt'] ); ?>">
+			<?php endif; ?>
         </div>
 
         <div class="col-span-12 py-5 prose">

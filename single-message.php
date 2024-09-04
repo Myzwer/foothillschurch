@@ -90,7 +90,13 @@ get_header(); ?>
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 gap-4">
 
             <div class="col-span-12 md:col-span-6 text-left mt-10">
-                <img src="<?php the_field( 'app_promo', 'options' ); ?>" alt="">
+				<?php
+				// App Mockup Image
+				$appPromoImage = get_field( 'app_promo', 'options' );
+				if ( ! empty( $appPromoImage ) ): ?>
+                    <img class="block mx-auto md:w-fit pt-5" src="<?php echo esc_url( $appPromoImage['url'] ); ?>"
+                         alt="<?php echo esc_attr( $appPromoImage['alt'] ); ?>">
+				<?php endif; ?>
             </div>
 
             <div class="col-span-12 md:col-span-6 text-left mt-10 relative">

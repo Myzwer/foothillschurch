@@ -78,8 +78,13 @@ endif;
                                     <div class="col-span-12 relative mt-5">
                                         <a class="lt-image block w-full button-link"
                                            href="<?php the_sub_field( 'button_link' ); ?>">
-                                            <img class="lt-image-top" src="<?php the_sub_field( 'link_image' ); ?>"
-                                                 alt="Graphic">
+											<?php
+											$linkImage = get_sub_field( 'link_image' );
+											if ( ! empty( $linkImage ) ): ?>
+                                                <img class="lt-image-top"
+                                                     src="<?php echo esc_url( $linkImage['url'] ); ?>"
+                                                     alt="<?php echo esc_attr( $linkImage['alt'] ); ?>">
+											<?php endif; ?>
                                             <h3 class="capitalize font-bold text-xl text-black py-3 text-center">
 												<?php the_sub_field( 'button_text' ); ?>
                                             </h3>

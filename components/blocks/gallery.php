@@ -30,19 +30,40 @@
 				<?php the_sub_field( "header_content" ); ?>
             </div>
 
+			<?php
+			$picture_1 = get_sub_field( "picture_1" );
+			$picture_2 = get_sub_field( "picture_2" );
+			$picture_3 = get_sub_field( "picture_3" );
+			$picture_4 = get_sub_field( "picture_4" );
+			$picture_5 = get_sub_field( "picture_5" );
+			?>
+
             <div class="col-span-6 md:col-span-4 md:order-1">
-                <img src="<?php the_sub_field( "picture_1" ); ?>" alt="Picture 1">
+				<?php if ( ! empty( $picture_1 ) ): ?>
+                    <img src="<?php echo esc_url( $picture_1['url'] ); ?>"
+                         alt="<?php echo esc_attr( $picture_1['alt'] ); ?>">
+				<?php endif; ?>
             </div>
+
             <div class="col-span-6 md:col-span-4 md:order-2">
-                <img src="<?php the_sub_field( "picture_2" ); ?>" alt="Picture 2">
+				<?php if ( ! empty( $picture_2 ) ): ?>
+                    <img src="<?php echo esc_url( $picture_2['url'] ); ?>"
+                         alt="<?php echo esc_attr( $picture_2['alt'] ); ?>">
+				<?php endif; ?>
             </div>
 
             <div class="col-span-6 md:col-span-4 md:order-3">
-                <img src="<?php the_sub_field( "picture_3" ); ?>" alt="Picture 3">
+				<?php if ( ! empty( $picture_3 ) ): ?>
+                    <img src="<?php echo esc_url( $picture_3['url'] ); ?>"
+                         alt="<?php echo esc_attr( $picture_3['alt'] ); ?>">
+				<?php endif; ?>
             </div>
 
             <div class="col-span-6 md:col-span-4 md:order-5">
-                <img src="<?php the_sub_field( "picture_4" ); ?>" alt="Picture 4">
+				<?php if ( ! empty( $picture_4 ) ): ?>
+                    <img src="<?php echo esc_url( $picture_4['url'] ); ?>"
+                         alt="<?php echo esc_attr( $picture_4['alt'] ); ?>">
+				<?php endif; ?>
             </div>
 
             <div class="col-span-6 md:col-span-4 md:order-4 bg-blue-gradient relative shadow-xl">
@@ -61,7 +82,10 @@
             </div>
 
             <div class="col-span-6 md:col-span-4 md:order-6">
-                <img src="<?php the_sub_field( "picture_5" ); ?>" alt="Picture 5">
+				<?php if ( ! empty( $picture_5 ) ): ?>
+                    <img src="<?php echo esc_url( $picture_5['url'] ); ?>"
+                         alt="<?php echo esc_attr( $picture_5['alt'] ); ?>">
+				<?php endif; ?>
             </div>
         </div>
     </div>

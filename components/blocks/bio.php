@@ -19,7 +19,12 @@
 <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
     <div class="grid grid-cols-12 gap-4 md:gap-6">
         <div class="col-span-12 md:col-span-6 lg:col-span-3 py-5 text-center mx-auto flex items-center justify-center">
-            <img class="rounded-xl shadow-xl" src="<?php the_sub_field( "square_side_image" ); ?>">
+			<?php
+			$squareSideImage = get_sub_field( "square_side_image" );
+			if ( ! empty( $squareSideImage ) ): ?>
+                <img class="rounded-xl shadow-xl" src="<?php echo esc_url( $squareSideImage['url'] ); ?>"
+                     alt="<?php echo esc_attr( $squareSideImage['alt'] ); ?>">
+			<?php endif; ?>
         </div>
 
         <div class="col-span-12 md:col-span-6 lg:col-span-9 py-5 prose max-w-none">

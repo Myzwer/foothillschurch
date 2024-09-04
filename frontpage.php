@@ -92,7 +92,8 @@ if ( get_field( "announcement_block" ) ) { ?>
                 <div class="col-span-12 md:col-span-6 text-center relative">
                     <a href="<?php echo get_permalink( $post['ID'] ) ?>">
                         <img class="rounded-xl shadow-xl"
-                             src="<?php echo get_the_post_thumbnail_url( $post['ID'], 'post-thumbnail' ); ?>" alt="">
+                             src="<?php echo get_the_post_thumbnail_url( $post['ID'], 'post-thumbnail' ); ?>"
+                             alt="Sermon Thumbnail">
                     </a>
                 </div>
 
@@ -134,7 +135,13 @@ if ( get_field( "announcement_block" ) ) { ?>
             <div class="grid grid-cols-12 gap-4 md:gap-10">
 
                 <div class="col-span-12 md:col-span-6 md:order-2">
-                    <img src="<?php the_field( "resource_image" ); ?>" alt="Resource Image">
+					<?php
+					// Resource Image
+					$resourceImage = get_field( 'resource_image' );
+					if ( ! empty( $resourceImage ) ): ?>
+                        <img src="<?php echo esc_url( $resourceImage['url'] ); ?>"
+                             alt="<?php echo esc_attr( $resourceImage['alt'] ); ?>">
+					<?php endif; ?>
                 </div>
 
 
@@ -176,20 +183,50 @@ if ( get_field( "announcement_block" ) ) { ?>
             <div class=" lg:max-w-5xl lg:text-center lg:mx-auto p-5 pt-10">
                 <div class="grid grid-cols-12 gap-1">
 
-                    <div class="col-span-6 md:col-span-4 md:order-1">
-                        <img src="<?php the_field( "g1" ); ?>" alt="">
-                    </div>
-                    <div class="col-span-6 md:col-span-4 md:order-2">
-                        <img src="<?php the_field( "g2" ); ?>" alt="">
-                    </div>
+					<?php
+					$gridImage1 = get_field( 'g1' );
+					$gridImage2 = get_field( 'g2' );
+					$gridImage3 = get_field( 'g3' );
+					$gridImage4 = get_field( 'g4' );
+					$gridImage5 = get_field( 'g5' );
+					?>
 
-                    <div class="col-span-6 md:col-span-4 md:order-3">
-                        <img src="<?php the_field( "g3" ); ?>" alt="">
-                    </div>
+					<?php
+					// Grid Image 1
+					if ( ! empty( $gridImage1 ) ): ?>
+                        <div class="col-span-6 md:col-span-4 md:order-1">
+                            <img src="<?php echo esc_url( $gridImage1['url'] ); ?>"
+                                 alt="<?php echo esc_attr( $gridImage1['alt'] ); ?>">
+                        </div>
+					<?php endif; ?>
 
-                    <div class="col-span-6 md:col-span-4 md:order-5">
-                        <img src="<?php the_field( "g4" ); ?>" alt="">
-                    </div>
+					<?php
+					// Grid Image 2
+					if ( ! empty( $gridImage2 ) ): ?>
+                        <div class="col-span-6 md:col-span-4 md:order-2">
+                            <img src="<?php echo esc_url( $gridImage2['url'] ); ?>"
+                                 alt="<?php echo esc_attr( $gridImage2['alt'] ); ?>">
+                        </div>
+					<?php endif; ?>
+
+					<?php
+					// Grid Image 3
+					if ( ! empty( $gridImage3 ) ): ?>
+                        <div class="col-span-6 md:col-span-4 md:order-3">
+                            <img src="<?php echo esc_url( $gridImage3['url'] ); ?>"
+                                 alt="<?php echo esc_attr( $gridImage3['alt'] ); ?>">
+                        </div>
+					<?php endif; ?>
+
+					<?php
+					// Grid Image 4
+					if ( ! empty( $gridImage4 ) ): ?>
+                        <div class="col-span-6 md:col-span-4 md:order-5">
+                            <img src="<?php echo esc_url( $gridImage4['url'] ); ?>"
+                                 alt="<?php echo esc_attr( $gridImage4['alt'] ); ?>">
+                        </div>
+					<?php endif; ?>
+
 
                     <div class="col-span-6 md:col-span-4 md:order-4 bg-blue-gradient relative shadow-xl">
                         <div class="absolute bottom-2 left-2 md:bottom-5 md:left-5">
@@ -205,7 +242,14 @@ if ( get_field( "announcement_block" ) ) { ?>
                     </div>
 
                     <div class="col-span-6 md:col-span-4 md:order-6">
-                        <img src="<?php the_field( "g5" ); ?>" alt="">
+						<?php
+						// Grid Image 5
+						if ( ! empty( $gridImage5 ) ): ?>
+                            <div class="col-span-6 md:col-span-4 md:order-2">
+                                <img src="<?php echo esc_url( $gridImage5['url'] ); ?>"
+                                     alt="<?php echo esc_attr( $gridImage5['alt'] ); ?>">
+                            </div>
+						<?php endif; ?>
                     </div>
                 </div>
             </div>

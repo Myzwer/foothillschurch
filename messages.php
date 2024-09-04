@@ -46,7 +46,8 @@ get_header(); ?>
                 <div class="col-span-12 text-center pt-3 relative">
                     <a href="<?php echo get_permalink( $post['ID'] ) ?>">
                         <img class="rounded-xl shadow-xl"
-                             src="<?php echo get_the_post_thumbnail_url( $post['ID'], 'post-thumbnail' ); ?>" alt="">
+                             src="<?php echo get_the_post_thumbnail_url( $post['ID'], 'post-thumbnail' ); ?>"
+                             alt="Latest Sermon Thumbnail">
                         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                             <div class="bg-black/[.5] rounded-full py-8 px-10">
                                 <i class="fa-regular fa-play text-6xl text-white"></i>
@@ -119,7 +120,7 @@ if ( $recents->have_posts() ) { ?>
                         <div class="grid grid-cols-12">
                             <div class="col-span-12">
                                 <img class="rounded-t-xl" src="<?php the_post_thumbnail_url(); ?>"
-                                     alt="Sermon Thumbnail">
+                                     alt="Recent Sermon Thumbnail">
                             </div>
                             <div class="col-span-12 p-3">
                                 <h3 class="text-md font-bold"><?php echo get_the_title(); ?></h3>

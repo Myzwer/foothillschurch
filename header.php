@@ -84,9 +84,13 @@
 
 			<?php // Link brand image to homepage. Both the link and img are controlled from Options ACF in WP Admin ?>
             <div class="brand">
-                <a href="<?php the_field( 'homepage', 'options' ); ?>">
-                    <img src="<?php the_field( 'circle_outline_logo', 'options' ); ?>"
-                         alt="Foothills Church Logo">
+                <a href="<?php echo esc_url( get_field( 'homepage', 'options' ) ); ?>">
+					<?php
+					$logoImage = get_field( 'circle_outline_logo', 'options' );
+					if ( ! empty( $logoImage ) ): ?>
+                        <img src="<?php echo esc_url( $logoImage['url'] ); ?>"
+                             alt="<?php echo esc_attr( $logoImage['alt'] ); ?>">
+					<?php endif; ?>
                 </a>
             </div>
 

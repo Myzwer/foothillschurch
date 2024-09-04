@@ -20,8 +20,13 @@ get_header(); ?>
     <div class="bg-white-gradient">
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 gap-4">
             <div class="col-span-12 text-left mt-10 prose">
-                <img class="rounded-xl shadow-xl" src="<?php the_field( 'banner_image' ); ?>"
-                     alt="Contact Image Banner">
+				<?php
+				// Banner Image
+				$banner = get_field( 'banner_image' );
+				if ( ! empty( $banner ) ): ?>
+                    <img class="rounded-xl shadow-xl" src="<?php echo esc_url( $banner['url'] ); ?>"
+                         alt="<?php echo esc_attr( $banner['alt'] ); ?>">
+				<?php endif; ?>
             </div>
 
             <div class="col-span-12 text-left my-10 prose">

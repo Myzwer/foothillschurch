@@ -1,6 +1,6 @@
 <?php
 /**
- * This controls the footer for the site. Obviously. Who tf would name it footer if it didn't do that.
+ * This controls the footer for the site.
  * Contains the footer of the site as well as WP's required code and the closing body and HTML tags.
  *
  * It does not use tailwind, it's SCSS file can be found at ./assets/src/sass/components/footer.scss.
@@ -20,8 +20,12 @@
 <!--Start Footer-->
 <footer class="footer">
 
-	<?php // Foothills Church Logo ?>
-    <img src="<?php the_field( 'circle_outline_logo', 'options' ); ?>" alt="Foothills Church Logo">
+	<?php
+	// Foothills Church Logo
+	$logoImage = get_field( 'circle_outline_logo', 'options' );
+	if ( ! empty( $logoImage ) ): ?>
+        <img src="<?php echo esc_url( $logoImage['url'] ); ?>" alt="<?php echo esc_attr( $logoImage['alt'] ); ?>">
+	<?php endif; ?>
 
 
 	<?php

@@ -103,8 +103,16 @@ $subtitle = get_field( 'subtitle' ) ?: 'You Belong here ❤️';
                                     <div class="col-span-12 relative mt-5">
                                         <a class="block w-full lt-image"
                                            href="<?php the_sub_field( 'button_link' ); ?>">
-                                            <img class="lt-image-top" src="<?php the_sub_field( 'link_image' ); ?>"
-                                                 alt="Graphic">
+
+											<?php
+											// Priority Image
+											$priorityImage = get_sub_field( 'link_image' );
+											if ( ! empty( $priorityImage ) ): ?>
+                                                <img class="lt-image-top"
+                                                     src="<?php echo esc_url( $priorityImage['url'] ); ?>"
+                                                     alt="<?php echo esc_attr( $priorityImage['alt'] ); ?>">
+											<?php endif; ?>
+
                                             <h3 class="capitalize font-bold text-xl py-3 text-center">
 												<?php the_sub_field( 'button_text' ); ?>
                                             </h3>

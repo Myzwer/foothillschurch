@@ -1,7 +1,13 @@
 <div class="bg-white col-span-12 <?php echo $args['column_span_class']; ?> mx-5 mb-8 bg-gray-light shadow-xl rounded-xl relative flex flex-col">
-    <img class="rounded-t-lg" src="<?php the_field( 'branding', get_the_ID() ); ?>" alt="Event Brand">
+	<?php
+	$eventId    = get_the_ID();
+	$eventBrand = get_field( 'branding', $eventId );
+	$eventName  = get_field( 'event_name', $eventId );
+	?>
+    <img class="rounded-t-lg" src="<?php echo esc_url( $eventBrand ); ?>"
+         alt="<?php echo esc_attr( $eventName . ' Brand' ); ?>">
     <div class="p-5 flex-grow">
-        <h2 class="text-xl md:text-2xl font-bold capitalize"><?php the_field( 'event_name', get_the_ID() ); ?></h2>
+        <h2 class="text-xl md:text-2xl font-bold capitalize"><?php echo esc_html( $eventName ); ?></h2>
         <h3 class="text-lg"><?php the_field( 'event_date', get_the_ID() ); ?></h3>
         <h3 class="text-lg pb-3"><?php the_field( 'event_start_time', get_the_ID() ); ?></h3>
         <p class="pb-3">

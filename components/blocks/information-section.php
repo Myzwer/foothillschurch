@@ -21,7 +21,12 @@
     <div class="grid grid-cols-12 gap-4 md:gap-4">
 		<?php if ( get_sub_field( "header_image" ) ) : ?>
             <div class="col-span-12 pt-10 text-center mx-auto">
-                <img class="rounded-xl shadow-xl" src="<?php the_sub_field( "header_image" ); ?>" alt="Banner Image">
+				<?php
+				$headerImage = get_sub_field( "header_image" );
+				if ( ! empty( $headerImage ) ): ?>
+                    <img class="rounded-xl shadow-xl" src="<?php echo esc_url( $headerImage['url'] ); ?>"
+                         alt="<?php echo esc_attr( $headerImage['alt'] ); ?>">
+				<?php endif; ?>
             </div>
 		<?php endif; ?>
 

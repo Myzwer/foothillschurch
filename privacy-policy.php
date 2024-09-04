@@ -18,8 +18,12 @@ get_header(); ?>
     <div class="m-4 md:m-10 lg:max-w-6xl lg:mx-auto privacy-policy">
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 p-5 prose">
-                <img class="rounded-xl shadow-xl" src="<?php the_field( 'banner_image' ); ?>"
-                     alt="Privacy Policy Banner Image">
+				<?php
+				$bannerImage = get_field( 'banner_image' );
+				if ( ! empty( $bannerImage ) ): ?>
+                    <img class="rounded-xl shadow-xl" src="<?php echo esc_url( $bannerImage['url'] ); ?>"
+                         alt="<?php echo esc_attr( $bannerImage['alt'] ); ?>">
+				<?php endif; ?>
             </div>
 
             <div class="col-span-12 p-5 prose">
