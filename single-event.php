@@ -92,15 +92,28 @@ get_header(); ?>
 
                     <div class="col-span-12 bg-white rounded-md shadow-xl p-5">
 						<?php
-						if ( get_field( 'registration_link' ) ) :
-							?>
-                            <a href="<?php the_field( 'registration_link' ); ?>" class="elevated-salty">
-                                <i class="fa-solid fa-circle-arrow-right"></i> Register
-                            </a>
+						$registration_link   = get_field( 'registration_link' );
+						$registration_status = get_field( 'registration_status' );
+						$closed_copy         = get_field( 'closed_copy' );
 
-						<?php else : ?>
-                            <h2 class="text-md uppercase font-bold pb-2">There is no registration for this
-                                event.</h2>
+						if ( $registration_link ) :
+							if ( $registration_status === 'Open' ) :
+								?>
+                                <a href="<?php echo esc_url( $registration_link ); ?>" class="elevated-salty">
+                                    <i class="fa-solid fa-circle-arrow-right"></i> Register
+                                </a>
+							<?php
+                            elseif ( $registration_status === 'Closed' ) :
+								?>
+                                <div class="elevated-salty inline-block cursor-not-allowed opacity-30">
+                                    <i class="fa-solid fa-circle-arrow-right"></i> Register
+                                </div>
+                                <h2 class="text-md uppercase font-bold py-2"><?php echo esc_html( $closed_copy ); ?></h2>
+							<?php
+							endif;
+						else :
+							?>
+                            <h2 class="text-md uppercase font-bold pb-2">There is no registration for this event.</h2>
 						<?php endif; ?>
                     </div>
                     <!-- end register section -->
