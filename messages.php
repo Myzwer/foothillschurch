@@ -63,11 +63,13 @@ get_header(); ?>
                         <i class="fa-solid fa-arrow-right"></i> Watch Now
                     </a>
 
-                    <a class="ghost-paired mt-3 button-link"
-                       href="<?php the_field( 'youtube_link', $post['ID'], false, false ); ?>" target="_blank">
-                        <!-- ACF field, get the post ID of last post, "false false" strips formatting and provides raw URL -->
-                        View on YouTube
-                    </a>
+                    <div class="block md:inline mt-6 md:mt-0">
+                        <a class="ghost-paired mt-3 button-link"
+                           href="<?php the_field( 'youtube_link', $post['ID'], false, false ); ?>" target="_blank">
+                            <!-- ACF field, get the post ID of last post, "false false" strips formatting and provides raw URL -->
+                            View on YouTube
+                        </a>
+                    </div>
 
 
                 </div>
