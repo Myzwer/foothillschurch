@@ -128,6 +128,10 @@ $lightblue-grad-hover: #7498be;
   padding: 8px 18px;
 }
 
+.ghost-paired:hover {
+  box-shadow: 0 0 0 4px $black;
+}
+
 // This is another use case button, but it goes in the "gallery" style boxes since mobile has to be itty bitty to fit.
 .gallery-ghost {
   border: 1px solid $black;
