@@ -21,9 +21,17 @@
                 <div class="py-3 prose"><?php the_sub_field( 'paragraph' ); ?></div>
 				<?php if ( $button_link = get_sub_field( 'button_link' ) ) : ?>
                     <div class="mt-2">
-                        <a href="<?php echo esc_url( $button_link ); ?>" class="ghost-black">
-							<?php the_sub_field( 'button_text' ); ?>
-                        </a>
+
+
+						<?php
+						$args = [
+							'button_field' => 'button_link',
+							'sub_field'    => true,
+							'button_class' => 'ghost-black',
+						];
+						get_template_part( '/components/partials/button-template', null, $args );
+						?>
+                        
                     </div>
 				<?php endif; ?>
             </div>

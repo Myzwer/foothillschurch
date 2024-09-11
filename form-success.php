@@ -34,19 +34,30 @@ get_header(); ?>
 									case 'file_download_cta':
 										?>
                                         <div class="block not-prose">
-                                            <a class="fab-main mt-3 no-underline"
-                                               href="<?php the_sub_field( "file_for_download" ); ?>" download>
-                                                <i class="fa-regular fa-arrow-down-to-line"></i> <?php the_sub_field( "button_text" ); ?>
-                                            </a>
+											<?php
+											$args = [
+												'button_field' => 'file_for_download',
+												'sub_field'    => true,
+												'button_class' => 'fab-main mt-3 no-underline',
+												'button_icon'  => 'fa-regular fa-arrow-down-to-line'
+											];
+											get_template_part( 'components/partials/button-template', null, $args );
+											?>
                                         </div>
 										<?php break;
 
 									case 'primary_cta':
 										?>
                                         <div class="block mt-5">
-                                            <a class="fab-main " href="<?php the_sub_field( "button_link" ); ?>">
-                                                <i class="fa-solid fa-circle-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                                            </a>
+											<?php
+											$args = [
+												'button_field' => 'button_link',
+												'sub_field'    => true,
+												'button_class' => 'fab-main mt-3 no-underline',
+												'button_icon'  => 'fa-solid fa-circle-arrow-right'
+											];
+											get_template_part( 'components/partials/button-template', null, $args );
+											?>
                                         </div>
 										<?php
 										break;
@@ -54,9 +65,14 @@ get_header(); ?>
 									case 'secondary_cta':
 										?>
                                         <div class="block mt-5">
-                                            <a class="ghost-black" href="<?php the_sub_field( "button_link" ); ?>">
-												<?php the_sub_field( "button_text" ); ?>
-                                            </a>
+											<?php
+											$args = [
+												'button_field' => 'button_link',
+												'sub_field'    => true,
+												'button_class' => 'ghost-black',
+											];
+											get_template_part( 'components/partials/button-template', null, $args );
+											?>
                                         </div>
 										<?php break;
 

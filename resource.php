@@ -62,34 +62,24 @@ endif;
 
 								<?php if ( get_sub_field( 'hide_button' ) == 'no' && get_sub_field( 'prioritize' ) == 'no' ) { ?>
                                     <div class="col-span-12">
-                                        <a class="elevated-white-lt mt-3 relative block w-full button-link"
-                                           href="<?php the_sub_field( 'button_link' ); ?>">
-                                            <div class="absolute left-5">
-												<?php the_sub_field( 'icon' ); ?>
-                                            </div>
-                                            <div class="text-center">
-												<?php the_sub_field( 'button_text' ); ?>
-                                            </div>
-                                        </a>
+										<?php
+										$args = [
+											'button_field'      => 'button_link',
+											'sub_field'         => true,
+											'button_class'      => 'elevated-white-lt mt-3 relative block w-full button-link',
+											'button_icon_field' => 'icon',
+											'long_button'       => true
+										];
+										get_template_part( 'components/partials/button-template', null, $args );
+										?>
                                     </div>
 								<?php } ?>
 
 								<?php if ( get_sub_field( 'hide_button' ) == 'no' && get_sub_field( 'prioritize' ) == 'yes' ) { ?>
                                     <div class="col-span-12 relative mt-5">
-                                        <a class="lt-image block w-full button-link"
-                                           href="<?php the_sub_field( 'button_link' ); ?>">
-											<?php
-											$linkImage = get_sub_field( 'link_image' );
-											if ( ! empty( $linkImage ) ): ?>
-                                                <img class="lt-image-top"
-                                                     src="<?php echo esc_url( $linkImage['url'] ); ?>"
-                                                     alt="<?php echo esc_attr( $linkImage['alt'] ); ?>">
-											<?php endif; ?>
-                                            <h3 class="capitalize font-bold text-xl text-black py-3 text-center">
-												<?php the_sub_field( 'button_text' ); ?>
-                                            </h3>
-                                        </a>
+										<?php get_template_part( 'components/partials/image-button' ); ?>
                                     </div>
+
 								<?php } ?>
 
 

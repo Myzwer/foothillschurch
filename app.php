@@ -35,15 +35,27 @@ get_header(); ?>
                         </h1>
                         <p class=""><?php the_field( 'details' ); ?></p>
                         <div class="pt-5">
-                            <a class="ghost-black mr-2" href="<?php the_field( 'app_store_link', 'options' ); ?>"
-                               target="_blank">
-                                <i class="fa-brands fa-apple"></i> App Store
-                            </a>
+							<?php
+							$args = [
+								'button_field' => 'app_store_link',
+								'options'      => true,
+								'button_class' => 'ghost-black mr-2',
+								'button_icon'  => 'fa-brands fa-apple'
+							];
+							get_template_part( 'components/partials/button-template', null, $args );
+							?>
 
-                            <a class="ghost-black" href="<?php the_field( 'play_store_link', 'options' ); ?>"
-                               target="_blank">
-                                <i class="fa-brands fa-google-play"></i> Play Store
-                            </a>
+							<?php
+							$args = [
+								'button_field' => 'play_store_link',
+								'options'      => true,
+								'button_class' => 'ghost-black',
+								'button_icon'  => 'fa-brands fa-google-play'
+							];
+							get_template_part( 'components/partials/button-template', null, $args );
+							?>
+
+
                         </div>
 
                     </div>

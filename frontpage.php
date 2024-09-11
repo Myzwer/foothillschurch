@@ -233,9 +233,15 @@ if ( get_field( "announcement_block" ) ) { ?>
                             <h2 class=" text-xl md:text-3xl font-bold uppercase text-left md:pb-2"><?php the_field( "gallery_card_title" ); ?></h2>
 							<?php if ( have_rows( 'gallery_cta' ) ): ?>
 								<?php while ( have_rows( 'gallery_cta' ) ): the_row(); ?>
-                                    <a href="<?php the_sub_field( 'button_link' ); ?>" class="gallery-ghost">
-                                        <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( 'button_text' ); ?>
-                                    </a>
+									<?php
+									$args = [
+										'button_field' => 'button_link',
+										'sub_field'    => true,
+										'button_class' => 'gallery-ghost',
+										'button_icon'  => 'fa-solid fa-arrow-right'
+									];
+									get_template_part( 'components/partials/button-template', null, $args );
+									?>
 								<?php endwhile;
 							endif; ?>
                         </div>
@@ -283,9 +289,17 @@ if ( have_rows( 'slider_content' ) ): ?>
                                             <div class="slide-card p-6 md:p-10 rounded-xl shadow-xl">
                                                 <h3 class="text-2xl md:text-3xl pb-3 font-bold capitalize"><?php the_sub_field( "step_title" ); ?></h3>
                                                 <p class="pb-3"><?php the_sub_field( "step_content" ); ?></p>
-                                                <a href="<?php the_sub_field( 'button_link' ); ?>" class="ghost-black">
-                                                    <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( 'button_text' ); ?>
-                                                </a>
+
+
+												<?php
+												$args = [
+													'button_field' => 'button_link',
+													'sub_field'    => true,
+													'button_class' => 'gallery-ghost',
+													'button_icon'  => 'fa-solid fa-arrow-right'
+												];
+												get_template_part( 'components/partials/button-template', null, $args );
+												?>
                                             </div>
                                         </li>
 									<?php endwhile;

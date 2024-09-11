@@ -93,11 +93,15 @@ endif;
                                                             <p class="font-bold capitalize text-lg">
 																<?php the_sub_field( 'resource_title' ); ?>
                                                             </p>
-                                                            <a class="underline"
-                                                               href="<?php the_sub_field( 'link_url' ); ?>"
-                                                               target="_blank">
-																<?php echo get_sub_field( 'link_text' ) ?: "View on Amazon"; ?>
-                                                            </a>
+
+															<?php
+															$args = [
+																'button_field' => 'link_url',
+																'sub_field'    => true,
+																'button_class' => 'underline',
+															];
+															get_template_part( 'components/partials/button-template', null, $args );
+															?>
                                                             <i class="fa-sharp fa-regular fa-arrow-up-right-from-square"></i>
                                                         </div>
 													<?php endwhile; ?>
