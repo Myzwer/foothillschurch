@@ -51,41 +51,58 @@ get_header(); ?>
                     <!-- end time section -->
 
                     <!-- start location section -->
+
+					<?php
+					// Initialize the variables to prevent undefined variable warnings
+					$location_name = '';
+					$gmap_link     = '';
+					$amap_link     = '';
+					$room_location = '';
+
+					// Get the location source field value (either 'onsite' or 'offsite')
+					$location_source = get_field( 'location_source' );
+
+					if ( $location_source == 'onsite' ) {
+						// If 'onsite' is selected, get the selected post object (Location CPT)
+						$predefined_location = get_field( 'predefined_location' );
+
+						if ( $predefined_location ) {
+							// Get the location name from the 'Locations' CPT (e.g., post title)
+							$location_name = get_the_title( $predefined_location->ID ) . " Location";
+							// Get the map link from the predefined location post
+							$gmap_link = get_field( 'gmap_link', $predefined_location->ID );
+							$amap_link = get_field( 'amap_link', $predefined_location->ID );
+
+							// Only get the room information if we are on site
+							$room_location = get_field( 'room_location' );
+
+						}
+					} elseif ( $location_source == 'offsite' ) {
+						// If 'offsite' is selected, use the custom location name and URL entered by the editor
+						$location_name = get_field( 'location_name' ); // Custom location name entered by editor
+						$gmap_link     = get_field( 'gmap_link' );
+						$amap_link     = get_field( 'amap_link' );
+					}
+					?>
+
                     <div class="col-span-12 bg-white rounded-md shadow-xl p-5">
                         <p><i class="fa-regular fa-location-dot"></i> Location</p>
                         <h2 class="text-lg font-bold uppercase">
-							<?php
-							// Get the selected value from the ACF field
-							$selected_location = get_field( 'event_location' );
-
-							// Check the value returned from ACF
-							if ( $selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8' ) {
-								echo 'Maryville Location';
-							} elseif ( $selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7' ) {
-								echo 'Knoxville Location';
-							} else {
-								the_field( 'event_location_name' );
-							}
-							?>
+							<?php echo $location_name; ?>
                         </h2>
                         <h2 class="text-md uppercase pb-2">
-							<?php
-							the_field( 'room_location' );
-							?>
+							<?php echo $room_location; ?>
                         </h2>
-                        <div class="inline-block ghost">
-                            <a href="<?php
-							// Check the value returned from ACF for the link
-							if ( $selected_location === 'https://goo.gl/maps/ycY5iVnrUR8pcEuY8' || $selected_location === 'https://goo.gl/maps/s8WFsr8MQDbJJqSE7' ) {
-								the_field( 'event_location' );
-							} else {
-								the_field( 'event_location_link' );
-							}
-							?>" target="_blank">
-                                <i class="fa-regular fa-arrow-up-right-from-square"></i> Directions
-                            </a>
-                        </div>
+                        <i class="fa-regular fa-arrow-up-right-from-square"></i>
+                        <a id="map-link"
+                           href="<?php echo $gmap_link; ?>"
+                           target="_blank"
+                           data-gmap-link="<?php echo $gmap_link; ?>"
+                           data-amap-link="<?php echo $amap_link; ?>">
+                            Directions
+                        </a>
                     </div>
+
                     <!-- end location section -->
 
                     <!-- start register section -->
