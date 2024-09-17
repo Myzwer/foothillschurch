@@ -393,7 +393,7 @@ function create_location_cpt() {
 		'label'               => __( 'Location', 'textdomain' ),
 		'description'         => __( 'Custom post type for church locations (campuses)', 'textdomain' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+		'supports'            => array( 'title', 'revisions' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
