@@ -2,6 +2,7 @@ import $ from "jquery";
 import "../sass/frontend.scss";
 import "./glide-control";
 import "./accordion";
+import "./map-launcher";
 
 $(document).ready(function () {
   // If a link has a dropdown, add sub menu toggle.
