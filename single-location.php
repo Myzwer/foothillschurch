@@ -1,8 +1,6 @@
 <?php
 /**
- * Template Name: Template - Location (Single)
- *
- * NOTE: You MUST name location_title the same as your taxonomy term for the location or filtering won't work.
+ * Template Name: Post Type - Messages (Single)
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -10,7 +8,6 @@
  * @subpackage Bootcamp_2
  * @since 1.0.0
  */
-
 
 get_header(); ?>
 
@@ -36,7 +33,7 @@ get_header(); ?>
 				if ( $header_choice == "logo" ): ?>
                     <img class="w-3/4 md:w-1/2 mx-auto" src="<?php the_field( 'brand' ); ?>" alt="Branding">
                     <h1 class="text-white text-3xl  uppercase font-bold">
-						<?php the_field( "location_title" ); ?>
+						<?php echo the_title(); ?>
                     </h1>
 				<?php endif; ?>
 
@@ -44,7 +41,7 @@ get_header(); ?>
                     <div class="center add-padding">
                         <h2 class="text-white text-xl md:text-3xl lb-2 font-bold"><?php the_field( "top_line" ); ?></h2>
                         <h1 class="text-white text-5xl  uppercase font-bold">
-							<?php the_field( "location_title" ); ?>
+							<?php echo the_title(); ?>
                         </h1>
                     </div>
 				<?php endif; ?>
