@@ -39,7 +39,8 @@
                     <i class="fa-brands fa-apple"></i> App Store
                 </a>
 
-                <a class="ghost-black" href="<?php the_field( 'play_store_link', 'options' ); ?>" target="_blank">
+                <a class="ghost-black mt-3 md:mt-0" href="<?php the_field( 'play_store_link', 'options' ); ?>"
+                   target="_blank">
                     <i class="fa-brands fa-google-play"></i> Play Store
                 </a>
             </div>
