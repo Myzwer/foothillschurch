@@ -16,7 +16,7 @@ get_header(); ?>
     <!-- start outer color -->
     <div class="bg-blue-gradient">
         <!-- start grid -->
-        <div class="xl:w-9/12 max-w-screen-2xl mx-auto grid grid-cols-12 p-5 pt-10 gap-4">
+        <div class="xl:w-8/12 max-w-screen-2xl mx-auto grid grid-cols-12 p-5 pt-10 gap-4">
             <!-- start branding section -->
             <div class="col-span-12 lg:col-span-7">
                 <img class="rounded-lg shadow-xl" src="<?php the_field( 'branding' ); ?>"
