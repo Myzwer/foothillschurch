@@ -10,11 +10,9 @@
     <a href="<?php the_permalink(); ?>" class="elevated-blue mr-3">
         <i class="fa-solid fa-arrow-right"></i> Plan A Visit
     </a>
-    <a id="map-link"
+    <a class="map-link ghost-paired mt-3"
        href="<?php the_field( 'gmap_link' ); ?>"
        target="_blank"
-       class="ghost-paired mt-3"
-       data-gmap-link="<?php the_field( 'gmap_link' ); ?>"
        data-amap-link="<?php the_field( 'amap_link' ); ?>">
         Launch Maps
     </a>

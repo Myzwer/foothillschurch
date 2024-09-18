@@ -94,10 +94,9 @@ get_header(); ?>
 							<?php echo $room_location; ?>
                         </h2>
                         <i class="fa-regular fa-arrow-up-right-from-square"></i>
-                        <a id="map-link"
+                        <a class="map-link"
                            href="<?php echo $gmap_link; ?>"
                            target="_blank"
-                           data-gmap-link="<?php echo $gmap_link; ?>"
                            data-amap-link="<?php echo $amap_link; ?>">
                             Directions
                         </a>
