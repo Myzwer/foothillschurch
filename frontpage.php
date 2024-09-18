@@ -116,10 +116,12 @@ if ( get_field( "announcement_block" ) ) { ?>
                             <i class="fa-solid fa-arrow-right"></i> Watch Now
                         </a>
 
-                        <a href="<?php the_field( 'youtube_link', $latest_message_id, false, false ); ?>"
-                           target="_blank" class="ghost-paired mt-3">
-                            View on YouTube
-                        </a>
+                        <div class="md:inline-block mt-6 md:mt-0">
+                            <a href="<?php the_field( 'youtube_link', $latest_message_id, false, false ); ?>"
+                               target="_blank" class="ghost-paired mt-3">
+                                View on YouTube
+                            </a>
+                        </div>
                     </div>
                 </div>
 
