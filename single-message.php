@@ -65,10 +65,11 @@ get_header(); ?>
                             <i class="fa-solid fa-arrow-right"></i> Read Now
                         </a>
 					<?php endif; ?>
-
-                    <a href="<?php the_field( 'transcripts', 'options' ); ?>" class="ghost-paired">
-                        View All Transcripts
-                    </a>
+                    <div class="md:inline-block mt-6 md:mt-0">
+                        <a href="<?php the_field( 'transcripts', 'options' ); ?>" class="ghost-paired">
+                            View All Transcripts
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
