@@ -14,6 +14,10 @@
  * @version 1.0.0
  */
 
+// Enable dynamic title tag support
+add_theme_support( 'title-tag' );
+
+
 function alphabetize_page_templates( $templates ) {
 	asort( $templates );
 
