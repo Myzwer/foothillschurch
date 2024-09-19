@@ -63,7 +63,7 @@ if ( $account === 'foothills' ) {
             </div>
 
             <div class="col-span-6 md:col-span-8 prose max-w-none">
-				<?php echo do_shortcode( "[instagram-feed feed=$feed1]" ); ?>
+				<?php echo do_shortcode( "[instagram-feed feed=$feed2]" ); ?>
             </div>
 
         </div>
