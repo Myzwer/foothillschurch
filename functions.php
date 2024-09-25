@@ -40,3 +40,6 @@ require_once get_template_directory() . '/includes/shortcodes.php';
 
 // Include Cron Jobs
 require_once get_template_directory() . '/includes/cron_jobs.php';
+
+// Include SEO
+require_once get_template_directory() . '/includes/seo.php';
