@@ -36,32 +36,29 @@
 
 	<?php // Adds a social link to Facebook using the URL from the options ACF tab in WP Admin  ?>
     <div class="social-links">
-        <a href="<?php the_field( 'facebook', 'options' ); ?>" target="_blank">
+        <a href="<?php the_field( 'facebook', 'options' ); ?>" target="_blank" aria-label="Follow us on Facebook">
             <i class="fa-brands fa-facebook"></i>
         </a>
     </div>
 
-	<?php // Adds a social link to Instagram using the URL from the options ACF tab in WP Admin ?>
     <div class="social-links">
-        <a href="<?php the_field( 'instagram', 'options' ); ?>" target="_blank">
+        <a href="<?php the_field( 'instagram', 'options' ); ?>" target="_blank" aria-label="Follow us on Instagram">
             <i class="fa-brands fa-instagram"></i>
         </a>
     </div>
 
-	<?php // Adds a social link to twitter using the URL from the options ACF tab in WP Admin ?>
     <div class="social-links">
-        <a href="<?php the_field( 'twitter', 'options' ); ?>" target="_blank">
+        <a href="<?php the_field( 'twitter', 'options' ); ?>" target="_blank" aria-label="Follow us on Twitter">
             <i class="fa-brands fa-x-twitter"></i>
         </a>
     </div>
 
-
-	<?php // Adds a mailto using the address from the options ACF tab in WP Admin ?>
     <div class="social-links">
-        <a href="mailto:<?php the_field( 'email', 'options' ); ?>">
+        <a href="mailto:<?php the_field( 'email', 'options' ); ?>" aria-label="Send us an email">
             <i class="fa-light fa-envelope"></i>
         </a>
     </div>
+
 
 	<?php // Copyright and Privacy Policy ?>
     <div class="ftr-info">

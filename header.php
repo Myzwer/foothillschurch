@@ -96,7 +96,7 @@
             <nav>
 				<?php // For JS to bind to for mobile functionality ?>
                 <div class="nav-mobile">
-                    <a id="nav-toggle" href="#!">
+                    <a id="nav-toggle" href="#!" aria-label="Open hamburger menu">
                         <span></span>
                     </a>
                 </div>
