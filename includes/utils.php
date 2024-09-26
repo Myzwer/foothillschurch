@@ -141,3 +141,18 @@ if ( ! function_exists( 'bootcamp_display_message_terms' ) ) {
 }
 
 
+/**
+ * Sets up custom image sizes for the theme.
+ *
+ * This function registers a new image size for thumbnails used in the
+ * theme, specifically formatted for YouTube thumbnails. The registered
+ * size maintains a 16:9 aspect ratio, making it ideal for use as
+ * video thumbnails.
+ *
+ * @return void
+ */
+function custom_theme_setup(): void {
+	add_image_size( 'youtube-thumbnail', 320, 180, true ); // 16:9 aspect ratio
+}
+
+add_action( 'after_setup_theme', 'custom_theme_setup' );

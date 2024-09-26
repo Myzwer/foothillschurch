@@ -14,7 +14,10 @@
 get_header(); ?>
 
 <?php // START Header ?>
-    <video class="header-video" src="<?php the_field( "video_background" ); ?>" autoplay loop playsinline muted></video>
+    <video class="header-video" src="<?php the_field( 'video_background' ); ?>" autoplay loop playsinline muted>
+        <track kind="captions" label="English captions" srclang="en" src="#" default>
+    </video>
+
     <div class="viewport-header">
         <div class="head-container">
 			<?php
@@ -92,7 +95,7 @@ if ( get_field( "announcement_block" ) ) { ?>
                 <div class="col-span-12 md:col-span-6 text-center relative">
                     <a href="<?php echo get_permalink( $post['ID'] ) ?>">
                         <img class="rounded-xl shadow-xl"
-                             src="<?php echo get_the_post_thumbnail_url( $post['ID'], 'post-thumbnail' ); ?>"
+                             src="<?php echo get_the_post_thumbnail_url( $post['ID'], 'youtube-thumbnail' ); ?>"
                              alt="Sermon Thumbnail">
                     </a>
                 </div>
@@ -100,7 +103,7 @@ if ( get_field( "announcement_block" ) ) { ?>
 				<?php $latest_message_id = $post['ID']; ?>
 
                 <div class="col-span-12 md:col-span-6 my-8">
-                    <h3 class="text-md uppercase">Latest Message</h3>
+                    <p class="text-md uppercase">Latest Message</p>
                     <h2 class="text-3xl font-bold capitalize"><?php echo get_the_title( $latest_message_id ); ?></h2>
 
                     <div class="block">
@@ -315,10 +318,12 @@ if ( have_rows( 'slider_content' ) ): ?>
                         </div>
 						<?php // Start Arrows ?>
                         <div class="glide__arrows" data-glide-el="controls">
-                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<"
+                                    aria-label="Advance Slide Left">
                                 <i class="fa-regular fa-angle-left"></i>
                             </button>
-                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">"
+                                    aria-label="Advance Slide Left">
                                 <i class="fa-regular fa-angle-right"></i>
                             </button>
                         </div>
