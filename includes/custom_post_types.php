@@ -63,7 +63,7 @@ function event_init() {
 		'taxonomies'         => array( 'event_name', 'event_location', 'event_type' )
 	);
 
-	register_post_type( 'Event', $args );
+	register_post_type( 'event', $args );
 
 
 }
@@ -219,7 +219,7 @@ register_taxonomy( 'speaker', 'message',
 			'parent_item'        => __( 'Parent Speaker' ),
 		),
 		'hierarchical' => true,
-		'rewrite'      => array( 'slug' => 'speaker' )
+		'rewrite'      => array( 'slug' => 'speakers' )
 	)
 );
 
@@ -240,11 +240,12 @@ register_taxonomy( 'topic', 'message',
 			'parent_item'        => __( 'Parent Topic' ),
 		),
 		'hierarchical' => true,
-		'rewrite'      => array( 'slug' => 'topic' )
+		'rewrite'      => array( 'slug' => 'topics' )
 	)
 );
 
-add_action( 'init', 'custom_message_post_type' );
+add_action( 'init', 'custom_message_post_type', 0 );
+
 
 //**************** Transcripts ******************
 /**
@@ -334,7 +335,7 @@ register_taxonomy( 'speaker', 'transcript',
 			'parent_item'        => __( 'Parent Speaker' ),
 		),
 		'hierarchical' => true,
-		'rewrite'      => array( 'slug' => 'speaker' ),
+		'rewrite'      => array( 'slug' => 'speakers' ),
 		'show_in_rest' => true,
 	)
 );
@@ -356,11 +357,102 @@ register_taxonomy( 'topic', 'transcript',
 			'parent_item'        => __( 'Parent Topic' ),
 		),
 		'hierarchical' => true,
-		'rewrite'      => array( 'slug' => 'topic' ),
+		'rewrite'      => array( 'slug' => 'topics' ),
 		'show_in_rest' => true,
 	)
 );
 
 add_action( 'init', 'custom_transcript_post_type' );
+
+
+//**************** Locations ******************
+function create_location_cpt() {
+
+	$labels = array(
+		'name'                  => __( 'Locations' ),
+		'singular_name'         => __( 'Location' ),
+		'menu_name'             => __( 'Locations' ),
+		'name_admin_bar'        => __( 'Location' ),
+		'add_new'               => __( 'Add New' ),
+		'add_new_item'          => __( 'Add New Location' ),
+		'new_item'              => __( 'New Location' ),
+		'edit_item'             => __( 'Edit Location' ),
+		'view_item'             => __( 'View Location' ),
+		'all_items'             => __( 'All Locations' ),
+		'search_items'          => __( 'Search Locations' ),
+		'parent_item_colon'     => __( 'Parent Locations:' ),
+		'not_found'             => __( 'No Locations found.' ),
+		'not_found_in_trash'    => __( 'No Locations found in Trash.' ),
+		'archives'              => __( 'Location archives' ),
+		'insert_into_item'      => __( 'Insert into Location' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this Location' ),
+		'filter_items_list'     => __( 'Filter Location list' ),
+		'items_list_navigation' => __( 'Location list navigation' ),
+		'items_list'            => __( 'Location list' ),
+	);
+	$args   = array(
+		'label'               => __( 'Location', 'textdomain' ),
+		'description'         => __( 'Custom post type for church locations (campuses)', 'textdomain' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'revisions' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-location-alt', // Can be changed later if needed
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+		'rewrite'             => array( 'slug' => 'locations' ), // Custom slug for URLs
+	);
+	register_post_type( 'location', $args );
+
+}
+
+add_action( 'init', 'create_location_cpt', 0 );
+
+
+// Register Custom Taxonomy: Location Type
+function create_location_type_taxonomy() {
+
+	$labels = array(
+		'name'              => _x( 'Location Types', 'taxonomy general name', 'textdomain' ),
+		'singular_name'     => _x( 'Location Type', 'taxonomy singular name', 'textdomain' ),
+		'search_items'      => __( 'Search Location Types', 'textdomain' ),
+		'all_items'         => __( 'All Location Types', 'textdomain' ),
+		'parent_item'       => __( 'Parent Location Type', 'textdomain' ),
+		'parent_item_colon' => __( 'Parent Location Type:', 'textdomain' ),
+		'edit_item'         => __( 'Edit Location Type', 'textdomain' ),
+		'update_item'       => __( 'Update Location Type', 'textdomain' ),
+		'add_new_item'      => __( 'Add New Location Type', 'textdomain' ),
+		'new_item_name'     => __( 'New Location Type Name', 'textdomain' ),
+		'menu_name'         => __( 'Location Types', 'textdomain' ),
+		'view_item'         => __( 'View Location Type', 'textdomain' ),
+		'not_found'         => __( 'No Location Types found', 'textdomain' ),
+		'back_to_items'     => __( 'Back to Location Types', 'textdomain' ),
+	);
+
+	$args = array(
+		'labels'            => $labels,
+		'hierarchical'      => true,  // Acts like categories (can have parent-child structure)
+		'public'            => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_nav_menus' => true,
+		'show_tagcloud'     => false,
+		'rewrite'           => array( 'slug' => 'location-type' ),
+		'show_in_rest'      => true,  // Enable for Gutenberg and REST API
+	);
+
+	register_taxonomy( 'location_type', array( 'location' ), $args );
+}
+
+add_action( 'init', 'create_location_type_taxonomy' );
+
 
 flush_rewrite_rules( false );

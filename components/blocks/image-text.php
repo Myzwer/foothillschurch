@@ -17,10 +17,16 @@
  */
 ?>
 
+
 <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
     <div class="grid grid-cols-12 gap-4 md:gap-4">
         <div class="col-span-12 py-5 text-center mx-auto">
-            <img class="rounded-xl shadow-xl" src="<?php the_sub_field( "image_banner" ); ?>">
+			<?php
+			$imageBanner = get_sub_field( "image_banner" );
+			if ( ! empty( $imageBanner ) ): ?>
+                <img class="rounded-xl shadow-xl" src="<?php echo esc_url( $imageBanner['url'] ); ?>"
+                     alt="<?php echo esc_attr( $imageBanner['alt'] ); ?>">
+			<?php endif; ?>
         </div>
 
         <div class="col-span-12 py-5 prose max-w-none text-pretty">
@@ -28,3 +34,4 @@
         </div>
     </div>
 </div>
+

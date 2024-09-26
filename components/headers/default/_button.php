@@ -13,7 +13,7 @@
 <div class="bg-salty-gradient">
     <div class="bg-no-repeat bg-scroll bg-cover relative"
          style="background:
-                 url('<?php echo get_template_directory_uri(); ?>/assets/src/img/topography.png') center center;
+                 url('<?php echo esc_url( get_template_directory_uri() . '/assets/src/img/topography.png' ); ?>') center center;
                  height: 20vh;">
         <div class="content-middle text-center">
             <div class="center add-padding">
@@ -21,42 +21,35 @@
             </div>
             <h1 class="text-white text-3xl md:text-5xl uppercase font-bold"><?php the_sub_field( "main_title" ); ?></h1>
 
-
 			<?php if ( have_rows( 'primary_cta' ) ): ?>
 				<?php while ( have_rows( 'primary_cta' ) ): the_row(); ?>
 
-
 					<?php
-					// This line uses the ternary operator to choose between two possible URLs.
-					// It checks if 'button_link' subfield exists. If it does, $link is assigned the value of 'button_link'.
-					// If 'button_link' does not exist (is null or false), then $link is assigned the value of 'button_link_file'.
-					// If both exist, link gets priority
-					// if neither exist, it would return null and get hung up on the if statement below.
-					$link = get_sub_field( 'button_link' ) ? get_sub_field( 'button_link' ) : get_sub_field( 'button_link_file' );
-
-					// Get tab status
-					$tab = get_sub_field( 'new_tab' );
-
-					if ( $tab == "yes" ) {
-						$tab = 'target="_blank"';
-					} elseif ( $tab == "cc" ) {
-						$tab = "data-open-in-church-center-modal='true'";
-					} else {
-						$tab = null;
-					}
+					$link      = get_sub_field( 'button_link' ) ?? get_sub_field( 'button_link_file' );
 
 					// Hide button if link is returning null
-					if ( $link ): ?>
-                        <a href="<?php echo $link ?>" <?php echo $tab ?>>
-                            <button class="fab-main-white mt-3">
-                                <i class="fa-solid fa-circle-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                            </button>
-                        </a>
-					<?php endif; ?>
+					if ( $link ):
+						// Get tab status
+						$new_tab = get_sub_field( 'new_tab' );
+						$attrs = '';
+						if ( $new_tab == "yes" ) {
+							$attrs = 'target="_blank"';
+						} elseif ( $new_tab == "cc" ) {
+							$attrs = "data-open-in-church-center-modal='true'";
+						} ?>
 
-				<?php endwhile;
-			endif; ?>
+                        <div class="mt-3">
+                            <a href="<?php echo esc_url( $link ); ?>" <?php echo $attrs; ?> class="fab-main-white">
+                                <i class="fa-solid fa-circle-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
+                            </a>
+                        </div>
+
+					<?php endif; // Close the if $link block ?>
+
+				<?php endwhile; // Close the while loop ?>
+			<?php endif; // Close the if have_rows block ?>
 
         </div>
     </div>
 </div>
+

@@ -46,21 +46,14 @@ endif;
 // Check value exists.
 if ( have_rows( 'body_sections' ) ) :
 
-	// used for alternating background colors
-	$counter = 0;
+	echo "<div class='alt-bg-wrap'>"; // Wrap the entire section
 
 	// Loop through rows.
 	while ( have_rows( 'body_sections' ) ) : the_row();
 
-		if ( 0 === $counter % 2 ) {
-			$bg = 'bg-white-gradient';
-		} else {
-			$bg = 'bg-blue-gradient';
-		}
 
-		echo "<div class='$bg'>";
+		echo "<div class='bg-alternating-gradient'>";
 
-		ob_start();  // Start Output Buffering at beginning of loop. This is used to ensure background colors display properly.
 
 		switch ( get_row_layout() ) {
 			case 'text_block':
@@ -119,25 +112,22 @@ if ( have_rows( 'body_sections' ) ) :
 				get_template_part( 'components/blocks/mockup' );
 				break;
 
+			case 'video_embed':
+				get_template_part( 'components/blocks/video' );
+				break;
+
 			default:
 				error_log( "Unhandled content block: " . get_row_layout() );
 				break;
 		}
 
-		$output = ob_get_contents();  // Save content of the current loop iteration to $output variable
-		ob_end_clean();  // Dump the content like a bad habit because output has already been saved to variable.
-
-		// Check if the output saved to variable is longer than 1 character (whitespace might return, so 0 ensures nothing does)
-		if ( strlen( $output ) > 1 ) {
-			// Increment counter only if $output had content
-			$counter ++;
-		}
-
-		echo $output;  // Show output saved into variable.
 		echo "</div>";
 
 		// End loop.
 	endwhile;
+
+	echo "</div>";
+
 endif;
 ?>
 

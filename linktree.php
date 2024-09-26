@@ -16,16 +16,14 @@ get_header(); ?>
 
 <?php
 // Get the logo from acf or fall back to default logo if left blank / null
-$logo = ( get_field( 'logo' ) != null ) ? get_field( 'logo' ) : get_template_directory_uri() . '/assets/src/img/circle-brand.png';
+$logo = get_field( 'logo' ) ?: get_template_directory_uri() . '/assets/src/img/circle-brand.png';
 
 // Get the title from acf or fall back to default title if left blank / null
-$title = ( get_field( 'title' ) != null ) ? get_field( 'title' ) : 'Foothills Church';
+$title = get_field( 'title' ) ?: 'Foothills Church';
 
 // Get the subtitle from acf or fall back to default subtitle if left blank / null
-$subtitle = ( get_field( 'subtitle' ) != null ) ? get_field( 'subtitle' ) : 'You Belong here ❤️';
+$subtitle = get_field( 'subtitle' ) ?: 'You Belong here ❤️';
 
-// Get the socials radio button results. Show or hide the section with CSS based on the answer.
-$socials = ( get_field( 'socials' ) == 'no' ) ? 'hidden' : 'block';
 ?>
 
     <div class="bg-blue-gradient relative">
@@ -43,23 +41,25 @@ $socials = ( get_field( 'socials' ) == 'no' ) ? 'hidden' : 'block';
                     <h1 class="text-3xl font-bold"><?php echo $title ?></h1>
                     <h3 class="text-md uppercase"><?php echo $subtitle ?></h3>
 
-                    <div class="pt-2 <?php echo $socials ?>">
-                        <a href="https://www.facebook.com/foothillschurchTN/">
-                            <i class="text-2xl pr-1 fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="https://instagram.com/foothillschurchtn">
-                            <i class="text-2xl pr-1 fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="https://x.com/foothillschurch">
-                            <i class="text-2xl pr-1 fa-brands fa-x"></i>
-                        </a>
-                        <a href="https://www.youtube.com/c/FoothillsChurchTN">
-                            <i class="text-2xl pr-1 fa-brands fa-youtube"></i>
-                        </a>
-                        <a href="https://open.spotify.com/user/foothillschurch?si=1b5df347a9f842be">
-                            <i class="text-2xl pr-1 fa-brands fa-spotify"></i>
-                        </a>
-                    </div>
+					<?php if ( get_field( 'socials' ) !== 'no' ): ?>
+                        <div class="pt-2">
+                            <a href="<?php the_field( 'facebook', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="<?php the_field( 'instagram', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="<?php the_field( 'twitter', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-x"></i>
+                            </a>
+                            <a href="<?php the_field( 'youtube', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-youtube"></i>
+                            </a>
+                            <a href="<?php the_field( 'spotify', 'options' ); ?>" target="_blank">
+                                <i class="text-2xl pr-1 fa-brands fa-spotify"></i>
+                            </a>
+                        </div>
+					<?php endif; ?>
 
                 </div>
             </div>
@@ -75,72 +75,47 @@ $socials = ( get_field( 'socials' ) == 'no' ) ? 'hidden' : 'block';
                         </div>
 
 						<?php
-						if ( have_rows( 'link' ) ):
-							while ( have_rows( 'link' ) ) : the_row(); ?>
+						if ( have_rows( 'link' ) ) :
+							while ( have_rows( 'link' ) ) : the_row();
 
+								// Check if the button should be hidden
+								if ( get_sub_field( 'hide_button' ) == 'yes' ) {
+									continue;
+								}
 
-								<?php if ( get_sub_field( 'hide_button' ) == 'no' & get_sub_field( 'prioritize' ) == 'no' ) { ?>
+								// Handle non-prioritized buttons
+								if ( get_sub_field( 'prioritize' ) == 'no' ) { ?>
                                     <div class="col-span-12">
-                                        <a class="block w-full" href="<?php the_sub_field( 'button_link' ); ?>">
-                                            <button class="elevated-white-lt mt-3 relative">
-                                                <div class="absolute left-5">
-													<?php the_sub_field( 'icon' ); ?>
-                                                </div>
-												<?php the_sub_field( 'button_text' ); ?>
-                                            </button>
-                                        </a>
+										<?php
+										$args = [
+											'button_field'      => 'button_link',
+											'sub_field'         => true,
+											'button_class'      => 'elevated-white-lt mt-3 relative block w-full button-link',
+											'button_icon_field' => 'icon', // Icon field from ACF
+											'long_button'       => true
+										];
+										get_template_part( 'components/partials/button-template', null, $args );
+										?>
                                     </div>
-								<?php } ?>
+								<?php }
 
-								<?php if ( get_sub_field( 'hide_button' ) == 'no' & get_sub_field( 'prioritize' ) == 'yes' ) { ?>
+								// Handle prioritized buttons
+								if ( get_sub_field( 'prioritize' ) == 'yes' ) { ?>
                                     <div class="col-span-12 relative mt-5">
-                                        <a class="block w-full lt-image"
-                                           href="<?php the_sub_field( 'button_link' ); ?>">
-                                            <img class="lt-image-top" src="<?php the_sub_field( 'link_image' ); ?>"
-                                                 alt="Graphic">
-                                            <h3 class="capitalize font-bold text-xl text-black py-3 text-center">
-												<?php the_sub_field( 'button_text' ); ?>
-                                            </h3>
-                                        </a>
+										<?php get_template_part( 'components/partials/image-button' ); ?>
                                     </div>
-								<?php } ?>
+								<?php }
 
-							<?php
 							endwhile;
 						endif;
 						?>
+
 
                     </div>
 				<?php
 				endwhile;
 			endif;
 			?>
-
-
-            <!-- <div class="lg:max-w-3xl mx-auto grid grid-cols-12 p-5 mt-2">
-				 <div class="col-span-12 text-center">
-					 <h3 class="text-xl font-bold">Events</h3>
-				 </div>
-
-				 <div class="col-span-12 relative mt-5 ">
-					 <a class="block w-full lt-image" href="#">
-						 <img src="https://placehold.co/1920x1080" alt="">
-						 <h3 class="capitalize font-bold text-xl text-black py-3 text-center">button text</h3>
-					 </a>
-				 </div>
-
-				 <div class="col-span-12">
-					 <a class="block w-full" href="#">
-						 <button class="elevated-white-lt mt-3 relative">
-							 <div class="absolute left-5">
-								 <i class="fa-solid fa-circle-arrow-right"></i>
-							 </div>
-							 Button text
-						 </button>
-					 </a>
-				 </div>
-			 </div>-->
-
 
         </div>
     </div>

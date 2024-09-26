@@ -34,7 +34,6 @@ if ( have_rows( 'header_select' ) ) :
 				get_template_part( 'components/headers/default/_image' );
 				break;
 
-
 			default:
 				error_log( "Unhandled content block: " . get_row_layout() );
 				break;
@@ -49,7 +48,13 @@ endif;
         <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5 ">
             <div class="grid grid-cols-12 gap-4 md:gap-4">
                 <div class="col-span-12 py-5 text-center mx-auto">
-                    <img class="rounded-xl shadow-xl" src="<?php the_field( 'image_banner' ); ?>">
+					<?php
+					// Banner Image
+					$imageBanner = get_field( 'image_banner' );
+					if ( ! empty( $imageBanner ) ): ?>
+                        <img class="rounded-xl shadow-xl" src="<?php echo esc_url( $imageBanner['url'] ); ?>"
+                             alt="<?php echo esc_attr( $imageBanner['alt'] ); ?>">
+					<?php endif; ?>
                 </div>
                 <div class="col-span-12 py-5 prose max-w-none">
 					<?php the_field( 'details' ); ?>
@@ -59,77 +64,65 @@ endif;
     </div>
 
 
-    <!-- Start giant ass repeater bank -->
+    <!-- Start the giant repeater bank -->
     <div class="bg-white-gradient">
-        <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5 ">
+        <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
             <div class="grid grid-cols-12 gap-4 md:gap-4">
                 <div class="col-span-12 py-5 max-w-none">
 
-					<?php
-					// TOP level repeater (big blocks)
-					if ( have_rows( 'resource_block' ) ):
-						while ( have_rows( 'resource_block' ) ) : the_row();
-							?>
-
+					<?php if ( have_rows( 'resource_block' ) ): ?>
+						<?php while ( have_rows( 'resource_block' ) ) : the_row(); ?>
 
                             <div class="resource pb-10">
                                 <div class="bg-saltydog py-5 text-center text-white text-2xl">
                                     <h3><?php the_sub_field( 'resource_block_title' ); ?></h3>
                                 </div>
 
-								<?php
-								// Start the group / topic header
-								if ( have_rows( 'resource_group' ) ):
-									while ( have_rows( 'resource_group' ) ) : the_row();
-										?>
+								<?php if ( have_rows( 'resource_group' ) ): ?>
+									<?php while ( have_rows( 'resource_group' ) ) : the_row(); ?>
 
-                                        <ul class="resource-tab">
-                                            <li class="tab-title"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                                        <details class="outreach-tab">
+                                            <summary class="tab-title">
 												<?php the_sub_field( 'group_title' ); ?>
-                                            </li>
-
-
-                                            <li class="tab-content">
-												<?php
-												// The individual links inside the accordion.
-												if ( have_rows( 'resource_item' ) ):
-													while ( have_rows( 'resource_item' ) ) : the_row();
-
-														// Either display the words users provide or "View on Amazon" if its left blank.
-														$link_text = ( get_sub_field( 'link_text' ) != null ) ? get_sub_field( 'link_text' ) : "View on Amazon";
-
-														?>
+                                            </summary>
+                                            <div class="tab-details">
+												<?php if ( have_rows( 'resource_item' ) ): ?>
+													<?php while ( have_rows( 'resource_item' ) ) : the_row(); ?>
                                                         <div class="py-4">
-                                                            <p class="font-bold capitalize text-lg"><?php the_sub_field( 'resource_title' ); ?></p>
-                                                            <a class="underline"
-                                                               href="<?php the_sub_field( 'link_url' ); ?>"
-                                                               target="_blank">
-																<?php echo $link_text; ?>
-                                                            </a>
+                                                            <p class="font-bold capitalize text-lg">
+																<?php the_sub_field( 'resource_title' ); ?>
+                                                            </p>
+
+															<?php
+															$args = [
+																'button_field' => 'link_url',
+																'sub_field'    => true,
+																'button_class' => 'underline',
+															];
+															get_template_part( 'components/partials/button-template', null, $args );
+															?>
                                                             <i class="fa-sharp fa-regular fa-arrow-up-right-from-square"></i>
                                                         </div>
-													<?php
-													endwhile;
-												endif;
-												?>
-                                            </li>
+													<?php endwhile; ?>
+												<?php endif; ?>
+                                            </div>
+                                        </details>
 
 
-                                        </ul>
-									<?php
-									endwhile;
-								endif;
-								?>
+									<?php endwhile; ?>
+								<?php endif; ?>
 
                             </div>
-						<?php
-						endwhile;
-					endif;
-					?>
+
+						<?php endwhile; ?>
+					<?php endif; ?>
+
                 </div>
             </div>
         </div>
     </div>
+
     <!-- End Repeater Bank -->
 
 

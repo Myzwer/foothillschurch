@@ -1,8 +1,6 @@
 <?php
 /**
- * Template Name: Template - Location (Single)
- *
- * NOTE: You MUST name location_title the same as your taxonomy term for the location or filtering won't work.
+ * Template Name: Post Type - Messages (Single)
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -10,7 +8,6 @@
  * @subpackage Bootcamp_2
  * @since 1.0.0
  */
-
 
 get_header(); ?>
 
@@ -36,7 +33,7 @@ get_header(); ?>
 				if ( $header_choice == "logo" ): ?>
                     <img class="w-3/4 md:w-1/2 mx-auto" src="<?php the_field( 'brand' ); ?>" alt="Branding">
                     <h1 class="text-white text-3xl  uppercase font-bold">
-						<?php the_field( "location_title" ); ?>
+						<?php echo the_title(); ?>
                     </h1>
 				<?php endif; ?>
 
@@ -44,7 +41,7 @@ get_header(); ?>
                     <div class="center add-padding">
                         <h2 class="text-white text-xl md:text-3xl lb-2 font-bold"><?php the_field( "top_line" ); ?></h2>
                         <h1 class="text-white text-5xl  uppercase font-bold">
-							<?php the_field( "location_title" ); ?>
+							<?php echo the_title(); ?>
                         </h1>
                     </div>
 				<?php endif; ?>
@@ -86,42 +83,25 @@ endif;
 ?>
 
     <!-- Location Information. This is the contact info, location pastor, and schedule. -->
-    <div class="bg-white-gradient pb-10">
+    <div class="bg-blue-gradient pb-10">
 		<?php get_template_part( 'components/layouts/location-info' ); ?>
     </div>
 
 
     <!--
-	*
-	*
-	*
-	*
 	* FLEX CONTENT
 	* Load the rest of the content in via flex content so its more customizable.
-	*
-	*
-	*
-	*
 	-->
 <?php
 // Check value exists.
 if ( have_rows( 'other_sections' ) ) :
 
-	// used for alternating background colors
-	$counter = 0;
+	echo "<div class='alt-bg-wrap'>"; // Wrap the entire section
 
 	// Loop through rows.
 	while ( have_rows( 'other_sections' ) ) : the_row();
 
-		if ( 0 === $counter % 2 ) {
-			$bg = 'bg-blue-gradient';
-		} else {
-			$bg = 'bg-white-gradient';
-		}
-
-		echo "<div class='$bg'>";
-
-		ob_start();  // Start Output Buffering at beginning of loop. This is used to ensure background colors display properly.
+		echo "<div class='bg-alternating-gradient'>";
 
 		switch ( get_row_layout() ) {
 			case 'text_block':
@@ -153,23 +133,13 @@ if ( have_rows( 'other_sections' ) ) :
 				break;
 		}
 
-		// Output buffering is here to make sure that if for whatever reason, a section doesn't render any content
-		// it gets skipped in the color. (so a white bg doesn't end up next to a white bg because blue didn't show.
-
-		$output = ob_get_contents();  // Save content of the current loop iteration to $output variable
-		ob_end_clean();  // Dump the content like a bad habit because output has already been saved to variable.
-
-		// Check if the output saved to variable is longer than 1 character (whitespace might return, so 1 ensures nothing does)
-		if ( strlen( $output ) > 1 ) {
-			// Increment counter only if $output had content
-			$counter ++;
-		}
-
-		echo $output;  // Show output saved into variable.
 		echo "</div>";
 
 		// End loop.
 	endwhile;
+
+	echo "</div>";
+
 endif;
 ?>
 

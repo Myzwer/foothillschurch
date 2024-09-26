@@ -25,8 +25,12 @@ $order = ( $side == 'left' ) ? '' : 'md:order-2';
 <div class="lg:max-w-6xl mx-auto grid grid-cols-12 p-5 py-10 gap-4">
 
     <div class="col-span-12 lg:col-span-5 <?php echo $order; ?>">
-        <img class="block mx-auto  md:w-fit pt-5" src="<?php the_sub_field( 'mockup_image' ); ?>"
-             alt="Mockup">
+		<?php
+		$mockupImage = get_sub_field( 'mockup_image' );
+		if ( ! empty( $mockupImage ) ): ?>
+            <img class="block mx-auto md:w-fit pt-5" src="<?php echo esc_url( $mockupImage['url'] ); ?>"
+                 alt="<?php echo esc_attr( $mockupImage['alt'] ); ?>">
+		<?php endif; ?>
     </div>
 
     <div class="col-span-12 lg:col-span-7 relative">
@@ -37,4 +41,5 @@ $order = ( $side == 'left' ) ? '' : 'md:order-2';
         </div>
     </div>
 </div>
+
 

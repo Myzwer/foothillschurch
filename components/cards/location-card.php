@@ -2,19 +2,18 @@
 
 <div class="mt-5">
     <p class="uppercase text-sm font-bold">Join us at our</p>
-    <h2 class="capitalize font-bold text-2xl"><?php the_sub_field("location_title"); ?></h2>
-    <p><?php the_sub_field("address"); ?></p>
+    <h2 class="capitalize font-bold text-2xl"><?php the_title(); ?> Location</h3></h2>
+    <p><?php the_field( "address" ); ?></p>
 </div>
 
-<div class="mb-5">
-    <a href="<?php the_sub_field("location_page"); ?>">
-        <button class="elevated-blue mt-3 mr-3">
-            <i class="fa-solid fa-arrow-right"></i> Plan A Visit
-        </button>
+<div class="mb-5 mt-3">
+    <a href="<?php the_permalink(); ?>" class="elevated-blue mr-3">
+        <i class="fa-solid fa-arrow-right"></i> Plan A Visit
     </a>
-    <a href="<?php the_sub_field("maps_link"); ?>" target="_blank">
-        <button class="ghost-paired mt-3">
-            Launch Maps
-        </button>
+    <a class="map-link ghost-paired mt-3"
+       href="<?php the_field( 'gmap_link' ); ?>"
+       target="_blank"
+       data-amap-link="<?php the_field( 'amap_link' ); ?>">
+        Launch Maps
     </a>
 </div>

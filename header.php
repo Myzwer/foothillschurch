@@ -21,85 +21,99 @@
  */
 
 ?>
-<!--Start doctype -->
-<!doctype html>
-<!-- Declare html + lang that comes from whatever WP Admin is set to. -->
+    <!doctype html>
+
+	<?php // Use WP to declare language attribute ?>
 <html <?php language_attributes(); ?>>
 
-<!--Start Head-->
-<head>
-    <!--Meta Info-->
-    <meta charset="<?php bloginfo('charset'); ?>">
 
-    <!-- Set viewpoort -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
 
-    <!-- Enables FOAF. -->
-    <!-- https://wordpress.stackexchange.com/questions/173117/why-is-there-a-link-tag-with-rel-profile-pointing-to-gmpg-org-->
-    <link rel="profile" href="https://gmpg.org/xfn/11">
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
 
-    <!-- Font Awesome Loadin-->
-    <!-- It's Josh Forrester's Kit, so if ever he doesn't work for FC, you need to update this to a new kit -->
-    <script src="https://kit.fontawesome.com/062be7d052.js" crossorigin="anonymous"></script>
 
-    <!--Wordpress Required Stuff-->
-    <?php wp_head(); ?>
-</head>
+		<?php
+		// Enable FOAF
+		// https://wordpress.stackexchange.com/questions/173117/why-is-there-a-link-tag-with-rel-profile-pointing-to-gmpg-org
+		?>
+        <link rel="profile" href="https://gmpg.org/xfn/11">
 
-<!--Open Body, Apply any Tailwind classes that are global here, Leave WP stuff alone. -->
-<body class="leading-normal tracking-normal" <?php body_class(); ?>>
+		<?php
+		// Font Awesome Loadin
+		// It's Josh Forrester's Kit, so if ever he doesn't work for FC, you need to update this to a new kit
+		?>
+        <script src="https://kit.fontawesome.com/062be7d052.js" crossorigin="anonymous"></script>
 
-<!--Wordpress Required Stuff-->
+		<?php
+		// WordPress Required Stuff
+		wp_head();
+		?>
+
+    </head>
+
+<?php // Open Body, Apply any Tailwind classes that are global here, Leave WP stuff alone.  ?>
+<body <?php body_class( "leading-normal tracking-normal" ); ?>>
+
+<?php //Wordpress Required Stuff  ?>
 <?php wp_body_open(); ?>
 
-<!-- Start Topbar code -->
-<!-- The config is in functions.php - The links can be edited in Wp Admin -> Appearance -> Menus. -->
-<!-- THIS DOES NOT USE THE NAVWALKER. -->
-<div class="bg-white">
-    <?php
-    wp_nav_menu(array(
-        'theme_location' => 'top-bar',
-        // 'menu_class'     => 'pass-class', no additional classes needed,  but if they were they go here.
-        'items_wrap' => '<ul class = "topbar">%3$s</ul>'
-    ));
-    ?>
-</div>
-<!-- End Topbar -->
+<?php
+// Start Topbar code
+// The config is in functions.php - The links can be edited in Wp Admin -> Appearance -> Menus.
+// THIS DOES NOT USE THE NAVWALKER.
+?>
+    <div class="bg-white">
+		<?php
+		wp_nav_menu( array(
+			'theme_location' => 'top-bar',
+			// 'menu_class'     => 'pass-class', no additional classes needed,  but if they were they go here.
+			'items_wrap'     => '<ul class = "topbar">%3$s</ul>'
+		) );
+		?>
+    </div>
 
-<!--Start Main Navbar-->
-<section class="navigation">
-    <div class="nav-container">
+<?php // End Topbar ?>
 
-        <!-- Link brand image to homepage. Both the link and img are controlled from Options ACF in WP Admin -->
-        <div class="brand">
-            <a href="<?php the_field('homepage', 'options'); ?>">
-                <img src="<?php the_field('circle_outline_logo', 'options'); ?>"
-                     alt="Foothills Church Logo">
-            </a>
-        </div>
+<?php // Start Main Navbar ?>
+    <section class="navigation">
+        <div class="nav-container">
 
-        <!-- Start actual Nav elements-->
-        <nav>
-            <!-- For JS to bind to for mobile functionality -->
-            <div class="nav-mobile">
-                <a id="nav-toggle" href="#!">
-                    <span></span>
+			<?php // Link brand image to homepage. Both the link and img are controlled from Options ACF in WP Admin ?>
+            <div class="brand">
+                <a href="<?php echo esc_url( get_field( 'homepage', 'options' ) ); ?>">
+					<?php
+					$logoImage = get_field( 'circle_outline_logo', 'options' );
+					if ( ! empty( $logoImage ) ): ?>
+                        <img src="<?php echo esc_url( $logoImage['url'] ); ?>"
+                             alt="<?php echo esc_attr( $logoImage['alt'] ); ?>">
+					<?php endif; ?>
                 </a>
             </div>
 
-            <!-- Start Wordpress Generated Links - Can up updated from Wp Admin -> Appearance -> Menus. -->
-            <!-- This DOES use a custom navwalker found at ./nav_walker.php -->
-            <!-- -->
-            <?php
-            wp_nav_menu(array(
-                'theme_location' => 'header-menu',
-                'menu_class' => 'primary-menu', // pass whatever classes to be added to top level here
-                'walker' => new PreLaunch_Walker(), // Uses a custom navwalker
-                'items_wrap' => '<ul class="nav-list">%3$s</ul>' // '%3$s' is a WP thing, it adds the content.
-            ));
-            ?>
-            <!-- End Wordress -->
-        </nav>
-    </div>
-</section>
-<!--Start Body-->
+			<?php // Start actual Nav elements ?>
+            <nav>
+				<?php // For JS to bind to for mobile functionality ?>
+                <div class="nav-mobile">
+                    <a id="nav-toggle" href="#!" aria-label="Open hamburger menu">
+                        <span></span>
+                    </a>
+                </div>
+
+
+				<?php
+				// Start Wordpress Generated Links - Can up updated from Wp Admin -> Appearance -> Menus.
+				// This DOES use a custom navwalker found at ./nav_walker.php
+				wp_nav_menu( array(
+					'theme_location' => 'main-navigation',
+					'menu_class'     => 'primary-menu', // pass whatever classes to be added to top level here
+					'walker'         => new PreLaunch_Walker(), // Uses a custom navwalker
+					'items_wrap'     => '<ul class="nav-list">%3$s</ul>' // '%3$s' is a WP thing, it adds the content.
+				) );
+				?>
+				<?php // End Mercy ?>
+            </nav>
+        </div>
+    </section>
+<?php // Start Body ?>

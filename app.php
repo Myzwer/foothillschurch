@@ -19,8 +19,13 @@ get_header(); ?>
 
             <div class="lg:max-w-8xl mx-auto grid grid-cols-12 p-5 py-10 gap-4">
                 <div class="col-span-12 lg:col-span-5 md:col-start-1">
-                    <img class="block mx-auto  md:w-fit pt-5" src="<?php the_field( 'app_promo', 'options' ); ?>"
-                         alt="App on Phone">
+					<?php
+					// Image
+					$appPromoImage = get_field( 'app_promo', 'options' );
+					if ( ! empty( $appPromoImage ) ): ?>
+                        <img class="block mx-auto md:w-fit pt-5" src="<?php echo esc_url( $appPromoImage['url'] ); ?>"
+                             alt="<?php echo esc_attr( $appPromoImage['alt'] ); ?>">
+					<?php endif; ?>
                 </div>
 
                 <div class="col-span-12 lg:col-span-5 relative">
@@ -30,18 +35,29 @@ get_header(); ?>
                         </h1>
                         <p class=""><?php the_field( 'details' ); ?></p>
                         <div class="pt-5">
-                            <a class="pr-2" href="<?php the_field( "app_store_link", 'options' ); ?>" target="_blank">
-                                <button class="ghost-black">
-                                    <i class="fa-brands fa-apple"></i> App Store
-                                </button>
-                            </a>
+							<?php
+							$args = [
+								'button_field' => 'app_store_link',
+								'options'      => true,
+								'button_class' => 'ghost-black mr-2',
+								'button_icon'  => 'fa-brands fa-apple'
+							];
+							get_template_part( 'components/partials/button-template', null, $args );
+							?>
 
-                            <a href="<?php the_field( "play_store_link", 'options' ); ?>" target="_blank">
-                                <button class="ghost-black">
-                                    <i class="fa-brands fa-google-play"></i> Play Store
-                                </button>
-                            </a>
+							<?php
+							$args = [
+								'button_field' => 'play_store_link',
+								'options'      => true,
+								'button_class' => 'ghost-black',
+								'button_icon'  => 'fa-brands fa-google-play'
+							];
+							get_template_part( 'components/partials/button-template', null, $args );
+							?>
+
+
                         </div>
+
                     </div>
                 </div>
             </div>

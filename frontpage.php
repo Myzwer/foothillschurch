@@ -13,8 +13,11 @@
 
 get_header(); ?>
 
-    <!-- START Header -->
-    <video class="header-video" src="<?php the_field( "video_background" ); ?>" autoplay loop playsinline muted></video>
+<?php // START Header ?>
+    <video class="header-video" src="<?php the_field( 'video_background' ); ?>" autoplay loop playsinline muted>
+        <track kind="captions" label="English captions" srclang="en" src="#" default>
+    </video>
+
     <div class="viewport-header">
         <div class="head-container">
 			<?php
@@ -42,27 +45,27 @@ get_header(); ?>
             <h1 class="text-white text-3xl md:text-5xl uppercase font-bold"><?php echo $main_line; ?></h1>
 
 
-            <a href="<?php echo $primary_button_link; ?>">
-                <button class="fab-main mt-3">
+            <div class="mt-3">
+                <a href="<?php echo $primary_button_link; ?>" class="fab-main">
                     <i class="fa-solid fa-circle-arrow-right"></i> <?php echo $primary_button_text; ?>
-                </button>
-            </a>
-
-			<?php
-			if ( $secondExists ) { ?>
-                <a href="<?php echo $secondary_button_link; ?>">
-                    <button class="ghost-white mt-3">
-						<?php echo $secondary_button_text; ?>
-                    </button>
                 </a>
-			<?php } ?>
+
+
+				<?php
+				if ( $secondExists ) { ?>
+                    <a href="<?php echo $secondary_button_link; ?>" class="ghost-white mt-3">
+						<?php echo $secondary_button_text; ?>
+                    </a>
+				<?php } ?>
+            </div>
 
         </div>
     </div>
-    <!-- END Header -->
+<?php // END Header ?>
 
-    <!-- Show announcement banner if there's content -->
+
 <?php
+// Show announcement banner if there's content
 if ( get_field( "announcement_block" ) ) { ?>
     <div class="bg-salty-gradient">
         <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
@@ -75,11 +78,12 @@ if ( get_field( "announcement_block" ) ) { ?>
     </div>
 <?php } ?>
 
-    <!-- START Recent Sermon -->
+
+<?php // START Recent Sermon ?>
     <div class="bg-white-gradient">
         <div class="lg:max-w-5xl mx-auto grid grid-cols-12 p-5 py-10 gap-4 md:gap-10">
-            <!-- Start the actual card -->
 			<?php
+			// Start the actual card
 			// Drop into PHP to call the latest post title and link
 			$recent_posts = wp_get_recent_posts( array(
 				'post_type'   => 'message',
@@ -91,87 +95,78 @@ if ( get_field( "announcement_block" ) ) { ?>
                 <div class="col-span-12 md:col-span-6 text-center relative">
                     <a href="<?php echo get_permalink( $post['ID'] ) ?>">
                         <img class="rounded-xl shadow-xl"
-                             src="<?php echo get_the_post_thumbnail_url( $post['ID'], 'post-thumbnail' ); ?>" alt="">
+                             src="<?php echo get_the_post_thumbnail_url( $post['ID'], 'youtube-thumbnail' ); ?>"
+                             alt="Sermon Thumbnail">
                     </a>
                 </div>
+
+				<?php $latest_message_id = $post['ID']; ?>
 
                 <div class="col-span-12 md:col-span-6 my-8">
-                    <h3 class="text-md uppercase">Latest Message</h3>
-                    <h2 class="text-3xl font-bold capitalize"><?php echo get_the_title( $post['ID'] ) ?></h2>
+                    <p class="text-md uppercase">Latest Message</p>
+                    <h2 class="text-3xl font-bold capitalize"><?php echo get_the_title( $latest_message_id ); ?></h2>
+
                     <div class="block">
-						<?php
-						function display_taxonomy_terms( $post_id, $taxonomy, $label ) {
-							// Retrieve the terms associated with the post for the specified taxonomy
-							$terms = get_the_terms( $post_id, $taxonomy );
+                        <!-- Display Speaker -->
+						<?php bootcamp_display_message_terms( $latest_message_id, 'speaker', 'Speaker: ', 'div', 'capitalize text-xl', true ); ?>
 
-							if ( $terms && ! is_wp_error( $terms ) ) {
-								echo '<div class = ""> <h3 class="text-xl capitalize font-bold inline">' . esc_html( $label ) . '</h3>';
-								// Loop through the terms and display them
-								foreach ( $terms as $term ) {
-									echo '<h3 class="text-xl capitalize inline">' . esc_html( $term->name ) . '</h3></div>';
-								}
-							}
-						}
-
-						// Get the ID of the most recent message post from the $recent_posts array
-						$latest_message_id = $recent_posts[0]['ID'];
-
-						// Display Speaker
-						$taxonomy_speaker = 'speaker';
-						$label_speaker    = 'Speaker: ';
-						display_taxonomy_terms( $latest_message_id, $taxonomy_speaker, $label_speaker );
-
-						// Display Series
-						$taxonomy_series = 'series';
-						$label_series    = 'Series: ';
-						display_taxonomy_terms( $latest_message_id, $taxonomy_series, $label_series );
-						?>
+                        <!-- Display Series -->
+						<?php bootcamp_display_message_terms( $latest_message_id, 'series', 'Series: ', 'div', 'capitalize text-xl', true ); ?>
                     </div>
 
-                    <a href="<?php echo get_permalink( $post['ID'] ) ?>">
-                        <button class="elevated-blue mt-3 mr-3">
+                    <div class="mt-5">
+                        <a href="<?php echo get_permalink( $latest_message_id ); ?>" class="elevated-blue mr-3">
                             <i class="fa-solid fa-arrow-right"></i> Watch Now
-                        </button>
-                    </a>
+                        </a>
 
-                    <a href="<?php the_field( 'youtube_link', $post['ID'], false, false ); ?>" target="_blank">
-                        <button class="ghost-paired mt-3">
-                            <!-- ACF field, get the post ID of the last post, "false false" strips formatting and provides a raw URL -->
-                            View on YouTube
-                        </button>
-                    </a>
+                        <div class="md:inline-block mt-6 md:mt-0">
+                            <a href="<?php the_field( 'youtube_link', $latest_message_id, false, false ); ?>"
+                               target="_blank" class="ghost-paired mt-3">
+                                View on YouTube
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
 			<?php endforeach;
 			wp_reset_query(); ?>
-            <!-- End Featured Sermon -->
         </div>
     </div>
-    <!-- END Recent Sermon -->
+<?php // END Recent Sermon ?>
 
-    <!-- START Resource Giveaway -->
+<?php // START Resource Giveaway  ?>
     <div class="bg-blue-gradient py-10">
         <div class=" lg:max-w-5xl lg:text-center lg:mx-auto p-5 pt-10">
             <div class="grid grid-cols-12 gap-4 md:gap-10">
 
                 <div class="col-span-12 md:col-span-6 md:order-2">
-                    <img src="<?php the_field( "resource_image" ); ?>" alt="Resource Image">
+					<?php
+					// Resource Image
+					$resourceImage = get_field( 'resource_image' );
+					if ( ! empty( $resourceImage ) ): ?>
+                        <img src="<?php echo esc_url( $resourceImage['url'] ); ?>"
+                             alt="<?php echo esc_attr( $resourceImage['alt'] ); ?>">
+					<?php endif; ?>
                 </div>
 
 
                 <div class="col-span-12 md:col-span-6 md:order-1 relative">
                     <div class="content-middle-medium">
                         <div class="text-left mb-1">
-                            <h2 class=" text-xl md:text-3xl lb-2 font-bold capitalize"><?php the_field( "resource_title" ); ?></h2>
+                            <h2 class=" text-3xl lb-2 font-bold capitalize"><?php the_field( "resource_title" ); ?></h2>
                             <div class="pb-10 md:pb-3 prose"><?php the_field( "resource_paragraph" ); ?></div>
-							<?php
-							// Gravity Forms Shortcode
-							$formid = get_field( "form_id" );
-							echo do_shortcode( "[gravityform id='$formid']" );
-							?>
-                            <p class="opacity-60 text-xs pt-3">This site is protected by reCAPTCHA and the Google
-                                <a class="underline" href="https://policies.google.com/privacy">Privacy Policy</a> and
-                                <a class="underline" href="https://policies.google.com/terms">Terms of Service</a>
-                                apply.</p>
+                            <div class="resource-giveaway">
+								<?php
+								// Gravity Forms Shortcode
+								$formid = get_field( "form_id" );
+								echo do_shortcode( "[gravityform id='$formid']" );
+								?>
+                                <p class="opacity-60 text-xs pt-3">This site is protected by reCAPTCHA and the Google
+                                    <a class="underline" href="https://policies.google.com/privacy">Privacy Policy</a>
+                                    and
+                                    <a class="underline" href="https://policies.google.com/terms">Terms of Service</a>
+                                    apply.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,9 +174,10 @@ if ( get_field( "announcement_block" ) ) { ?>
             </div>
         </div>
     </div>
-    <!-- END Resource Giveaway -->
+<?php // END Resource Giveaway ?>
 
-    <!-- START Gallery / Events -->
+
+<?php // START Gallery / Events  ?>
     <div class="bg-white-gradient">
         <div class="bg-no-repeat bg-scroll bg-cover relative pb-8"
              style="background: linear-gradient(
@@ -192,46 +188,90 @@ if ( get_field( "announcement_block" ) ) { ?>
             <div class=" lg:max-w-5xl lg:text-center lg:mx-auto p-5 pt-10">
                 <div class="grid grid-cols-12 gap-1">
 
-                    <div class="col-span-6 md:col-span-4 md:order-1">
-                        <img src="<?php the_field( "g1" ); ?>" alt="">
-                    </div>
-                    <div class="col-span-6 md:col-span-4 md:order-2">
-                        <img src="<?php the_field( "g2" ); ?>" alt="">
-                    </div>
+					<?php
+					$gridImage1 = get_field( 'g1' );
+					$gridImage2 = get_field( 'g2' );
+					$gridImage3 = get_field( 'g3' );
+					$gridImage4 = get_field( 'g4' );
+					$gridImage5 = get_field( 'g5' );
+					?>
 
-                    <div class="col-span-6 md:col-span-4 md:order-3">
-                        <img src="<?php the_field( "g3" ); ?>" alt="">
-                    </div>
+					<?php
+					// Grid Image 1
+					if ( ! empty( $gridImage1 ) ): ?>
+                        <div class="col-span-6 md:col-span-4 md:order-1">
+                            <img src="<?php echo esc_url( $gridImage1['url'] ); ?>"
+                                 alt="<?php echo esc_attr( $gridImage1['alt'] ); ?>">
+                        </div>
+					<?php endif; ?>
 
-                    <div class="col-span-6 md:col-span-4 md:order-5">
-                        <img src="<?php the_field( "g4" ); ?>" alt="">
-                    </div>
+					<?php
+					// Grid Image 2
+					if ( ! empty( $gridImage2 ) ): ?>
+                        <div class="col-span-6 md:col-span-4 md:order-2">
+                            <img src="<?php echo esc_url( $gridImage2['url'] ); ?>"
+                                 alt="<?php echo esc_attr( $gridImage2['alt'] ); ?>">
+                        </div>
+					<?php endif; ?>
+
+					<?php
+					// Grid Image 3
+					if ( ! empty( $gridImage3 ) ): ?>
+                        <div class="col-span-6 md:col-span-4 md:order-3">
+                            <img src="<?php echo esc_url( $gridImage3['url'] ); ?>"
+                                 alt="<?php echo esc_attr( $gridImage3['alt'] ); ?>">
+                        </div>
+					<?php endif; ?>
+
+					<?php
+					// Grid Image 4
+					if ( ! empty( $gridImage4 ) ): ?>
+                        <div class="col-span-6 md:col-span-4 md:order-5">
+                            <img src="<?php echo esc_url( $gridImage4['url'] ); ?>"
+                                 alt="<?php echo esc_attr( $gridImage4['alt'] ); ?>">
+                        </div>
+					<?php endif; ?>
+
 
                     <div class="col-span-6 md:col-span-4 md:order-4 bg-blue-gradient relative shadow-xl">
                         <div class="absolute bottom-2 left-2 md:bottom-5 md:left-5">
                             <h2 class=" text-xl md:text-3xl font-bold uppercase text-left md:pb-2"><?php the_field( "gallery_card_title" ); ?></h2>
 							<?php if ( have_rows( 'gallery_cta' ) ): ?>
 								<?php while ( have_rows( 'gallery_cta' ) ): the_row(); ?>
-                                    <a href="<?php the_sub_field( "button_link" ); ?>">
-                                        <button class="gallery-ghost">
-                                            <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                                        </button>
-                                    </a>
+									<?php
+									$args = [
+										'button_field' => 'button_link',
+										'sub_field'    => true,
+										'button_class' => 'gallery-ghost',
+										'button_icon'  => 'fa-solid fa-arrow-right'
+									];
+									get_template_part( 'components/partials/button-template', null, $args );
+									?>
 								<?php endwhile;
 							endif; ?>
                         </div>
                     </div>
 
                     <div class="col-span-6 md:col-span-4 md:order-6">
-                        <img src="<?php the_field( "g5" ); ?>" alt="">
+						<?php
+						// Grid Image 5
+						if ( ! empty( $gridImage5 ) ): ?>
+                            <div class="col-span-6 md:col-span-4 md:order-2">
+                                <img src="<?php echo esc_url( $gridImage5['url'] ); ?>"
+                                     alt="<?php echo esc_attr( $gridImage5['alt'] ); ?>">
+                            </div>
+						<?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END Gallery / Events -->
+<?php // END Gallery / Events ?>
 
-    <!-- START Next Step Slider -->
+
+<?php
+// START Next Step Slider
+if ( have_rows( 'slider_content' ) ): ?>
     <div class="bg-darkblue md:p-10">
         <div class=" lg:max-w-5xl lg:mx-auto">
             <div class="grid grid-cols-12 gap-4 md:gap-10">
@@ -243,7 +283,7 @@ if ( get_field( "announcement_block" ) ) { ?>
                 </div>
 
                 <div class="col-span-12 md:col-start-6 md:col-span-7 pb-10 md:pb-0">
-                    <!-- Start Glider -->
+					<?php // Start Glider ?>
                     <div class="glide relative">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
@@ -254,11 +294,17 @@ if ( get_field( "announcement_block" ) ) { ?>
                                             <div class="slide-card p-6 md:p-10 rounded-xl shadow-xl">
                                                 <h3 class="text-2xl md:text-3xl pb-3 font-bold capitalize"><?php the_sub_field( "step_title" ); ?></h3>
                                                 <p class="pb-3"><?php the_sub_field( "step_content" ); ?></p>
-                                                <a href="<?php the_sub_field( "button_link" ); ?>">
-                                                    <button class="ghost-black">
-                                                        <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                                                    </button>
-                                                </a>
+
+
+												<?php
+												$args = [
+													'button_field' => 'button_link',
+													'sub_field'    => true,
+													'button_class' => 'gallery-ghost',
+													'button_icon'  => 'fa-solid fa-arrow-right'
+												];
+												get_template_part( 'components/partials/button-template', null, $args );
+												?>
                                             </div>
                                         </li>
 									<?php endwhile;
@@ -270,31 +316,34 @@ if ( get_field( "announcement_block" ) ) { ?>
                         </div>
                         <div class="glide__bullets" data-glide-el="controls[nav]">
                         </div>
-                        <!-- Start Arrows -->
+						<?php // Start Arrows ?>
                         <div class="glide__arrows" data-glide-el="controls">
-                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<"
+                                    aria-label="Advance Slide Left">
                                 <i class="fa-regular fa-angle-left"></i>
                             </button>
-                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">"
+                                    aria-label="Advance Slide Left">
                                 <i class="fa-regular fa-angle-right"></i>
                             </button>
                         </div>
-                        <!-- End Arrows -->
+						<?php // End Arrows ?>
                     </div>
-                    <!-- End Glider -->
+					<?php // End Glider ?>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END Next Step Slider -->
+<?php endif;
+// END Next Step Slider
+?>
 
-    <!-- START Junk Drawer -->
+
     <div class="bg-white-gradient md:py-10">
         <div class=" lg:max-w-5xl lg:mx-auto">
 			<?php get_template_part( 'components/layouts/junk-drawer' ); ?>
         </div>
     </div>
-    <!-- END Recent Sermon -->
 
 
 <?php

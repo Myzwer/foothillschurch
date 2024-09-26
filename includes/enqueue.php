@@ -20,23 +20,9 @@
 // Jquery is being loaded into this file via webpack
 function scripts_loadin()
 {
-    wp_enqueue_script('frontend', get_template_directory_uri() . '/assets/public/js/frontend.js');
+	wp_enqueue_style('frontend', get_template_directory_uri() . '/assets/public/css/frontend.css');
+	wp_enqueue_script('frontend', get_template_directory_uri() . '/assets/public/js/frontend.js');
+	wp_enqueue_script('churchcenter-modal', 'https://js.churchcenter.com/modal/v1', array(), null, true);
 }
 
 add_action('wp_enqueue_scripts', 'scripts_loadin');
-
-function churchcenter_script()
-{
-    wp_enqueue_script('churchcenter-modal', 'https://js.churchcenter.com/modal/v1', array(), null, true);
-}
-
-add_action('wp_enqueue_scripts', 'churchcenter_script');
-
-
-// Styles Load In
-function load_styles()
-{
-    wp_enqueue_style('frontend', get_template_directory_uri() . '/assets/public/css/frontend.css');
-}
-
-add_action('wp_enqueue_scripts', 'load_styles');

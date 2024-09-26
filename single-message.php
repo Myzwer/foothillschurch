@@ -24,72 +24,52 @@ get_header(); ?>
                 <!-- Display Title -->
                 <h3 class="font-bold capitalize text-3xl pt-3"><?php the_title(); ?></h3>
 
-                <!-- Function to display terms -->
-				<?php
-				function display_taxonomy_terms( $taxonomy_name, $label ) {
-					// Get the terms associated with the current post for the specified taxonomy
-					$terms = get_the_terms( get_the_ID(), $taxonomy_name );
+                <!-- Display Speaker -->
+				<?php bootcamp_display_message_terms( get_the_ID(), 'speaker', 'Speaker: ', 'p', 'capitalize text-lg' ); ?>
 
-					// Check if there are terms and ensure no WP_Error occurred
-					if ( $terms && ! is_wp_error( $terms ) ) {
+                <!-- Display Date -->
+                <p class="capitalize text-lg">
+                    <span class="font-bold">Date:</span> <?php echo get_the_date(); ?>
+                </p>
 
-						// Initialize an array to store the term names
-						$term_names = array();
+                <!-- Display Series -->
+				<?php bootcamp_display_message_terms( get_the_ID(), 'series', 'Series: ', 'p', 'capitalize text-lg' ); ?>
 
-						// Loop through each term
-						foreach ( $terms as $term ) {
+                <!-- Display Topics -->
+				<?php bootcamp_display_message_terms( get_the_ID(), 'topic', 'Topics: ', 'p', 'capitalize text-lg' ); ?>
 
-							// Add the term name to the array
-							$term_names[] = esc_html( $term->name );
-						}
-
-						// Output a paragraph with the term label and names, separated by commas
-						echo '<p class="capitalize text-lg"><span class="font-bold">' . esc_html( $label ) . ':</span> ' . implode( ', ', $term_names ) . '</p>';
-					}
-				}
-                
-				// Display Speaker
-				display_taxonomy_terms( 'speaker', 'Speaker' );
-
-				// Display Date
-				echo '<p class="capitalize text-lg"><span class="font-bold">Date:</span> ' . get_the_date() . '</p>';
-
-				// Display Series
-				display_taxonomy_terms( 'series', 'Series' );
-
-				// Display Topic
-				display_taxonomy_terms( 'topic', 'Topics' );
-
-				if ( get_field( 'subsplash_link' ) ): ?>
-                    <p class="capitalize text-lg"><span class="font-bold">Notes:</span> <a
-                                href="<?php the_field( "subsplash_link" ) ?>">View On Subsplash <i
-                                    class="fa-regular fa-arrow-up-right-from-square"></i></a></p>
+                <!-- Subsplash Link -->
+				<?php if ( get_field( 'subsplash_link' ) ): ?>
+                    <p class="capitalize text-lg">
+                        <span class="font-bold">Notes:</span>
+                        <a href="<?php the_field( 'subsplash_link' ); ?>" target="_blank">
+                            View On Subsplash <i class="fa-regular fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </p>
 				<?php endif; ?>
             </div>
 
         </div>
     </div>
 
+
     <div class="bg-white-gradient">
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 py-10 relative">
             <div class="col-span-12 md:text-center">
                 <h3 class="text-xl md:text-3xl mb-3 font-bold">Prefer to Read The Message?</h3>
-                <p>All of our sermons are transcribed into blog format for you to read!</p>
-                <p>Blog format is typically available the following Wednesday.</p>
-                <div class="col-span-12 text-center">
+                <p>All of our messages are transcribed into blog format for you to read!</p>
+                <p>Blog format is typically available by the following Tuesday.</p>
+                <div class="col-span-12 text-center mt-5">
 					<?php if ( get_field( 'blog_link' ) ): ?>
-                        <button class="elevated-blue mt-3 mr-8">
-                            <a href="<?php the_field( "blog_link" ); ?>">
-                                <i class="fa-solid fa-arrow-right"></i> Read Now
-                            </a>
-                        </button>
+                        <a href="<?php the_field( 'blog_link' ); ?>" class="elevated-blue mr-3">
+                            <i class="fa-solid fa-arrow-right"></i> Read Now
+                        </a>
 					<?php endif; ?>
-
-                    <button class="ghost-paired mt-3">
-                        <a href="<?php the_field( 'transcripts', 'options' ); ?>">
+                    <div class="md:inline-block mt-6 md:mt-0">
+                        <a href="<?php the_field( 'transcripts', 'options' ); ?>" class="ghost-paired">
                             View All Transcripts
                         </a>
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -111,7 +91,13 @@ get_header(); ?>
         <div class="md:w-8/12 mx-auto grid grid-cols-12 p-5 gap-4">
 
             <div class="col-span-12 md:col-span-6 text-left mt-10">
-                <img src="<?php the_field( 'app_promo', 'options' ); ?>" alt="">
+				<?php
+				// App Mockup Image
+				$appPromoImage = get_field( 'app_promo', 'options' );
+				if ( ! empty( $appPromoImage ) ): ?>
+                    <img class="block mx-auto md:w-fit pt-5" src="<?php echo esc_url( $appPromoImage['url'] ); ?>"
+                         alt="<?php echo esc_attr( $appPromoImage['alt'] ); ?>">
+				<?php endif; ?>
             </div>
 
             <div class="col-span-12 md:col-span-6 text-left mt-10 relative">

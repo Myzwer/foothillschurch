@@ -16,27 +16,18 @@
  */
 ?>
 
-<?php $account = get_sub_field( 'instagram_account' );
-
+<?php
+$account = get_sub_field( 'instagram_account' );
 // Set proper feeds
+$feed1 = $feed2 = $link = null;
 if ( $account === 'foothills' ) {
 	$feed1 = '1';
 	$feed2 = '2';
+	$link  = "https://www.instagram.com/foothillschurchtn/?hl=en";
 } else if ( $account === 'students' ) {
 	$feed1 = '3';
 	$feed2 = '4';
-} else {
-	$feed1 = null;
-	$feed2 = null;
-}
-
-// Set link
-if ( $account === 'foothills' ) {
-	$link = "https://www.instagram.com/foothillschurchtn/?hl=en";
-} else if ( $account === 'students' ) {
-	$link = "https://www.instagram.com/fc_students/?hl=en";
-} else {
-	$link = null;
+	$link  = "https://www.instagram.com/fc_students/?hl=en";
 }
 ?>
 
@@ -62,10 +53,8 @@ if ( $account === 'foothills' ) {
                         <div class="absolute bottom-2 px-5 pb-3">
                             <h2 class="text-xl md:text-3xl font-bold uppercase text-left md:pb-2"><?php the_sub_field( "title" ); ?></h2>
                             <div class="text-left">
-                                <a href="<?php echo $link; ?>" class="text-left" target="_blank">
-                                    <button class="gallery-ghost text-left">
-                                        <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
-                                    </button>
+                                <a href="<?php echo $link; ?>" class="gallery-ghost text-left" target="_blank">
+                                    <i class="fa-solid fa-arrow-right"></i> <?php the_sub_field( "button_text" ); ?>
                                 </a>
                             </div>
                         </div>
@@ -74,7 +63,7 @@ if ( $account === 'foothills' ) {
             </div>
 
             <div class="col-span-6 md:col-span-8 prose max-w-none">
-				<?php echo do_shortcode( '[instagram-feed feed=' . $feed2 . ']' ); ?>
+				<?php echo do_shortcode( "[instagram-feed feed=$feed2]" ); ?>
             </div>
 
         </div>

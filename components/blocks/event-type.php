@@ -17,12 +17,11 @@
  * @version 1.0.0
  */
 ?>
-
 <?php
 $type     = get_sub_field( "event_type" );
 $location = get_sub_field( "event_location" );
 $name     = get_sub_field( "event_name" );
-$count    = ( get_sub_field( "num_events" ) == null ) ? 3 : get_sub_field( "num_events" );
+$count    = get_sub_field( "num_events" ) ?: 3;
 
 
 $tax_query = array( 'relation' => 'AND' );
@@ -56,10 +55,10 @@ $args = array(
 	'post_type'      => array( 'event' ),
 	'post_status'    => array( 'publish' ),
 	'nopaging'       => false,
-	'order'          => 'DESC',
-	'orderby'        => 'date',
+	'order'          => 'ASC',
+	'orderby'        => 'meta_value_num',
 	'posts_per_page' => $count,
-	'paged'          => ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1,
+	'paged'          => get_query_var( 'paged' ) ?? 1,
 	'tax_query'      => $tax_query,
 );
 
@@ -68,6 +67,7 @@ $events = new WP_Query( $args );
 // Rest of the code
 
 if ( $events->have_posts() ) : ?>
+
     <div class="xl:w-8/12 max-w-screen-2xl mx-auto p-5 xl:p-5">
         <div class="grid grid-cols-12 gap-4 md:gap-4">
             <div class="col-span-12 py-5 prose max-w-none">
@@ -76,18 +76,20 @@ if ( $events->have_posts() ) : ?>
 
 			<?php
 			// The Loop
-			if ( $events->have_posts() ) {
-				while ( $events->have_posts() ) {
-					$events->the_post();
-					$size_select = array(
-						'column_span_class' => 'lg:col-span-4'
-					);
-					get_template_part( 'components/cards/event-card', null, $size_select );
-				}
+			$size_select = array(
+				'column_span_class' => 'lg:col-span-4'
+			);
+
+			// Start Loop
+			while ( $events->have_posts() ) {
+				$events->the_post();
+				get_template_part( 'components/cards/event-card', null, $size_select );
+
 			}
 			// Restore original Post Data
 			wp_reset_postdata();
 			?>
         </div>
     </div>
+
 <?php endif; ?>

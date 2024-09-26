@@ -39,42 +39,20 @@ get_header(); ?>
 
                 <!-- Function to display terms -->
 				<?php
-				function display_taxonomy_terms( $taxonomy_name, $label ) {
-					// Get the terms associated with the current post for the specified taxonomy
-					$terms = get_the_terms( get_the_ID(), $taxonomy_name );
-
-					// Check if there are terms and ensure no WP_Error occurred
-					if ( $terms && ! is_wp_error( $terms ) ) {
-
-						// Initialize an array to store the term links
-						$term_links = array();
-
-						// Loop through each term
-						foreach ( $terms as $term ) {
-
-							// Create a link to the term archive page
-							$term_links[] = '<a href="' . get_term_link( $term, $taxonomy_name ) . '">' . esc_html( $term->name ) . '</a>';
-						}
-
-						// Output a paragraph with the term label and links, separated by commas
-						echo '<p class="capitalize text-lg"><span class="font-bold">' . esc_html( $label ) . ':</span> ' . implode( ', ', $term_links ) . '</p>';
-					}
-				}
-
-
 				// Display Speaker
-				display_taxonomy_terms( 'speaker', 'Speaker' );
+				bootcamp_display_message_terms( get_the_ID(), 'speaker', 'Speaker: ', 'div', 'capitalize text-lg', true );
 
 				// Display Date
 				echo '<p class="capitalize text-lg"><span class="font-bold">Date:</span> ' . get_the_date() . '</p>';
 
 				// Display Series
-				display_taxonomy_terms( 'series', 'Series' );
+				bootcamp_display_message_terms( get_the_ID(), 'series', 'Series: ', 'div', 'capitalize text-lg', true );
 
 				// Display Topic
-				display_taxonomy_terms( 'topic', 'Topics' );
+				bootcamp_display_message_terms( get_the_ID(), 'topic', 'Topics: ', 'div', 'capitalize text-lg', true );
 				?>
             </div>
+
 
             <div class="col-span-12 md:col-span-8 py-5 prose max-w-none">
 				<?php the_content(); ?>

@@ -5,10 +5,10 @@
 <?php
 
 // Check rows exists.
-if ( have_rows( 'popular_messages', 84 ) ):
+if ( have_rows( 'popular_messages', 'options' ) ):
 
 	// Loop through rows.
-	while ( have_rows( 'popular_messages', 84 ) ) : the_row();
+	while ( have_rows( 'popular_messages', 'options' ) ) : the_row();
 		?>
         <div class="col-span-12 lg:col-span-4">
 
@@ -24,7 +24,7 @@ if ( have_rows( 'popular_messages', 84 ) ):
                     <div class="relative">
                         <a href="<?php the_permalink(); ?>">
                             <img class="rounded-xl shadow-xl" src="<?php the_post_thumbnail_url(); ?>"
-                                 alt="Sermon Thumbnail">
+                                 alt="Message Thumbnail">
 
                             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                                 <div class="bg-black/[.5] rounded-full py-5 px-7">
@@ -36,20 +36,29 @@ if ( have_rows( 'popular_messages', 84 ) ):
                     <a href="<?php the_permalink(); ?>">
                         <h3 class="font-bold capitalize text-xl pt-3"><?php the_title(); ?></h3>
 
-                        <p class=" capitalize text-lg">
+                        <p class="capitalize text-lg">
 							<?php
 							// DISPLAY SERIES NAME
 							$taxonomy = 'series';
 							// Get the terms associated with the current post
 							$terms = get_the_terms( get_the_ID(), $taxonomy );
 							if ( $terms && ! is_wp_error( $terms ) ) {
-								// Loop through the terms and display them
+								// Create an array to hold term names
+								$term_names = [];
+
+								// Loop through the terms and add them to the array
 								foreach ( $terms as $term ) {
-									echo 'Series: <a href="' . get_term_link( $term, $taxonomy ) . '">' . esc_html( $term->name ) . '</a>';
+									$term_names[] = esc_html( $term->name );
+								}
+
+								// Display the terms separated by a comma and a space
+								if ( ! empty( $term_names ) ) {
+									echo 'Series: ' . implode( ', ', $term_names );
 								}
 							}
 							?>
                         </p>
+
                         <p class=" capitalize text-sm"><?php the_date(); ?></p>
                     </a>
 				<?php endforeach; ?>
@@ -69,9 +78,9 @@ endif;
 ?>
 
 <div class="col-span-12 text-center my-5">
-    <a href="<?php the_field( "archive_link" ); ?>">
-        <button class="ghost-black mt-3">
+    <div class="mt-3">
+        <a href="<?php the_field( "archive_link" ); ?>" class="ghost-black mt-3">
             See All Messages
-        </button>
-    </a>
+        </a>
+    </div>
 </div>

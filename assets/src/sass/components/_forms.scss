@@ -70,4 +70,11 @@
   color: #eeeeee;
 }
 
+// Homepage Resource Specifically
+.resource-giveaway {
+  .gform-theme--foundation .gform_fields {
+    grid-row-gap: 20px !important;
+  }
+}
+
 /* stylelint-enable selector-max-id, selector-max-compound-selectors, selector-class-pattern */
