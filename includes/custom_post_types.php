@@ -244,7 +244,8 @@ register_taxonomy( 'topic', 'message',
 	)
 );
 
-add_action( 'init', 'custom_message_post_type' );
+add_action( 'init', 'custom_message_post_type', 0 );
+
 
 //**************** Transcripts ******************
 /**
