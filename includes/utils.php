@@ -87,7 +87,25 @@ function check_live_status() {
 	}
 }
 
-
+/**
+ * Displays terms associated with a post for a specified taxonomy.
+ *
+ * This function retrieves and displays the terms linked to a given post ID
+ * within a specified taxonomy. It outputs the terms within a wrapper
+ * HTML tag, preceded by a label. The terms are displayed as a comma-separated
+ * list, with options for additional formatting such as inline display
+ * and new lines.
+ *
+ * @param int $post_id The ID of the post from which to retrieve terms.
+ * @param string $taxonomy The taxonomy to retrieve terms for (e.g., 'category', 'post_tag').
+ * @param string $label The label to display before the terms.
+ * @param string $wrapper_tag The HTML tag to wrap the output (default is 'p').
+ * @param string $class Optional. A class attribute to apply to the wrapper tag (default is '').
+ * @param bool $inline Optional. Whether to display the terms inline (default is false).
+ * @param bool $new_line Optional. Whether to insert a line break after the terms (default is false).
+ *
+ * @return void
+ */
 if ( ! function_exists( 'bootcamp_display_message_terms' ) ) {
 	function bootcamp_display_message_terms( $post_id, $taxonomy, $label, $wrapper_tag = 'p', $class = '', $inline = false, $new_line = false ): void {
 		// Retrieve the terms associated with the post for the specified taxonomy
@@ -121,3 +139,5 @@ if ( ! function_exists( 'bootcamp_display_message_terms' ) ) {
 		}
 	}
 }
+
+
