@@ -345,6 +345,12 @@ if ( have_rows( 'slider_content' ) ): ?>
         </div>
     </div>
 
+    <div class="bg-blue-gradient md:py-10">
+        <div class=" lg:max-w-5xl lg:mx-auto">
+			<?php get_template_part( 'components/layouts/email-signup' ); ?>
+        </div>
+    </div>
+
 
 <?php
 get_footer();
