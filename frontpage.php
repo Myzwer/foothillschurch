@@ -95,7 +95,7 @@ if ( get_field( "announcement_block" ) ) { ?>
                 <div class="col-span-12 md:col-span-6 text-center relative">
                     <a href="<?php echo get_permalink( $post['ID'] ) ?>">
                         <img class="rounded-xl shadow-xl"
-                             src="<?php echo get_the_post_thumbnail_url( $post['ID'], 'youtube-thumbnail' ); ?>"
+                             src="<?php echo get_the_post_thumbnail_url( $post['ID'] ); ?>"
                              alt="Sermon Thumbnail">
                     </a>
                 </div>
@@ -134,48 +134,48 @@ if ( get_field( "announcement_block" ) ) { ?>
     </div>
 <?php // END Recent Sermon ?>
 
-<?php // START Resource Giveaway  ?>
-    <div class="bg-blue-gradient py-10">
-        <div class=" lg:max-w-5xl lg:text-center lg:mx-auto p-5 pt-10">
-            <div class="grid grid-cols-12 gap-4 md:gap-10">
+<?php // START Promo Flex Content  ?>
+<?php
+// Check value exists.
+if ( have_rows( 'promotion_blocks' ) ) :
 
-                <div class="col-span-12 md:col-span-6 md:order-2">
-					<?php
-					// Resource Image
-					$resourceImage = get_field( 'resource_image' );
-					if ( ! empty( $resourceImage ) ): ?>
-                        <img src="<?php echo esc_url( $resourceImage['url'] ); ?>"
-                             alt="<?php echo esc_attr( $resourceImage['alt'] ); ?>">
-					<?php endif; ?>
-                </div>
+	echo "<div class='alt-bg-wrap-home'>"; // Wrap the entire section
+
+	// Loop through rows.
+	while ( have_rows( 'promotion_blocks' ) ) : the_row();
 
 
-                <div class="col-span-12 md:col-span-6 md:order-1 relative">
-                    <div class="content-middle-medium">
-                        <div class="text-left mb-1">
-                            <h2 class=" text-3xl lb-2 font-bold capitalize"><?php the_field( "resource_title" ); ?></h2>
-                            <div class="pb-10 md:pb-3 prose"><?php the_field( "resource_paragraph" ); ?></div>
-                            <div class="resource-giveaway">
-								<?php
-								// Gravity Forms Shortcode
-								$formid = get_field( "form_id" );
-								echo do_shortcode( "[gravityform id='$formid']" );
-								?>
-                                <p class="opacity-60 text-xs pt-3">This site is protected by reCAPTCHA and the Google
-                                    <a class="underline" href="https://policies.google.com/privacy">Privacy Policy</a>
-                                    and
-                                    <a class="underline" href="https://policies.google.com/terms">Terms of Service</a>
-                                    apply.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+		echo "<div class='bg-alternating-gradient'>";
 
-            </div>
-        </div>
-    </div>
-<?php // END Resource Giveaway ?>
 
+		switch ( get_row_layout() ) {
+			case 'text_only':
+				get_template_part( 'components/blocks/home-flex/text-only' );
+				break;
+
+			case 'image_text':
+				get_template_part( 'components/blocks/home-flex/graphic-text' );
+				break;
+
+			case 'resource_giveaway':
+				get_template_part( 'components/blocks/home-flex/resource-giveaway' );
+				break;
+
+			default:
+				error_log( "Unhandled content block: " . get_row_layout() );
+				break;
+		}
+
+		echo "</div>";
+
+		// End loop.
+	endwhile;
+
+	echo "</div>";
+
+endif;
+?>
+<?php // END Promo Flex Content  ?>
 
 <?php // START Gallery / Events  ?>
     <div class="bg-white-gradient">
